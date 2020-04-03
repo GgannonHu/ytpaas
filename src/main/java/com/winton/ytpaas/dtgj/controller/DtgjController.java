@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class DtgjController {
-    
+    //123
     @RequestMapping("/dtgj/index")
     public String dtgj() {
         return "/dtgj/index";
