@@ -26,6 +26,20 @@ import org.springframework.web.multipart.MultipartFile;
 public class Tools {
 
 	/**
+	 * 生成32位guid
+	 * @return
+	 */
+	public static String get32GUID() {
+		return java.util.UUID.randomUUID().toString().replaceAll("-", "");
+	}
+	/**
+	 * 生成36位guid
+	 * @return
+	 */
+	public static String get36GUID() {
+		return java.util.UUID.randomUUID().toString();
+	}
+	/**
 	 * Date转str
 	 * 
 	 * @param date
@@ -35,7 +49,7 @@ public class Tools {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String dateStr = null;
 		if (date != null)
-			sdf.format(date);
+			dateStr = sdf.format(date);
 		return dateStr;
 	}
 
@@ -255,5 +269,4 @@ public class Tools {
 				SerializerFeature.WriteDateUseDateFormat, 
 				SerializerFeature.WriteMapNullValue);
 	}
-
 }
