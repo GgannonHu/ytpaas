@@ -12,7 +12,6 @@ import com.winton.ytpaas.common.util.Tools;
 import com.winton.ytpaas.dtgj.entity.Dtgj_Abry;
 import com.winton.ytpaas.dtgj.service.Dtgj_AbryService;
 import com.winton.ytpaas.system.entity.Sys_User;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +19,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-//github提交测试1
+
 @RestController
 @RequestMapping("/api/dtgj/zhld/qwgl/dwgl/abry")
 @Api(value = "安保人员管理接口", description = "安保人员管理接口")
