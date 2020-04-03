@@ -154,15 +154,6 @@ public class DtgjController {
     public String gjgwcyrylook() {
         return "/dtgj/xxgl/gjgwcyry/gjgwcyrylook";
     }
-    
-    @RequestMapping("/dtgj/xxgl/jqxx/jqxxedit")
-    public String jqxxedit() {
-        return "/dtgj/xxgl/jqxx/jqxxedit";
-    }
-    @RequestMapping("/dtgj/xxgl/jqxx/list")
-    public String jqxxlist() {
-        return "/dtgj/xxgl/jqxx/jqxxlist";
-    }
 
     //文件下载
     @RequestMapping("/dtgj/fjxx/filedownload")
