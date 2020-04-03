@@ -135,7 +135,7 @@ public class DtgjController {
         return "/dtgj/xxgl/asjxx/asjxxlist";
     }
 
-    @RequestMapping("/dtgj/xxgl/gjgwcyrylist")
+    @RequestMapping("/dtgj/xxgl/gjgwcyry/list")
     public String gjgwcyrylist() {
         return "/dtgj/xxgl/gjgwcyry/gjgwcyrylist";
     }
