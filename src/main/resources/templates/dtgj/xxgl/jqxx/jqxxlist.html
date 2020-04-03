@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>警情信息列表</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+<body>
+        <div class="winui-toolbar">
+            <div class="winui-tool layui-inline">
+                <form class="layui-form">
+                <div class="layui-input-inline">
+                    &nbsp;地铁站点：
+                    <div class="layui-input-inline"> 
+                        <input id="txt_DTZDMC" name="txt_DTZDMC" class="layui-input" style="width: 160px;"
+                            placeholder="地铁地铁站点" />
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                    &nbsp;报警人：
+                    <div class="layui-input-inline">
+                        <input id="txt_AJMC" name="txt_AJMC" class="layui-input" style="width: 160px;"
+                            placeholder="案件名称" />
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                        &nbsp;报警时间：
+                    <div class="layui-input-inline">
+                        <input id="txt_ASJFSKSSJS" name="txt_ASJFSKSSJS" type="text" class="layui-input test-item" placeholder="yyyy-MM-dd" style="width: 100px;" />
+                    </div>
+                    <div class="layui-input-inline">-</div>
+                    <div class="layui-input-inline">
+                        <input id="txt_ASJFSKSSJE" name="txt_ASJFSKSSJE" type="text" class="layui-input test-item" placeholder="yyyy-MM-dd" style="width: 100px;" />
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                        &nbsp;报警电话：
+                    <div class="layui-input-inline">
+                        <input id="txt_AFDD" name="txt_AFDD" class="layui-input" style="width: 160px;"
+                            placeholder="请输入案发地点" />
+                    </div>
+                </div>                 
+                <div class="layui-input-inline">
+                    <button id="searchMenu" class="winui-toolbtn">
+                        <i class="fa fa-search" aria-hidden="true"></i>搜索</button>
+                    <button id="reloadTable" class="winui-toolbtn">
+                        <i class="fa fa-refresh" aria-hidden="true"></i>刷新数据</button>
+                    <button id="addasjxx" class="winui-toolbtn">
+                        <i class="fa fa-plus" aria-hidden="true"></i>添加警情</button>
+                    <button id="deleteyswp" class="winui-toolbtn">
+                        <i class="fa fa-trash" aria-hidden="true"></i>删除选中</button>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div style="margin:auto 10px;">
+            <table id="list" lay-filter="list"></table>
+            <script type="text/html" id="baryswp">           
+                <a class="layui-btn layui-btn-xs"  lay-event="edit">{{ mLOGINNAME != d.TJR ? "查看" : "编辑"  }}</a>                
+                <a class="layui-btn layui-btn-danger layui-btn-xs" style="display:{{ mLOGINNAME != d.TJR ? "none" : ""  }};"   lay-event="del">删除</a>
+            </script> 
+        </div>
+    <script src="/js/core/layui/layui.js"></script>  
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/dtgj/xxgl/jqxx/'
+        }).use('jqxxlist');
+    </script>
+    <script type="text/html" id="barSelRow">
+        {{# if(d.TJR==mLOGINNAME){ }}
+            <input rid="rowCheck" value="{{d.ID}}"  type="checkbox" lay-skin="primary" >
+        {{# }  }}
+    </script>
+     
+</body>
+</html>
