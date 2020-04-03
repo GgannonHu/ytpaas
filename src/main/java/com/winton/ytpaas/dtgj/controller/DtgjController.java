@@ -35,7 +35,14 @@ public class DtgjController {
     public String qwbbEdit() {
         return "/dtgj/zhld/qwgl/qwbb/qwbbedit";
     }
-
+    @RequestMapping("/dtgj/xxgl/jqxx/jqxxedit")
+    public String jqxxedit() {
+        return "/dtgj/xxgl/jqxx/jqxxedit";
+    }
+    @RequestMapping("/dtgj/xxgl/jqxx/list")
+    public String jqxxlist() {
+        return "/dtgj/xxgl/jqxx/jqxxlist";
+    }
     @RequestMapping("/dtgj/jcfz/znya")
     public String znya() {
         return "/dtgj/jcfz/znya/znyalist";
