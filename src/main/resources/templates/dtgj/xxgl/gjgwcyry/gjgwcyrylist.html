@@ -59,7 +59,7 @@
                     <button id="reloadTable" class="winui-toolbtn">
                         <i class="fa fa-refresh" aria-hidden="true"></i>刷新数据</button>
                     <button id="addgjgwcyry" class="winui-toolbtn">
-                        <i class="fa fa-plus" aria-hidden="true"></i>添加物品</button>
+                        <i class="fa fa-plus" aria-hidden="true"></i>添加信息</button>
                     <button id="deletegjgwcyry" class="winui-toolbtn">
                         <i class="fa fa-trash" aria-hidden="true"></i>删除选中</button>
                 </div>
@@ -70,7 +70,6 @@
             <table id="list" lay-filter="list"></table>
             <script type="text/html" id="bargjgwcyry">
                 <a class="layui-btn layui-btn-xs" style="display:{{ d.ZT == "已认领" ? "none" : "" }};" lay-event="edit">编辑</a>
-                <a class="layui-btn layui-btn-normal layui-btn-xs" style="display:{{ d.ZT == "已认领" ? "none" : "" }};" lay-event="rl">认领</a>
                 <a class="layui-btn layui-btn-danger layui-btn-xs" style="display:{{ d.ZT == "已认领" ? "none" : "" }};" lay-event="del">删除</a>
             </script>
             <script type="text/html" id="barSelRow">
