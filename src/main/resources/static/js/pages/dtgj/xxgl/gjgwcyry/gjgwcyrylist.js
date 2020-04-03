@@ -93,7 +93,7 @@ layui.config({
                     id: 'lookgwcyry',
                     type: 2,
                     title: '查看信息',
-                    content: '/dtgj/xxgl/gjgwcyry/gjgwcyrlookl?id=' + data.ID + '&menuid=' + $.getUrlParam("id"),
+                    content: '/dtgj/xxgl/gjgwcyrylook?id=' + data.ID + '&menuid=' + $.getUrlParam("id"),
                     maxOpen: true
                 });
             }
