@@ -2,9 +2,11 @@ package com.winton.ytpaas.system.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.alibaba.fastjson.JSONObject;
 import com.winton.ytpaas.common.datasource.BaseJdbcTemplate;
+import com.winton.ytpaas.common.util.Tools;
 import com.winton.ytpaas.system.entity.Sys_User;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -178,10 +180,43 @@ public class Sys_UserDao extends BaseJdbcTemplate {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+        return false;
+    }
+    public boolean updateQXDW(String yhbm, String qxdw) {
+    	String [] qxdws = qxdw.split(",");
+        String sql = "begin delete from SYS_USER_DATA_DWBM where YHBM in (" + yhbm + ");";
+        sql += " insert into SYS_USER_DATA_DWBM(YWLSH,YHBM,DWBM,CJSJ)";
+        for(String item : qxdws) {
+            sql += " select '" + Tools.get32GUID() + "','" + yhbm + "','" + item + "',SYSDATE from dual union all";
+        }
+        sql = sql.substring(0, sql.length() - 10);
+        sql+= "; end;";
+        try {
+            int count = jdbcTemplate.update(
+                sql, 
+                new Object[] { }
+            );
+            return count > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
+    public List<Map<String, Object>> getUserDataDwbm(String yhbm) {
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        String sql = "select * from SYS_USER_DATA_DWBM where YHBM=?";
+        try {
+            list = jdbcTemplate.queryForList(
+                sql, new Object[]{ yhbm }
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+        return list;
+    }
 
 
 }

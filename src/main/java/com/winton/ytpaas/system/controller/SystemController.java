@@ -29,6 +29,10 @@ public class SystemController {
     public String userEdit(){
         return "/system/user/edit";
     }
+    @RequestMapping("/user/data/dwbm")
+    public String userDataDwbm(){
+        return "/system/user/user_data_dwbm";
+    }
 
     @RequestMapping("/jg")
     public String jg(){

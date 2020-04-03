@@ -1,12 +1,19 @@
 package com.winton.ytpaas.system.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.rocketmq.shade.com.alibaba.fastjson.JSON;
 import com.winton.ytpaas.common.util.Result;
+import com.winton.ytpaas.system.dao.Sys_JGDao;
 import com.winton.ytpaas.system.dao.Sys_RoleDao;
+import com.winton.ytpaas.system.dao.Sys_UserDao;
+import com.winton.ytpaas.system.entity.Sys_JG;
 import com.winton.ytpaas.system.entity.Sys_Role;
 import com.winton.ytpaas.system.entity.Sys_Role_Data;
+import com.winton.ytpaas.system.entity.Sys_User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +23,10 @@ public class Sys_RoleService {
 
     @Autowired
     Sys_RoleDao dao;
+    @Autowired
+    Sys_UserDao userDao;
+    @Autowired
+    Sys_JGDao jgDao;
 
     public Sys_Role getById(String jsbm) {
         return dao.getById(jsbm);
@@ -110,11 +121,67 @@ public class Sys_RoleService {
         return res;
     }
     
-    public Result getSJQX(String jsbm, String url) {
-    	Result res = new Result();
-    	List<Sys_Role_Data> list = dao.getSJQX(jsbm, url);
+    public Result getSJQX(Sys_User user, String url) {
+        Result res = new Result();
+        
+        JSONObject json = new JSONObject();
+
+        // 数据权限
+        List<Sys_Role_Data> list = dao.getSJQX(user.getJSBM(), url);
+        json.put("sjqx", list);
+
+        // 获取用户的数据权限单位，如果没有，则默认本单位
+        List<Map<String, Object>> listDwbm = userDao.getUserDataDwbm(user.getYHBM());
+        List<String> dwbms = new ArrayList<String>();
+        for(Map<String, Object> item : listDwbm) {
+            dwbms.add(item.get("DWBM").toString());
+        }
+        if(dwbms.size() > 0) {
+            String dwbm = String.join(",", dwbms);
+            json.put("dwbm", dwbm);
+        } else {
+            json.put("dwbm", user.getDWDM());
+        }
+
+        // 获取用户的用户编码
+        json.put("yhbm", user.getYHBM());
+
     	res.setCode("1");
-        res.setData(list);
+        res.setData(json);
+        return res;
+    }
+    /**
+     * 根据用户编码获取权限单位
+     */
+    public Result getQXDW(String yhbm) {
+        Result res = new Result();
+        
+        Sys_User user = userDao.getById(yhbm);
+        JSONObject json = new JSONObject();
+
+        // 获取用户的数据权限单位，如果没有，则默认本单位
+        List<Map<String, Object>> listDwbm = userDao.getUserDataDwbm(user.getYHBM());
+        List<String> dwbms = new ArrayList<String>();
+        for(Map<String, Object> item : listDwbm) {
+            dwbms.add(item.get("DWBM").toString());
+        }
+        if(dwbms.size() > 0) {
+            String dwbm = String.join(",", dwbms);
+            json.put("dwbm", dwbm);
+        } else {
+            json.put("dwbm", user.getDWDM());
+        }
+        // 根据机构编码获取机构名称
+        List<Sys_JG> listDwmc = jgDao.getAll03(json.get("dwbm").toString());
+        List<String> dwmcs = new ArrayList<String>();
+        for(Sys_JG item : listDwmc) {
+            dwmcs.add(item.getJGMC());
+        }
+        String dwmc = String.join(",", dwmcs);
+        json.put("dwmc", dwmc);
+
+    	res.setCode("1");
+        res.setData(json);
         return res;
     }
     /**

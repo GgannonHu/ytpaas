@@ -142,10 +142,7 @@ public class Sys_RoleDao extends BaseJdbcTemplate {
         		" select b.CDMC,b.URL from SYS_ROLE_MENU a inner join SYS_MENU b on a.CDBM=b.CDBM where a.JSBM='"+jsbm+"'" + 
         		" ) t1," + 
         		"(" + 
-        		"	select '查询权限-' a,'CXQX02' b from dual union all" + 
-        		"	select '添加权限-' a,'TJQX' b from dual union all" + 
-        		"	select '修改权限-' a,'XGQX' b from dual union all" + 
-        		"	select '删除权限-' a,'SCQX' b from dual" + 
+        		"	select '查询权限-' a,'CXQX02' b from dual" + 
         		") t2" + 
         		")t;";
 

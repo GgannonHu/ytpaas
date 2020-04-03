@@ -111,6 +111,55 @@ public class Sys_MenuService {
         return res.toString();
     }
 
+    public String getUserMenuAuth(String basePath, String jsbm, String pid) {
+        List<Map<String, Object>> list = dao.getAllByJSBM(jsbm);
+        
+        JSONArray arr = bindMenu(pid, list);
+        Result res = new Result();
+        res.setCode("1");
+        res.setData(arr);
+        return res.toString();
+    }
+    
+    public String getUserMenuAuthTree(String basePath, String jsbm, String pid) {
+        List<Map<String, Object>> list = dao.getAllByJSBM(jsbm);
+        JSONArray arr = getTreeData(pid, list);
+        Result res = new Result();
+        res.setCode("1");
+        res.setData(arr);
+        return res.toString();
+    }
+    
+    private JSONArray getTreeData(String pid,List<Map<String, Object>> list) {
+    	JSONArray arr = new JSONArray();
+        for(Map<String, Object> item : list) {
+            if(item.get("SJBM").toString().equals(pid)) {
+                JSONObject obj = new JSONObject();
+//                obj.put("extend", false);
+                obj.put("icon", item.get("BZ"));
+//                obj.put("isDesktopIcon", 1);
+//                obj.put("maxOpen", -1);
+//                obj.put("openType", 2);
+//                obj.put("orderNumber", item.get("PX"));
+                obj.put("_href", item.get("URL"));
+                obj.put("id", item.get("CDBM"));
+                obj.put("spread",true);
+                obj.put("title", item.get("CDMC"));
+                obj.put("name", item.get("CDMC"));
+                JSONArray children =  getTreeData(item.get("CDBM").toString(), list) ;
+                if(children != null && children.size()>0) {
+                	obj.put("children", children);
+                }else {
+                	obj.put("children",new JSONArray());
+                }
+                
+                arr.add(obj);
+            }
+        }
+
+        return arr;
+    }
+
     private JSONArray bindMenu(String pid, List<Map<String, Object>> list) {
         JSONArray arr = new JSONArray();
         for(Map<String, Object> item : list) {
@@ -123,6 +172,7 @@ public class Sys_MenuService {
                 obj.put("openType", 2);
                 obj.put("orderNumber", item.get("PX"));
                 obj.put("pageURL", item.get("URL"));
+                obj.put("href", item.get("URL"));
                 obj.put("id", item.get("CDBM"));
                 obj.put("parentId", item.get("SJBM"));
                 obj.put("title", item.get("CDMC"));
