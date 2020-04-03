@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>用户单位权限管理</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+    <style>
+        .span{
+            height: 38px;
+            line-height: 38px;
+        }
+    </style>
+</head>
+<body>
+    
+<div style="width:600px;margin:0 auto;padding-top:20px;">
+    <form class="layui-form layui-form-pane" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <span id="xm" class="layui-input span"></span>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">权限单位</label>
+            <div class="layui-input-block">
+                <span id="qxdw" class="layui-input span"></span>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">重置权限单位</label>
+            <div class="layui-input-block">
+                <input id="qxdwbm" type="hidden" />
+                <span id="qxdwmc" class="layui-input span"></span>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择权限单位</label>
+            <div class="layui-input-inline">
+                <input id="jgdm" name="DWDM" type="hidden" />
+                <input type="text" name="DWMC" id="jgmc" min="0" win-verify="required" placeholder="请选择单位" autocomplete="off" class="layui-input" />
+	        </div>
+            <div class="layui-input-inline">
+                <button lay-submit lay-filter="btnJG" class="layui-btn layui-btn-primary">
+					<i class="fa fa-check"></i>
+                </button>
+                <button lay-submit lay-filter="btnOK" class="layui-btn layui-btn-default">
+					确认并添加
+				</button>
+            </div>
+        </div>
+        
+       
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formEditMenu">
+                	<i class="fa fa-check"></i> 确定
+                </button>
+                <button class="layui-btn layui-btn-primary" onclick="top.winui.window.close('dataUser'); return false;">
+					<i class="fa fa-close"></i> 取消
+				</button>
+            </div>
+        </div>
+    </form>
+</div>
+    <script src="/js/core/layui/layui.js"></script>
+
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/system/user/'
+        }).use('user_data_dwbm');
+      
+    </script>
+</body>
+</html>

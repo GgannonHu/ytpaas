@@ -51,8 +51,19 @@ public class ApiSystemController {
     	String url = request.getParameter("url");
     	Sys_User user = tokenService.verifyToken(token);
     	
-        Result res = sysRoleService.getSJQX(user.getJSBM(), url);
-        res.setMsg(user.getDWDM());
+        Result res = sysRoleService.getSJQX(user, url);
+        
+        return res.toString();
+    }
+    @ApiOperation(value = "获取用户单位数据权限", notes = "获取用户单位数据权限", httpMethod = "GET")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "yhbm", value = "用户编码", dataType = "String", paramType = "query", required = true)
+    })
+    @RequestMapping(value = "/user/qxdw",produces="application/json")
+    public String yhDwqx(HttpServletRequest request,HttpServletResponse response){
+    	String yhbm = request.getParameter("yhbm");
+    	
+        Result res = sysRoleService.getQXDW(yhbm);
         
         return res.toString();
     }
@@ -186,6 +197,22 @@ public class ApiSystemController {
         Result res = sysUserService.delete(id);
         return res.toString();
     }
+    @ApiOperation(value = "设置用户的权限单位", notes = "设置用户的权限单位", httpMethod = "GET")
+	@ApiImplicitParams({
+        @ApiImplicitParam(name = "yhbm", value = "用户编码", dataType = "String", paramType = "query", required = true),
+        @ApiImplicitParam(name = "qxdw", value = "权限单位", dataType = "String", paramType = "query", required = true)
+    })
+    @RequestMapping(value="/user/datadw/update",produces = "application/json")
+    @SystemLog(description = "设置用户的权限单位", type = LogType.SYSTEM_OPERATION)
+    public String sys_UserQXDWUpdate(HttpServletRequest request,HttpServletResponse response)
+    {
+        String yhbm = request.getParameter("yhbm");
+        String qxdw = request.getParameter("qxdw");
+
+        Result res = sysUserService.updateQXDW(yhbm, qxdw);
+        return res.toString();
+    }
+    
     
 
     @ApiOperation(value = "机构管理", notes = "机构管理", httpMethod = "GET")
@@ -234,6 +261,20 @@ public class ApiSystemController {
     	
         return Tools.toJSONString(res);
     }
+    @ApiOperation(value = "根据机构编码获取机构名称", notes = "根据机构编码获取机构名称", httpMethod = "GET")
+    @ApiImplicitParams({
+    	@ApiImplicitParam(name = "jgdm", value = "机构代码", dataType = "String", paramType = "query", required = true)
+    })
+	@RequestMapping(value="/jg/jgmc/get",produces = "application/json")
+    @SystemLog(description = "根据机构编码获取机构名称", type = LogType.SYSTEM_OPERATION)
+    public String sys_JG_GetJGMC(HttpServletRequest request,HttpServletResponse response)
+    {
+    	String jgdm = request.getParameter("jgdm");
+        String jgmc = sysJGService.getByJgmc(jgdm);
+    	
+        return jgmc;
+    }
+
     @ApiOperation(value = "获取下级角色列表", notes = "获取下级角色列表", httpMethod = "GET")
 	@RequestMapping(value="/role/list",produces = "application/json")
     @SystemLog(description = "获取下级角色列表", type = LogType.SYSTEM_OPERATION)
@@ -415,6 +456,5 @@ public class ApiSystemController {
     	Result res = sysMenuService.delete(cdbm);
         return Tools.toJSONString(res);
     }
-    
     
 }
