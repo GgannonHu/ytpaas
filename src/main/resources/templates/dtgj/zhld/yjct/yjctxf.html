@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>常态处置编辑</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-xs4">
+            <div class="layui-card">
+                <div class="layui-card-header">接收单位</div>
+                <div class="layui-card-body">
+                    <div id="menu" class="demo-tree"></div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs8">
+            <form class="layui-form layui-form-pane">
+                <br />
+                <div class="layui-form-item">
+                    <label class="layui-form-label">名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="ctczName" id="ctczName" min="0" win-verify="required"
+                            placeholder="请输入名称" autocomplete="off" class="layui-input" />
+                    </div>
+                </div>
+                <div class="layui-form-item"  pane="">
+                    <label class="layui-form-label">接收单位</label>
+                    <div class="layui-input-block" id="div_jsdw"></div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">内容</label>
+                    <div class="layui-input-block">
+                        <textarea name="ctczNr" id="ctczNr" min="0" win-verify="required" placeholder="请输入内容"
+                            autocomplete="off" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <div class="layui-form-label">
+                        附件信息
+                        <a id="uploadList" class="winui-toolbtn"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                        <a id="uploadListAction" class="winui-toolbtn" style="display:none;">开始上传</a></div>
+                    <div class="layui-input-block">
+                        <table class="layui-table" style="margin:0px">
+                            <thead>
+                                <tr>
+                                    <th>文件名</th>
+                                    <th>大小</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="fileList"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <input type="hidden" id="hdfType" name="hdfType" value="2">
+                        <input type="hidden" id="hdfJsdw" name="hdfJsdw">
+                        <input type="hidden" id="hdfJsdwMc" name="hdfJsdwMc">
+                        <input type="hidden" id="hdfUser" name="hdfUser">
+                        <input type="hidden" id="hdfDwbm" name="hdfDwbm">
+                        <input type="hidden" id="hdfDwbmMc" name="hdfDwbmMc">
+                        <button id="btnQd" class="winui-btn" lay-submit lay-filter="formEditMenu">确定</button>
+                        <button class="winui-btn"
+                            onclick="top.winui.window.close('editXf'); return false;">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+    <script src="/js/core/layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/dtgj/zhld/yjct/'
+        }).use('yjctxf');
+    </script>
+</body>
+</html>

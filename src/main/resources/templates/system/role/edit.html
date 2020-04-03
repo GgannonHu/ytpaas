@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>角色管理</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+<body>
+    
+<div style="width:600px;margin:0 auto;padding-top:20px;">
+    <form class="layui-form layui-form-pane" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">角色名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="JSMC" id="JSMC" min="0" win-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">角色描述</label>
+            <div class="layui-input-block">
+                <input type="text" name="JSMS" id="JSMS" min="0" win-verify="required" placeholder="请输入登录账号" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item" id="div_jslx">
+            <label class="layui-form-label">角色类型</label>
+            <div class="layui-input-block">
+	            <select name="JSLX" id="JSLX">
+	               	<option value="1">省厅级</option>
+	               	<option value="2">市局级</option>
+	               	<option value="3">分局级</option>
+	               	<option value="4">派出所级</option>
+	               	<option value="5">民警级</option>
+	            </select>
+            </div>
+        </div>
+        
+       
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="winui-btn" lay-submit lay-filter="formEditMenu">确定</button>
+                <button class="winui-btn" onclick="top.winui.window.close('editRole'); return false;">取消</button>
+            </div>
+        </div>
+    </form>
+</div>
+    <script src="/js/core/layui/layui.js"></script>
+
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/system/role/'
+        }).use('roleedit');
+      
+    </script>
+</body>
+</html>

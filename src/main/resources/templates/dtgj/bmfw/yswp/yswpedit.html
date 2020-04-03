@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>遗失物品编辑</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+<body>
+<div style="width:600px;margin:0 auto;padding-top:20px;">
+    <form class="layui-form layui-form-pane">
+        <div class="layui-form-item">
+            <label class="layui-form-label">物品名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="yswpName" id="yswpName" min="0" win-verify="required" placeholder="请输入物品名称" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">拾取地点</label>
+            <div class="layui-input-block">
+                <input type="text" name="yswpSqdd" id="yswpSqdd" min="0" win-verify="required" placeholder="请输入拾取地点" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">拾取时间</label>
+            <div class="layui-input-block">
+                <input type="text" name="yswpSqsj" id="yswpSqsj" min="0" win-verify="required" placeholder="请输入拾取时间" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">物品描述</label>
+            <div class="layui-input-block">
+                    <textarea name="yswpWpms" id="yswpWpms" min="0" win-verify="required" placeholder="请输入内容" autocomplete="off" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <div class="layui-form-label">
+                物品照片
+                <a id="uploadList" class="winui-toolbtn"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                <a id="uploadListAction" class="winui-toolbtn" style="display:none;">开始上传</a></div>
+            <div class="layui-input-block">
+                <table class="layui-table" style="margin:0px">
+                    <thead>
+                        <tr>
+                            <th>预览</th>
+                            <th>文件名</th>
+                            <th>大小</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fileList"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="hidden" id="hdfUser" name="hdfUser">
+                <button class="winui-btn" lay-submit lay-filter="formEditMenu">确定</button>
+                <button class="winui-btn" onclick="top.winui.window.close('editYswp'); return false;">取消</button>
+            </div>
+        </div>
+    </form>
+</div>
+    <script src="/js/core/layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/dtgj/bmfw/yswp/'
+        }).use('yswpedit');
+    </script>
+</body>
+</html>

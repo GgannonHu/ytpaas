@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>详情信息</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div style="width:600px;margin:0 auto;padding-top:20px;">
+        <form class="layui-form layui-form-pane" lay-filter="addForm" action="">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">起点首末车时间</label>
+                <div class="layui-input-inline" style="width: 200px;">
+                    <input id="qdzsmc_kssj" name="qdzsmc_kssj" min="0" type="text" placeholder="请输入起点站开始时间"
+                        autocomplete="off" class="layui-input" />
+                </div>
+                <div class="layui-form-mid">-</div>
+                <div class="layui-input-inline" style="width: 200px;">
+                    <input id="qdzsmc_jssj" name="qdzsmc_jssj" min="0" type="text" placeholder="请输入起点站末车时间"
+                        autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">终点首末车时间</label>
+                <div class="layui-input-inline" style="width: 200px;">
+                    <input id="zdzsmc_kssj" name="zdzsmc_kssj" min="0" type="text" placeholder="请输入终点站首车时间"
+                        autocomplete="off" class="layui-input" />
+                </div>
+                <div class="layui-form-mid">-</div>
+                <div class="layui-input-inline" style="width: 200px;">
+                    <input id="zdzsmc_jssj" name="zdzsmc_jssj" min="0" type="text" placeholder="请输入终点站末车时间"
+                        autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="display: none;">
+                <label class="layui-form-label">行政区划</label>
+                <div class="layui-input-inline" style="width: 200px;">
+                    <select id='xzqhsj' lay-filter="xzqhsj">
+                    </select>
+                </div>
+                <div class="layui-input-inline" style="width: 200px;">
+                    <select id='xzqhfj' lay-filter="xzqhfj">
+                    </select>
+                </div>
+            </div>
+            <div id="divXzqh" class="layui-form-item" style="display: none;">
+                <label class="layui-form-label">行政区划</label>
+                <div class="layui-input-block">
+                    <input id="showXzqh" class="layui-input" disabled="disabled" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">线路编号</label>
+                <div class="layui-input-block">
+                    <input id="dtxlbh" name="dtxlbh" min="0" type="text" win-verify="required" placeholder="请输如线路编号"
+                        autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">线路名称</label>
+                <div class="layui-input-block">
+                    <input id="dtxlmc" name="dtxlmc" min="0" type="text" win-verify="required" placeholder="请输入线路名称"
+                        autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">线路起点站</label>
+                <div class="layui-input-block">
+                    <input id="dtxlqdz" name="dtxlqdz" min="0" type="text" win-verify="required" placeholder="请输入线路起点站"
+                        autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">线路终点站</label>
+                <div class="layui-input-block">
+                    <input id="dtxlzdz" name="dtxlzdz" min="0" type="text" win-verify="required" placeholder="请输入线路终点站"
+                        autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">线路里程</label>
+                <div class="layui-input-block">
+                    <input id="xllc" name="xllc" min="0" type="text" lay-verify="xllc" placeholder="请输入线路里程"
+                        autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div id="pageSubmit" style="display: none;" class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="winui-btn" lay-submit lay-filter="formEditMenu">确定</button>
+                    <button class="winui-btn" onclick="top.winui.window.close('editDtxl'); return false;">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <script src="/js/core/layui/layui.js"></script>
+
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/dtgj/xxgl/dtxl/'
+        }).use('dtxledit');
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>菜单管理</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+<body>
+<div>
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs4">
+      <div class="layui-card">
+        <div class="layui-card-header">功能菜单</div>
+        <div class="layui-card-body">
+          <div id="menu" class="demo-tree"></div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-xs8">
+      <input id="cdbm" type="hidden" />
+      	<div class="layui-tab layui-tab-brief">
+		  <ul class="layui-tab-title">
+		    <li class="layui-this">添加子节点</li>
+		    <li>修改节点</li>
+		    <li>删除节点</li>
+		  </ul>
+		  <div class="layui-tab-content">
+		    <div class="layui-tab-item layui-show">
+		    <!-- 添加 -->
+		    	<form class="layui-form layui-form-pane" action="">
+	        		<div class="layui-form-item">
+			            <label class="layui-form-label">上级菜单</label>
+			            <div class="layui-input-block">
+			                <input type="text" id="add_sjcd" class="layui-input layui-disabled" disabled />
+			            </div>
+			        </div>
+			        <div class="layui-form-item">
+			            <label class="layui-form-label">菜单名称</label>
+			            <div class="layui-input-block">
+			                <input type="text" id="add_cdmc" autocomplete="off" class="layui-input" />
+			            </div>
+			        </div>
+			        <div class="layui-form-item">
+			            <label class="layui-form-label">URL</label>
+			            <div class="layui-input-block">
+			                <input type="text" id="add_url" autocomplete="off" class="layui-input" />
+			            </div>
+			        </div>
+			        <div class="layui-form-item">
+			            <label class="layui-form-label">图标</label>
+			            <div class="layui-input-inline">
+					    	<input type="text" id="add_txt_icon" autocomplete="off" class="layui-input" />
+			            </div>
+			            <div class="layui-input-inline">
+					    	<button lay-submit lay-filter="addIconBtn" class="layui-btn layui-btn-primary">
+								<i id="add_i_icon" class="fa fa-check"></i>
+							</button>
+						</div>
+			        </div>
+			        <div class="layui-form-item">
+			            <label class="layui-form-label">排序</label>
+			            <div class="layui-input-block">
+			                <input type="number" id="add_px" autocomplete="off" class="layui-input" />
+			            </div>
+			        </div>
+			        <div class="layui-form-item">
+			            <div class="layui-input-block">
+			                <button id="addSubmit" class="layui-btn" lay-submit lay-filter="addSubmit">
+			                	<i class="fa fa-check"></i> 添加
+			                </button>
+			            </div>
+			        </div>
+			    </form>
+		    </div>
+		    <div class="layui-tab-item">
+		    <!-- 修改 -->
+				<form class="layui-form layui-form-pane" action="">
+	        		<div class="layui-form-item">
+			            <label class="layui-form-label">菜单名称</label>
+			            <div class="layui-input-block">
+			                <input type="text" id="up_cdmc" autocomplete="off" class="layui-input" />
+			            </div>
+			        </div>
+			        <div class="layui-form-item">
+			            <label class="layui-form-label">URL</label>
+			            <div class="layui-input-block">
+			                <input type="text" id="up_url" autocomplete="off" class="layui-input" />
+			            </div>
+			        </div>
+			        <div class="layui-form-item">
+			            <label class="layui-form-label">图标</label>
+			            <div class="layui-input-inline">
+					    	<input type="text" id="up_txt_icon" autocomplete="off" class="layui-input" />
+			            </div>
+			            <div class="layui-input-inline">
+					    	<button lay-submit lay-filter="upIconBtn" class="layui-btn layui-btn-primary">
+								<i id="up_i_icon" class="fa fa-check"></i>
+							</button>
+						</div>
+			        </div>
+			        <div class="layui-form-item">
+			            <label class="layui-form-label">排序</label>
+			            <div class="layui-input-block">
+			                <input type="number" id="up_px" autocomplete="off" class="layui-input" />
+			            </div>
+			        </div>
+			        <div class="layui-form-item">
+			            <div class="layui-input-block">
+			                <button id="upSubmit"  class="layui-btn" lay-submit lay-filter="upSubmit">
+			                	<i class="fa fa-check"></i> 修改
+			                </button>
+			            </div>
+			        </div>
+			    </form>
+			</div>
+		    <div class="layui-tab-item">
+				<form class="layui-form layui-form-pane" action="">
+		    		<span id="del_msg">确定要删除该节点吗？</span>
+		        	<button id="delSubmit" class="layui-btn layui-btn-danger" lay-submit lay-filter="delSubmit">
+			          	<i class="fa fa-close"></i> 删除
+			   		</button>
+		   		</form>
+		    </div>
+		  </div>
+		</div> 
+      
+    </div>
+  </div>
+</div> 
+
+    <script src="/js/core/layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/system/menu/'
+        }).use('menulist');
+      
+    </script>
+</body>
+</html>

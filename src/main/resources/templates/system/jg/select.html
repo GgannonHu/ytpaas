@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>机构选择</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+<body>
+	<br>
+    <form class="layui-form" action="" style="width: 300px; margin: 0 auto;">
+	  <div class="layui-form-item" id="div1">
+	  	<select lay-filter="sel1" id="sel1"></select>
+	  </div>
+	  <div class="layui-form-item" id="div2" style="display: none;">
+	  	<select lay-filter="sel2" id="sel2"></select>
+	  </div>
+	  <div class="layui-form-item" id="div3" style="display: none;">
+	  	<select lay-filter="sel3" id="sel3"></select>
+	  </div>
+	  <div class="layui-form-item" id="div4" style="display: none;">
+	  	<select lay-filter="sel4" id="sel4"></select>
+	  </div>
+	  <div class="layui-form-item">
+	    <button class="layui-btn" lay-submit="" lay-filter="btn_ok">
+	    	<i class="fa fa-check"></i> 确定
+	    </button>
+	    <button class="layui-btn layui-btn-warm" lay-submit="" lay-filter="btn_reset" id="btn_reset">
+	    	<i class="fa fa-refresh"></i> 重置
+	    </button>
+	    <button class="layui-btn layui-btn-primary" lay-submit="" lay-filter="btn_cancel">
+	    	<i class="fa fa-close"></i> 取消
+	    </button>
+	  </div>
+	</form>	
+
+    <script src="/js/core/layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/system/jg/'
+        }).use('jgselect');
+      
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>安保人员</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="winui-toolbar">
+        <div class="winui-tool layui-inline">
+            <form class="layui-form">
+                <div class="layui-input-inline">
+                    公交线路编码
+                    <div class="layui-input-inline">
+                        <select name="gjxlbm" id="gjxlbm" lay-filter="gjxlbm" lay-search>
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                    地铁站点名称
+                    <div class="layui-input-inline">
+                        <select name="dtzdmc" id="dtzdmc" lay-filter="dtzdmc" lay-search>
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                    公民身份号码
+                    <div class="layui-input-inline">
+                        <input id="gmsfhm" name="gmsfhm" class="layui-input" style="width: 160px;" />
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                    姓名
+                    <div class="layui-input-inline">
+                        <input id="xm" name="xm" class="layui-input" style="width: 160px;" />
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                    单位
+                    <div class="layui-input-inline">
+                        <input id="dw" name="dw" class="layui-input" style="width: 160px;" />
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                    <button id="searchMenu" class="winui-toolbtn">
+                        <i class="fa fa-search" aria-hidden="true"></i>搜索</button>
+                    <button id="reloadTable" class="winui-toolbtn"><i class="fa fa-refresh"
+                            aria-hidden="true"></i>刷新数据</button>
+                    <button id="addAbry" class="winui-toolbtn"><i class="fa fa-plus"
+                            aria-hidden="true"></i>添加安保人员</button>
+                    <button id="deleteAbry" class="winui-toolbtn"><i class="fa fa-trash"
+                            aria-hidden="true"></i>删除选中</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div style="margin:auto 10px;">
+        <table id="abry" lay-filter="abry"></table>
+        <script type="text/html" id="barAbry">
+            <a id="edit" class="layui-btn layui-btn-xs" lay-event="edit">{{ d.TJR!=tjr ? "查看" : "编辑"  }}</a>
+            <a id ="del" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" style="display:{{ d.TJR!=tjr ? "none" : ""  }};">删除</a>
+        </script>
+    </div>
+    <script src="/js/core/layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/dtgj/zhld/qwgl/dwgl/abry/'
+        }).use('abrylist');
+
+    </script>
+    <script type="text/html" id="barSelRow">
+        {{# if(d.TJR==tjr){ }}
+            <input rid="rowCheck" value="{{d.ID}}"  type="checkbox" lay-skin="primary" >
+        {{# }  }}
+    </script>
+</body>
+
+</html>

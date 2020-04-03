@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>智能预案</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div style="width:600px;margin:0 auto;padding-top:20px;">
+        <form class="layui-form layui-form-pane" action="">
+            <div class="layui-form-item" style="display: none;">
+                <label class="layui-form-label">ID</label>
+                <div class="layui-input-block">
+                    <input type="text" name="id" id="id" autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" id="name" min="0" win-verify="required" placeholder="请输入名称"
+                        autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">等级</label>
+                <div class="layui-input-block">
+                    <select name="dj" id="dj" lay-verify="dj" win-verify="required" lay-search>
+                        <option value="">请选择</option>
+                        <option value="一级">一级</option>
+                        <option value="二级">二级</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">内容</label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea" name="nr" id="nr" min="0" win-verify="required" placeholder="请输入内容"
+                        autocomplete="off"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item" style="display: none;">
+                <label class="layui-form-label">发布人</label>
+                <div class="layui-input-block">
+                    <input type="text" name="fbr" id="fbr" autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item" style="display: none;">
+                <label class="layui-form-label">发布单位</label>
+                <div class="layui-input-block">
+                    <input type="text" name="fbdw" id="fbdw" autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item" style="display: none;">
+                <label class="layui-form-label">发布时间</label>
+                <div class="layui-input-block">
+                    <input type="text" name="fbsj" id="fbsj" autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <div class="layui-form-label">
+                    附件信息
+                    <a id="uploadList" class="winui-toolbtn"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                    <a id="uploadListAction" class="winui-toolbtn" style="display:none;">开始上传</a></div>
+                <div class="layui-input-block">
+                    <table class="layui-table" style="margin:0px">
+                        <thead>
+                            <tr>
+                                <th>文件名</th>
+                                <th>大小</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="fileList"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="winui-btn" lay-submit lay-filter="formEditMenu">确定</button>
+                    <button class="winui-btn" onclick="top.winui.window.close('editZnya'); return false;">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="/js/core/layui/layui.js"></script>
+
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/dtgj/jcfz/znya/'
+        }).use('znyaedit');
+
+    </script>
+</body>
+
+</html>

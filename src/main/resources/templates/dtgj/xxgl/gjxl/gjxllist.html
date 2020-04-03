@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>列表信息</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="winui-toolbar">
+        <div class="winui-tool layui-inline">
+            <div class="layui-input-inline">
+                <label style="margin-left: 20px;">线路名称：</label>
+                <div class="layui-input-inline">
+                    <input id="xlmc" class="layui-input" style="width: 160px;" placeholder="请输入线路名称" />
+                </div>
+            </div>
+            <div class="layui-input-inline">
+                <label style="margin-left: 20px;">站点名称：</label>
+                <div class="layui-input-inline">
+                    <input id="zdmc" class="layui-input" style="width: 160px;" placeholder="请输入站点名称" />
+                </div>
+            </div>
+            <div class="layui-input-inline">
+                <button id="btnSel" class="winui-toolbtn">
+                    <i class="fa fa-search" aria-hidden="true"></i>搜索</button>
+                <button id="btnReloadTable" class="winui-toolbtn">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>刷新数据</button>
+                <button id="btnAdd" class="winui-toolbtn">
+                    <i class="fa fa-plus" aria-hidden="true"></i>添加信息</button>
+                <button id="btnDelete" class="winui-toolbtn">
+                    <i class="fa fa-trash" aria-hidden="true"></i>删除选中</button>
+
+            </div>
+        </div>
+    </div>
+    <div style="margin:auto 10px;">
+        <table id="list" lay-filter="list"></table>
+        <script type="text/html" id="barSelRow">
+            {{# if(d.TJR==mLOGINNAME){ }}
+                <input rid="rowCheck" value="{{d.ID}}"  type="checkbox" lay-skin="primary" />
+            {{# }  }}
+        </script>
+        <script type="text/html" id="barYjct">
+            <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="selzd">站点</a>
+            <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="sel">查看</a>
+            {{# if(d.TJR==mLOGINNAME){ }}
+            <a class="layui-btn layui-btn-xs" lay-event="edit" >编辑</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del" >删除</a>
+            {{# }  }}
+        </script>
+        <script type="text/html" id="colNoNull">
+            {{d.NR == null ? '' : d.NR }}
+        </script>
+    </div>
+    <script src="/js/core/layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/dtgj/xxgl/gjxl/'
+        }).use('gjxllist');
+
+    </script>
+</body>
+
+</html>

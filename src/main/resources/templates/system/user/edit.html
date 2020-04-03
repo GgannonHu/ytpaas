@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>用户管理</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+<body>
+    
+<div style="width:600px;margin:0 auto;padding-top:20px;">
+    <form class="layui-form layui-form-pane" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">登录名</label>
+            <div class="layui-input-block">
+                <input type="text" name="LOGINNAME" id="LOGINNAME" min="0" win-verify="required" placeholder="请输入登录名" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item" id="div_password">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-block">
+                <input type="text" name="PASSWORD" id="PASSWORD" min="0" win-verify="required" value="默认密码123" autocomplete="off" class="layui-input layui-disabled" disabled />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="text" name="YHXM" id="YHXM" min="0" win-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">身份证号</label>
+            <div class="layui-input-block">
+                <input type="text" name="YHSFZH" id="YHSFZH" min="0" win-verify="required" placeholder="请输入身份证号" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">电话</label>
+            <div class="layui-input-block">
+                <input type="text" name="YHLXDH" id="YHLXDH" min="0" placeholder="请输入电话" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">警号</label>
+            <div class="layui-input-block">
+                <input type="text" name="YHJH" id="YHJH" min="0" placeholder="请输入警号" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">单位</label>
+            <div class="layui-input-inline">
+                <input id="jgdm" name="DWDM" type="hidden" />
+                <input type="text" name="DWMC" id="jgmc" min="0" win-verify="required" placeholder="请选择单位" autocomplete="off" class="layui-input" />
+	        </div>
+            <div class="layui-input-inline">
+                <button lay-submit lay-filter="btnJG" class="layui-btn layui-btn-primary">
+					<i class="fa fa-check"></i>
+				</button>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">角色</label>
+            <div class="layui-input-block" id="JSBM">
+            	
+            </div>
+        </div>
+        
+       
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formEditMenu">
+                	<i class="fa fa-check"></i> 确定
+                </button>
+                <button class="layui-btn layui-btn-primary" onclick="top.winui.window.close('editUser'); return false;">
+					<i class="fa fa-close"></i> 取消
+				</button>
+            </div>
+        </div>
+    </form>
+</div>
+    <script src="/js/core/layui/layui.js"></script>
+
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/system/user/'
+        }).use('useredit');
+      
+    </script>
+</body>
+</html>

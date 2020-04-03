@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>勤务报备</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div style="width:600px;margin:0 auto;padding-top:20px;">
+        <form class="layui-form layui-form-pane" action="">
+            <div class="layui-form-item" style="display: none;">
+                <label class="layui-form-label">ID</label>
+                <div class="layui-input-block">
+                    <input type="text" name="id" id="id" autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">姓名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="xm" id="xm" min="0" win-verify="required" placeholder="请输入姓名"
+                        autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">身份证号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="sfzh" id="sfzh" min="0" win-verify="required" placeholder="请输入身份证号"
+                        autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">发布时间</label>
+                <div class="layui-input-block">
+                    <input type="text" name="fbsj" id="fbsj" win-verify="required" autocomplete="off"
+                        class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">完成时间</label>
+                <div class="layui-input-block">
+                    <input type="text" name="wcsj" id="wcsj" win-verify="required" autocomplete="off"
+                        class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">完成状态</label>
+                <div class="layui-input-block">
+                    <select name="wczt" id="wczt" lay-verify="wczt" win-verify="required" lay-search>
+                        <option value="">请选择</option>
+                        <option value="未完成">未完成</option>
+                        <option value="已完成">已完成</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">勤务内容</label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea" name="qwnr" id="qwnr" min="0" win-verify="required" placeholder="请输入勤务内容"
+                        autocomplete="off"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item" style="display: none;">
+                <label class="layui-form-label">添加人</label>
+                <div class="layui-input-block">
+                    <input type="text" name="tjr" id="tjr" autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item" style="display: none;">
+                <label class="layui-form-label">添加单位</label>
+                <div class="layui-input-block">
+                    <input type="text" name="tjdw" id="tjdw" autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item" style="display: none;">
+                <label class="layui-form-label">添加时间</label>
+                <div class="layui-input-block">
+                    <input type="text" name="tjsj" id="tjsj" autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="winui-btn" lay-submit lay-filter="formEditMenu">确定</button>
+                    <button class="winui-btn" onclick="top.winui.window.close('editQwbb'); return false;">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="/js/core/layui/layui.js"></script>
+
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/dtgj/zhld/qwgl/qwbb/'
+        }).use('qwbbedit');
+
+    </script>
+</body>
+
+</html>

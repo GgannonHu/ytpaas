@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <title>YTPaas平台</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+   
+    <style>
+        body {
+            background: url(/images/bg_01.jpg);
+        }
+        .layui-side-scroll{padding-top:5px;}
+    </style>
+</head>
+<body class="taskbarInBottom">
+    <!-- 桌面 -->
+    <div class="winui-desktop">
+
+    </div>
+
+    <!-- 开始菜单 -->
+    <div class="winui-start sp -sm layui-hide">
+        <!-- 左边设置 -->
+        <div class="winui-start-left">
+            <div class="winui-start-item bottom person-password" data-text="修改密码"><i class="fa fa-key"></i></div>
+            <div class="winui-start-item winui-start-individuation bottom" data-text="主题设置"><i class="fa fa-paw"></i></div>
+            <div class="winui-start-item bottom logout" data-text="注销登录"><i class="fa fa-power-off"></i></div>
+        </div>
+        <!-- 中间导航 -->
+        <div class="winui-start-center">
+            <div class="layui-side-scroll">
+                <ul class="winui-menu layui-nav layui-nav-tree" lay-filter="winuimenu"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 任务栏 -->
+    <div class="winui-taskbar">
+        <!-- 开始菜单触发按钮 -->
+        <div class="winui-taskbar-start sp"><i class="fa fa-windows"></i></div>
+        <!-- 任务项 -->
+        <ul class="winui-taskbar-task"></ul>
+        <!-- 任务栏时间 -->
+        <div class="winui-taskbar-time"></div>
+        <!-- 控制中心 -->
+        <div class="winui-taskbar-console sp">
+            <i class="fa fa-comment-o"></i>
+        </div>
+        <!-- 显示桌面 -->
+        <div class="winui-taskbar-desktop">
+        </div>
+    </div>
+
+    <!--右侧消息通知-->
+    <div class="winui-console layui-hide slideOutRight sp">
+        <h1>最新通知</h1>
+        <div class="winui-message">
+            <div class="layui-side-scroll">
+                <div class="winui-message-item">
+                    <h2>系统提示</h2>
+                    <div class="content">
+                        您的操作权限已变更
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--layui.js-->
+    <script src="./js/core/layui/layui.js"></script>
+    <script>
+    	
+        layui.config({
+            base: './js/pages/home/' //指定 index.js 路径
+            , version: '1.0.0-beta'
+        }).use('index');
+    </script>
+</body>
+</html>

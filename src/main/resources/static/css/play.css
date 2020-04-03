@@ -1,0 +1,950 @@
+body {
+	background: #000;
+	color: #999;
+	min-width: 1000px;
+}
+
+i.icon {
+	background: url(../images/icons.png) no-repeat;
+}
+
+a {
+	color: #999;
+}
+
+a:hover {
+	color: #FFF;
+}
+
+.PlayPage {
+	min-width: 1000px;
+	position: absolute;
+	left: 0px;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	min-height: 450px;
+	overflow: hidden;
+}
+
+.Top {
+	background: #0F0F0F;
+	height: 28px;
+	padding: 16px 10px;
+	line-height: 28px;
+	position: relative;
+	z-index: 999;
+}
+
+.Top h1 {
+	max-width: 50%;
+	font-size: 20px;
+	color: #FFF;
+	font-weight: normal;
+	margin-right: 70px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.Top button {
+	line-height: 1;
+	padding: 0 30px;
+	color: #FFF;
+	background-color: #da291a;
+	height: 28px;
+}
+
+.Top .lookDescribe {
+	position: relative;
+	cursor: default;
+}
+
+.lookDescribe:hover {
+	color: #FFF;
+}
+
+.lookDescribe .describe {
+	position: absolute;
+	left: 0px;
+	top: 28px;
+	width: 300px;
+	background: #FFF;
+	padding: 10px;
+	display: none;
+	line-height: 1.5;
+	font-size: 12px;
+	z-index: 999;
+}
+
+.lookDescribe:hover .describe {
+	display: block;
+	color: #424242;
+}
+
+.PlayPage>.Content {
+	position: absolute;
+	left: 0px;
+	top: 65px;
+	bottom: 0px;
+	right: 0px;
+	padding: 0;
+}
+
+.Main {
+	position: absolute;
+	top: 0px;
+	left: 0;
+	right: 386px;
+	bottom: 0;
+	padding-bottom: 65px;
+}
+
+.VideoPlay {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 0;
+	bottom: 61px;
+}
+
+.Main .videoInfos {
+	position: absolute;
+	left: 0;
+	right: 5px;
+	bottom: 0;
+	height: 28px;
+	padding: 16px 0px 16px 10px;
+	border-top: 1px solid #333;
+	line-height: 28px;
+}
+
+.Main .videoInfos>div {
+	line-height: 26px;
+	border: 1px solid #333;
+	position: relative;
+	padding: 0 20px;
+	margin-right: 20px;
+	cursor: default;
+}
+
+.Main .videoInfos>div:last-child {
+	margin-right: 0;
+}
+
+.Main .videoInfos>div.fr {
+	border: none;
+	line-height: 28px;
+}
+
+.Main .videoInfos>div:hover span {
+	color: #FFF;
+}
+
+.Main .videoInfos>div .main {
+	position: absolute;
+	bottom: 25px;
+	left: 0;
+	display: none;
+	padding-bottom: 10px;
+	line-height: 1.5;
+}
+
+.Main .videoInfos>div:hover .main {
+	display: block;
+}
+
+.Main .videoInfos>div .main .con {
+	background: #FFF;
+	padding: 10px;
+	white-space: nowrap;
+}
+
+.Main .videoInfos>div .main .con img.qrcode {
+	width: 90px;
+	height: 90px;
+}
+
+.Main .videoInfos>div .main p {
+	white-space: nowrap;
+}
+
+.Main .videoInfos>div .main p a:hover {
+	color: #000;
+}
+
+.videoInfos.H5 {
+	
+}
+
+h1.playerLogo {
+	width: 88px;
+	height: 28px;
+	background: url(../images/logo_player.png) no-repeat center;
+}
+
+.videoInfos.H5 .fr {
+	margin-left: 5px;
+}
+
+.videoInfos.H5 .fl {
+	margin-right: 20px;
+}
+
+.videoInfos.H5>div {
+	border: none;
+	padding: 0;
+	margin: 0;
+	line-height: 28px;
+	background: #000;
+}
+
+.videoInfos.H5>.btns {
+	padding: 0 10px;
+}
+
+.videoInfos.H5>.btns:hover {
+	background: #00a8e9;
+	border-radius: 3px;
+}
+
+.videoInfos.H5>.btns:hover span {
+	color: #FFF;
+}
+
+.feedbackError {
+	cursor: pointer;
+}
+
+.videoInfos.H5>.bdsharebuttonbox {
+	
+}
+
+.videoInfos.H5>.bdsharebuttonbox a {
+	background: none !important;
+	border: 0;
+	line-height: 26px;
+	font-size: 14px;
+	height: 28px;
+	display: block;
+	margin: 0;
+	color: #999;
+	padding: 0 10px;
+}
+
+.videoInfos.H5>.bdsharebuttonbox a:hover {
+	background: #00a8e9 !important;
+	color: #FFF !important;
+	opacity: 1 !important;
+	border-radius: 3px;
+}
+
+.videoInfos.H5>div.download .main {
+	left: auto;
+	right: 0;
+}
+
+.videoInfos.H5>div.download .main .con {
+	background: url(../images/bg80.png);
+	border-radius: 3px;
+}
+
+.videoInfos.H5>div.download .main .con a {
+	color: #FFF;
+	white-space: nowrap;
+	line-height: 36px;
+	display: block;
+	max-width: 450px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.videoInfos.H5>div.download .main .con a:hover {
+	color: #00a8e9;
+}
+
+.videoInfos.H5>div.download .main .con p {
+	border-top: 1px solid #333;
+	border-bottom: 1px solid #000;
+}
+
+.videoInfos.H5>div.download .main .con p:last-child {
+	border-bottom: 0;
+}
+
+.videoInfos.H5>div.download .main .con p:first-child {
+	border-top: 0;
+}
+
+.videoInfos.H5>.edu-ad {
+	position: absolute;
+	left: 110px;
+	top: 16px;
+	z-index: -1;
+}
+
+.bdshare_popup_box {
+	z-index: 10000 !important;
+}
+
+.Tools {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0;
+	width: 380px;
+	background-color: #0F0F0F;
+}
+
+.Tools dt {
+	padding: 20px 10px;
+	line-height: 20px;
+	overflow: hidden;
+	text-align: center;
+	border-bottom: 1px solid #222;
+}
+
+.Tools dt p {
+	float: left;
+	width: 120px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.Tools dt p.center {
+	margin: 0 -1px;
+	border: 1px solid #222;
+	border-top: 0;
+	border-bottom: 0;
+}
+
+.Tools dt p.cur, .Tools dt p:hover {
+	color: #DDD;
+}
+
+.Tools dd {
+	position: absolute;
+	top: 61px;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+
+.lessonList {
+	line-height: 36px;
+	height: 100%;
+}
+
+.lessonList li {
+	padding: 0 15px;
+}
+
+.lessonList li>a {
+	display: block;
+	overflow: hidden;
+}
+
+.lessonList li.cur a {
+	color: #FFF;
+}
+
+.lessonList .chaper, .listTitle {
+	background: #171717;
+	margin: 10px 0;
+}
+
+.lessonList .chaper:first-child {
+	margin-top: 0;
+}
+
+.lessonList .lesson {
+	
+}
+
+.lessonList li i, .lessonList li span.num {
+	width: 20px;
+	height: 21px;
+	display: block;
+	margin-top: 8px;
+	line-height: 20px;
+	float: left;
+	margin-right: 10px;
+}
+
+.lessonList li span.num {
+	width: auto;
+}
+
+.lessonList li.exam i {
+	background-position: -300px -150px;
+}
+
+.lessonList li.page i {
+	background-position: -300px -200px;
+}
+
+.lessonList li:hover.exam i {
+	background-position: -300px -300px;
+}
+
+.lessonList li:hover.page i {
+	background-position: -300px -350px;
+}
+
+.lessonList li p {
+	max-width: 225px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.noteCon, .questCon {
+	line-height: 30px;
+}
+
+.sendCon {
+	padding: 15px;
+	overflow: hidden;
+}
+
+.Tools textarea {
+	width: 340px;
+	padding: 4px;
+	border: 1px solid #222;
+	background: #000;
+	height: 70px;
+	color: #FFF;
+	font-size: 14px;
+}
+
+.Tools button {
+	height: 30px;
+	width: 80px;
+	line-height: 1;
+	padding: 0
+}
+
+.sendCon i, .listList i.icon {
+	display: block;
+	float: left;
+	width: 16px;
+	height: 16px;
+}
+
+.sendCon i.check {
+	background-position: 0px -450px;
+	background-color: #000;
+	margin-top: 6px;
+	margin-right: 5px;
+}
+
+.RecordTime {
+	font-size: 12px;
+	cursor: default;
+}
+
+.RecordTime:hover i.check {
+	background-position: -50px -400px;
+}
+
+.RecordTime.on i.check {
+	background-position: -50px -350px;
+}
+
+.RecordTime.on:hover i.check {
+	background-position: 0px -350px;
+}
+
+.playingTime {
+	border: 1px solid #222;
+	font-size: 12px;
+	line-height: 14px;
+	margin-top: 7px;
+	margin-left: 10px;
+	padding-right: 5px;
+	background-color: #000;
+}
+
+.playingTime i.icon.play {
+	margin: -1px;
+	background-position: -444px -97px;
+	border-right: 1px solid #222;
+	margin-right: 5px;
+	position: static;
+	background-color: transparent;
+}
+
+.listTitle {
+	padding: 5px 15px;
+	font-size: 16px;
+	overflow: hidden;
+}
+
+.listTitle p {
+	margin-right: 20px;
+	cursor: pointer;
+}
+
+.listTitle p.fl.cur, .listTitle p.fl:hover {
+	color: #FFF;
+}
+
+.listList {
+	padding: 15px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 200px;
+}
+
+.listList li.item {
+	overflow: hidden;
+	padding-left: 55px;
+	line-height: 1.4;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.listList li.item>img {
+	width: 44px;
+	height: 44px;
+	border-radius: 100%;
+	background: #999;
+	margin-left: -55px;
+	float: left;
+}
+
+.listList li.item p.date {
+	color: #424242;
+}
+
+.listList li.item p.content {
+	margin: 5px 0;
+	word-wrap: break-word;
+}
+
+.listList li.item .playingTime {
+	margin-left: 0;
+}
+
+.listList li.item p.fr.blue {
+	cursor: pointer;
+	margin-top: 4px;
+}
+
+.listList li.item .replyList {
+	font-size: 12px;
+	margin-top: 10px;
+}
+
+.replyList li {
+	padding-left: 40px;
+	margin-bottom: 10px;
+	overflow: hidden;
+	position: relative;
+	padding-bottom: 10px
+}
+
+.replyList li .vipSmall {
+	position: absolute;
+	left: 12px;
+	top: 12px;
+}
+
+.replyList li:first-child {
+	border-top: 1px dashed #333;
+	padding-top: 10px
+}
+
+.replyList li:first-child .vipSmall {
+	top: 22px;
+}
+
+.replyList li>img {
+	width: 32px;
+	height: 32px;
+	border-radius: 100%;
+	background: #999;
+	margin-left: -40px;
+	float: left;
+}
+
+.replyList li p.isLec {
+	position: absolute;
+	left: 0px;
+	width: 32px;
+	top: 36px;
+	font-size: 8px;
+	color: red;
+	text-align: center;
+}
+
+.replyList li:first-child p.isLec {
+	top: 46px;
+}
+
+.listList li.item>i.vipSmall {
+	position: absolute;
+	left: 24px;
+	top: 24px;
+	z-index: 5
+}
+
+.reply {
+	margin-top: 10px;
+}
+
+.reply textarea {
+	width: 285px;
+	height: 60px;
+}
+
+.tabsCon .mask {
+	position: absolute;
+	background: url(../images/bg80.png);
+}
+
+.tabsCon .mask.show {
+	display: block;
+}
+
+.tabsCon .sendLoading {
+	width: 24px;
+	height: 30px;
+	background: url(../images/loadinfo.net.gif) no-repeat center;
+	display: none;
+}
+
+.getMote {
+	line-height: 30px;
+	background: #666;
+	text-align: center;
+	cursor: pointer;
+	color: #DDD;
+	display: none;
+}
+
+.getMote:hover {
+	background: #999;
+	color: #FFF;
+}
+
+.loadingMore {
+	width: 100%;
+	height: 40px;
+	background: url(../images/lesson_loading.gif) no-repeat center top;
+	padding-top: 40px;
+}
+
+.noMore {
+	padding: 30px 0;
+	text-align: center;
+	color: #333;
+}
+
+.success {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 200px;
+	line-height: 50px;
+	margin-top: -25px;
+	margin-left: -100px;
+	border-radius: 5px;
+	background: #000;
+	color: #FFF;
+	z-index: 50001;
+	text-align: center;
+	display: none;
+}
+
+.tabsCon .notPay {
+	text-align: center;
+	z-index: 50002;
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 100px;
+	color: #DDD;
+}
+
+.tabsCon .notPay button, button.buyThisClass {
+	color: #FFF;
+	background-color: #da291a;
+}
+
+.tabsCon .notPay a, a.buyThisClass {
+	color: #FFF;
+	background-color: #da291a;
+	line-height: 2;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.VideoPlay .notPay, .joinVip, .errorMsg, .appraise-wrap {
+	position: absolute;
+	top: 50%;
+	margin-top: -200px;
+	left: 0;
+	width: 100%;
+}
+
+.VideoPlay .notPay>div {
+	padding-top: 200px;
+	background: url(../images/fuwu2.png?v=0.0.1) no-repeat center top;
+}
+
+.VideoPlay .notPay.notPay2>div {
+	background-image: url(../images/fuwu.png)
+}
+
+.VideoPlay .notPay>div p.red {
+	font-size: 40px;
+}
+
+.VideoPlay .notPay>div button {
+	margin-top: 20px;
+	font-size: 26px;
+	height: 56px;
+	width: 180px;
+}
+
+.VideoPlay .notPay>div a {
+	margin-top: 20px;
+	font-size: 26px;
+	height: 56px;
+	width: 180px;
+}
+
+.joinVip {
+	margin-top: -100px;
+}
+
+.joinVip a.blue {
+	font-size: 22px;
+}
+
+.joinVip table {
+	margin: 30px auto;
+}
+
+.joinVip table p {
+	border: 1px solid #333;
+	padding: 0 30px;
+	margin: 0 20px;
+	line-height: 36px;
+}
+
+.examInfo, .singlePage {
+	max-width: 850px;
+	margin: 100px auto auto auto;
+	font-size: 16px;
+	padding: 10px;
+}
+
+.examInfo h2, .singlePage h2 {
+	font-size: 28px;
+	color: #FFF;
+	font-weight: normal;
+	margin-bottom: 10px;
+}
+
+.examInfo p {
+	overflow: hidden;
+}
+
+.f40 {
+	font-size: 48px;
+}
+
+.f32 {
+	font-size: 32px;
+	margin-top: 15px;
+	margin-left: 5px;
+}
+
+.examInfo a.btn {
+	display: block;
+	margin: 30px auto;
+	width: 120px;
+	height: 45px;
+	font-size: 20px;
+	line-height: 45px;
+	text-align: center;
+}
+
+.singlePage {
+	margin-top: 30px;
+	height: 90%;
+}
+
+.singlePage>div * {
+	max-width: 100%;
+}
+
+.errorMsg {
+	margin-top: -15px;
+	line-height: 30px;
+	font-size: 18px;
+}
+
+.tool_middle_bar {
+	position: absolute;
+	top: 0;
+	right: 380px;
+	width: 6px;
+	height: 100%;
+	background: #0f0f0f;
+	cursor: pointer;
+}
+
+.tool_middle_bar span {
+	position: absolute;
+	left: -18px;
+	top: 50%;
+	margin-top: -25px;
+	width: 18px;
+	height: 50px;
+	background: url(../images/bars.png) no-repeat;
+}
+
+#v_content.show .tool_middle_bar span {
+	background: url(../images/bar.png) no-repeat;
+}
+
+#v_content.show #v_right {
+	width: 0;
+}
+
+#v_content.show #v_left {
+	right: 0;
+}
+
+#v_content.show #v_middle {
+	right: 0;
+}
+
+.tobindnew a {
+	color: #00baf2;
+}
+/* å¼¹çª—æ’­æ”¾å™¨ */
+.PopPlayPage {
+	width: 1202px;
+	height: 532px;
+}
+
+.PopPlayPage>.Content {
+	top: 0;
+}
+
+.PopPlayPage .Main {
+	padding-bottom: 0;
+}
+
+.PopPlayPage .VideoPlay {
+	bottom: 0;
+}
+
+.PopPlayPage .Tools dt {
+	text-align: left;
+}
+
+.PopPlayPage .Tools {
+	background-color: rgb(0, 0, 0);
+}
+/* è¯„è®ºå¼¹æ¡† */
+.VideoPlay .appraise-wrap {
+	top: 41%;
+	z-index: 10;
+}
+
+.VideoPlay .appraise-wrap>div {
+	padding-top: 260px;
+	background: url(../images/fuwu3.png) no-repeat center top;
+	width: 380px;
+	height: 245px;
+	margin: 0 auto;
+}
+
+.VideoPlay .appraise-wrap>div .p1 {
+	font-size: 26px;
+	color: #FEFEFE;
+	line-height: 32px;
+}
+
+.VideoPlay .appraise-wrap>div .p2 {
+	font-size: 18px;
+	color: #FFFFFF;
+}
+
+.VideoPlay .appraise-wrap>div .btn-wrap {
+	margin-top: 28px;
+}
+
+.VideoPlay .appraise-wrap>div .btn-wrap>a {
+	display: inline-block;
+	width: 138px;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	border-radius: 18px;
+	font-size: 18px;
+	margin-top: 15px;
+}
+
+.VideoPlay .appraise-wrap>div .btn-wrap .a1 {
+	border: 1px solid #F9575B;
+	color: #FF7272;
+	margin-right: 25px;
+}
+
+.VideoPlay .appraise-wrap>div .btn-wrap .a2 {
+	border: none;
+	color: #fff;
+	background-image: linear-gradient(90deg, rgb(249, 87, 91) 0%,
+		rgb(253, 133, 86) 100%);
+	background-color: rgb(249, 87, 91);
+}
+
+/* è¯¾ç¨‹æŽ’è¡Œ */
+.txt_ad .rank-list-wrap {
+	height: 31px;
+}
+
+.txt_ad .rank-list-wrap .rank-title {
+	width: 116px;
+	height: 37px;
+	line-height: 48px;
+	background: url(../images/ranking/rank-hot-bg.png) no-repeat top center;
+	background-size: 100% 100%;
+	font-size: 16px;
+	color: #fff;
+	box-sizing: border-box;
+	padding-left: 28px;
+	margin: -8px 6px 0 0;
+	vertical-align: middle;
+}
+
+.txt_ad .rank-list-wrap .rank-list {
+	display: inline-block;
+	overflow: hidden;
+	height: 31px;
+	width: 314px;
+}
+
+.txt_ad .rank-list-wrap li {
+	overflow: hidden;
+}
+
+.txt_ad .rank-list-wrap li a {
+	width: 100%;
+	height: 31px;
+	font-size: 18px;
+	line-height: 31px;
+	color: #FF9000;
+	margin-bottom: 18px;
+	overflow: hidden;
+	padding: 0;
+	display: inline-block;
+}

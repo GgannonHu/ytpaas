@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+<meta name="renderer" content="webkit">
+<title>地铁公交</title>
+<link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+<link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+<link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+<link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="index_menu">
+    	
+    </div>
+    <script src="/js/core/layui/layui.js"></script>
+    <script type="text/javascript">
+    layui.config({
+        base: '/js/core/' //指定 winui 路径
+        , version: '1.0.0-beta'
+    }).extend({
+        winui: 'winui/winui',
+        treetable:'treetable/treetable',
+        window: 'winui/js/winui.window'
+    }).define([ 'jquery', 'winui','layer'], function (exports) {
+        var pid = $.getUrlParam("id");
+        $.ajax({
+            url: '/api/home/menu/desktop',
+            method: 'get',
+            headers:{'token': localStorage["token"]},
+            dataType: 'json',
+            success: function(data) {
+                var content = '<ul>';
+                var child = [];
+                $.each(data.data, function(i, item) {
+                    if(item.id == pid) {
+                        child = item.childs;
+                    }
+                });
+                $.each(child, function(i, item) {
+                    content += '<li><a href="javascript:;" data-url="' + item.pageURL + '" id="' + item.id + '"><i class="winui-icon fa ' + item.icon + '"></i> <span>' + item.title + '</span></a></li>';
+                });
+                content += '</ul>';
+
+                $('.index_menu').empty();
+                $('.index_menu').html(content);
+                bindClick();
+            }, 
+            error: function() {
+                top.winui.window.msg('加载失败，请重试！');
+            }
+        });
+        
+
+    	function bindClick() {
+            $(".index_menu a").click(function(){
+                var url = $(this).data("url");
+                var id = $(this).prop("id");
+                var icon = $(this).find("i").prop("class");
+                var text = $(this).find("span").text();
+                top.winui.window.open({
+                    id: id,
+                    type: 2,
+                    title: '<i class="'+icon+'"></i> '+text,
+                    content: url+'?id='+id
+                });
+                return false;
+            })
+        }
+    	
+    });
+    </script>
+</body>
+</html>

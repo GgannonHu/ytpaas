@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>遗失物品编辑</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+<body>
+<div style="width:600px;margin:0 auto;padding-top:20px;">
+    <form class="layui-form layui-form-pane">
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">线路名称</label>
+            <div class="layui-input-block">                
+                <select name="asjxx_GJXLBM" id="asjxx_GJXLBM" lay-filter="asjxx_GJXLBM" win-verify="required" lay-search>
+                    <option value="">请选择</option>
+                </select>
+            </div>
+        </div> 
+        <div class="layui-form-item">
+            <label class="layui-form-label">站点名称</label>
+            <div class="layui-input-block">
+                <select name="asjxx_DTZDMC" id="asjxx_DTZDMC" lay-filter="asjxx_DTZDMC" win-verify="required" lay-search>
+                    <option value="">请选择</option>
+                </select>                
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">所属辖区</label>
+            <div class="layui-input-block">
+                <input type="text" name="asjxx_SSXQ" id="asjxx_SSXQ" min="0" win-verify="required" placeholder="请输入所属辖区" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">公司名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="asjxx_GJGSMC" id="asjxx_GJGSMC" min="0" win-verify="required" placeholder="请输入公司名称" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">案件编号</label>
+            <div class="layui-input-block">
+                <input type="text" name="asjxx_AJBH" id="asjxx_AJBH" min="0" win-verify="required" placeholder="请输入案件编号" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">案件类别</label>
+            <div class="layui-input-block">
+                <input type="text" name="asjxx_AJLB" id="asjxx_AJLB" min="0" win-verify="required" placeholder="请输入案件类别" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">案件名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="asjxx_AJMC" id="asjxx_AJMC" min="0" win-verify="required" placeholder="请输入案件名称" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">简要案情</label>
+            <div class="layui-input-block">
+                    <textarea name="asjxx_JYAQ" id="asjxx_JYAQ" min="0" win-verify="required" placeholder="请输入内容" autocomplete="off" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">案事件时间</label>
+            <div class="layui-input-block">
+                <input type="text" name="asjxx_ASJFSKSSJ" id="asjxx_ASJFSKSSJ" min="0" win-verify="required" placeholder="请输入案事件时间" autocomplete="off" class="layui-input" />                
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">案发地点</label>
+            <div class="layui-input-block">
+                    <textarea name="asjxx_AFDD" id="asjxx_AFDD" min="0" win-verify="required" placeholder="请输入内容" autocomplete="off" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">事发场所</label>
+            <div class="layui-input-block">
+                    <textarea name="asjxx_SFCS" id="asjxx_SFCS" min="0" win-verify="required" placeholder="请输入内容" autocomplete="off" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="hidden" id="hdfUser" name="hdfUser">
+                <button class="winui-btn" id="btn_queding"  lay-submit lay-filter="formEditMenu">确定</button>
+                <button class="winui-btn" onclick="top.winui.window.close('editYswp'); return false;">取消</button>
+            </div>
+        </div>
+    </form>
+</div>
+    <script src="/js/core/layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/dtgj/xxgl/asjxx/'
+        }).use('asjxxedit'); 
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>YTPaaS平台</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link href="/css/login/css/style.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+	<div class="login-form">
+		<div class="top-login">
+			<span><img src="/css/login/images/group.png" alt="" /></span>
+		</div>
+		<h1>YTPaaS平台</h1>
+		<div class="login-top">
+			<form>
+				<div class="login-ic">
+					<i></i> <input id="username" type="text" placeholder="用户名" value="admin" />
+					<div class="clear"></div>
+				</div>
+				<div class="login-ic">
+					<i class="icon"></i> <input id="password" type="password" placeholder="密码" value="123" />
+					<div class="clear"></div>
+				</div>
+
+				<div class="log-bwn">
+					<input type="button" value="登 录" onclick="onLoginClick()" />
+				</div>
+				<div class="log-msg">
+					<span id="msg"></span>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript" src="/js/core/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/js/pages/home/login.js"></script>
+</body>
+</html>

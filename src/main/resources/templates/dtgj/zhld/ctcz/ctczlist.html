@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>常态处置列表</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+<body>
+        <div class="winui-toolbar">
+            <div class="winui-tool layui-inline">
+                <form class="layui-form">
+                <div class="layui-input-inline">
+                    &nbsp;名称：
+                    <div class="layui-input-inline">
+                        <input id="txt_mc" name="txt_mc" class="layui-input" style="width: 160px;"
+                            placeholder="请输入名称" />
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                    &nbsp;内容
+                    <div class="layui-input-inline">
+                        <input id="txt_nr" name="txt_nr" class="layui-input" style="width: 160px;"
+                            placeholder="请输入内容" />
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                        &nbsp;发布时间：
+                    <div class="layui-input-inline">
+                        <input id="txt_fbsjS" name="txt_fbsjS" type="text" class="layui-input test-item" placeholder="yyyy-MM-dd" style="width: 100px;" />
+                    </div>
+                    <div class="layui-input-inline">-</div>
+                    <div class="layui-input-inline">
+                        <input id="txt_fbsjE" name="txt_fbsjE" type="text" class="layui-input test-item" placeholder="yyyy-MM-dd" style="width: 100px;" />
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                        &nbsp;类型
+                    <div class="layui-input-inline">
+                        <select id="ddl_lx" name="ddl_lx" lay-filter="ddl_lx">
+                            <option value="">全部</option>
+                            <option value="2">应急处突</option>
+                            <option value="1">常态处置</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                        &nbsp;状态：
+                    <div class="layui-input-inline" style="width: 160px;">
+                        <select id="ddl_qs" name="ddl_qs" lay-filter="ddl_qs">
+                            <option value="">全部</option>
+                            <option value="0">已签收</option>
+                            <option value="1">未签收</option>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline" style="width: 160px;">
+                        <select id="ddl_fk" name="ddl_fk" lay-filter="ddl_fk">
+                            <option value="">全部</option>
+                            <option value="0">已反馈</option>
+                            <option value="1">未反馈</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-input-inline">
+                    <input type="hidden" id="hdfUser" name="hdfUser">
+                    <input type="hidden" id="hdfDwbm" name="hdfDwbm">
+                    <input type="hidden" id="hdfDwbmMc" name="hdfDwbmMc">
+                    <button id="searchMenu" class="winui-toolbtn">
+                        <i class="fa fa-search" aria-hidden="true"></i>搜索</button>
+                    <button id="reloadTable" class="winui-toolbtn">
+                        <i class="fa fa-refresh" aria-hidden="true"></i>刷新数据</button>
+                    <button id="addctcz" class="winui-toolbtn">
+                        <i class="fa fa-plus" aria-hidden="true"></i>添加</button>
+                    <button id="deletectcz" class="winui-toolbtn">
+                        <i class="fa fa-trash" aria-hidden="true"></i>删除选中</button>
+                </div>
+                </form>
+            </div>
+        </div><div style="margin:auto 10px;">
+            <table id="list" lay-filter="list"></table>
+            <script type="text/html" id="barctcz">
+                {{# if(d.DQYH==d.FBR) { }}
+                    <a class="layui-btn layui-btn-xs" style="display:{{ d.QS == 0 ? "none" : "" }};" lay-event="edit">编辑</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" style="display:{{ d.QS == 0 ? "none" : "" }};" lay-event="del">删除</a>
+                {{# } }}
+                <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="look">查看</a>
+                {{# var patt1 = new RegExp(d.DQDW); }}
+                {{# if(patt1.test(d.XFDW)) { }}
+                    {{# if(patt1.test(d.QSDW)) { }}
+                    <a class="layui-btn layui-btn-xs" style="display:none;" lay-event="xf">下发</a>
+                    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="fk">反馈</a>
+                    {{# } else { }}
+                    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="qs">签收</a>
+                    {{# } }}
+                {{# } }}
+            </script>
+            <script type="text/html" id="barSelRow">
+                {{# if(d.QS==1){ }}
+                    <input rid="rowCheck" value="{{d.ID}}"  type="checkbox" lay-skin="primary" >
+                {{# }  }}
+            </script>
+            <script type="text/html" id="tempLx">
+                {{ d.TYPE == 1 ? "常态处置" : (d.TYPE == 2 ? "应急处突" : "") }}
+            </script>
+            <script type="text/html" id="tempZt">
+                {{ d.FK == null ? "" : (d.FK == "" ? "" : d.FKDWMC+"已反馈") }}
+                &nbsp;
+                {{# if( d.QS == 0) { }}
+                    {{# var qsdwl = d.QSDW.split(','); }}
+                    {{# var qsdwmcl = d.QSDWMC.split(','); }}
+                    {{# for (var i = 0; i < qsdwl.length; i++) { }}
+                        {{# if(!new RegExp(qsdwl[i]).test(d.FKDW)) { }}
+                            {{ qsdwmcl[i]+"已签收" }}
+                        {{# } }}
+                    {{# } }}
+                {{# } else { }}
+                    未签收
+                {{# } }}
+            </script>
+        </div>
+    <script src="/js/core/layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/dtgj/zhld/ctcz/'
+        }).use('ctczlist');
+    </script>
+</body>
+</html>

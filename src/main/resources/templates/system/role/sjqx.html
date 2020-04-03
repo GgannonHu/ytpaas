@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>数据权限管理</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+<body>
+<div style="padding-top: 20px;">
+&nbsp;&nbsp;角色：<span id="title"></span>
+&nbsp;&nbsp;
+<button id="btnSave1" class="layui-btn layui-btn-sm" lay-filter="btnOK">
+	<i class="fa fa-check" aria-hidden="true"></i>全部设置默认权限
+</button>
+<div class="layui-row layui-col-space15">
+    <div class="layui-col-xs4">
+      <div class="layui-card">
+        <div class="layui-card-header">权限菜单</div>
+        <div class="layui-card-body">
+          <div id="menu" class="demo-tree"></div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-xs8">
+	    <form class="layui-form">
+      	<div class="layui-card">
+	        <div class="layui-card-body">
+	        	菜单名称：
+	        	<span id="cdmc"></span>
+	        	<br>
+	        	菜单URL：
+	        	<span id="cdurl"></span>
+	        	<table class="layui-table">
+	        		<thead>
+	        			<tr>
+		        			<th width="60px">权限类别</th>
+		        			<th width="60px">是否启用</th>
+		        			<th>数据权限URL</th>
+		        		</tr>
+	        		</thead>
+	        		<tr>
+	        			<td>查询权限</td>
+	        			<td>
+	        				<input id="chk1" type="checkbox" title="是否启用" value="TJQX" checked="true" />
+	        			</td>
+	        			<td>
+	        				<select id="cxqx">
+	        					<option value="CXQX01">全部数据</option>
+	        					<option value="CXQX02" selected="true">本单位及下属单位</option>
+	        					<option value="CXQX03">本单位</option>
+	        				</select>
+	        			</td>
+	        		</tr>
+	        		<tr>
+	        			<td>添加权限</td>
+	        			<td>
+	        				<input id="chk2" type="checkbox" title="是否启用" value="TJQX" checked="true" />
+	        			</td>
+	        			<td><input class="layui-input" id="url2" /></td>
+	        		</tr>
+	        		<tr>
+	        			<td>修改权限</td>
+	        			<td>
+	        				<input id="chk3" type="checkbox" title="是否启用" value="XGQX" checked="true" />
+	        			</td>
+	        			<td><input class="layui-input" id="url3" /></td>
+	        		</tr>
+	        		<tr>
+	        			<td>删除权限</td>
+	        			<td>
+	        				<input id="chk4" type="checkbox" title="是否启用" value="XGQX" checked="true" />
+	        			</td>
+	        			<td><input class="layui-input" id="url4" /></td>
+	        		</tr>
+	        	</table>
+	        </div>
+	        <div class="layui-card-body">
+	        	<button id="btnSave2" class="layui-btn layui-btn-sm" lay-filter="btnOK">
+					<i class="fa fa-check" aria-hidden="true"></i> 保存权限
+				</button>
+	        </div>
+      	</div>
+      	</form>
+    </div>
+</div>
+</div>
+<br><br><br>
+    <script src="/js/core/layui/layui.js"></script>
+
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/system/role/'
+        }).use('sjqx');
+      
+    </script>
+</body>
+</html>

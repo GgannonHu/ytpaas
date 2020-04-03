@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>用户列表</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="winui-toolbar">
+        <div class="winui-tool">
+        	<form class="layui-form">
+	        	<div class="layui-inline">
+	                <div class="layui-input-inline">
+	                	<input id="jgdm" type="hidden" />
+	                    <button id="jgmc" type="button" class="layui-btn layui-btn-primary layui-btn-sm" style="width: 160px;">请选择机构</button>
+	                </div>
+                	<div class="layui-input-inline">
+                    	<button id="searchMenu" class="winui-toolbtn">
+                        	<i class="fa fa-search" aria-hidden="true"></i>搜索
+                        </button>
+			            <button id="reloadTable" class="winui-toolbtn"><i class="fa fa-refresh" aria-hidden="true"></i>刷新数据</button>
+			            <button id="addUser" class="winui-toolbtn"><i class="fa fa-plus" aria-hidden="true"></i>添加用户</button>
+			            <button id="deleteUser" class="winui-toolbtn"><i class="fa fa-trash" aria-hidden="true"></i>删除选中</button>
+                    </div>
+	            </div>
+            </form>
+        </div>
+    </div>
+    <div style="margin:auto 10px;">
+        <table id="user" lay-filter="user"></table>
+        <div id="page" style="text-align:center;"></div>
+        <script type="text/html" id="barUser1">
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        </script>
+        <script type="text/html" id="barUser2">
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        </script>
+        <script type="text/html" id="barUser3">
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        </script>
+        
+       
+    </div>
+    <script src="/js/core/layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/system/user/'
+        }).use('userlist');
+      
+    </script>
+</body>
+</html>
