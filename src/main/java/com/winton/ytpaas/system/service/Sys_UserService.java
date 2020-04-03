@@ -171,6 +171,20 @@ public class Sys_UserService {
         return res;
     }
 
+    public Result updateQXDW(String yhbm, String qxdw) {
+        Result res = new Result();
+        boolean b = dao.updateQXDW(yhbm, qxdw);
+        if(b) {
+            res.setCode("1");
+            res.setMsg("操作成功");
+        } else {
+            res.setCode("-1");
+            res.setMsg("操作失败");
+        }
+       
+        return res;
+    }
+
 
     
 

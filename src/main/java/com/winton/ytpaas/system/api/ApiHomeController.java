@@ -146,6 +146,31 @@ public class ApiHomeController {
     }
 
 
-   
+    @ApiOperation(value = "获取子系统用户菜单", notes = "\"获取子系统用户菜单", httpMethod = "GET")
+    @RequestMapping(value = "/menu/subsystem")
+    public String getSubsystemMenu(HttpServletRequest request, HttpServletResponse response){
+        String token = request.getHeader("token");
+        Sys_User user = tokenService.verifyToken(token);
+        String pid = request.getParameter("pid");
+        String basePath = request.getContextPath();
+        
+        String res = sysMenuService.getUserMenuAuth(basePath, user.getJSBM(), pid);
+
+        return res;
+    }
+    
+    @ApiOperation(value = "获取子系统用户菜单树", notes = "\"获取子系统用户菜单树", httpMethod = "GET")
+    @RequestMapping(value = "/menu/subsystem/tree")
+    public String getSubsystemMenuTreeData(HttpServletRequest request, HttpServletResponse response){
+        String token = request.getHeader("token");
+        Sys_User user = tokenService.verifyToken(token);
+        String pid = request.getParameter("pid");
+        String basePath = request.getContextPath();
+        
+        String res = sysMenuService.getUserMenuAuthTree(basePath, user.getJSBM(), pid);
+
+        return res;
+    }
+    
 
 }

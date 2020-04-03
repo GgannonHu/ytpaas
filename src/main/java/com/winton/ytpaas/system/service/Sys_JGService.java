@@ -47,6 +47,16 @@ public class Sys_JGService {
         return json;
     }
 
+    public String getByJgmc(String jgdms) {
+        List<Sys_JG> listDwmc = dao.getAll03(jgdms);
+        List<String> dwmcs = new ArrayList<String>();
+        for(Sys_JG item : listDwmc) {
+            dwmcs.add(item.getJGMC());
+        }
+        String dwmc = String.join(",", dwmcs);
+        return dwmc;
+    }
+
 
     /**
      * 查询本单位及下属所有单位

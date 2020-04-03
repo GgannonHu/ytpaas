@@ -32,7 +32,7 @@ layui.config({
             url: mUrl + "/list",
             headers: { token: localStorage["token"] },
             where: mSelData,
-            height: 'full-107', //自适应高度
+            height: 'full-70', //自适应高度
             page: true,
             limits: [5, 10, 15, 20, 30, 40, 50, 100],
             limit: 5,
@@ -56,14 +56,15 @@ layui.config({
             },
             cols: [[
                 { field: 'ID', width: '5%', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow' },
-                { field: 'MC', title: '物品名称', width: '10%' },
-                { field: 'MS', title: '物品描述', width: '13%' },
-                { field: 'SQDD', title: '拾取地点', width: '10%' },
-                { field: 'SQSJ', title: '拾取时间', width: '12%' },
-                { field: 'ZT', title: '状态', width: '10%', templet: '#tempZt' },
-                { field: 'RLR', title: '认领人', width: '10%', templet: '#tempRl' },
-                { field: 'RLSJ', title: '认领时间', width: '12%', templet: '#tempRlSj' },
-                { title: '操作', fixed: 'right', align: 'center', toolbar: '#bargjgwcyry', width: '18%' }
+                { field: 'GJGWCYRY_XM', title: '姓名', width: '10%' },
+                { field: 'GJGWCYRY_GMSFZH', title: '身份证号', width: '10%' },
+                { field: 'GJGWCYRY_DWMC', title: '单位名称', width: '10%' },
+                { field: 'GJGWCYRY_QYBM', title: '企业部门', width: '10%' },
+                { field: 'GJGWCYRY_GWMC', title: '岗位名称', width: '10%' },
+                { field: 'GJGWCYRY_LXDH', title: '联系电话', width: '10%' },
+                { field: 'GJGWCYRY_DZMC', title: '地址名称', width: '10%' },
+                { field: 'GJGWCYRY_WFFZJLMS', title: '违法犯罪经历描述', width: '10%' },
+                { title: '操作', fixed: 'right', align: 'center', toolbar: '#bargjgwcyry', width: '15%' }
             ]]
         });
         form.on('checkbox', function (data) {
@@ -84,15 +85,15 @@ layui.config({
                 deleteItem(data.ID, 'one');
             } else if (layEvent === 'edit') { //编辑
                 showEdit('upd', data.ID);
-            } else if (layEvent === 'rl') { //认领
+            } else if (layEvent === 'look') { //认领
                 var index = layer.load(1);
                 layer.close(index);
                 //从桌面打开
                 top.winui.window.open({
-                    id: 'rlGjgwcyry',
+                    id: 'lookgwcyry',
                     type: 2,
-                    title: '认领物品信息',
-                    content: '/dtgj/xxgl/gjgwcyry/gjgwcyryrl?id=' + data.ID + '&menuid=' + $.getUrlParam("id"),
+                    title: '查看信息',
+                    content: '/dtgj/xxgl/gjgwcyry/gjgwcyrlookl?id=' + data.ID + '&menuid=' + $.getUrlParam("id"),
                     maxOpen: true
                 });
             }
@@ -131,12 +132,9 @@ layui.config({
     //表格查询
     function searchTable() {
         mCurr = 1;
-        mSelData.mc = $('#txt_mc').val();
-        mSelData.zt = $('#ddl_zt').val();
-        mSelData.ms = $('#txt_ms').val();
-        mSelData.sqdd = $('#txt_sqdd').val();
-        mSelData.sqsjS = $('#txt_sqsjS').val();
-        mSelData.sqsjE = $('#txt_sqsjE').val();
+        mSelData.name = $('#txt_name').val();
+        mSelData.sfzh = $('#txt_sfzh').val();
+        mSelData.dwmc = $('#txt_dwmc').val();
         reloadTableAll();
     }
     //表格刷新
