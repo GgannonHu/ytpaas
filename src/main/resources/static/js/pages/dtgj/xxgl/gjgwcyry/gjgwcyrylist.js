@@ -107,6 +107,7 @@ layui.config({
             dataType: "JSON",
             success: function (data) {
                 if (data && data.LOGINNAME) {
+                    mSelData.user = data.LOGINNAME;
                     loadData();
                 }
             },
@@ -146,7 +147,7 @@ layui.config({
     //打开编辑页面
     function showEdit(varType, varId) {
         var tmpTitle = '添加信息';
-        var tmpUrl = '/dtgj/xxgl/gjgwcyry/gjgwcyryedit?menuid=' + $.getUrlParam("id");
+        var tmpUrl = '/dtgj/xxgl/gjgwcyryedit?menuid=' + $.getUrlParam("id");
         if (varType == 'upd') {
             tmpTitle = '修改信息';
             tmpUrl += ('&id=' + varId);
@@ -225,33 +226,6 @@ layui.config({
         //     ids += item.ID + ',';
         // });
         // deleteItem(ids, 'all');
-    }
-    //删除文件
-    function delfiles(varIds) {
-        var index = layer.load(1);
-        layui.$.ajax({
-            type: 'post',
-            url: '/api/dtgj/fjxx/deletebypid',
-            data: { ids: varIds, urltop: 'DTGJ/GJGWCYRY/' },
-            dataType: 'json',
-            headers: { token: localStorage["token"] },
-            success: function (json) {
-                layer.close(index);
-                if (json.code != "1") {
-                    top.winui.window.msg(json.msg, {
-                        icon: 2,
-                        time: 1000
-                    });
-                }
-            },
-            error: function (xml) {
-                layer.close(index);
-                msg("删除文件操作失败", {
-                    icon: 2,
-                    time: 1000
-                });
-            }
-        });
     }
     //绑定按钮事件
     $('#addgjgwcyry').on('click', showEdit);
