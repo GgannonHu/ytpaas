@@ -13,44 +13,24 @@
             <div class="winui-tool layui-inline">
                 <form class="layui-form">
                 <div class="layui-input-inline">
-                    &nbsp;物品名称：
+                    &nbsp;姓名：
                     <div class="layui-input-inline">
-                        <input id="txt_mc" name="txt_mc" class="layui-input" style="width: 160px;"
-                            placeholder="请输入物品名称" />
+                        <input id="txt_name" name="txt_name" class="layui-input" style="width: 160px;"
+                            placeholder="请输入姓名" />
                     </div>
                 </div>
                 <div class="layui-input-inline">
-                    &nbsp;物品描述：
+                    &nbsp;身份证号：
                     <div class="layui-input-inline">
-                        <input id="txt_ms" name="txt_ms" class="layui-input" style="width: 160px;"
-                            placeholder="请输入物品描述" />
+                        <input id="txt_sfzh" name="txt_sfzh" class="layui-input" style="width: 160px;"
+                            placeholder="请输入身份证号" />
                     </div>
                 </div>
                 <div class="layui-input-inline">
-                        &nbsp;拾取时间：
+                        &nbsp;单位名称：
                     <div class="layui-input-inline">
-                        <input id="txt_sqsjS" name="txt_sqsjS" type="text" class="layui-input test-item" placeholder="yyyy-MM-dd" style="width: 100px;" />
-                    </div>
-                    <div class="layui-input-inline">-</div>
-                    <div class="layui-input-inline">
-                        <input id="txt_sqsjE" name="txt_sqsjE" type="text" class="layui-input test-item" placeholder="yyyy-MM-dd" style="width: 100px;" />
-                    </div>
-                </div>
-                <div class="layui-input-inline">
-                        &nbsp;拾取地点：
-                    <div class="layui-input-inline">
-                        <input id="txt_sqdd" name="txt_sqdd" class="layui-input" style="width: 160px;"
-                            placeholder="请输入拾取地点" />
-                    </div>
-                </div>
-                <div class="layui-input-inline">
-                        &nbsp;招领状态：
-                    <div class="layui-input-inline" style="width: 160px;">
-                        <select id="ddl_zt" name="ddl_zt" lay-filter="ddl_zt">
-                            <option value="">全部</option>
-                            <option value="招领中">招领中</option>
-                            <option value="已认领">已认领</option>
-                        </select>
+                        <input id="txt_dwmc" name="txt_dwmc" class="layui-input" style="width: 160px;"
+                            placeholder="请输入单位名称" />
                     </div>
                 </div>
                 <div class="layui-input-inline">
@@ -69,22 +49,14 @@
         <div style="margin:auto 10px;">
             <table id="list" lay-filter="list"></table>
             <script type="text/html" id="bargjgwcyry">
-                <a class="layui-btn layui-btn-xs" style="display:{{ d.ZT == "已认领" ? "none" : "" }};" lay-event="edit">编辑</a>
-                <a class="layui-btn layui-btn-danger layui-btn-xs" style="display:{{ d.ZT == "已认领" ? "none" : "" }};" lay-event="del">删除</a>
+                <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="look">查看</a>
+                <a class="layui-btn layui-btn-xs" style="display:{{ d.TJR == d.DQYH ? "" : "none" }};" lay-event="edit">编辑</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" style="display:{{ d.TJR == d.DQYH ? "" : "none" }};" lay-event="del">删除</a>
             </script>
             <script type="text/html" id="barSelRow">
-                {{# if(d.ZT=="招领中"){ }}
+                {{# if(d.TJR==d.DQYH){ }}
                     <input rid="rowCheck" value="{{d.ID}}"  type="checkbox" lay-skin="primary" >
                 {{# }  }}
-            </script>
-            <script type="text/html" id="tempZt">
-                {{ d.ZT == null ? "招领中" : (d.ZT == "" ? "招领中" : d.ZT) }}
-            </script>
-            <script type="text/html" id="tempRl">
-                {{ d.ZT == "已认领" ? (d.RLR +" "+d.RLRSFZH) : "" }}
-            </script>
-            <script type="text/html" id="tempRlSj">
-                {{ d.ZT == "已认领" ? d.RLSJ : "" }}
             </script>
         </div>
     <script src="/js/core/layui/layui.js"></script>

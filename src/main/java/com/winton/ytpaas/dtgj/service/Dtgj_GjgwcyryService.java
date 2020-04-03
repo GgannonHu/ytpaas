@@ -1,10 +1,11 @@
 package com.winton.ytpaas.dtgj.service;
 
+import java.util.Map;
+
 import com.alibaba.fastjson.JSONObject;
 import com.winton.ytpaas.common.configuration.jwt.TokenService;
 import com.winton.ytpaas.common.util.Result;
 import com.winton.ytpaas.dtgj.dao.Dtgj_GjgwcyryDao;
-import com.winton.ytpaas.dtgj.entity.Dtgj_Yswp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,31 +19,36 @@ public class Dtgj_GjgwcyryService {
 
     public Result getById(String id) {
         Result res = new Result();
-        res.setCode("1");
-        res.setData(dao.getById(id));
+        Map<String, Object> tmpItem = dao.getById(id);
+        if (tmpItem != null) {
+            res.setCode("1");
+            res.setData(tmpItem);
+        } else { 
+            res.setCode("-1");
+        }
         return res;
     }
 
-    public JSONObject getList(String varZt,String varMc,String varMs,String varSqdd,String varSqsjS,String varSqsjE, int varPage, int varLimit, int varIsCon) {
+    public JSONObject getList(String varuser,String varname,String varsfzh,String vardwmc, int varPage, int varLimit, int varIsCon) {
         JSONObject tmpRet = new JSONObject();
         String tmpBegCon = String.valueOf((varPage - 1) * varLimit + 1);
         String tmpEndCon = String.valueOf(varPage * varLimit);
-        tmpRet.put("data", dao.getList(varZt,varMc,varMs,varSqdd,varSqsjS,varSqsjE, tmpBegCon, tmpEndCon));
+        tmpRet.put("data", dao.getList(varuser,varname,varsfzh,vardwmc, tmpBegCon, tmpEndCon));
         if (varIsCon == 1) {
-            tmpRet.put("count", dao.getCon(varZt,varMc,varMs,varSqdd,varSqsjS,varSqsjE));
+            tmpRet.put("count", dao.getCon(varname,varsfzh,vardwmc));
         }
         tmpRet.put("code", "1");
         return tmpRet;
     }
     
-    public JSONObject getListcon(String varZt,String varMc,String varMs,String varSqdd,String varSqsjS,String varSqsjE) {
+    public JSONObject getListcon(String varname,String varsfzh,String vardwmc) {
         JSONObject tmpRet = new JSONObject();
-        tmpRet.put("count", dao.getCon(varZt,varMc,varMs,varSqdd,varSqsjS,varSqsjE));
+        tmpRet.put("count", dao.getCon(varname,varsfzh,vardwmc));
         tmpRet.put("code", "1");
         return tmpRet;
     }
     
-    public Result add(Dtgj_Yswp item) {
+    public Result add(Map<String, Object> item) {
         Result res = new Result();
         boolean b = dao.add(item);
         if(b) {
@@ -55,7 +61,7 @@ public class Dtgj_GjgwcyryService {
         return res;
     }
 
-    public Result update(Dtgj_Yswp item) {
+    public Result update(Map<String, Object> item) {
         Result res = new Result();
         boolean b = dao.update(item);
         if(b) {

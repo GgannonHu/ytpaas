@@ -1,8 +1,8 @@
 package com.winton.ytpaas.dtgj.api;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +14,6 @@ import com.winton.ytpaas.common.configuration.log.LogType;
 import com.winton.ytpaas.common.configuration.log.SystemLog;
 import com.winton.ytpaas.common.util.Result;
 import com.winton.ytpaas.common.util.Tools;
-import com.winton.ytpaas.dtgj.entity.Dtgj_Yswp;
 import com.winton.ytpaas.dtgj.service.Dtgj_GjgwcyryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,19 +36,17 @@ public class ApiGjgwcyryController {
 
     @ApiOperation(value = "获取关键岗位从业人员列表", notes = "获取关键岗位从业人员列表", httpMethod = "GET")
     @RequestMapping(value = "/list", produces = "application/json")
-    public String yswpList(HttpServletRequest request, HttpServletResponse response) {
+    public String List(HttpServletRequest request, HttpServletResponse response) {
         int page = Integer.parseInt(request.getParameter("page"));// PageNo
         int limit = Integer.parseInt(request.getParameter("limit"));// PageSize
         int count = Integer.parseInt(request.getParameter("count"));// PageSize
         int iscon = Integer.parseInt(request.getParameter("iscon"));
 
-        String zt = request.getParameter("zt");
-        String mc = request.getParameter("mc");
-        String ms = request.getParameter("ms");
-        String sqdd = request.getParameter("sqdd");
-        String sqsjS = request.getParameter("sqsjS");
-        String sqsjE = request.getParameter("sqsjE");
-        JSONObject res = dtgjService.getList(zt,mc,ms,sqdd,sqsjS,sqsjE, page, limit, iscon);
+        String user = request.getParameter("user");
+        String name = request.getParameter("name");
+        String sfzh = request.getParameter("sfzh");
+        String dwmc = request.getParameter("dwmc");
+        JSONObject res = dtgjService.getList(user,name,sfzh,dwmc, page, limit, iscon);
         if (iscon != 1) {
             res.put("count", count);
         }
@@ -59,14 +56,11 @@ public class ApiGjgwcyryController {
 
     @ApiOperation(value = "获取关键岗位从业人员列表总数", notes = "获取关键岗位从业人员列表总数", httpMethod = "GET")
     @RequestMapping(value = "/listcon", produces = "application/json")
-    public String yswpcon(HttpServletRequest request, HttpServletResponse response) {
-        String zt = request.getParameter("zt");
-        String mc = request.getParameter("mc");
-        String ms = request.getParameter("ms");
-        String sqdd = request.getParameter("sqdd");
-        String sqsjS = request.getParameter("sqsjS");
-        String sqsjE = request.getParameter("sqsjE");
-        JSONObject res = dtgjService.getListcon(zt,mc,ms,sqdd,sqsjS,sqsjE);
+    public String con(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        String sfzh = request.getParameter("sfzh");
+        String dwmc = request.getParameter("dwmc");
+        JSONObject res = dtgjService.getListcon(name,sfzh,dwmc);
         String retStr = Tools.toJSONString(res);
         return retStr;
     }
@@ -75,7 +69,7 @@ public class ApiGjgwcyryController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "关键岗位从业人员id", dataType = "String", paramType = "query", required = true) })
     @RequestMapping(value = "/getById", produces = "application/json")
-    public String getYswpById(HttpServletRequest request, HttpServletResponse response) {
+    public String getById(HttpServletRequest request, HttpServletResponse response) {
         String id = request.getParameter("id");
         Result res = dtgjService.getById(id);
         return res.toString();
@@ -84,28 +78,28 @@ public class ApiGjgwcyryController {
     @ApiOperation(value = "添加关键岗位从业人员", notes = "添加关键岗位从业人员", httpMethod = "POST")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "loginId", value = "关键岗位从业人员名", dataType = "String", paramType = "query", required = true),
-            @ApiImplicitParam(name = "yswpName", value = "昵称", dataType = "String", paramType = "query", required = true) })
+            @ApiImplicitParam(name = "Name", value = "昵称", dataType = "String", paramType = "query", required = true) })
     @RequestMapping(value = "/add", produces = "application/json")
     @SystemLog(description = "添加关键岗位从业人员", type = LogType.SYSTEM_OPERATION)
-    public String Dtgj_YswpAdd(HttpServletRequest request, HttpServletResponse response) throws ParseException
+    public String Dtgj_Add(HttpServletRequest request, HttpServletResponse response) throws ParseException
     {
-        Dtgj_Yswp yswp = new Dtgj_Yswp();
+        Map<String, Object> tmpItem = new HashMap<String, Object>();
         String id = UUID.randomUUID().toString().replaceAll("-", "");
-        yswp.setID(id);
-        Date date=null;
-        SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String sj=request.getParameter("yswpSqsj");
-        if (sj != null) {
-            date = formatter.parse(sj);
-        }
-        yswp.setTJR(request.getParameter("hdfUser"));
-        yswp.setMC(request.getParameter("yswpName"));
-        yswp.setMS(request.getParameter("yswpWpms"));
-        yswp.setSQDD(request.getParameter("yswpSqdd"));
-        yswp.setZT("招领中");
-        yswp.setSQSJ(date);
-        
-        Result res = dtgjService.add(yswp);
+        tmpItem.put("ID", id);
+        tmpItem.put("TJR", request.getParameter("hdfUser"));
+        tmpItem.put("XZQYDM", request.getParameter("hdfDwdm").substring(0, 6));
+        tmpItem.put("TJDW", request.getParameter("hdfDwdm"));
+        tmpItem.put("TJDWMC", request.getParameter("hdfDwmc"));
+        tmpItem.put("GJGWCYRY_XM", request.getParameter("gjgwcyryName"));
+        tmpItem.put("GJGWCYRY_GMSFZH", request.getParameter("gjgwcyryIdcard"));
+        tmpItem.put("GJGWCYRY_MZDM", request.getParameter("gjgwcyryMz"));
+        tmpItem.put("GJGWCYRY_DWMC", request.getParameter("gjgwcyryDwmc"));
+        tmpItem.put("GJGWCYRY_QYBM", request.getParameter("gjgwcyryQybm"));
+        tmpItem.put("GJGWCYRY_GWMC", request.getParameter("gjgwcyryGwmc"));
+        tmpItem.put("GJGWCYRY_LXDH", request.getParameter("gjgwcyryLxdh"));
+        tmpItem.put("GJGWCYRY_DZMC", request.getParameter("gjgwcyryDzmc"));
+        tmpItem.put("GJGWCYRY_WFFZJLMS", request.getParameter("gjgwcyryWffz"));
+        Result res = dtgjService.add(tmpItem);
         res.setData(id);
         String retStr = Tools.toJSONString(res);
         return retStr;
@@ -113,25 +107,27 @@ public class ApiGjgwcyryController {
 
     @ApiOperation(value = "修改关键岗位从业人员", notes = "修改关键岗位从业人员", httpMethod = "POST")
 	@ApiImplicitParams({
-        @ApiImplicitParam(name = "yswpName", value = "昵称", dataType = "String", paramType = "query", required = true),
+        @ApiImplicitParam(name = "Name", value = "昵称", dataType = "String", paramType = "query", required = true),
         @ApiImplicitParam(name = "id", value = "关键岗位从业人员id", dataType = "Integer", paramType = "query", required = true)
     })
     @RequestMapping(value="/update",produces = "application/json")
     @SystemLog(description = "修改关键岗位从业人员", type = LogType.SYSTEM_OPERATION)
-    public String Dtgj_YswpUpdate(HttpServletRequest request,HttpServletResponse response) throws ParseException
+    public String Dtgj_Update(HttpServletRequest request,HttpServletResponse response) throws ParseException
     {
-        Dtgj_Yswp yswp = new Dtgj_Yswp();
+        Map<String, Object> tmpItem = new HashMap<String, Object>();
         String id = request.getParameter("id");
-        Date date=null;
-        SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        date=formatter.parse(request.getParameter("yswpSqsj"));
-        yswp.setMC(request.getParameter("yswpName"));
-        yswp.setMS(request.getParameter("yswpWpms"));
-        yswp.setSQDD(request.getParameter("yswpSqdd"));
-        yswp.setSQSJ(date);
-        yswp.setID(id);
+        tmpItem.put("ID", id);
+        tmpItem.put("GJGWCYRY_XM", request.getParameter("gjgwcyryName"));
+        tmpItem.put("GJGWCYRY_GMSFZH", request.getParameter("gjgwcyryIdcard"));
+        tmpItem.put("GJGWCYRY_MZDM", request.getParameter("gjgwcyryMz"));
+        tmpItem.put("GJGWCYRY_DWMC", request.getParameter("gjgwcyryDwmc"));
+        tmpItem.put("GJGWCYRY_QYBM", request.getParameter("gjgwcyryQybm"));
+        tmpItem.put("GJGWCYRY_GWMC", request.getParameter("gjgwcyryGwmc"));
+        tmpItem.put("GJGWCYRY_LXDH", request.getParameter("gjgwcyryLxdh"));
+        tmpItem.put("GJGWCYRY_DZMC", request.getParameter("gjgwcyryDzmc"));
+        tmpItem.put("GJGWCYRY_WFFZJLMS", request.getParameter("gjgwcyryWffz"));
         
-        Result res = dtgjService.update(yswp);
+        Result res = dtgjService.update(tmpItem);
         res.setData(id);
         String retStr = Tools.toJSONString(res);
         return retStr;
@@ -143,7 +139,7 @@ public class ApiGjgwcyryController {
     })
     @RequestMapping(value="/delete",produces = "application/json")
     @SystemLog(description = "删除关键岗位从业人员", type = LogType.SYSTEM_OPERATION)
-    public String Dtgj_YswpDelete(HttpServletRequest request,HttpServletResponse response)
+    public String Dtgj_Delete(HttpServletRequest request,HttpServletResponse response)
     {
         String id = request.getParameter("ids");
         Result res = dtgjService.delete(id);

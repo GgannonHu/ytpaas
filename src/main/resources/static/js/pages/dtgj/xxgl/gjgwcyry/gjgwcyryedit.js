@@ -3,20 +3,43 @@ layui.config({
 }).extend({
     winui: 'winui',
     window: 'js/winui.window'
-}).define(['table', 'laydate', 'jquery', 'winui','form','window'], function (exports) {
+}).define(['table', 'jquery', 'winui','form','window'], function (exports) {
     var msg = winui.window.msg,
         form = layui.form,
         $ = layui.$, 
-        layer = layui.layer,
-        laydate = layui.laydate;
+        layer = layui.layer;
         var isUpd = false;
         var gjgwcyryid = $.getUrlParam("id");
-    //时间
-    laydate.render({
-        elem: '#gjgwcyrySqsj'
-        ,type: 'datetime'
-    });    
     var fOkMsg = '';
+    
+    /**
+     * @param {TEMP_SYS_XTCS中的CSLX} tid 
+     * @param {要渲染的控件ID} id 
+     */
+    function bindcon(tid, id, selected) {
+        // alert(selected);
+        $.ajax({
+            url: "/api/dtgj/com/bindcon",
+            headers: { token: localStorage["token"] },
+            data: {
+                tid: tid
+            },
+            dataType: "JSON",
+            success: function (data) {
+                var str = "<option value=''>请选择</option>";
+                $.each(data.data, function () {
+                    str += "<option value='" + this.BM + "'>" + this.MC + "</option>";
+                });
+                $("#" + id).html(str);
+                $("#" + id).val(selected);
+                form.render('select');
+
+                form.on('select(' + id + ')', function (data) {
+                    // alert(data.value); //得到被选中的值
+                });
+            }
+        });
+    }
     if(gjgwcyryid) {
         $.ajax({
             type: 'get',
@@ -26,10 +49,16 @@ layui.config({
             dataType:'json',
             success: function (data) {
                 if(data.code == "1"){
-                    $("#gjgwcyryName").val(data.data.MC);
-                    $("#gjgwcyrySqdd").val(data.data.SQDD);
-                    $("#gjgwcyrySqsj").val(data.data.SQSJ);
-                    $("#gjgwcyryWpms").val(data.data.MS);
+                    $("#gjgwcyryName").val(data.data.GJGWCYRY_XM);
+                    $("#gjgwcyryIdcard").val(data.data.GJGWCYRY_GMSFZH);
+                    $("#gjgwcyryDwmc").val(data.data.GJGWCYRY_DWMC);
+                    $("#gjgwcyryQybm").val(data.data.GJGWCYRY_QYBM);
+                    $("#gjgwcyryGwmc").val(data.data.GJGWCYRY_GWMC);
+                    $("#gjgwcyryLxdh").val(data.data.GJGWCYRY_LXDH);
+                    $("#gjgwcyryDzmc").val(data.data.GJGWCYRY_DZMC);
+                    $("#gjgwcyryWffz").val(data.data.GJGWCYRY_WFFZJLMS);
+
+                    bindcon("MZ", "gjgwcyryMz", data.data.GJGWCYRY_MZDM);
                     isUpd = true;
                 }else{
                     msg('数据加载失败，请重试', {
@@ -45,6 +74,8 @@ layui.config({
                 });
             }
         });
+    } else {
+        bindcon("MZ", "gjgwcyryMz", "");
     }
     function getuser() {
         $.ajax({
@@ -55,6 +86,8 @@ layui.config({
             success: function (d) {
                 if (d && d.LOGINNAME) {
                     $("#hdfUser").val(d.LOGINNAME);
+                    $("#hdfDwdm").val(d.DWDM);
+                    $("#hdfDwmc").val(d.DWMC);
                 }
             },
             error: function () {
