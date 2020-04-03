@@ -34,7 +34,7 @@ public class ApiCtczController {
     Dtgj_CtczService dtgjCtczService;
     @Autowired
     TokenService tokenService;
-
+    //测试Git
     @ApiOperation(value = "获取列表", notes = "获取列表", httpMethod = "GET")
     @RequestMapping(value = "/list", produces = "application/json")
     public String getList(HttpServletRequest request, HttpServletResponse response) {
