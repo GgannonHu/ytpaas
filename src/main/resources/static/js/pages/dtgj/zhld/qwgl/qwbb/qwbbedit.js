@@ -81,7 +81,7 @@ layui.config({
                         $("#qwnr").attr("disabled", "disabled");
 
                         $("#submit").hide();
-                        $("#cancle").text('确定');
+                        $("#cancle").hide();
                     }
 
                     form.render('select')

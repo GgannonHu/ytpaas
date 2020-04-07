@@ -4,7 +4,7 @@ var mUrl = "/api/dtgj/xxgl/asjxx";
 var mSelData = { count: 0, iscon: 1 }
 var mLOGINNAME = '';
 layui.config({
-    base: '/js/core/winui/' //指定 winui 路径
+    base: '/js/core/winui/' //指定 winui 路径2
     , version: '1.0.0-beta'
 }).define(['table', 'form', 'laydate', 'jquery', 'winui'], function (exports) {
     winui.renderColor();
