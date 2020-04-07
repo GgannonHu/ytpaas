@@ -59,7 +59,7 @@ public class ApiJqxxController {
         return retStr;
     }
 
-    @ApiOperation(value = "获取遗失物品列表总数", notes = "获取遗失物品列表总数", httpMethod = "GET")
+    @ApiOperation(value = "获取警情信息列表总数", notes = "获取警情信息列表总数", httpMethod = "GET")
     @RequestMapping(value = "/listcon", produces = "application/json")
     public String Jqxxcon(HttpServletRequest request, HttpServletResponse response) {
         String GAJGJGDM = request.getParameter("GAJGJGDM");
@@ -127,7 +127,7 @@ public class ApiJqxxController {
         @ApiImplicitParam(name = "id", value = "遗失物品id", dataType = "Integer", paramType = "query", required = true)
     })
     @RequestMapping(value="/update",produces = "application/json")
-    @SystemLog(description = "修改遗失物品", type = LogType.SYSTEM_OPERATION)
+    @SystemLog(description = "修改警情信息", type = LogType.SYSTEM_OPERATION)
     public String Dtgj_JqxxUpdate(HttpServletRequest request,HttpServletResponse response) throws ParseException
     {
         Dtgj_Jqxx Jqxx = new Dtgj_Jqxx();
@@ -135,7 +135,8 @@ public class ApiJqxxController {
         SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String sj=request.getParameter("Jqxx_BJSJ");
         if (sj != null) {
-            date = formatter.parse(sj);
+            date = formatter.parse(sj);// 
+
         } 
         String token = request.getHeader("token");
         Sys_User user = tokenService.verifyToken(token);
@@ -151,10 +152,10 @@ public class ApiJqxxController {
         Jqxx.setBJR_LXDH(request.getParameter("Jqxx_BJR_LXDH"));// 联系电话 
         Jqxx.setBJDH(request.getParameter("Jqxx_BJDH"));// 报警电话 
         Jqxx.setBJSJ(date);// 报警时间 
-        Jqxx.setJYJQ(request.getParameter("Jqxx_JYJQ"));// 简要警情
+        Jqxx.setJYJQ(request.getParameter("Jqxx_JYJQ"));// 简要警情 
         Jqxx.setTJR(user.getLOGINNAME());//  ssxq        提交人   
         Jqxx.setTJDW(user.getDWDM());//  ssxq        提交人单位   
-        Jqxx.setTJDWMC(user.getDWMC());//  ssxq        提交人单位名称   
+        Jqxx.setTJDWMC(user.getDWMC());//  ssxq        提交人单位名称      
         
         Jqxx.setID(request.getParameter("id"));
         

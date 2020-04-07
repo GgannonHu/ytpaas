@@ -13,10 +13,10 @@ layui.config({
         laydate = layui.laydate;
         var upload = layui.upload;
         var isUpd = false;
-        var Asjxxid = $.getUrlParam("id");
+        var jqxxid = $.getUrlParam("id");
     //时间
     laydate.render({
-        elem: '#asjxx_ASJFSKSSJ'
+        elem: '#jqxx_BJSJ'
         ,type: 'datetime'
     });
     
@@ -80,7 +80,7 @@ layui.config({
         }
         , before: function (obj) {
             if (fUploadCon > 0) {
-                this.data = { pid: Asjxxid, urltop: 'DTGJ/YSWP/' }
+                this.data = { pid: jqxxid, urltop: 'DTGJ/YSWP/' }
                 fUploadLoadIndex = layer.load(1);
             } else {
                 closeThis();
@@ -125,7 +125,7 @@ layui.config({
     });
     function bindzdmc(bm, selected) {
         $.ajax({
-            url: '/api/dtgj/xxgl/asjxx/zdxx',
+            url: '/api/dtgj/xxgl/jqxx/zdxx',
             headers: { token: localStorage["token"] },
             data: {
                 bm: bm
@@ -136,11 +136,78 @@ layui.config({
                 $.each(data.data, function () {
                     str += "<option value='" + this.BM + "'>" + this.MC + "</option>";
                 });
-                $("#asjxx_DTZDMC").html(str);
-                $("#asjxx_DTZDMC").val(selected);
+                $("#jqxx_DTZDMC").html(str);
+                $("#jqxx_DTZDMC").val(selected);
+                form.render('select');
+                
+                form.on('select(jqxx_DTZDMC)', function (data) {
+                    // alert(data.value); //得到被选中的值
+                });
+            }
+        });
+    }
+    function bindxb() {
+        $.ajax({
+            url: '/api/dtgj/com/bindcon',
+            headers: { token: localStorage["token"] },
+            data: {
+                tid: 'XB'
+            },
+            dataType: "JSON",
+            success: function (data) {
+                var str = "<option value=''>请选择</option>";
+                $.each(data.data, function () {
+                    str += "<option value='" + this.BM + "'>" + this.MC + "</option>";
+                });
+                $("#jqxx_BJR_XBDM").html(str); 
+                form.render('select');
+                bindJQLBDM();
+                form.on('select(jqxx_BJR_XBDM)', function (data) {
+                    // alert(data.value); //得到被选中的值
+                });
+            }
+        });
+    }
+    function bindBJFSDM() {
+        $.ajax({
+            url: '/api/dtgj/com/bindcon',
+            headers: { token: localStorage["token"] },
+            data: {
+                tid: 'XB'
+            },
+            dataType: "JSON",
+            success: function (data) {
+                var str = "<option value=''>请选择</option>";
+                $.each(data.data, function () {
+                    str += "<option value='" + this.BM + "'>" + this.MC + "</option>";
+                });
+                $("#jqxx_BJFSDM").html(str); 
+                form.render('select');
+                loadData();
+                form.on('select(jqxx_BJFSDM)', function (data) {
+                    // alert(data.value); //得到被选中的值
+                });
+            }
+        });
+    }
+    function bindJQLBDM() {
+        $.ajax({
+            url: '/api/dtgj/com/bindcon',
+            headers: { token: localStorage["token"] },
+            data: {
+                tid: 'XB'
+            },
+            dataType: "JSON",
+            success: function (data) {
+                var str = "<option value=''>请选择</option>";
+                $.each(data.data, function () {
+                    str += "<option value='" + this.BM + "'>" + this.MC + "</option>";
+                });
+                $("#jqxx_JQLBDM").html(str); 
                 form.render('select');
 
-                form.on('select(asjxx_DTZDMC)', function (data) {
+                bindBJFSDM();
+                form.on('select(jqxx_DTZDMC)', function (data) {
                     // alert(data.value); //得到被选中的值
                 });
             }
@@ -148,7 +215,7 @@ layui.config({
     }
     function bindxlxx(xzqh) {
         $.ajax({
-            url: '/api/dtgj/xxgl/asjxx/xlxx',
+            url: '/api/dtgj/xxgl/jqxx/xlxx',
             headers: { token: localStorage["token"] },
             data: {
                 xzqh: xzqh
@@ -160,11 +227,12 @@ layui.config({
                 $.each(data.data, function () {
                     str += "<option value='" + this.BM + "'>" + this.MC + "</option>";
                 });
-                $("#asjxx_GJXLBM").html(str);
-                loadData();
+                $("#jqxx_GJXLBM").html(str);
+                   
 
                 form.render('select');
-                form.on('select(asjxx_GJXLBM)', function (data) {
+                bindxb();
+                form.on('select(jqxx_GJXLBM)', function (data) {
                     // alert(data.value); //得到被选中的值
                     bindzdmc(data.value, "");
                 });
@@ -178,7 +246,7 @@ layui.config({
             type: 'get',
             url: '/api/dtgj/fjxx/listbypid',
             headers: { token: localStorage["token"] },
-            data: { pid: Asjxxid },
+            data: { pid: jqxxid },
             dataType: 'json',
             success: function (data) {
                 layer.close(index);
@@ -204,35 +272,40 @@ layui.config({
             }
         });
     }
-    function loadData() {
-
-        if(Asjxxid) {
+    function loadData() { 
+        if(jqxxid) {
             $.ajax({
                 type: 'get',
-                url: '/api/dtgj/xxgl/asjxx/getById',
+                url: '/api/dtgj/xxgl/jqxx/getById',
                 headers: {token: localStorage["token"]},
-                data: {id: Asjxxid},
+                data: {id: jqxxid},
                 dataType:'json',
                 success: function (data) { 
-                    if(data.code == "1"){  
-                        bindzdmc(data.data.GJXLBM, data.data.DTZDBM);
-                        $("#asjxx_GAJGJGDM").val(data.data.GAJGJGDM);//  gajgjgdm    公安机关机构代码
-                        $("#asjxx_DTZDBM").val(data.data.DTZDBM);//  dtzdbm      地铁站点编码 
-                        $("#asjxx_DTZDMC").val(data.data.DTZDMC);//  dtzdmc      地铁站点名称
-                        $("#asjxx_GJXLBM").val(data.data.GJXLBM);//  gjxlbm      公交线路编码
-                        $("#asjxx_GJGSMC").val(data.data.GJGSMC);//  gjgsmc      公交公司名称
-                        $("#asjxx_AJBH").val(data.data.AJBH);//  ajbh        案件编号
-                        $("#asjxx_AJLB").val(data.data.AJLB);//  ajlb        案件类别
-                        $("#asjxx_AJMC").val(data.data.AJMC);//  ajmc        案件名称
-                        $("#asjxx_JYAQ").val(data.data.JYAQ);//  jyaq        简要案情
-                        $("#asjxx_ASJFSKSSJ").val(data.data.ASJFSKSSJ);//  asjfskssj   案事件发生开始时间
-                        $("#asjxx_AFDD").val(data.data.AFDD);//  afdd        案发地点
-                        $("#asjxx_SFCS").val(data.data.SFCS);//  sfcs        事发场所
-                        $("#asjxx_SSXQ").val(data.data.SSXQ);//  ssxq        所属辖区 
-                        TJR = data.data.TJR;
+                    if(data.code == "1"){   
+
+                        bindzdmc(data.data.GJXLDM, data.data.DTZDDM); 
+                         
+                        $("#jqxx_DTZDBM").val(data.data.DTZDDM);//  地铁站点代码 
+                        $("#jqxx_DTZDMC").val(data.data.DTZDMC);// 地铁站点名称 
+                        $("#jqxx_GJXLBM").val(data.data.GJXLDM);// 公交线路代码 
+                        $("#jqxx_JJBH").val(data.data.JJBH);// 接警编号 
+                        $("#jqxx_BJFSDM").val(data.data.BJFSDM);// 报警方式代码 
+                        $("#jqxx_JQLBDM").val(data.data.JQLBDM);// 警情类别代码 
+                        $("#jqxx_BJR_XM").val(data.data.BJR_XM);// 姓名 
+                        $("#jqxx_BJR_XBDM").val(data.data.BJR_XBDM);// 性别代码 
+                        $("#jqxx_BJR_LXDH").val(data.data.BJR_LXDH);// 联系电话 
+                        $("#jqxx_BJDH").val(data.data.BJDH);// 报警电话 11
+                        $("#jqxx_BJSJ").val(data.data.BJSJ);// 报警时间 
+                        $("#jqxx_JYJQ").val(data.data.JYJQ);// 简要警情 
+                        TJR = data.data.TJR; 
                         if(TJR!=mLOGINNAME)
                         {
                             $("#btn_queding").attr("style","display:none;"); 
+                            $(".layui-input").attr("disabled", "disabled");
+                            $(".layui-input").attr("placeholder", "");
+                            // $("#form select").attr('disabled','disabled');
+                            $("select").attr("disabled", "disabled");
+                            form.render('select'); 
                         }
                         form.render('select'); 
                         isUpd = true;
@@ -289,8 +362,10 @@ layui.config({
                     dwdmsj = d.DWDM.substring(0, 4);
                     dwdmfj = d.DWDM.substring(0, 6);
                     jsbm = d.JSBM;
+                    
+                    
                     // bindcon("ZZMM", "zzmm");
-                    // bindcon("MZ", "mz"); 
+                    // bindcon("MZ", "mz");  
                     if (dwdmfj == "230000") {
                         bindxlxx("23");
                     } else if (dwdmfj.substring(4, 6) == "00") {
@@ -311,10 +386,10 @@ layui.config({
     form.on('submit(formEditMenu)', function (data) {
         if (winui.verifyForm(data.elem)) {
             var index = layer.load(1);
-            var url = "/api/dtgj/xxgl/asjxx/add";
-            if(Asjxxid) {
-                url = "/api/dtgj/xxgl/asjxx/update";
-                data.field.id = Asjxxid;
+            var url = "/api/dtgj/xxgl/jqxx/add";
+            if(jqxxid) {
+                url = "/api/dtgj/xxgl/jqxx/update";
+                data.field.id = jqxxid;
             }
             layui.$.ajax({
                 type: 'post',
@@ -322,19 +397,34 @@ layui.config({
                 data: //da.field,
                 
                 {
-                    asjxx_DTZDBM: $("#asjxx_DTZDMC").val(),
-                    asjxx_DTZDMC: $("#asjxx_DTZDMC").find("option:selected").text(),
-                    asjxx_GJXLBM: $("#asjxx_GJXLBM").val(),                        
-                    asjxx_GJGSMC: $("#asjxx_GJGSMC").val(),
-                    asjxx_AJBH: $("#asjxx_AJBH").val(),
-                    asjxx_AJLB: $("#asjxx_AJLB").val(),
-                    asjxx_AJMC: $("#asjxx_AJMC").val(),
-                    asjxx_JYAQ: $("#asjxx_JYAQ").val(),
-                    asjxx_ASJFSKSSJ: $("#asjxx_ASJFSKSSJ").val(),
-                    asjxx_AFDD: $("#asjxx_AFDD").val(),
-                    asjxx_SFCS: $("#asjxx_SFCS").val(),
-                    asjxx_SSXQ: $("#asjxx_SSXQ").val(),
-                    id: Asjxxid
+                    // asjxx_DTZDBM: $("#asjxx_DTZDMC").val(),
+                    // asjxx_DTZDMC: $("#asjxx_DTZDMC").find("option:selected").text(),
+                    // asjxx_GJXLBM: $("#asjxx_GJXLBM").val(),                        
+                    // asjxx_GJGSMC: $("#asjxx_GJGSMC").val(),
+                    // asjxx_AJBH: $("#asjxx_AJBH").val(),
+                    // asjxx_AJLB: $("#asjxx_AJLB").val(),
+                    // asjxx_AJMC: $("#asjxx_AJMC").val(),
+                    // asjxx_JYAQ: $("#asjxx_JYAQ").val(),
+                    // asjxx_ASJFSKSSJ: $("#asjxx_ASJFSKSSJ").val(),
+                    // asjxx_AFDD: $("#asjxx_AFDD").val(),
+                    // asjxx_SFCS: $("#asjxx_SFCS").val(),
+                    // asjxx_SSXQ: $("#asjxx_SSXQ").val(),
+ 
+                    Jqxx_DTZDDM:$("#jqxx_DTZDMC").val(),// 地铁站点名称  
+                    Jqxx_DTZDMC:$("#jqxx_DTZDMC").find("option:selected").text(),//  地铁站点代码
+                    Jqxx_GJXLDM:$("#jqxx_GJXLBM").val(),// 公交线路代码 
+                    Jqxx_JJBH:$("#jqxx_JJBH").val(),// 接警编号 
+                    Jqxx_BJFSDM:$("#jqxx_BJFSDM").val(),// 报警方式代码 
+                    Jqxx_JQLBDM:$("#jqxx_JQLBDM").val(),// 警情类别代码 
+                    Jqxx_BJR_XM:$("#jqxx_BJR_XM").val(),// 姓名 
+                    Jqxx_BJR_XBDM:$("#jqxx_BJR_XBDM").val(),// 性别代码 
+                    Jqxx_BJR_LXDH:$("#jqxx_BJR_LXDH").val(),// 联系电话 
+                    Jqxx_BJDH:$("#jqxx_BJDH").val(),// 报警电话 
+                    Jqxx_BJSJ:$("#jqxx_BJSJ").val(),// 报警时间 
+                    Jqxx_JYJQ:$("#jqxx_JYJQ").val(),// 简要警情 
+
+                    
+                    id: jqxxid
                 },
                 dataType: 'json',
                 headers: {token: localStorage["token"]},
