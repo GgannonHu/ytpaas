@@ -233,6 +233,12 @@ layui.config({
                         if(TJR!=mLOGINNAME)
                         {
                             $("#btn_queding").attr("style","display:none;"); 
+                            $("#btn_queding").attr("style","display:none;"); 
+                            $(".layui-input").attr("disabled", "disabled");
+                            $(".layui-input").attr("placeholder", "");
+                            // $("#form select").attr('disabled','disabled');
+                            $("select").attr("disabled", "disabled");
+                            form.render('select'); 
                         }
                         form.render('select'); 
                         isUpd = true;

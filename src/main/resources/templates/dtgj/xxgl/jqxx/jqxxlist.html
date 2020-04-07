@@ -22,25 +22,25 @@
                 <div class="layui-input-inline">
                     &nbsp;报警人：
                     <div class="layui-input-inline">
-                        <input id="txt_AJMC" name="txt_AJMC" class="layui-input" style="width: 160px;"
-                            placeholder="案件名称" />
+                        <input id="txt_BJR_XM" name="txt_BJR_XM" class="layui-input" style="width: 160px;"
+                            placeholder="请输入报警人" />
                     </div>
                 </div>
                 <div class="layui-input-inline">
                         &nbsp;报警时间：
                     <div class="layui-input-inline">
-                        <input id="txt_ASJFSKSSJS" name="txt_ASJFSKSSJS" type="text" class="layui-input test-item" placeholder="yyyy-MM-dd" style="width: 100px;" />
+                        <input id="txt_BJSJS" name="txt_BJSJS" type="text" class="layui-input test-item" placeholder="yyyy-MM-dd" style="width: 100px;" />
                     </div>
                     <div class="layui-input-inline">-</div>
                     <div class="layui-input-inline">
-                        <input id="txt_ASJFSKSSJE" name="txt_ASJFSKSSJE" type="text" class="layui-input test-item" placeholder="yyyy-MM-dd" style="width: 100px;" />
+                        <input id="txt_BJSJE" name="txt_BJSJE" type="text" class="layui-input test-item" placeholder="yyyy-MM-dd" style="width: 100px;" />
                     </div>
                 </div>
                 <div class="layui-input-inline">
                         &nbsp;报警电话：
                     <div class="layui-input-inline">
-                        <input id="txt_AFDD" name="txt_AFDD" class="layui-input" style="width: 160px;"
-                            placeholder="请输入案发地点" />
+                        <input id="txt_BJDH" name="txt_BJDH" class="layui-input" style="width: 160px;"
+                            placeholder="请输入报警电话" />
                     </div>
                 </div>                 
                 <div class="layui-input-inline">
@@ -48,7 +48,7 @@
                         <i class="fa fa-search" aria-hidden="true"></i>搜索</button>
                     <button id="reloadTable" class="winui-toolbtn">
                         <i class="fa fa-refresh" aria-hidden="true"></i>刷新数据</button>
-                    <button id="addasjxx" class="winui-toolbtn">
+                    <button id="addjqxx" class="winui-toolbtn">
                         <i class="fa fa-plus" aria-hidden="true"></i>添加警情</button>
                     <button id="deleteyswp" class="winui-toolbtn">
                         <i class="fa fa-trash" aria-hidden="true"></i>删除选中</button>
@@ -58,8 +58,13 @@
         </div>
         <div style="margin:auto 10px;">
             <table id="list" lay-filter="list"></table>
-            <script type="text/html" id="baryswp">           
-                <a class="layui-btn layui-btn-xs"  lay-event="edit">{{ mLOGINNAME != d.TJR ? "查看" : "编辑"  }}</a>                
+            <script type="text/html" id="baryswp"> 
+                {{# if(d.TJR!=mLOGINNAME){ }}
+                <a id="edit" class="layui-btn layui-btn-xs layui-btn-primary" lay-event="edit">查看</ a>
+                {{# }else{  }}
+                <a id="edit" class="layui-btn layui-btn-xs" lay-event="edit">编辑</ a>
+                {{# }  }}          
+                
                 <a class="layui-btn layui-btn-danger layui-btn-xs" style="display:{{ mLOGINNAME != d.TJR ? "none" : ""  }};"   lay-event="del">删除</a>
             </script> 
         </div>

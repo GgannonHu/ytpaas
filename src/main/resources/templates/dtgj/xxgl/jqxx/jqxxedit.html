@@ -15,7 +15,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">线路名称</label>
             <div class="layui-input-block">                
-                <select name="asjxx_GJXLBM" id="asjxx_GJXLBM" lay-filter="asjxx_GJXLBM" win-verify="required" lay-search>
+                <select name="jqxx_GJXLBM" id="jqxx_GJXLBM" lay-filter="jqxx_GJXLBM" win-verify="required" lay-search>
                     <option value="">请选择</option>
                 </select>
             </div>
@@ -23,63 +23,69 @@
         <div class="layui-form-item">
             <label class="layui-form-label">站点名称</label>
             <div class="layui-input-block">
-                <select name="asjxx_DTZDMC" id="asjxx_DTZDMC" lay-filter="asjxx_DTZDMC" win-verify="required" lay-search>
+                <select name="jqxx_DTZDMC" id="jqxx_DTZDMC" lay-filter="jqxx_DTZDMC" win-verify="required" lay-search>
                     <option value="">请选择</option>
                 </select>                
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">所属辖区</label>
+            <label class="layui-form-label">接警编号</label>
             <div class="layui-input-block">
-                <input type="text" name="asjxx_SSXQ" id="asjxx_SSXQ" min="0" win-verify="required" placeholder="请输入所属辖区" autocomplete="off" class="layui-input" />
+                <input type="text" name="jqxx_JJBH" id="jqxx_JJBH" min="0" win-verify="required" placeholder="请输入接警编号" autocomplete="off" class="layui-input" />
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">公司名称</label>
-            <div class="layui-input-block">
-                <input type="text" name="asjxx_GJGSMC" id="asjxx_GJGSMC" min="0" win-verify="required" placeholder="请输入公司名称" autocomplete="off" class="layui-input" />
+            <label class="layui-form-label">报警方式代码</label>
+            <div class="layui-input-block">                
+                <select name="jqxx_BJFSDM" id="jqxx_BJFSDM" lay-filter="jqxx_BJFSDM" win-verify="required" lay-search>
+                    <option value="">请选择</option>
+                </select> 
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">案件编号</label>
-            <div class="layui-input-block">
-                <input type="text" name="asjxx_AJBH" id="asjxx_AJBH" min="0" win-verify="required" placeholder="请输入案件编号" autocomplete="off" class="layui-input" />
+            <label class="layui-form-label">警情类别代码</label>
+            <div class="layui-input-block">                
+                <select name="jqxx_JQLBDM" id="jqxx_JQLBDM" lay-filter="jqxx_JQLBDM" win-verify="required" lay-search>
+                    <option value="">请选择</option>
+                </select> 
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">案件类别</label>
+            <label class="layui-form-label">姓名</label>
             <div class="layui-input-block">
-                <input type="text" name="asjxx_AJLB" id="asjxx_AJLB" min="0" win-verify="required" placeholder="请输入案件类别" autocomplete="off" class="layui-input" />
+                <input type="text" name="jqxx_BJR_XM" id="jqxx_BJR_XM" min="0" win-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input" />
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">案件名称</label>
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-block">                
+                <select name="jqxx_BJR_XBDM" id="jqxx_BJR_XBDM" lay-filter="jqxx_BJR_XBDM" win-verify="required" lay-search>
+                    <option value="">请选择</option>
+                </select>    
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系电话</label>
             <div class="layui-input-block">
-                <input type="text" name="asjxx_AJMC" id="asjxx_AJMC" min="0" win-verify="required" placeholder="请输入案件名称" autocomplete="off" class="layui-input" />
+                <input type="text" name="jqxx_BJR_LXDH" id="jqxx_BJR_LXDH" min="0" win-verify="required" placeholder="请输入联系电话" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">报警时间</label>
+            <div class="layui-input-block">
+                <input type="text" name="jqxx_BJSJ" id="jqxx_BJSJ" min="0" win-verify="required" placeholder="请选择报警时间" autocomplete="off" class="layui-input" />                
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">报警电话</label>
+            <div class="layui-input-block">
+                <input type="text" name="jqxx_BJDH" id="jqxx_BJDH" min="0" win-verify="required" placeholder="请输入案件名称" autocomplete="off" class="layui-input" />
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">简要案情</label>
+            <label class="layui-form-label">简要警情</label>
             <div class="layui-input-block">
-                    <textarea name="asjxx_JYAQ" id="asjxx_JYAQ" min="0" win-verify="required" placeholder="请输入内容" autocomplete="off" class="layui-textarea"></textarea>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">案事件时间</label>
-            <div class="layui-input-block">
-                <input type="text" name="asjxx_ASJFSKSSJ" id="asjxx_ASJFSKSSJ" min="0" win-verify="required" placeholder="请输入案事件时间" autocomplete="off" class="layui-input" />                
-            </div>
-        </div>
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">案发地点</label>
-            <div class="layui-input-block">
-                    <textarea name="asjxx_AFDD" id="asjxx_AFDD" min="0" win-verify="required" placeholder="请输入内容" autocomplete="off" class="layui-textarea"></textarea>
-            </div>
-        </div>
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">事发场所</label>
-            <div class="layui-input-block">
-                    <textarea name="asjxx_SFCS" id="asjxx_SFCS" min="0" win-verify="required" placeholder="请输入内容" autocomplete="off" class="layui-textarea"></textarea>
+                    <textarea name="jqxx_JYJQ" id="jqxx_JYJQ" min="0" win-verify="required" placeholder="请输入内容" autocomplete="off" class="layui-textarea"></textarea>
             </div>
         </div>
 

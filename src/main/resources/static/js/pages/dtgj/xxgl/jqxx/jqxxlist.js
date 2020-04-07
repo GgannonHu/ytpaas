@@ -1,6 +1,6 @@
 var mDataCon = 0;
 var mCurr = 1;
-var mUrl = "/api/dtgj/xxgl/asjxx"; 
+var mUrl = "/api/dtgj/xxgl/jqxx"; 
 var mSelData = { count: 0, iscon: 1 }
 var mLOGINNAME = '';
 layui.config({
@@ -57,20 +57,21 @@ layui.config({
                 }
             },
             cols: [[
-                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: 50 },
-                   
-                { field: 'DTZDDM', title: '地铁站点代码', width: '10%' },
-                { field: 'DTZDMC', title: '地铁站点名称', width: '10%' },
-                { field: 'GJXLDM', title: '公交线路代码', width: '10%' },
-                { field: 'JJBH', title: '接警编号', width: '10%' },
-                { field: 'BJFSDM', title: '报警方式代码', width: '10%' },
-                { field: 'JQLBDM', title: '警情类别代码', width: '10%' },
-                { field: 'BJR_XM', title: '报警人姓名', width: '10%' },
-                { field: 'BJR_XBDM', title: '性别代码', width: '10%' },
-                { field: 'BJR_LXDH', title: '联系电话', width: '10%' },
-                { field: 'BJDH', title: '报警电话', width: '10%' },
-                { field: 'BJSJ', title: '报警时间', width: '10%' },
-                { field: 'JYJQ', title: '简要警情', width: '10%' },
+                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: 50 },                   
+
+                
+                // { field: 'DTZDDM', title: '地铁站点代码', width: '10%' },  //地铁站点代码 
+                { field: 'DTZDMC', title: '地铁站点名称', width: '10%' }, //地铁站点名称 
+                // { field: 'GJXLDM', title: '公交线路代码', width: '10%' }, //公交线路代码 
+                { field: 'JJBH', title: '接警编号', width: '10%' }, //接警编号 
+                { field: 'BJFSDM', title: '报警方式代码', width: '10%' }, //报警方式代码 
+                { field: 'JQLBDM', title: '警情类别代码', width: '10%' }, //警情类别代码 
+                { field: 'BJR_XM', title: '姓名', width: '10%' }, //姓名 
+                { field: 'BJR_XBDM', title: '性别代码', width: '10%' }, //性别代码 
+                { field: 'BJR_LXDH', title: '联系电话', width: '10%' }, //联系电话 
+                { field: 'BJDH', title: '报警电话', width: '10%' }, //报警电话 
+                { field: 'BJSJ', title: '报警时间', width: '10%' }, //报警时间 
+                { field: 'JYJQ', title: '简要警情', width: '10%' },// 简要警情 
                 { title: '操作', fixed: 'right', align: 'center', toolbar: '#baryswp', width: '18%' }
             ]]
         });
@@ -151,13 +152,12 @@ layui.config({
     }
     //表格查询
     function searchTable() {
-        mCurr = 1;
-        mSelData.DTZDMC= $('#txt_DTZDMC').val();
-        mSelData.AJMC= $('#ddl_AJMC').val();
-        mSelData.AFDD= $('#txt_AFDD').val();                        
-        mSelData.SSXQ= $('#ddl_SSXQ').val();
-        mSelData.ASJFSKSSJS= $('#txt_ASJFSKSSJS').val();
-        mSelData.ASJFSKSSJE= $('#txt_ASJFSKSSJE').val();        
+        mCurr = 1; 
+        mSelData.DTZDMC = $('#txt_DTZDMC').val();
+        mSelData.BJR_XM = $('txt_#BJR_XM').val();
+        mSelData.BJSJS = $('#txt_BJSJS').val();
+        mSelData.BJSJE = $('#BJSJE').val();
+        mSelData.BJDH = $('#txt_BJDH').val();
         reloadTableAll();
     }
     //表格刷新
@@ -168,7 +168,7 @@ layui.config({
     //打开编辑页面
     function showEdit(varType, varId,varTJR) {
         var tmpTitle = '添加信息';
-        var tmpUrl = '/dtgj/xxgl/asjxx/asjxxedit?menuid=' + $.getUrlParam("id");
+        var tmpUrl = '/dtgj/xxgl/jqxx/jqxxedit?menuid=' + $.getUrlParam("id");
         if (varType == 'upd') {
             if (varTJR == mLOGINNAME){
                 tmpTitle = '修改信息';
@@ -269,7 +269,7 @@ layui.config({
         });
     }
     //绑定按钮事件
-    $('#addasjxx').on('click', showEdit);
+    $('#addjqxx').on('click', showEdit);
     $('#deleteyswp').on('click', deleteItemAll);
     $('#searchMenu').on('click', searchTable);
     $('#reloadTable').on('click', reloadTable);

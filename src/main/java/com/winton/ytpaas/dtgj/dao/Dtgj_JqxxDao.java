@@ -14,20 +14,10 @@ import org.springframework.stereotype.Repository;
 public class Dtgj_JqxxDao extends BaseJdbcTemplate {
 
     public Dtgj_Jqxx getById(String id) {
-        String sql = "select t.ID, "+
-        "t.GAJGJGDM, "+
-        "t.DTZDBM,   "+
-        "t.DTZDMC,   "+
-        "t.GJXLBM,   "+
-        "t.GJGSMC,   "+
-        "t.AJBH,     "+
-        "t.AJLB,     "+
-        "t.AJMC,     "+
-        "t.JYAQ,     "+
-        "t.JqFSKSSJ,"+
-        "t.AFDD,     "+
-        "t.SFCS,     "+ 
-        "t.SSXQ  from Dtgj_Tysj_Jqxx t where t.ID=?";
+        
+        String sql = "select t.GAJGJGDM,t.DTZDDM,t.DTZDMC,t.GJXLDM,t.JJBH,t.BJFSDM,"+
+        "t.JQLBDM,t.BJR_XM,t.BJR_XBDM,t.BJR_LXDH,t.BJDH,t.BJSJ,t.JYJQ,t.TJR,t.TJDW,t.TJDWMC from "+
+        "Dtgj_Tysj_Jqxx t where t.ID=?";
         try {
             Dtgj_Jqxx model = jdbcTemplate.queryForObject(
                 sql, 
@@ -66,20 +56,8 @@ public class Dtgj_JqxxDao extends BaseJdbcTemplate {
     }
     public List<Dtgj_Jqxx> getAll() {
         List<Dtgj_Jqxx> list = new ArrayList<Dtgj_Jqxx>();
-        String sql = "select  t.ID, "+
-        "t.GAJGJGDM, "+
-        "t.DTZDBM,   "+
-        "t.DTZDMC,   "+
-        "t.GJXLBM,   "+
-        "t.GJGSMC,   "+
-        "t.AJBH,     "+
-        "t.AJLB,     "+
-        "t.AJMC,     "+
-        "t.JYAQ,     "+
-        "t.JqFSKSSJ,"+
-        "t.AFDD,     "+
-        "t.SFCS,     "+ 
-        "t.SSXQ  from dtgj_qt_yswp t";
+        String sql = "select  t.GAJGJGDM,t.DTZDDM,t.DTZDMC,t.GJXLDM,t.JJBH,t.BJFSDM,"+
+        "t.JQLBDM,t.BJR_XM,t.BJR_XBDM,t.BJR_LXDH,t.BJDH,t.BJSJ,t.JYJQ  from Dtgj_Tysj_Jqxx t";
         try {
             list = jdbcTemplate.query(
                 sql, 
@@ -113,7 +91,7 @@ public class Dtgj_JqxxDao extends BaseJdbcTemplate {
         }  
          
         String tmpColumn = "ID,GAJGJGDM,DTZDDM,DTZDMC,GJXLDM,JJBH,BJFSDM,JQLBDM,BJR_XM,BJR_XBDM,BJR_LXDH,BJDH,BJSJ,JYJQ,TJR,TJDW,TJDWMC";
-        String tmpSql = " select " + tmpColumn + " from DTGJ_TYSJ_JQXX " + tmpWhere + " order by BJSJS desc ";
+        String tmpSql = " select " + tmpColumn + " from DTGJ_TYSJ_JQXX " + tmpWhere + " order by BJSJ desc ";
         String tmpSqlFy = " select " + tmpColumn + " from( select ROWNUM RN , inTab.* from ( " + tmpSql
                 + " ) inTab where ROWNUM<= " + varEndCon + " ) Tab where RN>= " + varBegCon + " ";
         try {
@@ -184,7 +162,8 @@ public class Dtgj_JqxxDao extends BaseJdbcTemplate {
     }
 
     public boolean update(Dtgj_Jqxx item) {
-        String sql = "update Dtgj_Tysj_Jqxx set GAJGJGDM=?,DTZDBM=?,DTZDMC=?,GJXLBM=?,GJGSMC=?,AJBH=?,AJLB=?,AJMC=?,JYAQ=?,JqFSKSSJ=?,AFDD=?,SFCS=?,SSXQ=?,TJR=?,TJDW=?,TJDWMC=? where id=?";
+        String sql = "update Dtgj_Tysj_Jqxx set GAJGJGDM=?,DTZDDM=?,DTZDMC=?,GJXLDM=?,JJBH=?,BJFSDM=?"+
+        ",JQLBDM=?,BJR_XM=?,BJR_XBDM=?,BJR_LXDH=?,BJDH=?,BJSJ=?,JYJQ=?,TJR=?,TJDW=?,TJDWMC=?  where id=?";
         try {
             int count = jdbcTemplate.update(
                 sql, 
