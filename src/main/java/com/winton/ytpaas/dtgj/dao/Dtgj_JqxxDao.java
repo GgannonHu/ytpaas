@@ -148,7 +148,7 @@ public class Dtgj_JqxxDao extends BaseJdbcTemplate {
                     item.getBJR_LXDH(), // 联系电话 
                     item.getBJDH(), // 报警电话 
                     item.getBJSJ(), // 报警时间 
-                    item.getJYJQ(), // 简要警情 
+                    item.getJYJQ(), // 简要警情 111
                     item.getTJR(),
                     item.getTJDW(),
                     item.getTJDWMC()

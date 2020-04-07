@@ -165,7 +165,7 @@ layui.config({
         mSelData.iscon = 1;
         reloadTableAll();
     }
-    //打开编辑页面
+    //打开编辑页面111
     function showEdit(varType, varId,varTJR) {
         var tmpTitle = '添加信息';
         var tmpUrl = '/dtgj/xxgl/jqxx/jqxxedit?menuid=' + $.getUrlParam("id");

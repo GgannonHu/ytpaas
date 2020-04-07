@@ -135,7 +135,8 @@ public class ApiJqxxController {
         SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String sj=request.getParameter("Jqxx_BJSJ");
         if (sj != null) {
-            date = formatter.parse(sj);
+            date = formatter.parse(sj);//1111
+
         } 
         String token = request.getHeader("token");
         Sys_User user = tokenService.verifyToken(token);
