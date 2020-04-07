@@ -19,7 +19,7 @@ public class Dtgj_YjctDao extends BaseJdbcTemplate {
         }
 
         String tmpColumn = " ID,NAME,NR,TJR,TJDW,TJSJ ";
-        String tmpSql = " select " + tmpColumn + " from DTGJ_QT_YJCT " + tmpWhere + " order by tjsj desc ";
+        String tmpSql = " select " + tmpColumn + " from DTGJ_QT_YJCT " + tmpWhere + " order by TJSJ desc ";
 
         String tmpSqlFy = " select " + tmpColumn + " from( select ROWNUM RN , inTab.* from ( " + tmpSql
                 + " ) inTab where ROWNUM<= " + varEndCon + " ) Tab where RN>= " + varBegCon + " ";
@@ -38,12 +38,12 @@ public class Dtgj_YjctDao extends BaseJdbcTemplate {
         if (varName.length() > 0) {
             tmpWhere += " and NAME like '%" + varName + "%' ";
         }
-        String tmpSql = " select COUNT(1) con from DTGJ_QT_YJCT " + tmpWhere;
+        String tmpSql = " select count(1) CON from DTGJ_QT_YJCT " + tmpWhere;
 
         try {
             List<Map<String, Object>> temp = jdbcTemplate.queryForList(tmpSql);
             Map<String, Object> countlyb = temp.get(0);
-            tmpRet = Integer.valueOf(countlyb.get("con").toString());
+            tmpRet = Integer.valueOf(countlyb.get("CON").toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,10 +67,11 @@ public class Dtgj_YjctDao extends BaseJdbcTemplate {
     }
 
     public boolean add(Map<String, Object> varItem) {
-        String tmpSql = "insert into DTGJ_QT_YJCT(id,name,nr,tjr,tjdw,tjsj) values (?,?,?,?,?,?) ";
+        String tmpSql = "insert into DTGJ_QT_YJCT(ID,NAME,NR,TJR,TJDW,TJSJ,TJDWMC) values (?,?,?,?,?,?,?) ";
         try {
-            int count = jdbcTemplate.update(tmpSql, new Object[] { varItem.get("id"), varItem.get("name"),
-                    varItem.get("nr"), varItem.get("tjr"), varItem.get("tjdw"), varItem.get("tjsj") });
+            int count = jdbcTemplate.update(tmpSql,
+                    new Object[] { varItem.get("id"), varItem.get("name"), varItem.get("nr"), varItem.get("tjr"),
+                            varItem.get("tjdw"), varItem.get("tjsj"), varItem.get("tjdwmc") });
             return count > 0;
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,7 +81,7 @@ public class Dtgj_YjctDao extends BaseJdbcTemplate {
 
     public boolean update(Map<String, Object> varItem) {
 
-        String tmpSql = "update DTGJ_QT_YJCT set name=?,nr=? where id=? ";
+        String tmpSql = "update DTGJ_QT_YJCT set NAME=?,NR=? where ID=? ";
         try {
             int count = jdbcTemplate.update(tmpSql,
                     new Object[] { varItem.get("name"), varItem.get("nr"), varItem.get("id") });
@@ -102,7 +103,7 @@ public class Dtgj_YjctDao extends BaseJdbcTemplate {
         }
         tmpWhere = tmpWhere.substring(1);
 
-        String tmpSql = " delete from DTGJ_QT_YJCT where id in ( " + tmpWhere + " ) ";
+        String tmpSql = " delete from DTGJ_QT_YJCT where ID in ( " + tmpWhere + " ) ";
         try {
             int count = jdbcTemplate.update(tmpSql);
             return count > 0;

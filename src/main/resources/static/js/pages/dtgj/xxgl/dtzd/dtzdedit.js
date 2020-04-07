@@ -14,26 +14,14 @@ layui.config({
     var selId = $.getUrlParam("id");
     var pageType = $.getUrlParam("type");
     var mXlbm = $.getUrlParam("xlbm");
-    var mSelXzqhdm = '';
-    var mSelPcsdm = '';
 
     //修改页面是否只读样式
     if (pageType == 'sel') {
         $('#pageSubmit').hide();
-
-        $("#dtzdbm").attr("disabled", "disabled");
-        $("#dtzdmc").attr("disabled", "disabled");
-
-        $("#kssj").attr("disabled", "disabled");
-        $("#jssj").attr("disabled", "disabled");
-
-        $("#xzqhsj").attr("disabled", "disabled");
-        $("#xzqhfj").attr("disabled", "disabled");
-        $("#pcssj").attr("disabled", "disabled");
-        $("#pcsfj").attr("disabled", "disabled");
-        $("#pcspcs").attr("disabled", "disabled");
         $('#divXzqh').show();
         $('#divPcs').show();
+        $(".layui-input").attr("disabled", "disabled");
+        $(".layui-input").attr("placeholder", "");
     } else {
         $('#pageSubmit').show();
         laydate.render({
@@ -59,9 +47,7 @@ layui.config({
                 layer.close(index);
                 if (data.code == "1") {
                     var item = data.data;
-                    mSelXzqhdm = item.XZQHDM;
-                    mSelPcsdm = item.SDPCSDM;
-                    $("#showXzqh").val(item.XZQHMC);
+                    getCsmcByBm('showXzqh', 'XZQH', item.XZQHDM);//$('#showXzqh').val(item.XZQHMC);
                     $("#showPcs").val(item.SDPCSMC);
 
                     $("#dtzdbm").val(item.DTZDBM);
@@ -75,8 +61,7 @@ layui.config({
                     if (jssj != null) {
                         $("#jssj").val(jssj.substring(jssj.indexOf(' '), jssj.length));
                     }
-                    SetSelectData(true, 'xzqhsj', '230000000000', 4);
-                    SetSelectData(false, 'pcssj', '230000000000', 4);
+
                 } else {
                     msg('数据加载失败，请重试', {
                         icon: 2,
@@ -91,46 +76,12 @@ layui.config({
                 });
             }
         });
-    } else {
-        SetSelectData(true, 'xzqhsj', '230000000000');
-        SetSelectData(false, 'pcssj', '230000000000');
     }
 
+    //$("#select").find("option:selected").text();
     //提交
     form.on('submit(formEditMenu)', function (data) {
         if (winui.verifyForm(data.elem)) {
-            /*
-            var tmpSj = $("#xzqhsj").val();
-            var tmpFj = $("#xzqhfj").val();
-
-            if (tmpSj.length > 0) {
-                if (tmpFj.length > 0) {
-                    data.field.xzqhdm = tmpFj.substr(0, 6);
-                } else {
-                    data.field.xzqhdm = tmpSj.substr(0, 6);
-                }
-            } else {
-                msg("请选择行政区划", {
-                    icon: 2,
-                    time: 1000
-                });
-                return false;
-            }
-
-            var tmpPcs = $("#pcspcs").val();
-            var tmpMc = $("#pcspcs").find("option:selected").text();
-
-            if (tmpPcs.length > 0) {
-                data.field.sdpcsdm = tmpPcs;
-                data.field.sdpcsmc = tmpMc;
-            } else {
-                msg("请选择属地派出所!", {
-                    icon: 2,
-                    time: 1000
-                });
-                return false;
-            }
-            */
             var index = layer.load(1);
 
             data.field.dtxlbm = mXlbm;
@@ -191,110 +142,21 @@ layui.config({
         }, 1000);
     }
 
-    function SetSelectData(varIsQxz, varSelId, varPid, varJb) {
-        return;
-        if (varPid.length > 0) {
-
-            var index = layer.load(1);
-            layui.$.ajax({
-                type: 'post',
-                url: '/api/dtgj/com/jglist',
-                data: { pid: varPid },
-                dataType: 'json',
-                headers: { token: localStorage["token"] },
-                success: function (json) {
-                    layer.close(index);
-                    if (json.code == "1") {
-                        var items = json.data;
-                        $('#' + varSelId + ' option').remove();
-                        if (items.length > 0) {
-                            var tmpSelVal = '';
-                            if (varIsQxz) {
-                                $('#' + varSelId).append('<option value="" >请选择</option>');
-                            } else {
-                                tmpSelVal = items[0].JGDM
-                            }
-                            for (var i = 0; i < items.length; i++) {
-                                item = items[i];
-                                var selected = '';
-                                var tmpSelDm = '';
-
-                                if (varSelId.indexOf('xzqh') >= 0) { tmpSelDm = mSelXzqhdm; }
-                                else if (varSelId.indexOf('pcs') >= 0) { tmpSelDm = mSelPcsdm; }
-
-                                if (tmpSelDm.length > 0) {
-                                    if (tmpSelDm.substr(0, varJb) == item.JGDM.substr(0, varJb)) {
-                                        tmpSelVal = item.JGDM;
-                                        selected = 'selected = "selected"';
-                                    }
-                                }
-                                $('#' + varSelId).append('<option value="' + item.JGDM + '" ' + selected + ' >' + item.JGMC + '</option>');
-                            }
-                            selRetFunAll(varSelId, tmpSelVal);
-                        }
-                    }
-                },
-                error: function (xml) {
-                    layer.close(index);
-                    $('#' + varSelId + ' option').remove();
-                    $('#' + varSelId).append('<option value="" >请选择</option>');
-                }
-            });
-        } else {
-            $('#' + varSelId + ' option').remove();
-            $('#' + varSelId).append('<option value="" >请选择</option>');
-            selRetFunAll(varSelId, '');
-        }
+    function getCsmcByBm(varId, varTid, varBm) {
+        var index = layer.load(1);
+        $.ajax({
+            type: 'get',
+            url: '/api/dtgj/com/getcsmcbybm',
+            headers: { token: localStorage["token"] },
+            data: { tid: varTid, bm: varBm },
+            dataType: 'json',
+            success: function (data) {
+                layer.close(index);
+                $('#' + varId).val(data.data);
+            }
+        });
     }
 
-    function selRetFunAll(varSelId, varSelVal) {
-        if (varSelId == 'xzqhsj') {
-            if (varSelVal != '') {
-                SetSelectData(true, 'xzqhfj', varSelVal, 6);
-            } else {
-                $('#xzqhfj option').remove();
-                $('#xzqhfj').append('<option value="" >请选择</option>');
-                form.render('select');
-            }
-        } else if (varSelId == 'xzqhfj') {
-            mSelXzqhdm = '';
-            form.render('select');
-        } else if (varSelId == 'pcssj') {
-            if (varSelVal != '') {
-                SetSelectData(false, 'pcsfj', varSelVal, 6);
-            } else {
-                $('#pcsfj option').remove();
-                $('#pcsfj').append('<option value="" >请选择</option>');
-                $('#pcspcs option').remove();
-                $('#pcspcs').append('<option value="" >请选择</option>');
-            }
-        } if (varSelId == 'pcsfj') {
-            if (varSelVal != '') {
-                SetSelectData(false, 'pcspcs', varSelVal, 12);
-            } else {
-                $('#pcspcs option').remove();
-                $('#pcspcs').append('<option value="" >请选择</option>');
-            }
-        } else if (varSelId == 'pcspcs') {
-            mSelPcsdm = '';
-            form.render('select');
-        }
-        else {
-            form.render('select');
-        }
-
-    }
-
-    form.on('select(xzqhsj)', function (data) {
-        SetSelectData(true, 'xzqhfj', data.value);
-    });
-
-    form.on('select(pcssj)', function (data) {
-        SetSelectData(false, 'pcsfj', data.value);
-    });
-    form.on('select(pcsfj)', function (data) {
-        SetSelectData(false, 'pcspcs', data.value);
-    });
 
     exports('dtzdedit', {});
 });

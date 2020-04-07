@@ -57,13 +57,13 @@ layui.config({
             cols: [[
                 { field: 'ID', width: '5%', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow' },
                 { field: 'MC', title: '物品名称', width: '10%' },
-                { field: 'MS', title: '物品描述', width: '13%' },
+                { field: 'MS', title: '物品描述', width: '10%' },
                 { field: 'SQDD', title: '拾取地点', width: '10%' },
                 { field: 'SQSJ', title: '拾取时间', width: '12%' },
                 { field: 'ZT', title: '状态', width: '10%', templet: '#tempZt' },
                 { field: 'RLR', title: '认领人', width: '10%', templet: '#tempRl' },
                 { field: 'RLSJ', title: '认领时间', width: '12%', templet: '#tempRlSj' },
-                { title: '操作', fixed: 'right', align: 'center', toolbar: '#baryswp', width: '18%' }
+                { title: '操作', fixed: 'right', align: 'center', toolbar: '#baryswp', width: '21%' }
             ]]
         });
         form.on('checkbox', function (data) {

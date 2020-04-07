@@ -69,4 +69,40 @@ public class Dtgj_ComDao extends BaseJdbcTemplate {
         return tmpRet;
     }
 
+    public String getCsmcByBm(String tid, String bm) {
+        String tmpRet = "";
+        String tmpWhere = " where 1=1 ";
+        tmpWhere += " and t.CSLX='" + tid + "' and t.BM='" + bm + "' ";
+
+        String tmpColumn = " distinct t.MC  ";
+        String tmpSql = " select " + tmpColumn + " from SYS_XTCS t " + tmpWhere + " order by BM ";
+        try {
+            List<Map<String, Object>> tmpDatas = jdbcTemplate.queryForList(tmpSql);
+            if (tmpDatas.size() > 0) {
+                tmpRet = tmpDatas.get(0).get("MC").toString();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tmpRet;
+    }
+
+    public String getJgMcByJgdm(String jgdm) {
+        String tmpRet = "";
+        String tmpWhere = " where 1=1 ";
+        tmpWhere += " and t.JGDM='" + jgdm + "' ";
+
+        String tmpColumn = " distinct t.JGMC ";
+        String tmpSql = " select " + tmpColumn + " from SYS_JG t " + tmpWhere + " order by JGDM ";
+        try {
+            List<Map<String, Object>> tmpDatas = jdbcTemplate.queryForList(tmpSql);
+            if (tmpDatas.size() > 0) {
+                tmpRet = tmpDatas.get(0).get("JGMC").toString();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tmpRet;
+    }
+
 }

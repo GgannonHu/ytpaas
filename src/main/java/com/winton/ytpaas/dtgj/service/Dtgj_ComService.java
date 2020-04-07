@@ -100,4 +100,18 @@ public class Dtgj_ComService {
 		tmpRet.put("code", "1");
 		return tmpRet;
 	}
+
+	public JSONObject getCsmcByBm(String tid, String bm) {
+		JSONObject tmpRet = new JSONObject();
+		tmpRet.put("data", dao.getCsmcByBm(tid, bm));
+		tmpRet.put("code", "1");
+		return tmpRet;
+	}
+
+	public JSONObject getJgMcByJgdm(String jgdm) {
+		JSONObject tmpRet = new JSONObject();
+		tmpRet.put("data", dao.getJgMcByJgdm(jgdm));
+		tmpRet.put("code", "1");
+		return tmpRet;
+	}
 }

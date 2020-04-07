@@ -46,7 +46,12 @@ layui.config({
             },
             cols: [[
                 { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" />', toolbar: '#barSelRow', width: 50 },
-                { field: 'XZQHMC', title: '行政区划', width: '15%' },
+                {
+                    field: 'XZQHDM', title: '行政区划', templet: function (d) {
+                        getCsmcByBm('lbxzqh_' + d.ID,'XZQH', d.XZQHDM);
+                        return '<label id="lbxzqh_' + d.ID + '"></label>';
+                    }, width: '15%'
+                },
                 { field: 'GJXLBM', title: '线路编码', width: '12%' },
                 { field: 'GJXLMC', title: '线路名称' },
                 { field: 'GJXLQDZ', title: '起点站', width: '12%' },
@@ -205,6 +210,21 @@ layui.config({
         }else{
             deleteItem(ids, 'all');
         }
+    }
+
+    function getCsmcByBm(varId, varTid, varBm) {
+        var index = layer.load(1);
+        $.ajax({
+            type: 'get',
+            url: '/api/dtgj/com/getcsmcbybm',
+            headers: { token: localStorage["token"] },
+            data: { tid: varTid, bm: varBm },
+            dataType: 'json',
+            success: function (data) {
+                layer.close(index);
+                $('#' + varId).html(data.data);
+            }
+        });
     }
 
     //绑定按钮事件

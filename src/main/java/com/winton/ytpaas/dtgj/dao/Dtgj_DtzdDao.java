@@ -7,7 +7,7 @@ import com.winton.ytpaas.common.datasource.BaseJdbcTemplate;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository 
 public class Dtgj_DtzdDao extends BaseJdbcTemplate {
 
     public List<Map<String, Object>> getList(Map<String, String> varSelTj, String varBegCon, String varEndCon) {
@@ -23,7 +23,7 @@ public class Dtgj_DtzdDao extends BaseJdbcTemplate {
         }
 
         String tmpColums = " t.* ";
-        tmpColums+=" ,( select JGMC from (select JGDM,JGMC from sys_jg order by JGDM ) where  rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
+        //tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM ) where rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
         String tmpTable = " DTGJ_DTZS_DTZDXX t ";
         String tmpOrder = " order by CREATE_TIME desc ";
 
@@ -50,12 +50,12 @@ public class Dtgj_DtzdDao extends BaseJdbcTemplate {
         }
 
         String tmpTable = " DTGJ_DTZS_DTZDXX ";
-        String tmpSql = " select COUNT(1) con from " + tmpTable + tmpWhere;
+        String tmpSql = " select count(1) CON from " + tmpTable + tmpWhere;
 
         try {
             List<Map<String, Object>> temp = jdbcTemplate.queryForList(tmpSql);
             Map<String, Object> countlyb = temp.get(0);
-            tmpRet = Integer.valueOf(countlyb.get("con").toString());
+            tmpRet = Integer.valueOf(countlyb.get("CON").toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -78,7 +78,7 @@ public class Dtgj_DtzdDao extends BaseJdbcTemplate {
 
         String tmpWhere = " where ID = '" + varId + "' ";
         String tmpColums = " t.* ";
-        tmpColums+=" ,( select JGMC from (select JGDM,JGMC from sys_jg order by JGDM ) where  rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
+        //tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM ) where  rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
         String tmpTable = " DTGJ_DTZS_DTZDXX t ";
         String tmpSql = " select  " + tmpColums + " from " + tmpTable + tmpWhere;
 
@@ -95,7 +95,7 @@ public class Dtgj_DtzdDao extends BaseJdbcTemplate {
 
     public boolean add(Map<String, Object> varItem) {
 
-        String tmpSql = " insert into DTGJ_DTZS_DTZDXX (xzqhdm, dtxlbm, dtzdbm, dtzdmc, sdpcsdm, sdpcsmc, kssj, jssj, tjr, tjdw, tjdwmc) values(?,?,?,?,?,?,?,?,?,?,?) ";
+        String tmpSql = " insert into DTGJ_DTZS_DTZDXX (XZQHDM, DTXLBM, DTZDBM, DTZDMC, SDPCSDM, SDPCSMC, KSSJ, JSSJ, TJR, TJDW, TJDWMC) values(?,?,?,?,?,?,?,?,?,?,?) ";
         try {
             int count = jdbcTemplate.update(tmpSql,
                     new Object[] { varItem.get("xzqhdm"), varItem.get("dtxlbm"), varItem.get("dtzdbm"),
@@ -112,7 +112,7 @@ public class Dtgj_DtzdDao extends BaseJdbcTemplate {
         // xzqhdm=?, sdpcsdm=?, sdpcsmc=?, dtxlbm=?, dtzdbm=?, dtzdmc=?,
         // varItem.get("xzqhdm"), varItem.get("sdpcsdm"), varItem.get("sdpcsmc"),
         // varItem.get("dtxlbm"), varItem.get("dtzdbm"), varItem.get("dtzdmc"),
-        String tmpSql = " update DTGJ_DTZS_DTZDXX set  kssj=?, jssj=? where id=? ";
+        String tmpSql = " update DTGJ_DTZS_DTZDXX set KSSJ=?, JSSJ=? where ID=? ";
         try {
             int count = jdbcTemplate.update(tmpSql,
                     new Object[] { varItem.get("kssj"), varItem.get("jssj"), varItem.get("id") });
@@ -134,7 +134,7 @@ public class Dtgj_DtzdDao extends BaseJdbcTemplate {
         }
         tmpWhere = tmpWhere.substring(1);
 
-        String tmpSql = " delete from DTGJ_DTZS_DTZDXX where id in ( " + tmpWhere + " ) ";
+        String tmpSql = " delete from DTGJ_DTZS_DTZDXX where ID in ( " + tmpWhere + " ) ";
         try {
             int count = jdbcTemplate.update(tmpSql);
             return count > 0;
