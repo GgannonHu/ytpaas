@@ -70,6 +70,19 @@ layui.config({
                     $("#yswpSqdd").val(data.data.SQDD);
                     $("#yswpSqsj").val(data.data.SQSJ);
                     $("#yswpWpms").val(data.data.MS);
+                    if(data.data.ZT=="已认领") {
+                        $("#div_rlr").show();
+                        $("#div_rlzj").show();
+                        $("#div_rlsj").show();
+                        $("#yswpRlr").val(data.data.RLR);
+                        $("#yswpRlrSfzh").val(data.data.RLRSFZH);
+                        $("#yswpRlrsj").val(data.data.RLSJ);
+                } else {
+                        $("#div_rlr").hide();
+                        $("#div_rlzj").hide();
+                        $("#div_rlsj").hide();
+                    }
+
                 }else{
                     msg('数据加载失败，请重试', {
                         icon: 2,
