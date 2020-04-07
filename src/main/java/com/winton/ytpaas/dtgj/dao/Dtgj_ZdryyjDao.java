@@ -15,6 +15,16 @@ public class Dtgj_ZdryyjDao extends BaseJdbcTemplate {
 
         String tmpWhere = " where 1=1 ";
 
+        String tmpXm = varSelTj.get("xm");
+        String tmpSfzh = varSelTj.get("sfzh");
+        if (tmpXm.length() > 0) {
+            tmpWhere += " and t.ZDRY_XM like '%" + tmpXm + "%' ";
+        }
+
+        if (tmpSfzh.length() > 0) {
+            tmpWhere += " and t.ZDRY_GMSFHM like '%" + tmpSfzh + "%' ";
+        }
+
         String tmpColums = " t.* ";
         String tmpTable = " DTGJ_TYSJ_RLYJ t ";
         String tmpOrder = " order by CREATE_TIME desc ";

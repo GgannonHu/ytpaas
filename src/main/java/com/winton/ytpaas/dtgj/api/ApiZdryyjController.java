@@ -45,6 +45,8 @@ public class ApiZdryyjController {
         // Sys_User user = tokenService.verifyToken(token);
 
         Map<String, String> tmpSelTj = new HashMap<String, String>();
+        tmpSelTj.put("xm", request.getParameter("xm"));
+        tmpSelTj.put("sfzh", request.getParameter("sfzh"));
 
         JSONObject res = service.getRlyjList(tmpSelTj, page, limit, iscon);
         if (iscon != 1) {
