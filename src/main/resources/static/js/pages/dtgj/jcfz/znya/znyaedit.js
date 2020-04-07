@@ -231,7 +231,7 @@ layui.config({
                         $("#uploadList").hide();
 
                         $("#submit").hide();
-                        $("#cancle").text('确定');
+                        $("#cancle").hide();
                     }
 
                     form.render('select');

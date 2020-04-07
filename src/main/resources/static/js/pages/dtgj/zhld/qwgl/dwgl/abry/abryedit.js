@@ -159,7 +159,7 @@ layui.config({
                             form.render('select');
                             
                             $("#submit").hide();
-                            $("#cancle").text('确定');
+                            $("#cancle").hide();
                         }
 
                         form.render('select')
