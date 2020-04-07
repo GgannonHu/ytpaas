@@ -25,6 +25,8 @@ public class Dtgj_Yswp {
     private String TJR;
 	@JSONField(name = "TJDW")
     private String TJDW;
+	@JSONField(name = "TJDWMC")
+    private String TJDWMC;
 	@JSONField(name = "TJSJ")
     private Date TJSJ;
 	@JSONField(name = "RLR")
