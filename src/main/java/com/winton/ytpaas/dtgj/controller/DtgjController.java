@@ -163,4 +163,14 @@ public class DtgjController {
         return response;
     }
 
+
+    //重点人员预警
+    @RequestMapping("/dtgj/yjgz/zdryyj/list")
+    public String zdryyjlist() {
+        return "/dtgj/yjgz/zdryyj/zdryyjlist";
+    }
+    @RequestMapping("/dtgj/yjgz/zdryyj/sel")
+    public String zdryyjsel() {
+        return "/dtgj/yjgz/zdryyj/zdryyjsel";
+    }
 }
