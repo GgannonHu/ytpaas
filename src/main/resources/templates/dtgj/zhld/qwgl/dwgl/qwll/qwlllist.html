@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>安保人员</title>
+    <title>勤务力量</title>
     <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
     <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
     <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
@@ -31,9 +31,9 @@
                     </div>
                 </div>
                 <div class="layui-input-inline">
-                    公民身份号码
+                    公交公司名称
                     <div class="layui-input-inline">
-                        <input id="gmsfhm" name="gmsfhm" class="layui-input" style="width: 160px;" />
+                        <input id="gjgsmc" name="gjgsmc" class="layui-input" style="width: 160px;" />
                     </div>
                 </div>
                 <div class="layui-input-inline">
@@ -43,9 +43,9 @@
                     </div>
                 </div>
                 <div class="layui-input-inline">
-                    单位
+                    联系电话
                     <div class="layui-input-inline">
-                        <input id="dw" name="dw" class="layui-input" style="width: 160px;" />
+                        <input id="lxdh" name="lxdh" class="layui-input" style="width: 160px;" />
                     </div>
                 </div>
                 <div class="layui-input-inline">
@@ -53,17 +53,17 @@
                         <i class="fa fa-search" aria-hidden="true"></i>搜索</button>
                     <button id="reloadTable" class="winui-toolbtn"><i class="fa fa-refresh"
                             aria-hidden="true"></i>刷新数据</button>
-                    <button id="addAbry" class="winui-toolbtn"><i class="fa fa-plus"
-                            aria-hidden="true"></i>添加安保人员</button>
-                    <button id="deleteAbry" class="winui-toolbtn"><i class="fa fa-trash"
+                    <button id="addQwll" class="winui-toolbtn"><i class="fa fa-plus"
+                            aria-hidden="true"></i>添加勤务力量</button>
+                    <button id="deleteQwll" class="winui-toolbtn"><i class="fa fa-trash"
                             aria-hidden="true"></i>删除选中</button>
                 </div>
             </form>
         </div>
     </div>
     <div style="margin:auto 10px;">
-        <table id="abry" lay-filter="abry"></table>
-        <script type="text/html" id="barAbry">
+        <table id="qwll" lay-filter="qwll"></table>
+        <script type="text/html" id="barQwll">
             {{# if(d.TJR!=tjr){ }}
             <a id="edit" class="layui-btn layui-btn-xs layui-btn-primary" lay-event="edit">查看</a>
             {{# }else{  }}
@@ -75,8 +75,8 @@
     <script src="/js/core/layui/layui.js"></script>
     <script type="text/javascript">
         layui.config({
-            base: '/js/pages/dtgj/zhld/qwgl/dwgl/abry/'
-        }).use('abrylist');
+            base: '/js/pages/dtgj/zhld/qwgl/dwgl/qwll/'
+        }).use('qwlllist');
 
     </script>
     <script type="text/html" id="barSelRow">

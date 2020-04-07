@@ -1,11 +1,11 @@
-var api = "/api/dtgj/zhld/qwgl/dwgl/abry/";
+var api = "/api/dtgj/zhld/qwgl/dwgl/qwll/";
 var dwdmsj = "";
 var dwdmfj = "";
 var mDataCon = 0;
 var mCurr = 1;
 var gajgjgdm = "";
 var tjr = "";
-var mSelData = { dtzdmc: '', gjxlbm: '', gmsfhm: '', xm: '', dw: '', gajgjgdm: gajgjgdm, count: 0, iscon: 1 }
+var mSelData = { gjgsmc: '', xm: '', lxdh: '', gajgjgdm: gajgjgdm, count: 0, iscon: 1 }
 layui.config({
     base: '/js/core/winui/' //指定 winui 路径
     , version: '1.0.0-beta'
@@ -36,7 +36,7 @@ layui.config({
     function loadData() {
         table.render({
             id: tableId,
-            elem: '#abry',
+            elem: '#qwll',
             url: api + "list",
             headers: { token: localStorage["token"] },
             where: mSelData,
@@ -61,15 +61,16 @@ layui.config({
             },
             cols: [[
                 { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: '5%' },
-                { field: 'ABRY_GMSFHM', title: '公民身份号码', width: '20%' },
-                { field: 'ABRY_XM', title: '姓名', width: '10%' },
-                { field: 'ABRY_YDDH', title: '移动电话', width: '15%' },
-                { field: 'ABRY_DWMC', title: '单位', width: '35%' },
-                { title: '操作', align: 'center', toolbar: '#barAbry', width: '15%', templet: '#colNoNull' }
+                { field: 'GJGSMC', title: '公交公司名称', width: '20%' },
+                { field: 'QWLL_XM', title: '姓名', width: '10%' },
+                { field: 'QWLL_LXDH', title: '联系电话', width: '20%' },
+                { field: 'QWLL_JYBH', title: '警员编号', width: '10%' },
+                { field: 'QWLB_QWLBDM', title: '勤务类别代码', width: '20%' },
+                { title: '操作', align: 'center', toolbar: '#barQwll', width: '15%', templet: '#colNoNull' }
             ]]
         });
         //监听工具条
-        table.on('tool(abry)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+        table.on('tool(qwll)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值
             var tr = obj.tr; //获得当前行 tr 的DOM对象
@@ -175,7 +176,7 @@ layui.config({
     //表格查询
     function searchTable() {
         mCurr = 1;
-        mSelData.dtzdmc = $('#dtzdmc').val(), mSelData.gjxlbm = $('#gjxlbm').val(), mSelData.gmsfhm = $('#gmsfhm').val(), mSelData.xm = $('#xm').val(), mSelData.dw = $('#dw').val(), mSelData.gajgjgdm = gajgjgdm
+        mSelData.gjgsmc = $('#gjgsmc').val(), mSelData.xm = $('#xm').val(), mSelData.lxdh = $('#lxdh').val(), mSelData.gajgjgdm = gajgjgdm
         reloadTableAll();
     }
     //表格刷新
@@ -186,19 +187,19 @@ layui.config({
 
     //打开添加页面
     function showEdit(varType, varId, varTJR) {
-        var tmpTitle = '添加安保人员';
-        var tmpUrl = '/dtgj/zhld/qwgl/dwgl/abry/edit?menuid=' + $.getUrlParam("id");
+        var tmpTitle = '添加勤务力量';
+        var tmpUrl = '/dtgj/zhld/qwgl/dwgl/qwll/edit?menuid=' + $.getUrlParam("id");
         if (varType == 'upd') {
             if (varTJR == tjr) {
-                tmpTitle = '修改安保人员';
+                tmpTitle = '修改勤务力量';
             } else {
-                tmpTitle = '查看安保人员';
+                tmpTitle = '查看勤务力量';
             }
             tmpUrl += ('&id=' + varId);
         }
         //从桌面打开
         top.winui.window.open({
-            id: 'editAbry',
+            id: 'editQwll',
             type: 2,
             title: tmpTitle,
             content: tmpUrl,
@@ -208,7 +209,7 @@ layui.config({
     //删除信息
     function deleteItem(ids, type) {
         var msg = type == 'one' ? '确认删除当前信息吗？' : '确认删除选中数据吗？'
-        top.winui.window.confirm(msg, { icon: 3, title: '删除安保人员' }, function () {
+        top.winui.window.confirm(msg, { icon: 3, title: '删除勤务力量' }, function () {
             var index = layer.load(1);
             $.ajax({
                 type: 'post',
@@ -260,10 +261,10 @@ layui.config({
     }
 
     //绑定按钮事件
-    $('#addAbry').on('click', showEdit);
-    $('#deleteAbry').on('click', deleteItemAll);
+    $('#addQwll').on('click', showEdit);
+    $('#deleteQwll').on('click', deleteItemAll);
     $('#reloadTable').on('click', reloadTable);
     $('#searchMenu').on('click', searchTable);
 
-    exports('abrylist', {});
+    exports('qwlllist', {});
 });

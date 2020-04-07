@@ -137,7 +137,7 @@ public class ApiAbryController {
             @ApiImplicitParam(name = "dw", value = "单位", dataType = "String", paramType = "query", required = true) })
     @RequestMapping(value = "/update", produces = "application/json")
     @SystemLog(description = "修改安保人员", type = LogType.SYSTEM_OPERATION)
-    public String dtgj_QwbbUpdate(HttpServletRequest request, HttpServletResponse response) {
+    public String dtgj_AbryUpdate(HttpServletRequest request, HttpServletResponse response) {
 
         Dtgj_Abry abry = new Dtgj_Abry();
 
@@ -162,7 +162,7 @@ public class ApiAbryController {
             @ApiImplicitParam(name = "id", value = "id", dataType = "Integer", paramType = "query", required = true) })
     @RequestMapping(value = "/delete", produces = "application/json")
     @SystemLog(description = "删除安保人员", type = LogType.SYSTEM_OPERATION)
-    public String dtgj_QwbbDelete(HttpServletRequest request, HttpServletResponse response) {
+    public String dtgj_AbryDelete(HttpServletRequest request, HttpServletResponse response) {
         String id = request.getParameter("ids");
 
         Result res = dtgjAbryService.delete(id);
