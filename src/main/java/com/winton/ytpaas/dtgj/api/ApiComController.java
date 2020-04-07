@@ -60,4 +60,24 @@ public class ApiComController {
         String retStr = Tools.toJSONString(res);
         return retStr;
     }
+
+    @ApiOperation(value = "根据编码和类别获取常数信息", notes = "根据编码和列别获取常数信息", httpMethod = "GET")
+    @RequestMapping(value = "/getcsmcbybm", produces = "application/json")
+    public String getCsmcByBm(HttpServletRequest request, HttpServletResponse response) {
+        String tid = request.getParameter("tid");
+        String bm = request.getParameter("bm");
+        JSONObject res = dtgjComService.getCsmcByBm(tid, bm);
+        String retStr = Tools.toJSONString(res); 
+        return retStr;
+    }
+
+    @ApiOperation(value = "根据编码获取单位名称", notes = "根据编码获取单位名称", httpMethod = "GET")
+    @RequestMapping(value = "/getjgmcbyjgdm", produces = "application/json")
+    public String getJgMcByJgdm(HttpServletRequest request, HttpServletResponse response) {
+        String jgdm = request.getParameter("jgdm");
+        JSONObject res = dtgjComService.getJgMcByJgdm(jgdm);
+        String retStr = Tools.toJSONString(res);
+        return retStr;
+    }
+
 }
