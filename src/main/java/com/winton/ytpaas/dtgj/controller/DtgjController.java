@@ -61,6 +61,10 @@ public class DtgjController {
     public String yswpedit() {
         return "/dtgj/bmfw/yswp/yswpedit";
     }
+    @RequestMapping("/dtgj/bmfw/yswp/yswplook")
+    public String yswplook() {
+        return "/dtgj/bmfw/yswp/yswplook";
+    }
     @RequestMapping("/dtgj/bmfw/yswp/yswprl")
     public String yswprl() {
         return "/dtgj/bmfw/yswp/yswprl";

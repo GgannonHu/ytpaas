@@ -30,11 +30,11 @@ public class Dtgj_YswpService {
         return res;
     }
     
-    public JSONObject getList(String varZt,String varMc,String varMs,String varSqdd,String varSqsjS,String varSqsjE, int varPage, int varLimit, int varIsCon) {
+    public JSONObject getList(String varuser,String varZt,String varMc,String varMs,String varSqdd,String varSqsjS,String varSqsjE, int varPage, int varLimit, int varIsCon) {
         JSONObject tmpRet = new JSONObject();
         String tmpBegCon = String.valueOf((varPage - 1) * varLimit + 1);
         String tmpEndCon = String.valueOf(varPage * varLimit);
-        tmpRet.put("data", dao.getList(varZt,varMc,varMs,varSqdd,varSqsjS,varSqsjE, tmpBegCon, tmpEndCon));
+        tmpRet.put("data", dao.getList(varuser,varZt,varMc,varMs,varSqdd,varSqsjS,varSqsjE, tmpBegCon, tmpEndCon));
         if (varIsCon == 1) {
             tmpRet.put("count", dao.getCon(varZt,varMc,varMs,varSqdd,varSqsjS,varSqsjE));
         }
