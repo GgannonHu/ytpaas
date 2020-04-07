@@ -99,6 +99,8 @@ public class ApiYswpController {
         if (sj != null) {
             date = formatter.parse(sj);
         }
+        yswp.setTJDW(request.getParameter("hdfDwdm"));
+        yswp.setTJDWMC(request.getParameter("hdfDwmc"));
         yswp.setTJR(request.getParameter("hdfUser"));
         yswp.setMC(request.getParameter("yswpName"));
         yswp.setMS(request.getParameter("yswpWpms"));
