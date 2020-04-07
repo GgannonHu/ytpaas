@@ -73,6 +73,12 @@
         }).use('znyalist');
 
     </script>
+
+    <script type="text/html" id="barSelRow">
+    {{# if(d.TJR==tjr){ }}
+        <input rid="rowCheck" value="{{d.ID}}"  type="checkbox" lay-skin="primary" >
+    {{# }  }}
+    </script>
 </body>
 
 </html>
