@@ -17,10 +17,12 @@ public class Dtgj_Znya {
     private String DJ;
     @JSONField(name = "NR")
     private String NR;
-    @JSONField(name = "FBR")
-    private String FBR;
-    @JSONField(name = "FBDW")
-    private String FBDW;
-    @JSONField(name = "FBSJ")
-    private Date FBSJ;
+    @JSONField(name = "TJR")
+    private String TJR;
+    @JSONField(name = "TJDW")
+    private String TJDW;
+    @JSONField(name = "TJSJ")
+    private Date TJSJ;
+    @JSONField(name = "TJDWMC")
+    private String TJDWMC;
 }

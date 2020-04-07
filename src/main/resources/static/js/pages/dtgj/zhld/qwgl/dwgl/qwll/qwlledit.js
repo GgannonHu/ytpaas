@@ -1,4 +1,4 @@
-var api = "/api/dtgj/zhld/qwgl/dwgl/abry/";
+var api = "/api/dtgj/zhld/qwgl/dwgl/qwll/";
 var dwdmsj = "";
 var dwdmfj = "";
 var tjr = "";
@@ -44,39 +44,9 @@ layui.config({
         form = layui.form,
         layer = layui.layer,
         laydate = layui.laydate,
-        abryid = $.getUrlParam("id");
+        qwllid = $.getUrlParam("id");
 
     getUserByToken();
-
-    /**
-     * 
-     * @param {TEMP_SYS_XTCS中的CSLX} tid 
-     * @param {要渲染的控件ID} id 
-     */
-    function bindcon(tid, id, selected) {
-        // alert(selected);
-        $.ajax({
-            url: "/api/dtgj/com/bindcon",
-            headers: { token: localStorage["token"] },
-            data: {
-                tid: tid
-            },
-            dataType: "JSON",
-            success: function (data) {
-                var str = "<option value=''>请选择</option>";
-                $.each(data.data, function () {
-                    str += "<option value='" + this.BM + "'>" + this.MC + "</option>";
-                });
-                $("#" + id).html(str);
-                $("#" + id).val(selected);
-                form.render('select');
-
-                form.on('select(' + id + ')', function (data) {
-                    // alert(data.value); //得到被选中的值
-                });
-            }
-        });
-    }
 
     function bindxlxx(xzqh) {
         $.ajax({
@@ -129,7 +99,7 @@ layui.config({
 
     function loadData() {
 
-        if (abryid) {
+        if (qwllid) {
             // $("#xm").addClass("layui-disabled");
             // $("#xm").prop("disabled", true);
 
@@ -137,27 +107,24 @@ layui.config({
                 type: 'get',
                 url: api + 'getById',
                 headers: { token: localStorage["token"] },
-                data: { id: abryid },
+                data: { id: qwllid },
                 dataType: 'json',
                 success: function (data) {
                     if (data.code == "1") {
                         $("#id").val(data.data.ID);
                         $("#gjxlbm").val(data.data.GJXLBM);
                         bindzdmc(data.data.GJXLBM, data.data.DTZDBM);
-                        $("#gmsfhm").val(data.data.ABRY_GMSFHM);
-                        $("#xm").val(data.data.ABRY_XM);
-                        $("#yddh").val(data.data.ABRY_YDDH);
-                        $("#zzmm").val(data.data.ABRY_ZZMMDM);
-                        bindcon("ZZMM", "zzmm", data.data.ABRY_ZZMMDM);
-                        bindcon("MZ", "mz", data.data.ABRY_MZDM);
-                        $("#dz").val(data.data.ABRY_DZMC);
-                        $("#dw").val(data.data.ABRY_DWMC);
+                        $("#gjgsmc").val(data.data.GJGSMC);
+                        $("#xm").val(data.data.QWLL_XM);
+                        $("#lxdh").val(data.data.QWLL_LXDH);
+                        $("#jybh").val(data.data.QWLL_JYBH);
+                        $("#qwlbdm").val(data.data.QWLB_QWLBDM);
                         if (data.data.TJR != tjr) {
                             $(".layui-input").attr("disabled", "disabled");
                             $(".layui-input").attr("placeholder", "");
                             $("select").attr("disabled", "disabled");
                             form.render('select');
-                            
+
                             $("#submit").hide();
                             $("#cancle").text('确定');
                         }
@@ -177,9 +144,6 @@ layui.config({
                     });
                 }
             });
-        } else {
-            bindcon("ZZMM", "zzmm", "");
-            bindcon("MZ", "mz", "");
         }
     }
 
@@ -189,7 +153,7 @@ layui.config({
             var index = layer.load(1);
 
             var url = api + "add";
-            if (abryid) {
+            if (qwllid) {
                 url = api + "update";
             }
             layui.$.ajax({
@@ -199,14 +163,12 @@ layui.config({
                     dtzdbm: $("#dtzdmc").val(),
                     dtzdmc: $("#dtzdmc").find("option:selected").text(),
                     gjxlbm: $("#gjxlbm").val(),
-                    gmsfhm: $("#gmsfhm").val(),
+                    gjgsmc: $("#gjgsmc").val(),
                     xm: $("#xm").val(),
-                    yddh: $("#yddh").val(),
-                    zzmm: $("#zzmm").val(),
-                    mz: $("#mz").val(),
-                    dz: $("#dz").val(),
-                    dw: $("#dw").val(),
-                    id: abryid,
+                    lxdh: $("#lxdh").val(),
+                    jybh: $("#jybh").val(),
+                    qwlbdm: $("#qwlbdm").val(),
+                    id: qwllid,
                     tjr: tjr,
                     tjdw: tjdw,
                     tjdwmc, tjdwmc
@@ -222,13 +184,13 @@ layui.config({
                             });
 
                             var topWindow = top.winui.window.getWindow($.getUrlParam("menuid"));
-                            if (abryid)
+                            if (qwllid)
                                 $(topWindow).find("#reloadTable").trigger("click");
                             else
                                 $(topWindow).find("#searchMenu").trigger("click");
 
                             setTimeout(() => {
-                                top.winui.window.close('editAbry');
+                                top.winui.window.close('editQwll');
                             }, 2000);
                         } else {
                             msg(json.msg);
@@ -254,5 +216,5 @@ layui.config({
         return false;
     });
 
-    exports('abryedit', {});
+    exports('qwlledit', {});
 });

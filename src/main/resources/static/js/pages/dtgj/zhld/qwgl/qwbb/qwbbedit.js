@@ -1,4 +1,7 @@
 var api = "/api/dtgj/zhld/qwgl/qwbb/";
+var tjr = "";
+var tjdw = "";
+var tjdwmc = "";
 layui.config({
     base: '/js/core/winui/' //指定 winui 路径
 }).extend({
@@ -14,6 +17,9 @@ layui.config({
             dataType: "JSON",
             success: function (data) {
                 if (data && data.LOGINNAME) {
+                    tjr = data.LOGINNAME;
+                    tjdw = data.DWDM;
+                    tjdwmc = data.DWMC;
                 }
             },
             error: function () {
@@ -66,6 +72,17 @@ layui.config({
                     $("#tjr").val(data.data.TJR);
                     $("#tjdw").val(data.data.TJDW);
                     $("#tjsj").val(data.data.TJSJ);
+
+                    if (data.data.TJR != tjr) {
+                        $(".layui-input").attr("disabled", "disabled");
+                        $(".layui-input").attr("placeholder", "");
+                        $("select").attr("disabled", "disabled");
+                        form.render('select');
+                        $("#qwnr").attr("disabled", "disabled");
+
+                        $("#submit").hide();
+                        $("#cancle").text('确定');
+                    }
 
                     form.render('select')
                 } else {

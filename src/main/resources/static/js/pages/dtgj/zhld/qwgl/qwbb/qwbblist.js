@@ -2,6 +2,7 @@ var api = "/api/dtgj/zhld/qwgl/qwbb/";
 var mDataCon = 0;
 var mCurr = 1;
 var mSelData = { xm: '', fbsjBegin: '', fbsjEnd: '', wczt: '', count: 0, iscon: 1 }
+var tjr = "";
 layui.config({
     base: '/js/core/winui/' //指定 winui 路径
     , version: '1.0.0-beta'
@@ -72,7 +73,7 @@ layui.config({
             if (layEvent == 'del') { //删除
                 deleteItem(data.ID, 'one');
             } else if (layEvent == 'edit') { //编辑
-                showEdit('upd', data.ID);
+                showEdit('upd', data.ID, data.TJR);
             }
         });
     }
@@ -85,6 +86,7 @@ layui.config({
             dataType: "JSON",
             success: function (data) {
                 if (data && data.LOGINNAME) {
+                    tjr = data.LOGINNAME;
                     loadData();
                 }
             },
@@ -120,11 +122,15 @@ layui.config({
     }
 
     //打开添加页面
-    function showEdit(varType, varId) {
+    function showEdit(varType, varId, varTJR) {
         var tmpTitle = '添加勤务报备';
         var tmpUrl = '/dtgj/zhld/qwgl/qwbb/edit?menuid=' + $.getUrlParam("id");
         if (varType == 'upd') {
-            tmpTitle = '修改勤务报备';
+            if (varTJR == tjr) {
+                tmpTitle = '修改勤务报备';
+            } else {
+                tmpTitle = '查看勤务报备';
+            }
             tmpUrl += ('&id=' + varId);
         }
         //从桌面打开

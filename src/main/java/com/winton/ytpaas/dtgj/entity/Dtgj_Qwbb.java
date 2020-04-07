@@ -29,4 +29,6 @@ public class Dtgj_Qwbb {
     private String TJDW;
     @JSONField(name = "TJSJ")
     private Date TJSJ;
+    @JSONField(name = "TJDWMC")
+    private String TJDWMC;
 }

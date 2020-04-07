@@ -9,7 +9,7 @@ import com.winton.ytpaas.dtgj.entity.Dtgj_Jqxx;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("dtgjJqxxService")
+@Service("dtgjJqxxService")//1
 public class Dtgj_JqxxService {
     @Autowired
     TokenService tokenService;

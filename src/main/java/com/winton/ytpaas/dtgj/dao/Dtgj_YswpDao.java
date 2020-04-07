@@ -108,7 +108,7 @@ public class Dtgj_YswpDao extends BaseJdbcTemplate {
     }
 
     public boolean add(Dtgj_Yswp item) {
-        String sql = "insert into dtgj_qt_yswp(id,mc,ms,sqdd,sqsj,zt,tjr) values (?,?,?,?,?,?,?)";
+        String sql = "insert into DTGJ_QT_YSWP(ID,MC,MS,SQDD,SQSJ,ZT,TJR,TJDW,TJDWMC) values (?,?,?,?,?,?,?,?,?)";
         try {
             int count = jdbcTemplate.update(
                 sql, 
@@ -119,7 +119,9 @@ public class Dtgj_YswpDao extends BaseJdbcTemplate {
                     item.getSQDD(),
                     item.getSQSJ(),
                     item.getZT(),
-                    item.getTJR()
+                    item.getTJR(),
+                    item.getTJDW(),
+                    item.getTJDWMC()
                 }
             );
             return count > 0;

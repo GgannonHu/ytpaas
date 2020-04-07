@@ -24,8 +24,7 @@ layui.config({
                     $("#gjgwcyryLxdh").val(data.data.GJGWCYRY_LXDH);
                     $("#gjgwcyryDzmc").val(data.data.GJGWCYRY_DZMC);
                     $("#gjgwcyryWffz").val(data.data.GJGWCYRY_WFFZJLMS);
-
-                    $("#gjgwcyryMz").val(data.data.GJGWCYRY_MZDM);
+                    $("#gjgwcyryMz").val(data.data.MZ);
                 }else{
                     msg('数据加载失败，请重试', {
                         icon: 2,

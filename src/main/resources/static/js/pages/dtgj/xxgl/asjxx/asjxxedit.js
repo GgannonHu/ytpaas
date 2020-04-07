@@ -227,12 +227,18 @@ layui.config({
                         $("#asjxx_JYAQ").val(data.data.JYAQ);//  jyaq        简要案情
                         $("#asjxx_ASJFSKSSJ").val(data.data.ASJFSKSSJ);//  asjfskssj   案事件发生开始时间
                         $("#asjxx_AFDD").val(data.data.AFDD);//  afdd        案发地点
-                        $("#asjxx_SFCS").val(data.data.SFCS);//  sfcs        事发场所
+                        $("#asjxx_SFCS").val(data.data.SFCS);//  sfcs        事发场所11
                         $("#asjxx_SSXQ").val(data.data.SSXQ);//  ssxq        所属辖区 
                         TJR = data.data.TJR;
                         if(TJR!=mLOGINNAME)
                         {
                             $("#btn_queding").attr("style","display:none;"); 
+                            $("#btn_queding").attr("style","display:none;"); 
+                            $(".layui-input").attr("disabled", "disabled");
+                            $(".layui-input").attr("placeholder", "");
+                            // $("#form select").attr('disabled','disabled');
+                            $("select").attr("disabled", "disabled");
+                            form.render('select'); 
                         }
                         form.render('select'); 
                         isUpd = true;

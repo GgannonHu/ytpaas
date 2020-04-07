@@ -65,8 +65,13 @@
         </div>
         <div style="margin:auto 10px;">
             <table id="list" lay-filter="list"></table>
-            <script type="text/html" id="baryswp">           
-                <a class="layui-btn layui-btn-xs"  lay-event="edit">{{ mLOGINNAME != d.TJR ? "查看" : "编辑"  }}</a>                
+            <script type="text/html" id="baryswp">   
+                        
+                {{# if(d.TJR!=mLOGINNAME){ }}
+                <a id="edit" class="layui-btn layui-btn-xs layui-btn-primary" lay-event="edit">查看</ a>
+                {{# }else{  }}
+                <a id="edit" class="layui-btn layui-btn-xs" lay-event="edit">编辑</ a>
+                {{# }  }} 
                 <a class="layui-btn layui-btn-danger layui-btn-xs" style="display:{{ mLOGINNAME != d.TJR ? "none" : ""  }};"   lay-event="del">删除</a>
             </script> 
         </div>

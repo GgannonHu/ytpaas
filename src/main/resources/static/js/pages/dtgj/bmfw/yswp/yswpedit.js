@@ -215,6 +215,8 @@ layui.config({
             success: function (d) {
                 if (d && d.LOGINNAME) {
                     $("#hdfUser").val(d.LOGINNAME);
+                    $("#hdfDwdm").val(d.DWDM);
+                    $("#hdfDwmc").val(d.DWMC);
                 }
             },
             error: function () {
