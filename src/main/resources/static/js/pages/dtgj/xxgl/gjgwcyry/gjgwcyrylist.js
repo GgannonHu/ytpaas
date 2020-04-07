@@ -85,7 +85,7 @@ layui.config({
                 deleteItem(data.ID, 'one');
             } else if (layEvent === 'edit') { //编辑
                 showEdit('upd', data.ID);
-            } else if (layEvent === 'look') { //认领
+            } else if (layEvent === 'look') { //查看
                 var index = layer.load(1);
                 layer.close(index);
                 //从桌面打开

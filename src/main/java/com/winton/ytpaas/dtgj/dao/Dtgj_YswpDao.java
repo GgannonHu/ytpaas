@@ -43,7 +43,7 @@ public class Dtgj_YswpDao extends BaseJdbcTemplate {
         return list;
     }
 
-    public List<Map<String, Object>> getList(String varZt,String varMc,String varMs,String varSqdd,String varSqsjS,String varSqsjE, String varBegCon, String varEndCon) {
+    public List<Map<String, Object>> getList(String varuser,String varZt,String varMc,String varMs,String varSqdd,String varSqsjS,String varSqsjE, String varBegCon, String varEndCon) {
         List<Map<String, Object>> tmpRet = null;
 
         String tmpWhere = " where 1=1 ";
@@ -65,7 +65,7 @@ public class Dtgj_YswpDao extends BaseJdbcTemplate {
         if (varSqsjE != null && varSqsjE.length() > 0) {
             tmpWhere += " and SQSJ<=to_date('" + varSqsjE + " 23:59:59','yyyy-MM-dd hh24:mi:ss') ";
         }
-        String tmpColumn = " ID,MC,MS,SQDD,ZT,TJR,TJDW,TJSJ,RLR,RLRSFZH,RLSJ,SQSJ ";
+        String tmpColumn = " '"+varuser+"' DQYH,ID,MC,MS,SQDD,ZT,TJR,TJDW,TJSJ,RLR,RLRSFZH,RLSJ,SQSJ ";
         String tmpSql = " select " + tmpColumn + " from DTGJ_QT_YSWP " + tmpWhere + " order by ZT desc,TJSJ desc ";
         String tmpSqlFy = " select " + tmpColumn + " from( select ROWNUM RN , inTab.* from ( " + tmpSql
                 + " ) inTab where ROWNUM<= " + varEndCon + " ) Tab where RN>= " + varBegCon + " ";

@@ -43,13 +43,14 @@ public class ApiYswpController {
         int count = Integer.parseInt(request.getParameter("count"));// PageSize
         int iscon = Integer.parseInt(request.getParameter("iscon"));
 
+        String user = request.getParameter("user");
         String zt = request.getParameter("zt");
         String mc = request.getParameter("mc");
         String ms = request.getParameter("ms");
         String sqdd = request.getParameter("sqdd");
         String sqsjS = request.getParameter("sqsjS");
         String sqsjE = request.getParameter("sqsjE");
-        JSONObject res = dtgjYswpService.getList(zt,mc,ms,sqdd,sqsjS,sqsjE, page, limit, iscon);
+        JSONObject res = dtgjYswpService.getList(user,zt,mc,ms,sqdd,sqsjS,sqsjE, page, limit, iscon);
         if (iscon != 1) {
             res.put("count", count);
         }
