@@ -61,8 +61,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">勤务内容</label>
                 <div class="layui-input-block">
-                    <textarea class="layui-textarea" name="qwnr" id="qwnr" min="0" win-verify="required" placeholder="请输入勤务内容"
-                        autocomplete="off"></textarea>
+                    <textarea class="layui-textarea" name="qwnr" id="qwnr" min="0" win-verify="required"
+                        placeholder="请输入勤务内容" autocomplete="off"></textarea>
                 </div>
             </div>
             <div class="layui-form-item" style="display: none;">
@@ -85,8 +85,9 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="winui-btn" lay-submit lay-filter="formEditMenu">确定</button>
-                    <button class="winui-btn" onclick="top.winui.window.close('editQwbb'); return false;">取消</button>
+                    <button id="submit" class="winui-btn" lay-submit lay-filter="formEditMenu">确定</button>
+                    <button id="cancle" class="winui-btn"
+                        onclick="top.winui.window.close('editQwbb'); return false;">取消</button>
                 </div>
             </div>
         </form>

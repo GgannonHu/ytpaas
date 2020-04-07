@@ -36,15 +36,15 @@ public class Dtgj_ZnyaDao extends BaseJdbcTemplate {
         }
 
         if (fbsjBegin.length() > 0) {
-            tmpWhere += " and FBSJ>=to_date('" + fbsjBegin + "','yyyy-MM-dd') ";
+            tmpWhere += " and TJSJ>=to_date('" + fbsjBegin + "','yyyy-MM-dd') ";
         }
 
         if (fbsjEnd.length() > 0) {
-            tmpWhere += " and FBSJ<=to_date('" + fbsjEnd + " 23:59:59','yyyy-MM-dd hh24:mi:ss') ";
+            tmpWhere += " and TJSJ<=to_date('" + fbsjEnd + " 23:59:59','yyyy-MM-dd hh24:mi:ss') ";
         }
 
         String tmpColumn = " * ";
-        String tmpSql = " select " + tmpColumn + " from DTGJ_QT_ZNYA " + tmpWhere + " order by fbsj desc";
+        String tmpSql = " select " + tmpColumn + " from DTGJ_QT_ZNYA " + tmpWhere + " order by TJSJ desc";
 
         String tmpSqlFy = " select " + tmpColumn + " from( select ROWNUM RN , inTab.* from ( " + tmpSql
                 + " ) inTab where ROWNUM<= " + varEndCon + " ) Tab where RN>= " + varBegCon + " ";
@@ -69,11 +69,11 @@ public class Dtgj_ZnyaDao extends BaseJdbcTemplate {
         }
 
         if (fbsjBegin.length() > 0) {
-            tmpWhere += " and FBSJ>=to_date('" + fbsjBegin + "','yyyy-MM-dd') ";
+            tmpWhere += " and TJSJ>=to_date('" + fbsjBegin + "','yyyy-MM-dd') ";
         }
 
         if (fbsjEnd.length() > 0) {
-            tmpWhere += " and FBSJ<=to_date('" + fbsjEnd + " 23:59:59','yyyy-MM-dd hh24:mi:ss') ";
+            tmpWhere += " and TJSJ<=to_date('" + fbsjEnd + " 23:59:59','yyyy-MM-dd hh24:mi:ss') ";
         }
 
         String tmpSql = " select COUNT(1) con from DTGJ_QT_ZNYA " + tmpWhere;
@@ -89,10 +89,10 @@ public class Dtgj_ZnyaDao extends BaseJdbcTemplate {
     }
 
     public boolean add(Dtgj_Znya item) {
-        String sql = "insert into DTGJ_QT_ZNYA(id,name,dj,nr,fbr,fbdw) values (?,?,?,?,?,?)";
+        String sql = "insert into DTGJ_QT_ZNYA(id,name,dj,nr,tjr,tjdw,tjdwmc) values (?,?,?,?,?,?,?)";
         try {
             int count = jdbcTemplate.update(sql, new Object[] { item.getID(), item.getNAME(), item.getDJ(),
-                    item.getNR(), item.getFBR(), item.getFBDW() });
+                    item.getNR(), item.getTJR(), item.getTJDW(), item.getTJDWMC() });
             return count > 0;
         } catch (Exception e) {
             e.printStackTrace();

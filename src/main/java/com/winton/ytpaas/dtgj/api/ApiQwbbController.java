@@ -110,6 +110,8 @@ public class ApiQwbbController {
         qwbb.setWCZT(request.getParameter("wczt"));
         qwbb.setTJR(user.getLOGINNAME());
         qwbb.setTJDW(user.getDWDM());
+        qwbb.setTJDW(user.getDWDM());
+        qwbb.setTJDWMC(user.getDWMC());
 
         Result res = dtgjQwbbService.add(qwbb);
         return res.toString();
@@ -131,12 +133,10 @@ public class ApiQwbbController {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date fbsj = new Date();
         Date wcsj = new Date();
-        Date tjsj = new Date();
 
         try {
             fbsj = df.parse((String) request.getParameter("fbsj"));
             wcsj = df.parse((String) request.getParameter("wcsj"));
-            tjsj = df.parse((String) request.getParameter("tjsj"));
         } catch (Exception e) {
         }
 
@@ -147,9 +147,6 @@ public class ApiQwbbController {
         qwbb.setFBSJ(fbsj);
         qwbb.setWCSJ(wcsj);
         qwbb.setWCZT(request.getParameter("wczt"));
-        qwbb.setTJR(request.getParameter("tjr"));
-        qwbb.setTJDW(request.getParameter("tjdw"));
-        qwbb.setTJSJ(tjsj);
 
         Result res = dtgjQwbbService.update(qwbb);
         return res.toString();

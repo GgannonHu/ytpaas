@@ -61,11 +61,10 @@ layui.config({
             },
             cols: [[
                 { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: '5%' },
-                { field: 'GJXLBM', title: '公交线路编码', width: '15%' },
-                { field: 'DTZDMC', title: '站点名称', width: '10%' },
                 { field: 'ABRY_GMSFHM', title: '公民身份号码', width: '20%' },
                 { field: 'ABRY_XM', title: '姓名', width: '10%' },
-                { field: 'ABRY_DWMC', title: '单位', width: '25%' },
+                { field: 'ABRY_YDDH', title: '移动电话', width: '15%' },
+                { field: 'ABRY_DWMC', title: '单位', width: '35%' },
                 { title: '操作', align: 'center', toolbar: '#barAbry', width: '15%', templet: '#colNoNull' }
             ]]
         });
@@ -209,7 +208,7 @@ layui.config({
     //删除信息
     function deleteItem(ids, type) {
         var msg = type == 'one' ? '确认删除当前信息吗？' : '确认删除选中数据吗？'
-        top.winui.window.confirm(msg, { icon: 3, title: '删除勤务报备' }, function () {
+        top.winui.window.confirm(msg, { icon: 3, title: '删除安保人员' }, function () {
             var index = layer.load(1);
             $.ajax({
                 type: 'post',

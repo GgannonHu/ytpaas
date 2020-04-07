@@ -95,8 +95,9 @@ public class ApiZnyaController {
         znya.setNAME(request.getParameter("name"));
         znya.setDJ(request.getParameter("dj"));
         znya.setNR(request.getParameter("nr"));
-        znya.setFBR(user.getLOGINNAME());
-        znya.setFBDW(user.getDWDM());
+        znya.setTJR(user.getLOGINNAME());
+        znya.setTJDW(user.getDWDM());
+        znya.setTJDWMC(user.getDWMC());
 
         Result res = dtgjZnyaService.add(znya);
         res.setData(id);
@@ -118,8 +119,6 @@ public class ApiZnyaController {
         znya.setNAME(request.getParameter("name"));
         znya.setDJ(request.getParameter("dj"));
         znya.setNR(request.getParameter("nr"));
-        znya.setFBR(request.getParameter("fbr"));
-        znya.setFBDW(request.getParameter("fbdw"));
 
         Result res = dtgjZnyaService.update(znya);
         res.setData(id);

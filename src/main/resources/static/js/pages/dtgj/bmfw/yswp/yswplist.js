@@ -95,6 +95,17 @@ layui.config({
                     content: '/dtgj/bmfw/yswp/yswprl?id=' + data.ID + '&menuid=' + $.getUrlParam("id"),
                     maxOpen: true
                 });
+            } else if (layEvent === 'look') { //查看
+                var index = layer.load(1);
+                layer.close(index);
+                //从桌面打开
+                top.winui.window.open({
+                    id: 'lookyswp',
+                    type: 2,
+                    title: '查看信息',
+                    content: '/dtgj/bmfw/yswp/yswplook?id=' + data.ID + '&menuid=' + $.getUrlParam("id"),
+                    maxOpen: true
+                });
             }
         });
     }
@@ -107,6 +118,7 @@ layui.config({
             dataType: "JSON",
             success: function (data) {
                 if (data && data.LOGINNAME) {
+                    mSelData.user = data.LOGINNAME;
                     loadData();
                 }
             },

@@ -3,18 +3,18 @@ package com.winton.ytpaas.dtgj.service;
 import com.alibaba.fastjson.JSONObject;
 import com.winton.ytpaas.common.configuration.jwt.TokenService;
 import com.winton.ytpaas.common.util.Result;
-import com.winton.ytpaas.dtgj.dao.Dtgj_YswpDao;
-import com.winton.ytpaas.dtgj.entity.Dtgj_Yswp;
+import com.winton.ytpaas.dtgj.dao.Dtgj_QwllDao;
+import com.winton.ytpaas.dtgj.entity.Dtgj_Qwll;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("dtgjYswpService")
-public class Dtgj_YswpService {
+@Service("dtgjQwllService")
+public class Dtgj_QwllService {
     @Autowired
     TokenService tokenService;
     @Autowired
-    Dtgj_YswpDao dao;
+    Dtgj_QwllDao dao;
 
     public Result getById(String id) {
         Result res = new Result();
@@ -23,34 +23,39 @@ public class Dtgj_YswpService {
         return res;
     }
 
-    public Result getAll() {
-        Result res = new Result();
-        res.setCode("1");
-        res.setData(dao.getAll());
-        return res;
-    }
-    
-    public JSONObject getList(String varuser,String varZt,String varMc,String varMs,String varSqdd,String varSqsjS,String varSqsjE, int varPage, int varLimit, int varIsCon) {
+    public JSONObject getList(String gjgsmc, String xm, String lxdh, int varPage, int varLimit, int varIsCon,
+            String gajgjgdm) {
         JSONObject tmpRet = new JSONObject();
+
         String tmpBegCon = String.valueOf((varPage - 1) * varLimit + 1);
         String tmpEndCon = String.valueOf(varPage * varLimit);
-        tmpRet.put("data", dao.getList(varuser,varZt,varMc,varMs,varSqdd,varSqsjS,varSqsjE, tmpBegCon, tmpEndCon));
+        tmpRet.put("data", dao.getList(gjgsmc, xm, lxdh, tmpBegCon, tmpEndCon, gajgjgdm));
         if (varIsCon == 1) {
-            tmpRet.put("count", dao.getCon(varZt,varMc,varMs,varSqdd,varSqsjS,varSqsjE));
+            tmpRet.put("count", dao.getListCount(gjgsmc, xm, lxdh, gajgjgdm));
         }
         tmpRet.put("code", "1");
+
         return tmpRet;
     }
-    public JSONObject getListcon(String varZt,String varMc,String varMs,String varSqdd,String varSqsjS,String varSqsjE) {
+
+    public JSONObject getXlxx(String xzqh) {
         JSONObject tmpRet = new JSONObject();
-        tmpRet.put("count", dao.getCon(varZt,varMc,varMs,varSqdd,varSqsjS,varSqsjE));
+        tmpRet.put("data", dao.getXlxx(xzqh));
         tmpRet.put("code", "1");
         return tmpRet;
     }
-    public Result add(Dtgj_Yswp item) {
+
+    public JSONObject getZdxx(String bm) {
+        JSONObject tmpRet = new JSONObject();
+        tmpRet.put("data", dao.getZdxx(bm));
+        tmpRet.put("code", "1");
+        return tmpRet;
+    }
+
+    public Result add(Dtgj_Qwll item) {
         Result res = new Result();
         boolean b = dao.add(item);
-        if(b) {
+        if (b) {
             res.setCode("1");
             res.setMsg("添加成功");
         } else {
@@ -60,10 +65,10 @@ public class Dtgj_YswpService {
         return res;
     }
 
-    public Result update(Dtgj_Yswp item) {
+    public Result update(Dtgj_Qwll item) {
         Result res = new Result();
         boolean b = dao.update(item);
-        if(b) {
+        if (b) {
             res.setCode("1");
             res.setMsg("修改成功");
         } else {
@@ -72,36 +77,17 @@ public class Dtgj_YswpService {
         }
         return res;
     }
-    
-    public Result rl(Dtgj_Yswp item) {
-        Result res = new Result();
-        boolean b = dao.rl(item);
-        if(b) {
-            res.setCode("1");
-            res.setMsg("认领成功");
-        } else {
-            res.setCode("-1");
-            res.setMsg("认领失败");
-        }
-        return res;
-    }
 
     public Result delete(String id) {
         Result res = new Result();
         boolean b = dao.delete(id);
-        if(b) {
+        if (b) {
             res.setCode("1");
             res.setMsg("删除成功");
         } else {
             res.setCode("-1");
             res.setMsg("删除失败");
         }
-       
         return res;
     }
-
-
-    
-
-
 }
