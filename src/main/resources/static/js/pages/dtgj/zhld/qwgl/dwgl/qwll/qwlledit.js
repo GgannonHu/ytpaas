@@ -120,6 +120,11 @@ layui.config({
                         $("#jybh").val(data.data.QWLL_JYBH);
                         $("#qwlbdm").val(data.data.QWLB_QWLBDM);
                         if (data.data.TJR != tjr) {
+                            $(".layui-input").attr("disabled", "disabled");
+                            $(".layui-input").attr("placeholder", "");
+                            $("select").attr("disabled", "disabled");
+                            form.render('select');
+
                             $("#submit").hide();
                             $("#cancle").text('确定');
                         }

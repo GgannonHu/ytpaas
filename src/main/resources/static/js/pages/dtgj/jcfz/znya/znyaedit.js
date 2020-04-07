@@ -1,4 +1,5 @@
 var api = "/api/dtgj/jcfz/znya/";
+var tjr = "";
 layui.config({
     base: '/js/core/winui/' //指定 winui 路径
 }).extend({
@@ -124,7 +125,7 @@ layui.config({
 
     //获取文件列表
     function getFileData() {
-        
+
         var index = layer.load(1);
         $.ajax({
             type: 'get',
@@ -190,6 +191,7 @@ layui.config({
             dataType: "JSON",
             success: function (data) {
                 if (data && data.LOGINNAME) {
+                    tjr = data.LOGINNAME;
                 }
             },
             error: function () {
@@ -219,6 +221,17 @@ layui.config({
                     $("#fbr").val(data.data.FBR);
                     $("#fbdw").val(data.data.FBDW);
                     $("#fbsj").val(data.data.FBSJ);
+
+                    if (data.data.TJR != tjr) {
+                        $(".layui-input").attr("disabled", "disabled");
+                        $(".layui-input").attr("placeholder", "");
+                        $("select").attr("disabled", "disabled");
+                        form.render('select');
+                        $("#nr").attr("disabled", "disabled");
+
+                        $("#submit").hide();
+                        $("#cancle").text('确定');
+                    }
 
                     form.render('select');
                     isUpd = true;

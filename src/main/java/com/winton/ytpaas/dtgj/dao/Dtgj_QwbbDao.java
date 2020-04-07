@@ -91,10 +91,10 @@ public class Dtgj_QwbbDao extends BaseJdbcTemplate {
     }
 
     public boolean add(Dtgj_Qwbb item) {
-        String sql = "insert into DTGJ_QT_QWBB(xm,sfzh,qwnr,fbsj,wcsj,wczt,tjr,tjdw) values (?,?,?,?,?,?,?,?)";
+        String sql = "insert into DTGJ_QT_QWBB(xm,sfzh,qwnr,fbsj,wcsj,wczt,tjr,tjdw,tjdwmc) values (?,?,?,?,?,?,?,?,?)";
         try {
             int count = jdbcTemplate.update(sql, new Object[] { item.getXM(), item.getSFZH(), item.getQWNR(),
-                    item.getFBSJ(), item.getWCSJ(), item.getWCZT(), item.getTJR(), item.getTJDW() });
+                    item.getFBSJ(), item.getWCSJ(), item.getWCZT(), item.getTJR(), item.getTJDW(), item.getTJDWMC() });
             return count > 0;
         } catch (Exception e) {
             e.printStackTrace();

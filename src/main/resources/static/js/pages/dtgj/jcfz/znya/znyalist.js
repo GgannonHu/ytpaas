@@ -2,6 +2,7 @@ var api = "/api/dtgj/jcfz/znya/";
 var mDataCon = 0;
 var mCurr = 1;
 var mSelData = { name: '', dj: '', fbsjBegin: '', fbsjEnd: '', count: 0, iscon: 1 }
+var tjr = "";
 layui.config({
     base: '/js/core/winui/' //指定 winui 路径
     , version: '1.0.0-beta'
@@ -71,7 +72,7 @@ layui.config({
             if (layEvent == 'del') { //删除
                 deleteItem(data.ID, 'one');
             } else if (layEvent == 'edit') { //编辑
-                showEdit('upd', data.ID);
+                showEdit('upd', data.ID, data.TJR);
             }
         });
     }
@@ -84,6 +85,7 @@ layui.config({
             dataType: "JSON",
             success: function (data) {
                 if (data && data.LOGINNAME) {
+                    tjr = data.LOGINNAME;
                     loadData();
                 }
             },
@@ -119,11 +121,15 @@ layui.config({
     }
 
     //打开添加页面
-    function showEdit(varType, varId) {
+    function showEdit(varType, varId, varTJR) {
         var tmpTitle = '添加智能预案';
         var tmpUrl = '/dtgj/jcfz/znya/edit?menuid=' + $.getUrlParam("id");
         if (varType == 'upd') {
-            tmpTitle = '修改智能预案';
+            if (varTJR == tjr) {
+                tmpTitle = '修改智能预案';
+            } else {
+                tmpTitle = '查看智能预案';
+            }
             tmpUrl += ('&id=' + varId);
         }
         //从桌面打开

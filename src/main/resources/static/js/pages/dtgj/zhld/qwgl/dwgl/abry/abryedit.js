@@ -152,7 +152,12 @@ layui.config({
                         bindcon("MZ", "mz", data.data.ABRY_MZDM);
                         $("#dz").val(data.data.ABRY_DZMC);
                         $("#dw").val(data.data.ABRY_DWMC);
-                        if(data.data.TJR!= tjr){
+                        if (data.data.TJR != tjr) {
+                            $(".layui-input").attr("disabled", "disabled");
+                            $(".layui-input").attr("placeholder", "");
+                            $("select").attr("disabled", "disabled");
+                            form.render('select');
+                            
                             $("#submit").hide();
                             $("#cancle").text('确定');
                         }
