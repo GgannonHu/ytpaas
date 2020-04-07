@@ -35,7 +35,14 @@ public class DtgjController {
     public String qwbbEdit() {
         return "/dtgj/zhld/qwgl/qwbb/qwbbedit";
     }
-
+    @RequestMapping("/dtgj/xxgl/jqxx/jqxxedit")
+    public String jqxxedit() {
+        return "/dtgj/xxgl/jqxx/jqxxedit";
+    }
+    @RequestMapping("/dtgj/xxgl/jqxx/list")
+    public String jqxxlist() {
+        return "/dtgj/xxgl/jqxx/jqxxlist";
+    }
     @RequestMapping("/dtgj/jcfz/znya")
     public String znya() {
         return "/dtgj/jcfz/znya/znyalist";
@@ -53,6 +60,10 @@ public class DtgjController {
     @RequestMapping("/dtgj/bmfw/yswp/yswpedit")
     public String yswpedit() {
         return "/dtgj/bmfw/yswp/yswpedit";
+    }
+    @RequestMapping("/dtgj/bmfw/yswp/yswplook")
+    public String yswplook() {
+        return "/dtgj/bmfw/yswp/yswplook";
     }
     @RequestMapping("/dtgj/bmfw/yswp/yswprl")
     public String yswprl() {
@@ -143,7 +154,11 @@ public class DtgjController {
     public String gjgwcyryedit() {
         return "/dtgj/xxgl/gjgwcyry/gjgwcyryedit";
     }
-    
+    @RequestMapping("/dtgj/xxgl/gjgwcyrylook")
+    public String gjgwcyrylook() {
+        return "/dtgj/xxgl/gjgwcyry/gjgwcyrylook";
+    }
+
     //文件下载
     @RequestMapping("/dtgj/fjxx/filedownload")
     public ResponseEntity<byte[]> fileDownLoad(HttpServletRequest request) throws Exception {
