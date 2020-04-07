@@ -1,7 +1,7 @@
 var mDataCon = 0;
 var mCurr = 1;
 var mUrlTop = "/api/dtgj/yjgz/zdryyj";
-var mSelData = { name: '', count: 0, iscon: 1 };
+var mSelData = { count: 0, iscon: 1 };
 var mLOGINNAME = '';
 layui.config({
     base: '/js/core/winui/' //指定 winui 路径
@@ -45,17 +45,18 @@ layui.config({
                 }
             },
             cols: [[
-                { field: 'GAJGJGDM', title: '公安机关', width: 220 },
-                { field: 'DTXLDM', title: '地铁线路', width: 220 },
-                { field: 'DTZDMC', title: '地铁站点', width: 220 },
-                { field: 'GJXLDM', title: '公交线路', width: 220 },
-                { field: 'ZDRY_FLDM', title: '重点人分类', width: 220 },
-                { field: 'ZDRY_XM', title: '重点人姓名', width: 220 },
-                { field: 'ZDRY_GMSFHM', title: '重点人身份证号', width: 220 },
-                { field: 'ZDRY_ZPRLZP', title: '抓拍人脸照片', width: 220 },
-                { field: 'ZDRY_BKRLZP', title: '布控人脸照片', width: 220 },
-                { field: 'YJSJ', title: '预警时间', width: 220 },
-                { fixed: 'right', title: '操作', align: 'center', toolbar: '#barYjct', width: 220 }
+                {
+                    field: 'GAJGJGDM', title: '公安机关', templet: function (d) {
+                        getJgMcByJgdm('lbgajg_' + d.ID, d.GAJGJGDM);
+                        return '<label id="lbgajg_' + d.ID + '"></label>';
+                    }, width: '15%'
+                },
+                { field: 'DTXLDM', title: '地铁线路代码', width: '12%' },
+                { field: 'DTZDMC', title: '地铁站点', width: '12%' },
+                { field: 'GJXLDM', title: '公交线路代码', width: '12%' },
+                { field: 'ZDRY_XM', title: '重点人姓名', width: '15%' },
+                { field: 'ZDRY_GMSFHM', title: '重点人身份证号' },
+                { fixed: 'right', title: '操作', align: 'center', toolbar: '#barYjct', width: 70 }
             ]]
         });
 
@@ -98,6 +99,22 @@ layui.config({
             }
         });
     }
+    
+    function getJgMcByJgdm(varId, varJgdm) {
+        var index = layer.load(1);
+        $.ajax({
+            type: 'get',
+            url: '/api/dtgj/com/getjgmcbyjgdm',
+            headers: { token: localStorage["token"] },
+            data: { jgdm: varJgdm },
+            dataType: 'json',
+            success: function (data) {
+                layer.close(index);
+                $('#' + varId).html(data.data);
+            }
+        });
+    }
+
 
     getUserByToken();
 
@@ -123,6 +140,8 @@ layui.config({
         reloadTableAll();
     }
     function getSelTj() {
+        mSelData.xm = $('#xm').val();
+        mSelData.sfzh = $('#sfzh').val();
     }
 
     //绑定按钮事件

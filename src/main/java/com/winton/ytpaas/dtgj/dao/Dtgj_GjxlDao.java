@@ -22,13 +22,13 @@ public class Dtgj_GjxlDao extends BaseJdbcTemplate {
 
         String tmpZdmc = varSelTj.get("zdmc");
         if (tmpZdmc.length() > 0) {
-            tmpWhere += " and GJXLBM in (select GJXLBM from dtgj_gjzs_zdxx where GJZDMC like '%" + tmpZdmc + "%') ";
-        }
+            tmpWhere += " and GJXLBM in (select GJXLBM from DTGJ_GJZS_ZDXX where GJZDMC like '%" + tmpZdmc + "%') ";
+        } 
 
         tmpWhere += " and XZQHDM like '" + varSelTj.get("dwdm") + "%' ";
 
         String tmpColums = " t.* ";
-        tmpColums+=" ,( select JGMC from (select JGDM,JGMC from sys_jg order by JGDM ) where  rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
+        //tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM ) where ROWNUM=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
         String tmpTable = " DTGJ_GJZS_XLXX t ";
         String tmpOrder = " order by CREATE_TIME desc ";
 
@@ -54,18 +54,18 @@ public class Dtgj_GjxlDao extends BaseJdbcTemplate {
 
         String tmpZdmc = varSelTj.get("zdmc");
         if (tmpZdmc.length() > 0) {
-            tmpWhere += " and GJXLBM in (select GJXLBM from dtgj_gjzs_zdxx where GJZDMC like '%" + tmpZdmc + "%') ";
+            tmpWhere += " and GJXLBM in (select GJXLBM from DTGJ_GJZS_ZDXX where GJZDMC like '%" + tmpZdmc + "%') ";
         }
 
         tmpWhere += " and XZQHDM like '" + varSelTj.get("dwdm") + "%' ";
 
         String tmpTable = " DTGJ_GJZS_XLXX ";
-        String tmpSql = " select COUNT(1) con from " + tmpTable + tmpWhere;
+        String tmpSql = " select count(1) CON from " + tmpTable + tmpWhere;
 
         try {
             List<Map<String, Object>> temp = jdbcTemplate.queryForList(tmpSql);
             Map<String, Object> countlyb = temp.get(0);
-            tmpRet = Integer.valueOf(countlyb.get("con").toString());
+            tmpRet = Integer.valueOf(countlyb.get("CON").toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -90,7 +90,7 @@ public class Dtgj_GjxlDao extends BaseJdbcTemplate {
 
         String tmpWhere = " where ID = '" + varId + "' ";
         String tmpColums = " t.* ";
-        tmpColums+=" ,( select JGMC from (select JGDM,JGMC from sys_jg order by JGDM ) where  rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
+        //tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM ) where ROWNUM=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
         String tmpTable = " DTGJ_GJZS_XLXX t ";
         String tmpSql = " select  " + tmpColums + " from " + tmpTable + tmpWhere;
 
@@ -107,7 +107,7 @@ public class Dtgj_GjxlDao extends BaseJdbcTemplate {
 
     public boolean add(Map<String, Object> varItem) {
 
-        String tmpSql = " insert into DTGJ_GJZS_XLXX (xzqhdm, gjxlbm, gjxlmc, qdzsmc_kssj, qdzsmc_jssj, zdzsmc_kssj, zdzsmc_jssj, gjxlqdz, gjxlzdz, tjr, tjdw, tjdwmc) values(?,?,?,?,?,?,?,?,?,?,?,?) ";
+        String tmpSql = " insert into DTGJ_GJZS_XLXX (XZQHDM, GJXLBM, GJXLMC, QDZSMC_KSSJ, QDZSMC_JSSJ, ZDZSMC_KSSJ, ZDZSMC_JSSJ, GJXLQDZ, GJXLZDZ, TJR, TJDW, TJDWMC) values(?,?,?,?,?,?,?,?,?,?,?,?) ";
         try {
             int count = jdbcTemplate.update(tmpSql,
                     new Object[] { varItem.get("xzqhdm"), varItem.get("gjxlbm"), varItem.get("gjxlmc"),
@@ -122,9 +122,9 @@ public class Dtgj_GjxlDao extends BaseJdbcTemplate {
     }
 
     public boolean update(Map<String, Object> varItem) {
-        // xzqhdm=?, gjxlbm=?, gjxlmc=?,
+        // XZQHDM=?, GJXLBM=?, GJXLMC=?,
         // varItem.get("xzqhdm"), varItem.get("gjxlbm"), varItem.get("gjxlmc"),
-        String tmpSql = " update DTGJ_GJZS_XLXX set qdzsmc_kssj=?, qdzsmc_jssj=?, zdzsmc_kssj=?, zdzsmc_jssj=?, gjxlqdz=?, gjxlzdz=? where id=? ";
+        String tmpSql = " update DTGJ_GJZS_XLXX set QDZSMC_KSSJ=?, QDZSMC_JSSJ=?, ZDZSMC_KSSJ=?, ZDZSMC_JSSJ=?, GJXLQDZ=?, GJXLZDZ=? where ID=? ";
         try {
             int count = jdbcTemplate.update(tmpSql,
                     new Object[] { varItem.get("qdzsmc_kssj"), varItem.get("qdzsmc_jssj"), varItem.get("zdzsmc_kssj"),
@@ -148,7 +148,7 @@ public class Dtgj_GjxlDao extends BaseJdbcTemplate {
         }
         tmpWhere = tmpWhere.substring(1);
 
-        String tmpSql = " delete from DTGJ_GJZS_XLXX where id in ( " + tmpWhere + " ) ";
+        String tmpSql = " delete from DTGJ_GJZS_XLXX where ID in ( " + tmpWhere + " ) ";
         try {
             int count = jdbcTemplate.update(tmpSql);
             return count > 0;

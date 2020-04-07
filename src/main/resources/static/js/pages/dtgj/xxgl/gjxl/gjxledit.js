@@ -14,23 +14,12 @@ layui.config({
     var selId = $.getUrlParam("id");
     var pageType = $.getUrlParam("type");;
 
-    var mSelJgdm = '';
-
     //修改页面是否只读样式
     if (pageType == 'sel') {
         $('#pageSubmit').hide();
-        $("#xzqhsj").attr("disabled", "disabled");
-        $("#xzqhfj").attr("disabled", "disabled");
-        $("#xzqhdm").attr("disabled", "disabled");
-        $("#gjxlbh").attr("disabled", "disabled");
-        $("#gjxlmc").attr("disabled", "disabled");
-        $("#qdzsmc_kssj").attr("disabled", "disabled");
-        $("#qdzsmc_jssj").attr("disabled", "disabled");
-        $("#zdzsmc_kssj").attr("disabled", "disabled");
-        $("#zdzsmc_jssj").attr("disabled", "disabled");
-        $("#gjxlqdz").attr("disabled", "disabled");
-        $("#gjxlzdz").attr("disabled", "disabled");
         $('#divXzqh').show();
+        $(".layui-input").attr("disabled", "disabled");
+        $(".layui-input").attr("placeholder", "");
     } else {
         $('#pageSubmit').show();
         laydate.render({
@@ -62,8 +51,7 @@ layui.config({
                 layer.close(index);
                 if (data.code == "1") {
                     var item = data.data;
-                    mSelJgdm = item.XZQHDM;
-                    $("#showXzqh").val(item.XZQHMC);
+                    getCsmcByBm('showXzqh', 'XZQH', item.XZQHDM);//$('#showXzqh').val(item.XZQHMC);
 
                     $("#gjxlbm").val(item.GJXLBM);
                     $("#gjxlmc").val(item.GJXLMC);
@@ -87,7 +75,6 @@ layui.config({
                         $("#zdzsmc_jssj").val(zdzsmc_jssj.substring(zdzsmc_jssj.indexOf(' '), zdzsmc_jssj.length));
                     }
 
-                    SetSelectData('xzqhsj', '230000000000', 4);
                 } else {
                     msg('数据加载失败，请重试', {
                         icon: 2,
@@ -102,31 +89,11 @@ layui.config({
                 });
             }
         });
-    } else {
-        SetSelectData('xzqhsj', '230000000000');
     }
 
     //提交
     form.on('submit(formEditMenu)', function (data) {
         if (winui.verifyForm(data.elem)) {
-            /*
-            var tmpSj = $("#xzqhsj").val();
-            var tmpFj = $("#xzqhfj").val();
-
-            if (tmpSj.length > 0) {
-                if (tmpFj.length > 0) {
-                    data.field.xzqhdm = tmpFj.substr(0, 6);
-                } else {
-                    data.field.xzqhdm = tmpSj.substr(0, 6);
-                }
-            } else {
-                msg("请选择行政区划", {
-                    icon: 2,
-                    time: 1000
-                });
-                return false;
-            }
-            */
             var index = layer.load(1);
 
             var url = mUrlTop + "/add";
@@ -186,79 +153,20 @@ layui.config({
         }, 1000);
     }
 
-    function SetSelectData(varSelId, varPid, varJb) {
-        return;
-        if (varPid.length > 0) {
-            var index = layer.load(1);
-            layui.$.ajax({
-                type: 'post',
-                url: '/api/dtgj/com/jglist',
-                data: { pid: varPid },
-                dataType: 'json',
-                headers: { token: localStorage["token"] },
-                success: function (json) {
-                    layer.close(index);
-                    if (json.code == "1") {
-                        var items = json.data;
-                        $('#' + varSelId + ' option').remove();
-                        if (items.length > 0) {
-                            var tmpSelVal = '';
-                            $('#' + varSelId).append('<option value="" >请选择</option>');
-                            for (var i = 0; i < items.length; i++) {
-                                item = items[i];
-                                var selected = '';
-                                if (mSelJgdm.length > 0) {
-                                    if (mSelJgdm.substr(0, varJb) == item.JGDM.substr(0, varJb)) {
-                                        tmpSelVal = item.JGDM;
-                                        selected = 'selected = "selected"';
-                                    }
-                                }
-                                $('#' + varSelId).append('<option value="' + item.JGDM + '" ' + selected + ' >' + item.JGMC + '</option>');
-                            }
-                            selRetFunAll(varSelId, tmpSelVal);
-                        }
-                    }
-                },
-                error: function (xml) {
-                    layer.close(index);
-                    $('#' + varSelId + ' option').remove();
-                    $('#' + varSelId).append('<option value="" >请选择</option>');
-                }
-            });
-        } else {
-            $('#' + varSelId + ' option').remove();
-            $('#' + varSelId).append('<option value="" >请选择</option>');
-            selRetFunAll(varSelId, '');
-        }
-    }
-
-    function selRetFunAll(varSelId, varSelVal) {
-        if (varSelId == 'xzqhsj') {
-            if (varSelVal != '') {
-                SetSelectData('xzqhfj', varSelVal, 6);
-            } else {
-                $('#xzqhfj option').remove();
-                $('#xzqhfj').append('<option value="" >请选择</option>');
-                form.render('select');
+    function getCsmcByBm(varId, varTid, varBm) {
+        var index = layer.load(1);
+        $.ajax({
+            type: 'get',
+            url: '/api/dtgj/com/getcsmcbybm',
+            headers: { token: localStorage["token"] },
+            data: { tid: varTid, bm: varBm },
+            dataType: 'json',
+            success: function (data) {
+                layer.close(index);
+                $('#' + varId).val(data.data);
             }
-        } else {
-            form.render('select');
-        }
+        });
     }
-
-    form.verify({
-        xllc: function (value, item) { //value：表单的值、item：表单的DOM对象
-            if (isNaN(value)) {
-                return '线路里程应为数字';
-            }
-        }
-    });
-
-    form.on('select(xzqhsj)', function (data) {
-        SetSelectData('xzqhfj', data.value);
-    });
-    form.on('select(xzqhfj)', function (data) {
-    });
 
     exports('gjxledit', {});
 });

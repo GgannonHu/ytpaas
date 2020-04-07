@@ -109,7 +109,9 @@ public class ApiYjctController {
         tmpItem.put("nr", request.getParameter("nr"));
 
         tmpItem.put("tjr", user.getLOGINNAME());
-        tmpItem.put("tjdw", user.getDWMC());
+        tmpItem.put("tjdw", user.getDWDM());
+        tmpItem.put("tjdwmc", user.getDWMC());
+        
         Date date = new Date();
         tmpItem.put("tjsj", date);
 

@@ -12,7 +12,7 @@ public class Dtgj_GjzdDao extends BaseJdbcTemplate {
 
     public List<Map<String, Object>> getList(Map<String, String> varSelTj, String varBegCon, String varEndCon) {
         List<Map<String, Object>> tmpRet = null;
-
+ 
         String tmpWhere = " where 1=1 ";
 
         tmpWhere += " and GJXLBM ='" + varSelTj.get("xlbm") + "' ";
@@ -23,7 +23,7 @@ public class Dtgj_GjzdDao extends BaseJdbcTemplate {
         }
 
         String tmpColums = " t.* ";
-        tmpColums+=" ,( select JGMC from (select JGDM,JGMC from sys_jg order by JGDM ) where  rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
+        //tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM ) where  ROWNUM=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
         String tmpTable = " DTGJ_GJZS_ZDXX t ";
         String tmpOrder = " order by CREATE_TIME desc ";
 
@@ -51,12 +51,12 @@ public class Dtgj_GjzdDao extends BaseJdbcTemplate {
         }
 
         String tmpTable = " DTGJ_GJZS_ZDXX ";
-        String tmpSql = " select COUNT(1) con from " + tmpTable + tmpWhere;
+        String tmpSql = " select count(1) CON from " + tmpTable + tmpWhere;
 
         try {
             List<Map<String, Object>> temp = jdbcTemplate.queryForList(tmpSql);
             Map<String, Object> countlyb = temp.get(0);
-            tmpRet = Integer.valueOf(countlyb.get("con").toString());
+            tmpRet = Integer.valueOf(countlyb.get("CON").toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -79,7 +79,7 @@ public class Dtgj_GjzdDao extends BaseJdbcTemplate {
 
         String tmpWhere = " where ID = '" + varId + "' ";
         String tmpColums = "  t.* ";
-        tmpColums+=" ,( select JGMC from (select JGDM,JGMC from sys_jg order by JGDM ) where  rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
+        //tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM ) where  rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
         String tmpTable = " DTGJ_GJZS_ZDXX t ";
         String tmpSql = " select  " + tmpColums + " from " + tmpTable + tmpWhere;
 
@@ -95,7 +95,7 @@ public class Dtgj_GjzdDao extends BaseJdbcTemplate {
     }
 
     public boolean add(Map<String, Object> varItem) {
-        String tmpSql = " insert into DTGJ_GJZS_ZDXX (xzqhdm, gjxlbm, gjzdbm, gjzdmc, kssj, jssj, tjr, tjdw, tjdwmc) values(?,?,?,?,?,?,?,?,?) ";
+        String tmpSql = " insert into DTGJ_GJZS_ZDXX (XZQHDM, GJXLBM, GJZDBM, GJZDMC, KSSJ, JSSJ, TJR, TJDW, TJDWMC) values(?,?,?,?,?,?,?,?,?) ";
         try {
             int count = jdbcTemplate.update(tmpSql,
                     new Object[] { varItem.get("xzqhdm"), varItem.get("gjxlbm"), varItem.get("gjzdbm"),
@@ -109,10 +109,10 @@ public class Dtgj_GjzdDao extends BaseJdbcTemplate {
     }
 
     public boolean update(Map<String, Object> varItem) {
-        // xzqhdm=?, gjxlbm=?, gjzdbm=?, gjzdmc=?,
+        // XZQHDM=?, GJXLBM=?, GJZDBM=?, GJZDMC=?,
         // varItem.get("xzqhdm"), varItem.get("gjxlbm"), varItem.get("gjzdbm"),
         // varItem.get("gjzdmc"),
-        String tmpSql = " update DTGJ_GJZS_ZDXX set kssj=?, jssj=? where id=? ";
+        String tmpSql = " update DTGJ_GJZS_ZDXX set KSSJ=?, JSSJ=? where ID=? ";
         try {
             int count = jdbcTemplate.update(tmpSql,
                     new Object[] { varItem.get("kssj"), varItem.get("jssj"), varItem.get("id") });
@@ -134,7 +134,7 @@ public class Dtgj_GjzdDao extends BaseJdbcTemplate {
         }
         tmpWhere = tmpWhere.substring(1);
 
-        String tmpSql = " delete from DTGJ_GJZS_ZDXX where id in ( " + tmpWhere + " ) ";
+        String tmpSql = " delete from DTGJ_GJZS_ZDXX where ID in ( " + tmpWhere + " ) ";
         try {
             int count = jdbcTemplate.update(tmpSql);
             return count > 0;
