@@ -28,6 +28,16 @@ layui.config({
         return false;
     });
 
+    form.on('checkbox', function (data) {
+
+        var id = data.elem.id;
+        var checked = data.elem.checked;
+        if (id == 'topcheck') {
+            $("input[rid='rowCheck']").prop('checked', checked);
+            form.render('checkbox');
+        }
+    });
+
     function loadData() {
         table.render({
             id: tableId,
@@ -55,7 +65,7 @@ layui.config({
                 }
             },
             cols: [[
-                { field: 'ID', type: 'checkbox' },
+                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: '5%' },
                 { field: 'XM', title: '姓名', width: '10%' },
                 { field: 'SFZH', title: '身份证号', width: '20%' },
                 { field: 'WCZT', title: '完成状态', width: '10%' },

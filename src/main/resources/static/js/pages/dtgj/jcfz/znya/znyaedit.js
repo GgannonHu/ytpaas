@@ -228,6 +228,7 @@ layui.config({
                         $("select").attr("disabled", "disabled");
                         form.render('select');
                         $("#nr").attr("disabled", "disabled");
+                        $("#uploadList").hide();
 
                         $("#submit").hide();
                         $("#cancle").text('确定');

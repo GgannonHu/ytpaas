@@ -27,6 +27,16 @@ layui.config({
     form.on('submit', function (data) {
         return false;
     });
+    
+    form.on('checkbox', function (data) {
+
+        var id = data.elem.id;
+        var checked = data.elem.checked;
+        if (id == 'topcheck') {
+            $("input[rid='rowCheck']").prop('checked', checked);
+            form.render('checkbox');
+        }
+    });
 
     function loadData() {
         table.render({
@@ -55,7 +65,7 @@ layui.config({
                 }
             },
             cols: [[
-                { field: 'ID', type: 'checkbox' },
+                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: '5%' },
                 { field: 'NAME', title: '名称', width: '20%' },
                 { field: 'DJ', title: '等级', width: '10%' },
                 { field: 'NR', title: '内容', width: '30%' },
