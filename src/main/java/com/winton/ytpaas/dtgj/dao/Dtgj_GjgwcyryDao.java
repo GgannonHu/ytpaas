@@ -12,9 +12,9 @@ public class Dtgj_GjgwcyryDao extends BaseJdbcTemplate {
 
     public Map<String, Object> getById(String id) {
         Map<String, Object> tmpRet = null;
-        String sql = "select t.XZQYDM,t.GJGWCYRY_DWMC,t.GJGWCYRY_QYBM,t.GJGWCYRY_GWMC,t.GJGWCYRY_GMSFZH,t.GJGWCYRY_XM,"
+        String sql = "select t.ID,m.MC MZ,t.XZQYDM,t.GJGWCYRY_DWMC,t.GJGWCYRY_QYBM,t.GJGWCYRY_GWMC,t.GJGWCYRY_GMSFZH,t.GJGWCYRY_XM,"
                 + "t.GJGWCYRY_MZDM,t.GJGWCYRY_WFFZJLMS,t.GJGWCYRY_LXDH,t.GJGWCYRY_DZMC,t.CREATE_TIME,t.XGSJ,t.ZXSJ,t.OPER_REASON,"
-                + "t.ID,t.TJR,t.TJDW,t.TJDWMC from DTGJ_TYSJ_GJGWCYRY t where t.id=?";
+                + "t.TJR,t.TJDW,t.TJDWMC from DTGJ_TYSJ_GJGWCYRY t inner join sys_xtcs m on t.gjgwcyry_mzdm=m.bm and m.cslx='MZ' where t.id=?";
         try {
             List<Map<String, Object>> model = jdbcTemplate.queryForList(
                 sql, 
