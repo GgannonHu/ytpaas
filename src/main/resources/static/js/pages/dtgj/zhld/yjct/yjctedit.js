@@ -25,6 +25,7 @@ layui.config({
         $('#uploadList').show();
         $('#pageSubmit').show();
         $('#fThZt').show();
+        $('#divFjxx').show();
     }
 
     //多文件列表示例
@@ -148,9 +149,15 @@ layui.config({
                 if (data.code == "1") {
                     var items = data.data;
                     fFileListView.find('tr.get-list').remove();
-                    for (var i = 0; i < items.length; i++) {
-                        var item = items[i];
-                        trAddData(item);
+                    if (items.length > 0) {
+                        $('#divFjxx').show();
+                        for (var i = 0; i < items.length; i++) {
+                            var item = items[i];
+                            trAddData(item);
+                        }
+                    }
+                    else if (pageType == 'sel') {
+                        $('#divFjxx').hide();
                     }
                 } else {
                     msg('数据加载失败，请重试', {
