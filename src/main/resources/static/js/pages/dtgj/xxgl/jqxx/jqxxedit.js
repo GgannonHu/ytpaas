@@ -294,13 +294,14 @@ layui.config({
                         $("#jqxx_BJR_XM").val(data.data.BJR_XM);// 姓名 
                         $("#jqxx_BJR_XBDM").val(data.data.BJR_XBDM);// 性别代码 
                         $("#jqxx_BJR_LXDH").val(data.data.BJR_LXDH);// 联系电话 
-                        $("#jqxx_BJDH").val(data.data.BJDH);// 报警电话 11
+                        $("#jqxx_BJDH").val(data.data.BJDH);// 报警电话 
                         $("#jqxx_BJSJ").val(data.data.BJSJ);// 报警时间 
                         $("#jqxx_JYJQ").val(data.data.JYJQ);// 简要警情 
                         TJR = data.data.TJR; 
                         if(TJR!=mLOGINNAME)
                         {
                             $("#btn_queding").attr("style","display:none;"); 
+                            $("#btn_quxiao").attr("style","display:none;"); 
                             $(".layui-input").attr("disabled", "disabled");
                             $(".layui-input").attr("placeholder", "");
                             // $("#form select").attr('disabled','disabled');
