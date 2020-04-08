@@ -14,7 +14,7 @@ public class Dtgj_GjgwcyryDao extends BaseJdbcTemplate {
         Map<String, Object> tmpRet = null;
         String sql = "select t.ID,m.MC MZ,t.XZQYDM,t.GJGWCYRY_DWMC,t.GJGWCYRY_QYBM,t.GJGWCYRY_GWMC,t.GJGWCYRY_GMSFZH,t.GJGWCYRY_XM,"
                 + "t.GJGWCYRY_MZDM,t.GJGWCYRY_WFFZJLMS,t.GJGWCYRY_LXDH,t.GJGWCYRY_DZMC,t.CREATE_TIME,t.XGSJ,t.ZXSJ,t.OPER_REASON,"
-                + "t.TJR,t.TJDW,t.TJDWMC from DTGJ_TYSJ_GJGWCYRY t inner join sys_xtcs m on t.gjgwcyry_mzdm=m.bm and m.cslx='MZ' where t.id=?";
+                + "t.TJR,t.TJDW,t.TJDWMC from DTGJ_TYSJ_GJGWCYRY t inner join SYS_XTCS m on t.GJGWCYRY_MZDM=m.BM and m.CSLX='MZ' where t.ID=?";
         try {
             List<Map<String, Object>> model = jdbcTemplate.queryForList(
                 sql, 
@@ -68,7 +68,7 @@ public class Dtgj_GjgwcyryDao extends BaseJdbcTemplate {
         if (vardwmc != null && vardwmc.length() > 0) {
             tmpWhere += " and GJGWCYRY_DWMC like '%" + vardwmc + "%' ";
         }
-        String tmpSql = " select COUNT(1) con from DTGJ_TYSJ_GJGWCYRY t " + tmpWhere;
+        String tmpSql = " select COUNT(1) CON from DTGJ_TYSJ_GJGWCYRY t " + tmpWhere;
         try {
             tmpRet = jdbcTemplate.queryForObject(tmpSql, Integer.class);
         } catch (Exception e) {
