@@ -108,10 +108,9 @@
                 {{ d.FK == null ? "" : (d.FK == "" ? "" : d.FKDWMC+"已反馈") }}
                 &nbsp;
                 {{# if( d.QS == 0) { }}
-                    {{# var qsdwl = d.QSDW.split(','); }}
                     {{# var qsdwmcl = d.QSDWMC.split(','); }}
-                    {{# for (var i = 0; i < qsdwl.length; i++) { }}
-                        {{# if(!new RegExp(qsdwl[i]).test(d.FKDW)) { }}
+                    {{# for (var i = 0; i < qsdwmcl.length; i++) { }}
+                        {{# if(!new RegExp(qsdwmcl[i]).test(d.FKDWMC)) { }}
                             {{ qsdwmcl[i]+"已签收" }}
                         {{# } }}
                     {{# } }}
