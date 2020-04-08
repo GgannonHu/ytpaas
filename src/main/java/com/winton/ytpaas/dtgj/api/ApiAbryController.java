@@ -80,7 +80,6 @@ public class ApiAbryController {
     @RequestMapping(value = "/getById", produces = "application/json")
     public String getAbryById(HttpServletRequest request, HttpServletResponse response) {
         Result res = dtgjAbryService.getById(request.getParameter("id"));
-        System.out.print(Tools.toJSONString(res));
         return Tools.toJSONString(res);
     }
 

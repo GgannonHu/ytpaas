@@ -73,7 +73,6 @@ public class ApiZnyaController {
     @RequestMapping(value = "/getById", produces = "application/json")
     public String getZnyaById(HttpServletRequest request, HttpServletResponse response) {
         Result res = dtgjZnyaService.getById(request.getParameter("id"));
-        System.out.print(res.toString());
         return res.toString();
     }
 

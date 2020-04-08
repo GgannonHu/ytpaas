@@ -78,7 +78,6 @@ public class ApiQwllController {
     @RequestMapping(value = "/getById", produces = "application/json")
     public String getQwllById(HttpServletRequest request, HttpServletResponse response) {
         Result res = dtgjQwllService.getById(request.getParameter("id"));
-        System.out.print(Tools.toJSONString(res));
         return Tools.toJSONString(res);
     }
 

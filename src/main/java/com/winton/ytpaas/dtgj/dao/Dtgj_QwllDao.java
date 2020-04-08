@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 public class Dtgj_QwllDao extends BaseJdbcTemplate {
 
     public Dtgj_Qwll getById(String id) {
-        String sql = "select * from DTGJ_TYSJ_QWLL where id=?";
+        String sql = "select * from DTGJ_TYSJ_QWLL where ID=?";
         try {
             Dtgj_Qwll model = jdbcTemplate.queryForObject(sql, new Object[] { id },
                     new BeanPropertyRowMapper<>(Dtgj_Qwll.class));
@@ -28,7 +28,7 @@ public class Dtgj_QwllDao extends BaseJdbcTemplate {
             String gajgjgdm) {
         List<Map<String, Object>> tmpRet = null;
 
-        String tmpWhere = " where 1=1 and gajgjgdm like '" + gajgjgdm + "%'";
+        String tmpWhere = " where 1=1 and GAJGJGDM like '" + gajgjgdm + "%'";
         if (gjgsmc.length() > 0) {
             tmpWhere += " and GJGSMC like '%" + gjgsmc + "%' ";
         }
@@ -57,7 +57,7 @@ public class Dtgj_QwllDao extends BaseJdbcTemplate {
     public int getListCount(String gjgsmc, String xm, String lxdh, String gajgjgdm) {
         int tmpRet = 0;
 
-        String tmpWhere = " where 1=1 and gajgjgdm like '" + gajgjgdm + "%'";
+        String tmpWhere = " where 1=1 and GAJGJGDM like '" + gajgjgdm + "%'";
         if (gjgsmc.length() > 0) {
             tmpWhere += " and GJGSMC like '%" + gjgsmc + "%' ";
         }
@@ -122,7 +122,7 @@ public class Dtgj_QwllDao extends BaseJdbcTemplate {
     }
 
     public boolean update(Dtgj_Qwll item) {
-        String sql = "update DTGJ_TYSJ_QWLL set dtzdbm=?,dtzdmc=?,gjxlbm=?,gjgsmc=?,qwll_xm=?,qwll_lxdh=?,qwll_jybh=?,qwlb_qwlbdm=? where id=?";
+        String sql = "update DTGJ_TYSJ_QWLL set DTZDBM=?,DTZDMC=?,GJXLBM=?,GJGSMC=?,QWLL_XM=?,QWLL_LXDH=?,QWLL_JYBH=?,QWLB_QWLBDM=? where ID=?";
         try {
             int count = jdbcTemplate.update(sql,
                     new Object[] { item.getDTZDBM(), item.getDTZDMC(), item.getGJXLBM(), item.getGJGSMC(),
@@ -137,7 +137,7 @@ public class Dtgj_QwllDao extends BaseJdbcTemplate {
 
     public boolean delete(String id) {
         id = id.contains(",") ? id.substring(0, id.length() - 1) : id;
-        String sql = "delete from DTGJ_TYSJ_QWLL where id in ('" + id.replace(",", "','") + "')";
+        String sql = "delete from DTGJ_TYSJ_QWLL where ID in ('" + id.replace(",", "','") + "')";
         try {
             int count = jdbcTemplate.update(sql, new Object[] {});
             return count > 0;

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 public class Dtgj_QwbbDao extends BaseJdbcTemplate {
 
     public Dtgj_Qwbb getById(String id) {
-        String sql = "select * from DTGJ_QT_QWBB where id=?";
+        String sql = "select * from DTGJ_QT_QWBB where ID=?";
         try {
             Dtgj_Qwbb model = jdbcTemplate.queryForObject(sql, new Object[] { id },
                     new BeanPropertyRowMapper<>(Dtgj_Qwbb.class));
@@ -30,7 +30,7 @@ public class Dtgj_QwbbDao extends BaseJdbcTemplate {
 
         String tmpWhere = " where 1=1 ";
         if (varName.length() > 0) {
-            tmpWhere += " and xm like '%" + varName + "%' ";
+            tmpWhere += " and XM like '%" + varName + "%' ";
         }
 
         if (fbsjBegin.length() > 0) {
@@ -42,7 +42,7 @@ public class Dtgj_QwbbDao extends BaseJdbcTemplate {
         }
 
         if (wczt.length() > 0) {
-            tmpWhere += " and wczt='" + wczt + "' ";
+            tmpWhere += " and WCZT='" + wczt + "' ";
         }
 
         String tmpColumn = " * ";
@@ -63,7 +63,7 @@ public class Dtgj_QwbbDao extends BaseJdbcTemplate {
 
         String tmpWhere = " where 1=1 ";
         if (varName.length() > 0) {
-            tmpWhere += " and xm like '%" + varName + "%' ";
+            tmpWhere += " and XM like '%" + varName + "%' ";
         }
 
         if (fbsjBegin.length() > 0) {
@@ -75,7 +75,7 @@ public class Dtgj_QwbbDao extends BaseJdbcTemplate {
         }
 
         if (wczt.length() > 0) {
-            tmpWhere += " and wczt='" + wczt + "' ";
+            tmpWhere += " and WCZT='" + wczt + "' ";
         }
 
         String tmpSql = " select COUNT(1) con from DTGJ_QT_QWBB " + tmpWhere;
@@ -91,7 +91,7 @@ public class Dtgj_QwbbDao extends BaseJdbcTemplate {
     }
 
     public boolean add(Dtgj_Qwbb item) {
-        String sql = "insert into DTGJ_QT_QWBB(xm,sfzh,qwnr,fbsj,wcsj,wczt,tjr,tjdw,tjdwmc) values (?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into DTGJ_QT_QWBB(XM,SFZH,QWNR,FBSJ,WCSJ,WCZT,TJR,TJDW,TJDWMC) values (?,?,?,?,?,?,?,?,?)";
         try {
             int count = jdbcTemplate.update(sql, new Object[] { item.getXM(), item.getSFZH(), item.getQWNR(),
                     item.getFBSJ(), item.getWCSJ(), item.getWCZT(), item.getTJR(), item.getTJDW(), item.getTJDWMC() });
@@ -103,7 +103,7 @@ public class Dtgj_QwbbDao extends BaseJdbcTemplate {
     }
 
     public boolean update(Dtgj_Qwbb item) {
-        String sql = "update DTGJ_QT_QWBB set xm=?,sfzh=?,qwnr=?,fbsj=?,wcsj=?,wczt=? where id=?";
+        String sql = "update DTGJ_QT_QWBB set XM=?,SFZH=?,QWNR=?,FBSJ=?,WCSJ=?,WCZT=? where ID=?";
         try {
             int count = jdbcTemplate.update(sql, new Object[] { item.getXM(), item.getSFZH(), item.getQWNR(),
                     item.getFBSJ(), item.getWCSJ(), item.getWCZT(), item.getID() });

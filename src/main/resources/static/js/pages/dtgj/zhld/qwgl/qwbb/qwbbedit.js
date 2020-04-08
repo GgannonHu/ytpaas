@@ -49,6 +49,18 @@ layui.config({
     getUserByToken();
 
     var qwbbid = $.getUrlParam("id");
+    var type = $.getUrlParam("type");
+
+    if (type == 'view') {
+        $(".layui-input").attr("disabled", "disabled");
+        $(".layui-input").attr("placeholder", "");
+        $("select").attr("disabled", "disabled");
+        form.render('select');
+        $("#qwnr").attr("disabled", "disabled");
+
+        $("#submit").hide();
+        $("#cancle").hide();
+    }
 
     if (qwbbid) {
         // $("#xm").addClass("layui-disabled");

@@ -44,7 +44,18 @@ layui.config({
         form = layui.form,
         layer = layui.layer,
         laydate = layui.laydate,
-        qwllid = $.getUrlParam("id");
+        qwllid = $.getUrlParam("id"),
+        type = $.getUrlParam("type");
+
+    if (type == 'view') {
+        $(".layui-input").attr("disabled", "disabled");
+        $(".layui-input").attr("placeholder", "");
+        $("select").attr("disabled", "disabled");
+        form.render('select');
+
+        $("#submit").hide();
+        $("#cancle").hide();
+    }
 
     getUserByToken();
 

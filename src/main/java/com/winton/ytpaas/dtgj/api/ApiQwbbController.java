@@ -72,7 +72,6 @@ public class ApiQwbbController {
     @RequestMapping(value = "/getById", produces = "application/json")
     public String getQwbbById(HttpServletRequest request, HttpServletResponse response) {
         Result res = dtgjQwbbService.getById(request.getParameter("id"));
-        System.out.print(res.toString());
         return res.toString();
     }
 

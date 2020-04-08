@@ -69,9 +69,8 @@ layui.config({
                 { field: 'XM', title: '姓名', width: '10%' },
                 { field: 'SFZH', title: '身份证号', width: '20%' },
                 { field: 'WCZT', title: '完成状态', width: '10%' },
-                { field: 'FBSJ', title: '发布时间', width: '20%' },
-                { field: 'QWNR', title: '勤务内容', width: '20%' },
-                { title: '操作', align: 'center', toolbar: '#barQwbb', width: '15%', templet: '#colNoNull' }
+                { field: 'QWNR', title: '勤务内容', width: '35%' },
+                { title: '操作', align: 'center', toolbar: '#barQwbb', width: '20%', templet: '#colNoNull' }
             ]]
         });
         //监听工具条
@@ -83,7 +82,9 @@ layui.config({
             if (layEvent == 'del') { //删除
                 deleteItem(data.ID, 'one');
             } else if (layEvent == 'edit') { //编辑
-                showEdit('upd', data.ID, data.TJR);
+                showEdit('upd', data.ID);
+            } else if (layEvent == 'view') { //查看
+                showEdit('view', data.ID);
             }
         });
     }
@@ -134,15 +135,13 @@ layui.config({
     //打开添加页面
     function showEdit(varType, varId, varTJR) {
         var tmpTitle = '添加勤务报备';
-        var tmpUrl = '/dtgj/zhld/qwgl/qwbb/edit?menuid=' + $.getUrlParam("id");
+        var tmpUrl = '/dtgj/zhld/qwgl/qwbb/edit?menuid=' + $.getUrlParam("id") + '&type=' + varType;
         if (varType == 'upd') {
-            if (varTJR == tjr) {
-                tmpTitle = '修改勤务报备';
-            } else {
-                tmpTitle = '查看勤务报备';
-            }
-            tmpUrl += ('&id=' + varId);
+            tmpTitle = '修改勤务报备';
+        } else if (varType == 'view') {
+            tmpTitle = '查看勤务报备';
         }
+        tmpUrl += ('&id=' + varId);
         //从桌面打开
         top.winui.window.open({
             id: 'editQwbb',

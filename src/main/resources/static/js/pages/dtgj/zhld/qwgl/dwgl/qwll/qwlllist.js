@@ -64,9 +64,8 @@ layui.config({
                 { field: 'GJGSMC', title: '公交公司名称', width: '20%' },
                 { field: 'QWLL_XM', title: '姓名', width: '10%' },
                 { field: 'QWLL_LXDH', title: '联系电话', width: '20%' },
-                { field: 'QWLL_JYBH', title: '警员编号', width: '10%' },
                 { field: 'QWLB_QWLBDM', title: '勤务类别代码', width: '20%' },
-                { title: '操作', align: 'center', toolbar: '#barQwll', width: '15%', templet: '#colNoNull' }
+                { title: '操作', align: 'center', toolbar: '#barQwll', width: '25%', templet: '#colNoNull' }
             ]]
         });
         //监听工具条
@@ -78,7 +77,9 @@ layui.config({
             if (layEvent == 'del') { //删除
                 deleteItem(data.ID, 'one');
             } else if (layEvent == 'edit') { //编辑
-                showEdit('upd', data.ID, data.TJR);
+                showEdit('upd', data.ID);
+            } else if (layEvent == 'view') { //查看
+                showEdit('view', data.ID);
             }
         });
     }
@@ -186,17 +187,15 @@ layui.config({
     }
 
     //打开添加页面
-    function showEdit(varType, varId, varTJR) {
+    function showEdit(varType, varId) {
         var tmpTitle = '添加勤务力量';
-        var tmpUrl = '/dtgj/zhld/qwgl/dwgl/qwll/edit?menuid=' + $.getUrlParam("id");
+        var tmpUrl = '/dtgj/zhld/qwgl/dwgl/qwll/edit?menuid=' + $.getUrlParam("id") + '&type=' + varType;
         if (varType == 'upd') {
-            if (varTJR == tjr) {
-                tmpTitle = '修改勤务力量';
-            } else {
-                tmpTitle = '查看勤务力量';
-            }
-            tmpUrl += ('&id=' + varId);
+            tmpTitle = '修改勤务力量';
+        } else if (varType == 'view') {
+            tmpTitle = '查看勤务力量';
         }
+        tmpUrl += ('&id=' + varId);
         //从桌面打开
         top.winui.window.open({
             id: 'editQwll',

@@ -58,9 +58,8 @@
     <div style="margin:auto 10px;">
         <table id="qwbb" lay-filter="qwbb"></table>
         <script type="text/html" id="barQwbb">
-            {{# if(d.TJR!=tjr){ }}
-            <a id="edit" class="layui-btn layui-btn-xs layui-btn-primary" lay-event="edit">查看</a>
-            {{# }else{  }}
+            <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="view">查看</a>
+            {{# if(d.TJR==tjr){ }}
             <a id="edit" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
             {{# }  }}
             <a id ="del" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" style="display:{{ d.TJR!=tjr ? "none" : ""  }};">删除</a>

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 public class Dtgj_ZnyaDao extends BaseJdbcTemplate {
 
     public Dtgj_Znya getById(String id) {
-        String sql = "select * from DTGJ_QT_ZNYA where id=?";
+        String sql = "select * from DTGJ_QT_ZNYA where ID=?";
         try {
             Dtgj_Znya model = jdbcTemplate.queryForObject(sql, new Object[] { id },
                     new BeanPropertyRowMapper<>(Dtgj_Znya.class));
@@ -28,11 +28,11 @@ public class Dtgj_ZnyaDao extends BaseJdbcTemplate {
 
         String tmpWhere = " where 1=1 ";
         if (varName.length() > 0) {
-            tmpWhere += " and name like '%" + varName + "%' ";
+            tmpWhere += " and NAME like '%" + varName + "%' ";
         }
 
         if (dj.length() > 0) {
-            tmpWhere += " and dj='" + dj + "' ";
+            tmpWhere += " and DJ='" + dj + "' ";
         }
 
         if (fbsjBegin.length() > 0) {
@@ -61,11 +61,11 @@ public class Dtgj_ZnyaDao extends BaseJdbcTemplate {
 
         String tmpWhere = " where 1=1 ";
         if (varName.length() > 0) {
-            tmpWhere += " and name like '%" + varName + "%' ";
+            tmpWhere += " and NAME like '%" + varName + "%' ";
         }
 
         if (dj.length() > 0) {
-            tmpWhere += " and dj='" + dj + "' ";
+            tmpWhere += " and DJ='" + dj + "' ";
         }
 
         if (fbsjBegin.length() > 0) {
@@ -89,7 +89,7 @@ public class Dtgj_ZnyaDao extends BaseJdbcTemplate {
     }
 
     public boolean add(Dtgj_Znya item) {
-        String sql = "insert into DTGJ_QT_ZNYA(id,name,dj,nr,tjr,tjdw,tjdwmc) values (?,?,?,?,?,?,?)";
+        String sql = "insert into DTGJ_QT_ZNYA(ID,NAME,DJ,NR,TJR,TJDW,TJDWMC) values (?,?,?,?,?,?,?)";
         try {
             int count = jdbcTemplate.update(sql, new Object[] { item.getID(), item.getNAME(), item.getDJ(),
                     item.getNR(), item.getTJR(), item.getTJDW(), item.getTJDWMC() });
@@ -101,7 +101,7 @@ public class Dtgj_ZnyaDao extends BaseJdbcTemplate {
     }
 
     public boolean update(Dtgj_Znya item) {
-        String sql = "update DTGJ_QT_ZNYA set name=?,dj=?,nr=? where id=?";
+        String sql = "update DTGJ_QT_ZNYA set NAME=?,DJ=?,NR=? where ID=?";
         try {
             int count = jdbcTemplate.update(sql,
                     new Object[] { item.getNAME(), item.getDJ(), item.getNR(), item.getID() });
@@ -114,7 +114,7 @@ public class Dtgj_ZnyaDao extends BaseJdbcTemplate {
 
     public boolean delete(String id) {
         id = id.contains(",") ? id.substring(0, id.length() - 1) : id;
-        String sql = "delete from DTGJ_QT_ZNYA where id in ('" + id.replace(",", "','") + "')";
+        String sql = "delete from DTGJ_QT_ZNYA where ID in ('" + id.replace(",", "','") + "')";
         try {
             int count = jdbcTemplate.update(sql, new Object[] {});
             return count > 0;

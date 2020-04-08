@@ -138,7 +138,7 @@ public class Dtgj_AbryDao extends BaseJdbcTemplate {
     }
 
     public boolean update(Dtgj_Abry item) {
-        String sql = "update DTGJ_TYSJ_ABRY set dtzdbm=?,dtzdmc=?,gjxlbm=?,abry_gmsfhm=?,abry_xm=?,abry_yddh=?,abry_zzmmdm=?,abry_mzdm=?,abry_dzmc=?,abry_dwmc=? where id=?";
+        String sql = "update DTGJ_TYSJ_ABRY set DTZDBM=?,DTZDMC=?,GJXLBM=?,ABRY_GMSFHM=?,ABRY_XM=?,ABRY_YDDH=?,ABRY_ZZMMDM=?,ABRY_MZDM=?,ABRY_DZMC=?,ABRY_DWMC=? where ID=?";
         try {
             int count = jdbcTemplate.update(sql,
                     new Object[] { item.getDTZDBM(), item.getDTZDMC(), item.getGJXLBM(), item.getABRY_GMSFHM(),
@@ -153,7 +153,7 @@ public class Dtgj_AbryDao extends BaseJdbcTemplate {
 
     public boolean delete(String id) {
         id = id.contains(",") ? id.substring(0, id.length() - 1) : id;
-        String sql = "delete from DTGJ_TYSJ_ABRY where id in ('" + id.replace(",", "','") + "')";
+        String sql = "delete from DTGJ_TYSJ_ABRY where ID in ('" + id.replace(",", "','") + "')";
         try {
             int count = jdbcTemplate.update(sql, new Object[] {});
             return count > 0;
