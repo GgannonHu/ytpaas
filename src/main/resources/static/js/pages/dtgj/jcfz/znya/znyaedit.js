@@ -218,9 +218,9 @@ layui.config({
                     $("#name").val(data.data.NAME);
                     $("#dj").val(data.data.DJ);
                     $("#nr").val(data.data.NR);
-                    $("#fbr").val(data.data.FBR);
-                    $("#fbdw").val(data.data.FBDW);
-                    $("#fbsj").val(data.data.FBSJ);
+                    $("#fbr").val(data.data.TJR);
+                    $("#fbdw").val(data.data.TJDWMC);
+                    $("#fbsj").val(data.data.TJSJ);
 
                     if (data.data.TJR != tjr) {
                         $(".layui-input").attr("disabled", "disabled");

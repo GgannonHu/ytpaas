@@ -69,7 +69,7 @@ layui.config({
                 { field: 'NAME', title: '名称', width: '20%' },
                 { field: 'DJ', title: '等级', width: '10%' },
                 { field: 'NR', title: '内容', width: '30%' },
-                { field: 'FBSJ', title: '发布时间', width: '20%' },
+                { field: 'TJSJ', title: '发布时间', width: '20%' },
                 { title: '操作', align: 'center', toolbar: '#barZnya', width: '15%', templet: '#colNoNull' }
             ]]
         });
