@@ -64,8 +64,8 @@ layui.config({
                 { field: 'ABRY_GMSFHM', title: '公民身份号码', width: '20%' },
                 { field: 'ABRY_XM', title: '姓名', width: '10%' },
                 { field: 'ABRY_YDDH', title: '移动电话', width: '15%' },
-                { field: 'ABRY_DWMC', title: '单位', width: '35%' },
-                { title: '操作', align: 'center', toolbar: '#barAbry', width: '15%', templet: '#colNoNull' }
+                { field: 'ABRY_DWMC', title: '单位', width: '30%' },
+                { title: '操作', align: 'center', toolbar: '#barAbry', width: '20%', templet: '#colNoNull' }
             ]]
         });
         //监听工具条
@@ -77,7 +77,9 @@ layui.config({
             if (layEvent == 'del') { //删除
                 deleteItem(data.ID, 'one');
             } else if (layEvent == 'edit') { //编辑
-                showEdit('upd', data.ID, data.TJR);
+                showEdit('upd', data.ID);
+            } else if (layEvent == 'view') { //查看
+                showEdit('view', data.ID);
             }
         });
     }
@@ -185,17 +187,15 @@ layui.config({
     }
 
     //打开添加页面
-    function showEdit(varType, varId, varTJR) {
+    function showEdit(varType, varId) {
         var tmpTitle = '添加安保人员';
-        var tmpUrl = '/dtgj/zhld/qwgl/dwgl/abry/edit?menuid=' + $.getUrlParam("id");
+        var tmpUrl = '/dtgj/zhld/qwgl/dwgl/abry/edit?menuid=' + $.getUrlParam("id") + '&type=' + varType;
         if (varType == 'upd') {
-            if (varTJR == tjr) {
-                tmpTitle = '修改安保人员';
-            } else {
-                tmpTitle = '查看安保人员';
-            }
-            tmpUrl += ('&id=' + varId);
+            tmpTitle = '修改安保人员';
+        } else if (varType == 'view') {
+            tmpTitle = '查看安保人员';
         }
+        tmpUrl += ('&id=' + varId);
         //从桌面打开
         top.winui.window.open({
             id: 'editAbry',

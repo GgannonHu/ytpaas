@@ -27,7 +27,7 @@ layui.config({
     form.on('submit', function (data) {
         return false;
     });
-    
+
     form.on('checkbox', function (data) {
 
         var id = data.elem.id;
@@ -68,9 +68,9 @@ layui.config({
                 { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: '5%' },
                 { field: 'NAME', title: '名称', width: '20%' },
                 { field: 'DJ', title: '等级', width: '10%' },
-                { field: 'NR', title: '内容', width: '30%' },
+                { field: 'NR', title: '内容', width: '25%' },
                 { field: 'TJSJ', title: '发布时间', width: '20%' },
-                { title: '操作', align: 'center', toolbar: '#barZnya', width: '15%', templet: '#colNoNull' }
+                { title: '操作', align: 'center', toolbar: '#barZnya', width: '20%', templet: '#colNoNull' }
             ]]
         });
         //监听工具条
@@ -82,7 +82,9 @@ layui.config({
             if (layEvent == 'del') { //删除
                 deleteItem(data.ID, 'one');
             } else if (layEvent == 'edit') { //编辑
-                showEdit('upd', data.ID, data.TJR);
+                showEdit('upd', data.ID);
+            } else if (layEvent == 'view') { //查看
+                showEdit('view', data.ID);
             }
         });
     }
@@ -131,17 +133,15 @@ layui.config({
     }
 
     //打开添加页面
-    function showEdit(varType, varId, varTJR) {
+    function showEdit(varType, varId) {
         var tmpTitle = '添加智能预案';
-        var tmpUrl = '/dtgj/jcfz/znya/edit?menuid=' + $.getUrlParam("id");
+        var tmpUrl = '/dtgj/jcfz/znya/edit?menuid=' + $.getUrlParam("id") + '&type=' + varType;
         if (varType == 'upd') {
-            if (varTJR == tjr) {
-                tmpTitle = '修改智能预案';
-            } else {
-                tmpTitle = '查看智能预案';
-            }
-            tmpUrl += ('&id=' + varId);
+            tmpTitle = '修改智能预案';
+        } else if (varType == 'view') {
+            tmpTitle = '查看智能预案';
         }
+        tmpUrl += ('&id=' + varId);
         //从桌面打开
         top.winui.window.open({
             id: 'editZnya',

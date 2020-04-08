@@ -44,7 +44,18 @@ layui.config({
         form = layui.form,
         layer = layui.layer,
         laydate = layui.laydate,
-        abryid = $.getUrlParam("id");
+        abryid = $.getUrlParam("id"),
+        type = $.getUrlParam("type");
+
+    if (type == 'view') {
+        $(".layui-input").attr("disabled", "disabled");
+        $(".layui-input").attr("placeholder", "");
+        $("select").attr("disabled", "disabled");
+        form.render('select');
+
+        $("#submit").hide();
+        $("#cancle").hide();
+    }
 
     getUserByToken();
 
@@ -157,7 +168,7 @@ layui.config({
                             $(".layui-input").attr("placeholder", "");
                             $("select").attr("disabled", "disabled");
                             form.render('select');
-                            
+
                             $("#submit").hide();
                             $("#cancle").hide();
                         }

@@ -61,11 +61,11 @@ layui.config({
             },
             cols: [[
                 { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: '5%' },
-                { field: 'GJGSMC', title: '公交公司名称', width: '20%' },
+                { field: 'GJGSMC', title: '公交公司名称', width: '25%' },
                 { field: 'QWLL_XM', title: '姓名', width: '10%' },
                 { field: 'QWLL_LXDH', title: '联系电话', width: '20%' },
                 { field: 'QWLB_QWLBDM', title: '勤务类别代码', width: '20%' },
-                { title: '操作', align: 'center', toolbar: '#barQwll', width: '25%', templet: '#colNoNull' }
+                { title: '操作', align: 'center', toolbar: '#barQwll', width: '20%', templet: '#colNoNull' }
             ]]
         });
         //监听工具条

@@ -14,7 +14,20 @@ layui.config({
         laydate = layui.laydate,
         upload = layui.upload,
         isUpd = false,
-        znyaid = $.getUrlParam("id");
+        znyaid = $.getUrlParam("id"),
+        type = $.getUrlParam("type");
+
+    if (type == 'view') {
+        $(".layui-input").attr("disabled", "disabled");
+        $(".layui-input").attr("placeholder", "");
+        $("select").attr("disabled", "disabled");
+        form.render('select');
+        $("#nr").attr("disabled", "disabled");
+        $("#uploadList").hide();
+
+        $("#submit").hide();
+        $("#cancle").hide();
+    }
 
     //多文件列表示例
     var fFileListView = $('#fileList');//文件列表
