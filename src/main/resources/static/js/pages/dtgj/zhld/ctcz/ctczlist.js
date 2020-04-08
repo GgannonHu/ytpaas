@@ -40,7 +40,7 @@ layui.config({
             url: mUrl + "/list",
             headers: { token: localStorage["token"] },
             where: mSelData,
-            height: 'full-107', //自适应高度
+            height: 'full-141', //自适应高度
             page: true,
             limits: [5, 10, 15, 20, 30, 40, 50, 100],
             limit: 5,
@@ -64,12 +64,11 @@ layui.config({
             },
             cols: [[
                 // { field: 'ID', type: 'checkbox',width: '5%' },
-                { field: 'ID', width: '5%', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow' },
-                { field: 'NAME', title: '名称', width: '10%' },
+                { field: 'ID', width: '6%', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow' },
+                { field: 'NAME', title: '名称', width: '14%' },
                 { field: 'TYPE', title: '类型', width: '10%', templet: '#tempLx' },
-                { field: 'FBDWMC', title: '发布单位', width: '10%' },
-                { field: 'FBSJ', title: '发布时间', width: '12%' },
-                { field: 'XFDWMC', title: '接收单位', width: '18%' },
+                { field: 'FBSJ', title: '发布时间', width: '15%' },
+                { field: 'XFDWMC', title: '接收单位', width: '20%' },
                 { field: 'ZT', title: '状态', width: '15%', templet: '#tempZt' },
                 { title: '操作', fixed: 'right', align: 'left', toolbar: '#barctcz', width: '20%' }
             ]]

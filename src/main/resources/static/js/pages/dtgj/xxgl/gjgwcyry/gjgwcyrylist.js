@@ -32,7 +32,7 @@ layui.config({
             url: mUrl + "/list",
             headers: { token: localStorage["token"] },
             where: mSelData,
-            height: 'full-70', //自适应高度
+            height: 'full-103', //自适应高度
             page: true,
             limits: [5, 10, 15, 20, 30, 40, 50, 100],
             limit: 5,
@@ -55,16 +55,14 @@ layui.config({
                 }
             },
             cols: [[
-                { field: 'ID', width: '5%', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow' },
+                { field: 'ID', width: '6%', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow' },
                 { field: 'GJGWCYRY_XM', title: '姓名', width: '8%' },
-                { field: 'GJGWCYRY_GMSFZH', title: '身份证号', width: '10%' },
-                { field: 'GJGWCYRY_DWMC', title: '单位名称', width: '10%' },
-                { field: 'GJGWCYRY_QYBM', title: '企业部门', width: '10%' },
-                { field: 'GJGWCYRY_GWMC', title: '岗位名称', width: '10%' },
-                { field: 'GJGWCYRY_LXDH', title: '联系电话', width: '10%' },
-                { field: 'GJGWCYRY_DZMC', title: '地址名称', width: '10%' },
-                { field: 'GJGWCYRY_WFFZJLMS', title: '违法犯罪经历描述', width: '10%' },
-                { title: '操作', fixed: 'right', align: 'center', toolbar: '#bargjgwcyry', width: '17%' }
+                { field: 'GJGWCYRY_GMSFZH', title: '身份证号', width: '14%' },
+                { field: 'GJGWCYRY_DWMC', title: '单位名称', width: '12%' },
+                { field: 'GJGWCYRY_QYBM', title: '企业部门', width: '12%' },
+                { field: 'GJGWCYRY_GWMC', title: '岗位名称', width: '12%' },
+                { field: 'GJGWCYRY_WFFZJLMS', title: '违法犯罪经历', width: '16%' },
+                { title: '操作', fixed: 'right', align: 'center', toolbar: '#bargjgwcyry', width: '20%' }
             ]]
         });
         form.on('checkbox', function (data) {
