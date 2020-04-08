@@ -51,15 +51,15 @@ layui.config({
                         return '<label id="lbgajg_' + d.ID + '"></label>';
                     }, width: '15%'
                 },
-                { field: 'DTXLDM', title: '地铁线路代码', width: '12%' },
+                { field: 'DTXLDM', title: '地铁线路代码', width: '15%' },
                 { field: 'DTZDMC', title: '地铁站点', width: '12%' },
-                { field: 'GJXLDM', title: '公交线路代码', width: '12%' },
-                { field: 'ZDRY_XM', title: '重点人姓名', width: '15%' },
+                { field: 'GJXLDM', title: '公交线路代码', width: '15%' },
+                { field: 'ZDRY_XM', title: '重点人姓名', width: '12%' },
                 { field: 'ZDRY_GMSFHM', title: '重点人身份证号' },
-                { fixed: 'right', title: '操作', align: 'center', toolbar: '#barYjct', width: 70 }
+                { title: '操作', align: 'center', toolbar: '#barYjct', width: 70 }
             ]]
         });
-
+        // fixed: 'right',
         //监听工具条
         table.on('tool(list)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data; //获得当前行数据
@@ -99,7 +99,7 @@ layui.config({
             }
         });
     }
-    
+
     function getJgMcByJgdm(varId, varJgdm) {
         var index = layer.load(1);
         $.ajax({

@@ -52,17 +52,17 @@ layui.config({
                 { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" />', toolbar: '#barSelRow', width: 50 },
                 {
                     field: 'XZQHDM', title: '行政区划', templet: function (d) {
-                        getCsmcByBm('lbxzqh_' + d.ID,'XZQH', d.XZQHDM);
+                        getCsmcByBm('lbxzqh_' + d.ID, 'XZQH', d.XZQHDM);
                         return '<label id="lbxzqh_' + d.ID + '"></label>';
                     }, width: '15%'
                 },
                 { field: 'GJXLBM', title: '线路编码', width: '15%' },
                 { field: 'GJZDBM', title: '站点编码', width: '15%' },
                 { field: 'GJZDMC', title: '站点名称' },
-                { fixed: 'right', title: '操作', align: 'center', toolbar: '#barYjct', width: 170 }
+                { title: '操作', align: 'center', toolbar: '#barYjct', width: 170 }
             ]]
         });
-
+        //fixed: 'right',
         form.on('checkbox', function (data) {
             var id = data.elem.id;
             var checked = data.elem.checked;
@@ -198,7 +198,7 @@ layui.config({
             top.winui.window.msg('请选择一条数据', {
                 time: 1000
             });
-        }else{
+        } else {
             deleteItem(ids, 'all');
         }
     }

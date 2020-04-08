@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="layui-input-inline">
-                    &nbsp;内容
+                    &nbsp;内容：
                     <div class="layui-input-inline">
                         <input id="txt_nr" name="txt_nr" class="layui-input" style="width: 160px;"
                             placeholder="请输入内容" />
@@ -37,8 +37,8 @@
                     </div>
                 </div>
                 <div class="layui-input-inline">
-                        &nbsp;类型
-                    <div class="layui-input-inline">
+                        &nbsp;类型：
+                    <div class="layui-input-inline" style="width: 160px;">
                         <select id="ddl_lx" name="ddl_lx" lay-filter="ddl_lx">
                             <option value="">全部</option>
                             <option value="2">应急处突</option>
@@ -81,11 +81,11 @@
         </div><div style="margin:auto 10px;">
             <table id="list" lay-filter="list"></table>
             <script type="text/html" id="barctcz">
+                <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="look">查看</a>
                 {{# if(d.DQYH==d.FBR) { }}
                     <a class="layui-btn layui-btn-xs" style="display:{{ d.QS == 0 ? "none" : "" }};" lay-event="edit">编辑</a>
                     <a class="layui-btn layui-btn-danger layui-btn-xs" style="display:{{ d.QS == 0 ? "none" : "" }};" lay-event="del">删除</a>
                 {{# } }}
-                <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="look">查看</a>
                 {{# var patt1 = new RegExp(d.DQDW); }}
                 {{# if(patt1.test(d.XFDW)) { }}
                     {{# if(patt1.test(d.QSDW)) { }}
@@ -108,10 +108,9 @@
                 {{ d.FK == null ? "" : (d.FK == "" ? "" : d.FKDWMC+"已反馈") }}
                 &nbsp;
                 {{# if( d.QS == 0) { }}
-                    {{# var qsdwl = d.QSDW.split(','); }}
                     {{# var qsdwmcl = d.QSDWMC.split(','); }}
-                    {{# for (var i = 0; i < qsdwl.length; i++) { }}
-                        {{# if(!new RegExp(qsdwl[i]).test(d.FKDW)) { }}
+                    {{# for (var i = 0; i < qsdwmcl.length; i++) { }}
+                        {{# if(!new RegExp(qsdwmcl[i]).test(d.FKDWMC)) { }}
                             {{ qsdwmcl[i]+"已签收" }}
                         {{# } }}
                     {{# } }}

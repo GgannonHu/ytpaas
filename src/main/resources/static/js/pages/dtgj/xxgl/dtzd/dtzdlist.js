@@ -51,7 +51,7 @@ layui.config({
                 { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" />', toolbar: '#barSelRow', width: 50 },
                 {
                     field: 'XZQHDM', title: '行政区划', templet: function (d) {
-                        getCsmcByBm('lbxzqh_' + d.ID,'XZQH', d.XZQHDM);
+                        getCsmcByBm('lbxzqh_' + d.ID, 'XZQH', d.XZQHDM);
                         return '<label id="lbxzqh_' + d.ID + '"></label>';
                     }, width: '15%'
                 },
@@ -59,10 +59,10 @@ layui.config({
                 { field: 'DTZDBM', title: '站点编码', width: '15%' },
                 { field: 'DTZDMC', title: '站点名称' },
                 { field: 'SDPCSMC', title: '属地派出所', width: '15%' },
-                { fixed: 'right', title: '操作', align: 'center', toolbar: '#barYjct', width: 170 }
+                { title: '操作', align: 'center', toolbar: '#barYjct', width: 170 }
             ]]
         });
-
+        //fixed: 'right',
         form.on('checkbox', function (data) {
             var id = data.elem.id;
             var checked = data.elem.checked;
@@ -198,7 +198,7 @@ layui.config({
             top.winui.window.msg('请选择一条数据', {
                 time: 1000
             });
-        }else{
+        } else {
             deleteItem(ids, 'all');
         }
     }

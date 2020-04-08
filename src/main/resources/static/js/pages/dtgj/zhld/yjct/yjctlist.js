@@ -12,7 +12,7 @@ layui.config({
     winui.renderColor();
 
     var table = layui.table;
-    var $ = layui.$; 
+    var $ = layui.$;
     var form = layui.form;
     //var laypage = layui.laypage;
     var tableId = 'tableid';
@@ -47,12 +47,12 @@ layui.config({
             },
             cols: [[
                 { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" />', toolbar: '#barSelRow', width: 50 },
-                { field: 'NAME', title: '名称', width: '10%' },
+                { field: 'NAME', title: '名称', width: '20%' },
                 { field: 'NR', title: '内容', templet: '#colNoNull' },
-                { fixed: 'right', title: '操作', align: 'center', toolbar: '#barYjct', width: 210 }
+                { title: '操作', align: 'center', toolbar: '#barYjct', width: 210 }
             ]]
         });
-
+        //fixed: 'right',
         form.on('checkbox', function (data) {
             var id = data.elem.id;
             var checked = data.elem.checked;
@@ -137,8 +137,8 @@ layui.config({
         });
     }
 
-     //打开添加页面
-     function showXf( varId) {
+    //打开添加页面
+    function showXf(varId) {
         var tmpTitle = '下发信息';
         var tmpUrl = '/dtgj/zhld/yjct/xf?menuid=' + $.getUrlParam("id") + '&id=' + varId;
 
@@ -202,7 +202,7 @@ layui.config({
             top.winui.window.msg('请选择一条数据', {
                 time: 1000
             });
-        }else{
+        } else {
             deleteItem(ids, 'all');
         }
     }

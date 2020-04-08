@@ -49,7 +49,7 @@ layui.config({
                 { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" />', toolbar: '#barSelRow', width: 50 },
                 {
                     field: 'XZQHDM', title: '行政区划', templet: function (d) {
-                        getCsmcByBm('lbxzqh_' + d.ID,'XZQH', d.XZQHDM);
+                        getCsmcByBm('lbxzqh_' + d.ID, 'XZQH', d.XZQHDM);
                         return '<label id="lbxzqh_' + d.ID + '"></label>';
                     }, width: '15%'
                 },
@@ -57,10 +57,10 @@ layui.config({
                 { field: 'DTXLMC', title: '线路名称' },
                 { field: 'DTXLQDZ', title: '起点站', width: '12%' },
                 { field: 'DTXLZDZ', title: '终点站', width: '12%' },
-                { fixed: 'right', title: '操作', align: 'center', toolbar: '#barYjct', width: 220 }
+                { title: '操作', align: 'center', toolbar: '#barYjct', width: 220 }
             ]]
         });
-
+        //fixed: 'right',
         form.on('checkbox', function (data) {
             var id = data.elem.id;
             var checked = data.elem.checked;
