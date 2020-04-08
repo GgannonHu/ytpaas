@@ -1,6 +1,5 @@
 package com.winton.ytpaas.dtgj.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Repository;
 public class Dtgj_YswpDao extends BaseJdbcTemplate {
 
     public Dtgj_Yswp getById(String id) {
-        String sql = "select t.id,t.mc,t.ms,t.sqdd,t.zt,t.tjr,t.tjdw,t.tjsj,t.rlr,t.rlrsfzh,t.rlsj,t.sqsj from dtgj_qt_yswp t where t.id=?";
+        String sql = "select t.ID,t.MC,t.MS,t.SQDD,t.ZT,t.TJR,t.TJDW,t.TJSJ,t.RLR,t.RLRSFZH,t.RLSJ,t.SQSJ from DTGJ_QT_YSWP t where t.ID=?";
         try {
             Dtgj_Yswp model = jdbcTemplate.queryForObject(
                 sql, 
@@ -27,28 +26,13 @@ public class Dtgj_YswpDao extends BaseJdbcTemplate {
         }
         return null;
     }
-    
-    public List<Dtgj_Yswp> getAll() {
-        List<Dtgj_Yswp> list = new ArrayList<Dtgj_Yswp>();
-        String sql = "select t.id,t.mc,t.ms,t.sqdd,t.zt,t.tjr,t.tjdw,t.tjsj,t.rlr,t.rlrsfzh,t.rlsj,t.sqsj from dtgj_qt_yswp t";
-        try {
-            list = jdbcTemplate.query(
-                sql, 
-                new BeanPropertyRowMapper<>(Dtgj_Yswp.class)
-            );
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return list;
-    }
 
     public List<Map<String, Object>> getList(String varuser,String varZt,String varMc,String varMs,String varSqdd,String varSqsjS,String varSqsjE, String varBegCon, String varEndCon) {
         List<Map<String, Object>> tmpRet = null;
 
         String tmpWhere = " where 1=1 ";
         if (varZt != null && varZt.length() > 0) {
-            tmpWhere += " and zt ='" + varZt + "' ";
+            tmpWhere += " and ZT ='" + varZt + "' ";
         }
         if (varMc != null && varMc.length() > 0) {
             tmpWhere += " and MC like '%" + varMc + "%' ";
@@ -81,7 +65,7 @@ public class Dtgj_YswpDao extends BaseJdbcTemplate {
         int tmpRet = 0;
         String tmpWhere = " where 1=1 ";
         if (varZt != null && varZt.length() > 0) {
-            tmpWhere += " and zt ='" + varZt + "' ";
+            tmpWhere += " and ZT ='" + varZt + "' ";
         }
         if (varMc != null && varMc.length() > 0) {
             tmpWhere += " and MC like '%" + varMc + "%' ";
@@ -132,7 +116,7 @@ public class Dtgj_YswpDao extends BaseJdbcTemplate {
     }
 
     public boolean update(Dtgj_Yswp item) {
-        String sql = "update dtgj_qt_yswp set mc=?,ms=?,sqdd=?,sqsj=? where id=?";
+        String sql = "update dtgj_qt_yswp set MC=?,MS=?,SQDD=?,SQSJ=? where ID=?";
         try {
             int count = jdbcTemplate.update(
                 sql, 
@@ -152,7 +136,7 @@ public class Dtgj_YswpDao extends BaseJdbcTemplate {
     }
 
     public boolean rl(Dtgj_Yswp item) {
-        String sql = "update dtgj_qt_yswp set rlr=?,rlrsfzh=?,zt=?,rlsj=sysdate where id=?";
+        String sql = "update DTGJ_QT_YSWP set RLR=?,RLRSFZH=?,ZT=?,RLSJ=sysdate where ID=?";
         try {
             int count = jdbcTemplate.update(
                 sql, 
@@ -172,7 +156,7 @@ public class Dtgj_YswpDao extends BaseJdbcTemplate {
     
     public boolean delete(String id) {
         id = id.contains(",") ? id.substring(0, id.length() - 1) : id;
-        String sql = "delete from dtgj_qt_yswp  where zt not in ('已认领') and id in ('" + id.replace(",", "','") + "')";
+        String sql = "delete from DTGJ_QT_YSWP  where ZT not in ('已认领') and ID in ('" + id.replace(",", "','") + "')";
         try {
             int count = jdbcTemplate.update(
                 sql, 

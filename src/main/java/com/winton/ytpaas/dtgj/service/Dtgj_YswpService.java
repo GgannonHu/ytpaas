@@ -22,13 +22,6 @@ public class Dtgj_YswpService {
         res.setData(dao.getById(id));
         return res;
     }
-
-    public Result getAll() {
-        Result res = new Result();
-        res.setCode("1");
-        res.setData(dao.getAll());
-        return res;
-    }
     
     public JSONObject getList(String varuser,String varZt,String varMc,String varMs,String varSqdd,String varSqsjS,String varSqsjE, int varPage, int varLimit, int varIsCon) {
         JSONObject tmpRet = new JSONObject();
