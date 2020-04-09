@@ -69,8 +69,8 @@ layui.config({
                 { field: 'XM', title: '姓名', width: '10%' },
                 { field: 'SFZH', title: '身份证号', width: '20%' },
                 { field: 'WCZT', title: '完成状态', width: '10%' },
-                { field: 'QWNR', title: '勤务内容', width: '35%' },
-                { title: '操作', align: 'center', toolbar: '#barQwbb', width: '20%', templet: '#colNoNull' }
+                { field: 'QWNR', title: '勤务内容', width: '40%' },
+                { title: '操作', toolbar: '#barQwbb', width: '15%', templet: '#colNoNull' }
             ]]
         });
         //监听工具条
