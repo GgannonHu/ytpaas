@@ -40,7 +40,7 @@ layui.config({
             url: api + "list",
             headers: { token: localStorage["token"] },
             where: mSelData,
-            height: 'full-110', //自适应高度
+            height: 'full-115', //自适应高度
             page: true,
             limits: [5, 10, 15, 20, 30, 40, 50, 100],
             limit: 5,
@@ -60,11 +60,11 @@ layui.config({
                 }
             },
             cols: [[
-                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: '5%' },
+                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: '6%' },
                 { field: 'ABRY_GMSFHM', title: '公民身份号码', width: '20%' },
                 { field: 'ABRY_XM', title: '姓名', width: '10%' },
                 { field: 'ABRY_YDDH', title: '移动电话', width: '15%' },
-                { field: 'ABRY_DWMC', title: '单位', width: '35%' },
+                { field: 'ABRY_DWMC', title: '单位' },
                 { title: '操作', toolbar: '#barAbry', width: '15%', templet: '#colNoNull' }
             ]]
         });
