@@ -14,6 +14,7 @@ layui.config({
     var ffkListView = $('#fkList');//反馈列表
     //获取文件列表
     function getFileData() {
+        $("#div_fj").hide();
         var index = layer.load(1);
         $.ajax({
             type: 'get',
@@ -25,10 +26,13 @@ layui.config({
                 layer.close(index);
                 if (data.code == "1") {
                     var items = data.data;
-                    fFileListView.find('tr.get-list').remove();
-                    for (var i = 0; i < items.length; i++) {
-                        var item = items[i];
-                        trAddData(item);
+                    if (items.length > 0) {
+                        $("#div_fj").show();
+                        fFileListView.find('tr.get-list').remove();
+                        for (var i = 0; i < items.length; i++) {
+                            var item = items[i];
+                            trAddData(item);
+                        }
                     }
                 } else {
                     msg('数据加载失败，请重试', {
