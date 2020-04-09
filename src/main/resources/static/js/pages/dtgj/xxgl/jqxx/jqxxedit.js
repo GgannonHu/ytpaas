@@ -14,6 +14,7 @@ layui.config({
         var upload = layui.upload;
         var isUpd = false;
         var jqxxid = $.getUrlParam("id");
+        var jqxxtype = $.getUrlParam("type");
     //时间
     laydate.render({
         elem: '#jqxx_BJSJ'
@@ -297,8 +298,8 @@ layui.config({
                         $("#jqxx_BJDH").val(data.data.BJDH);// 报警电话 
                         $("#jqxx_BJSJ").val(data.data.BJSJ);// 报警时间 
                         $("#jqxx_JYJQ").val(data.data.JYJQ);// 简要警情 
-                        TJR = data.data.TJR; 
-                        if(TJR!=mLOGINNAME)
+                        TJR = data.data.TJR;  
+                        if(jqxxtype == "view")
                         {
                             $("#btn_queding").attr("style","display:none;"); 
                             $("#btn_quxiao").attr("style","display:none;"); 

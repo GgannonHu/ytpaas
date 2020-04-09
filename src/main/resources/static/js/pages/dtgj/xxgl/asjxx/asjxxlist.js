@@ -55,22 +55,19 @@ layui.config({
                 }
             },
             cols: [[
-                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: 50 },
+                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: '5%' },                 
                  
                 // { field: 'GAJGJGDM', title: '公安机关机构代码', width: '10%' },
                 // { field: 'DTZDBM', title: '地铁站点编码', width: '13%' },
-                { field: 'DTZDMC', title: '地铁站点名称', width: '10%' },
+                { field: 'DTZDMC', title: '地铁站点名称', width: '12%' },
                 // { field: 'GJXLBM', title: '公交线路编码', width: '12%' },
-                { field: 'GJGSMC', title: '公交公司名称', width: '10%' },
+                { field: 'GJGSMC', title: '公交公司名称', width: '13%' },
                 { field: 'AJBH', title: '案件编号', width: '10%' },
-                { field: 'AJLB', title: '案件类别', width: '12%'},
-                { field: 'AJMC', title: '案件名称', width: '12%'},
-                { field: 'JYAQ', title: '简要案情', width: '12%' },
-                { field: 'ASJFSKSSJ', title: '案事件发生开始时间', width: '12%' },
-                { field: 'AFDD', title: '案发地点', width: '12%' },
-                { field: 'SFCS', title: '事发场所', width: '12%' },
-                { field: 'SSXQ', title: '所属辖区', width: '12%' }, 
-                { title: '操作', fixed: 'right', align: 'center', toolbar: '#baryswp', width: '18%' }
+                { field: 'AJLB', title: '案件类别', width: '10%'},
+                { field: 'AJMC', title: '案件名称', width: '10%'},
+                { field: 'ASJFSKSSJ', title: '发生时间', width: '10%' },
+                { field: 'AFDD', title: '案发地点', width: '10%' },
+                { title: '操作', align: 'center', toolbar: '#baryswp', width: '20%', templet: '#colNoNull' } 
             ]]
         });
         //监听工具条
@@ -83,17 +80,8 @@ layui.config({
                 deleteItem(data.ID, 'one');
             } else if (layEvent === 'edit') { //编辑
                 showEdit('upd', data.ID,data.TJR);
-            } else if (layEvent === 'rl') { //认领
-                var index = layer.load(1);
-                layer.close(index);
-                //从桌面打开
-                top.winui.window.open({
-                    id: 'rlYswp',
-                    type: 2,
-                    title: '认领物品信息',
-                    content: '/dtgj/bmfw/yswp/yswprl?id=' + data.ID + '&menuid=' + $.getUrlParam("id"),
-                    maxOpen: true
-                });
+            } else if (layEvent == 'view') { //查看
+                showEdit('view', data.ID);
             }
         });
     }
@@ -166,17 +154,19 @@ layui.config({
     }
     //打开编辑页面
     function showEdit(varType, varId,varTJR) {
-        var tmpTitle = '添加信息';
-        var tmpUrl = '/dtgj/xxgl/asjxx/asjxxedit?menuid=' + $.getUrlParam("id");
-        if (varType == 'upd') {
-            if (varTJR == mLOGINNAME){
-                tmpTitle = '修改信息';
-            }else{
-                tmpTitle = '查看信息';
-            }
-           
-            tmpUrl += ('&id=' + varId);
+       
+        var tmpUrl = '/dtgj/xxgl/asjxx/asjxxedit?menuid=' + $.getUrlParam("id") +'&type='+varType;
+        var tmpTitle = '添加信息'; 
+        if(varType == "upd")
+        {
+        var tmpTitle = '修改信息';
+        tmpUrl += ('&id=' + varId);
         }
+        if(varType == "view")
+        {
+        var tmpTitle = '查看信息';
+        tmpUrl += ('&id=' + varId);
+        }         
         //从桌面打开
         top.winui.window.open({
             id: 'editYswp',
