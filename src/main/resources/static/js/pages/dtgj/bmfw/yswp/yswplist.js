@@ -61,7 +61,7 @@ layui.config({
                 { field: 'SQDD', title: '拾取地点', width: '14%' },
                 { field: 'SQSJ', title: '拾取时间', width: '15%' },
                 { field: 'ZT', title: '状态', width: '10%', templet: '#tempZt' },
-                { title: '操作', fixed: 'right', align: 'center', toolbar: '#baryswp', width: '25%' }
+                { title: '操作', fixed: 'right', align: 'left', toolbar: '#baryswp', width: '25%' }
             ]]
         });
         form.on('checkbox', function (data) {

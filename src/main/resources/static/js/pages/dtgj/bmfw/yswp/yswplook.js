@@ -56,7 +56,8 @@ layui.config({
             '<td>' + item.NAME + '</td>',
             '<td>' + (item.FJDX / 1024).toFixed(1) + 'kb</td>',
             '<td>',
-            '<a target="_blank" class="layui-btn layui-btn-xs layui-btn-danger " href="/dtgj/fjxx/filedownload?mc=' + item.NAME + '&dz=' + item.FJDZ + '" >下载</a>',
+            // '<a target="_blank" class="layui-btn layui-btn-xs layui-btn-danger " href="/dtgj/fjxx/filedownload?mc=' + item.NAME + '&dz=' + item.FJDZ + '" >下载</a>',
+            '<a target="_blank" class="layui-btn layui-btn-normal layui-btn-xs" title="下载" href="/dtgj/fjxx/filedownload?mc=' + item.NAME + '&dz=' + item.FJDZ + '" ><i class="fa fa-download"></i></a>',
             '</td>',
             '</tr>'].join(''));
         fFileListView.append(tr);

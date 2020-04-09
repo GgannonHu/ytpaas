@@ -62,7 +62,7 @@ layui.config({
                 { field: 'GJGWCYRY_QYBM', title: '企业部门', width: '12%' },
                 { field: 'GJGWCYRY_GWMC', title: '岗位名称', width: '12%' },
                 { field: 'GJGWCYRY_WFFZJLMS', title: '违法犯罪经历', width: '16%' },
-                { title: '操作', fixed: 'right', align: 'center', toolbar: '#bargjgwcyry', width: '20%' }
+                { title: '操作', fixed: 'right', align: 'left', toolbar: '#bargjgwcyry', width: '20%' }
             ]]
         });
         form.on('checkbox', function (data) {
