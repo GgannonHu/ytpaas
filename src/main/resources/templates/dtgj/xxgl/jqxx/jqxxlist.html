@@ -59,14 +59,12 @@
         </div>
         <div style="margin:auto 10px;">
             <table id="list" lay-filter="list"></table>
-            <script type="text/html" id="baryswp"> 
-                {{# if(d.TJR!=mLOGINNAME){ }}
-                <a id="edit" class="layui-btn layui-btn-xs layui-btn-primary" lay-event="edit">查看</ a>
-                {{# }else{  }}
-                <a id="edit" class="layui-btn layui-btn-xs" lay-event="edit">编辑</ a>
-                {{# }  }}          
-                
-                <a class="layui-btn layui-btn-danger layui-btn-xs" style="display:{{ mLOGINNAME != d.TJR ? "none" : ""  }};"   lay-event="del">删除</a>
+            <script type="text/html" id="baryswp">  
+                <a class="layui-btn layui-btn-xs" lay-event="info" title="查看详细"><i class="fa fa-share"></i></a>
+                <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="edit" title="编辑" style="display:{{ mLOGINNAME != d.TJR ? "none" : ""  }};"><i class="fa fa-pencil"></i></a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" title="删除" style="display:{{ mLOGINNAME != d.TJR ? "none" : ""  }};"><i class="fa fa-trash-o"></i></a>
+
+ 
             </script> 
         </div>
     <script src="/js/core/layui/layui.js"></script>  
