@@ -59,7 +59,7 @@ layui.config({
                  
                 // { field: 'GAJGJGDM', title: '公安机关机构代码', width: '10%' },
                 // { field: 'DTZDBM', title: '地铁站点编码', width: '13%' },
-                { field: 'DTZDMC', title: '地铁站点名称', width: '17%' },
+                { field: 'DTZDMC', title: '地铁站点名称', width: '17.5%' },
                 // { field: 'GJXLBM', title: '公交线路编码', width: '12%' },
                 { field: 'GJGSMC', title: '公交公司名称', width: '13%' },
                 { field: 'AJBH', title: '案件编号', width: '10%' },
