@@ -64,8 +64,8 @@ layui.config({
                 { field: 'ABRY_GMSFHM', title: '公民身份号码', width: '20%' },
                 { field: 'ABRY_XM', title: '姓名', width: '10%' },
                 { field: 'ABRY_YDDH', title: '移动电话', width: '15%' },
-                { field: 'ABRY_DWMC', title: '单位', width: '30%' },
-                { title: '操作', align: 'center', toolbar: '#barAbry', width: '20%', templet: '#colNoNull' }
+                { field: 'ABRY_DWMC', title: '单位', width: '35%' },
+                { title: '操作', toolbar: '#barAbry', width: '15%', templet: '#colNoNull' }
             ]]
         });
         //监听工具条

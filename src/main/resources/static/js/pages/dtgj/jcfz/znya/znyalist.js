@@ -68,9 +68,9 @@ layui.config({
                 { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: '5%' },
                 { field: 'NAME', title: '名称', width: '20%' },
                 { field: 'DJ', title: '等级', width: '10%' },
-                { field: 'NR', title: '内容', width: '25%' },
+                { field: 'NR', title: '内容', width: '30%' },
                 { field: 'TJSJ', title: '发布时间', width: '20%' },
-                { title: '操作', align: 'center', toolbar: '#barZnya', width: '20%', templet: '#colNoNull' }
+                { title: '操作', toolbar: '#barZnya', width: '15%', templet: '#colNoNull' }
             ]]
         });
         //监听工具条

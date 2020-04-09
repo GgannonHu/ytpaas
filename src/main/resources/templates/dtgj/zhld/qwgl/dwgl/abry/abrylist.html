@@ -64,11 +64,11 @@
     <div style="margin:auto 10px;">
         <table id="abry" lay-filter="abry"></table>
         <script type="text/html" id="barAbry">
-            <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="view">查看</a>
+            <a class="layui-btn layui-btn-xs" lay-event="view" title="查看详细"><i class="fa fa-share"></i></a>
             {{# if(d.TJR==tjr){ }}
-            <a id="edit" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="edit" title="编辑"><i class="fa fa-pencil"></i></a>
             {{# }  }}
-            <a id ="del" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" style="display:{{ d.TJR!=tjr ? "none" : ""  }};">删除</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" title="删除" style="display:{{ d.TJR!=tjr ? "none" : ""  }};"><i class="fa fa-trash-o"></i></a>
         </script>
     </div>
     <script src="/js/core/layui/layui.js"></script>
