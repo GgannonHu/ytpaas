@@ -57,12 +57,12 @@ layui.config({
             cols: [[
                 { field: 'ID', width: '6%', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow' },
                 { field: 'GJGWCYRY_XM', title: '姓名', width: '8%' },
-                { field: 'GJGWCYRY_GMSFZH', title: '身份证号', width: '14%' },
+                { field: 'GJGWCYRY_GMSFZH', title: '身份证号', width: '15%' },
                 { field: 'GJGWCYRY_DWMC', title: '单位名称', width: '12%' },
                 { field: 'GJGWCYRY_QYBM', title: '企业部门', width: '12%' },
                 { field: 'GJGWCYRY_GWMC', title: '岗位名称', width: '12%' },
-                { field: 'GJGWCYRY_WFFZJLMS', title: '违法犯罪经历', width: '16%' },
-                { title: '操作', fixed: 'right', align: 'left', toolbar: '#bargjgwcyry', width: '20%' }
+                { field: 'GJGWCYRY_WFFZJLMS', title: '违法犯罪经历', width: '20%' },
+                { title: '操作', fixed: 'right', align: 'left', toolbar: '#bargjgwcyry', width: '15%' }
             ]]
         });
         form.on('checkbox', function (data) {
