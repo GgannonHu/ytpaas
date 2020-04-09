@@ -64,15 +64,12 @@ public class Dtgj_CtczDao extends BaseJdbcTemplate {
         return tmpRet;
     }
 
-    public List<Map<String, Object>> getList(String vardwdm,String varuser, String varmc, String varnr, String varlx, String varqs, String varfk,
+    public List<Map<String, Object>> getList(String vardwdm,String varuser, String varmc, String varlx, String varqs, String varfk,
             String varfbsjS, String varfbsjE, String varBegCon, String varEndCon) {
         List<Map<String, Object>> tmpRet = null;
         String tmpWhere = " where 1=1 and (t.FBDW='" + vardwdm + "' or t.XFDW like '%" + vardwdm + "%') ";
         if (varmc != null && varmc.length() > 0) {
             tmpWhere += " and t.NAME ='" + varmc + "' ";
-        }
-        if (varnr != null && varnr.length() > 0) {
-            tmpWhere += " and t.NR like '%" + varnr + "%' ";
         }
         if (varlx != null && varlx.length() > 0) {
             tmpWhere += " AND t.TYPE=" + varlx + " ";
@@ -81,7 +78,7 @@ public class Dtgj_CtczDao extends BaseJdbcTemplate {
             if (varqs.equals("0"))
                 tmpWhere += " AND (q.QSDW like '%" + vardwdm + "%' or (t.QS=0 and t.FBDW = '" + vardwdm + "')) ";
             else
-                tmpWhere += " AND (q.QSDW not like '%" + vardwdm + "%' or t.QS=1) ";
+                tmpWhere += " AND ((q.QSDW not like '%" + vardwdm + "%' and t.XFDW like '%" + vardwdm + "%') or t.QS=1) ";
         }
         if (varfk != null && varfk.length() > 0) {
             if (varfk.equals("1")) {
@@ -111,15 +108,12 @@ public class Dtgj_CtczDao extends BaseJdbcTemplate {
         return tmpRet;
     }
 
-    public int getCon(String vardwdm,String varuser, String varmc, String varnr, String varlx, String varqs, String varfk, String varfbsjS,
+    public int getCon(String vardwdm,String varuser, String varmc, String varlx, String varqs, String varfk, String varfbsjS,
             String varfbsjE) {
         int tmpRet = 0;
         String tmpWhere = " where 1=1 and (t.FBDW='" + vardwdm + "' or t.XFDW like '%" + vardwdm + "%') ";
         if (varmc != null && varmc.length() > 0) {
             tmpWhere += " and t.NAME ='" + varmc + "' ";
-        }
-        if (varnr != null && varnr.length() > 0) {
-            tmpWhere += " and t.NR like '%" + varnr + "%' ";
         }
         if (varlx != null && varlx.length() > 0) {
             tmpWhere += " AND t.TYPE=" + varlx + " ";
@@ -128,7 +122,7 @@ public class Dtgj_CtczDao extends BaseJdbcTemplate {
             if (varqs.equals("0"))
                 tmpWhere += " AND (q.QSDW like '%" + vardwdm + "%' or (t.QS=0 and t.FBDW = '" + vardwdm + "')) ";
             else
-                tmpWhere += " AND (q.QSDW not like '%" + vardwdm + "%' or t.QS=1) ";
+                tmpWhere += " AND ((q.QSDW not like '%" + vardwdm + "%' and t.XFDW like '%" + vardwdm + "%') or t.QS=1) ";
         }
         if (varfk != null && varfk.length() > 0) {
             if (varfk.equals("1")) {

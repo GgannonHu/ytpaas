@@ -46,13 +46,13 @@ public class ApiCtczController {
         String dwdm = request.getParameter("dwdm");
         String user = request.getParameter("user");
         String mc = request.getParameter("mc");
-        String nr = request.getParameter("nr");
+        // String nr = request.getParameter("nr");
         String lx = request.getParameter("lx");
         String qs = request.getParameter("qs");
         String fk = request.getParameter("fk");
         String fbsjS = request.getParameter("fbsjS");
         String fbsjE = request.getParameter("fbsjE");
-        JSONObject res = dtgjCtczService.getList(dwdm,user,mc, nr, lx, qs, fk, fbsjS, fbsjE, page, limit, iscon);
+        JSONObject res = dtgjCtczService.getList(dwdm,user,mc, lx, qs, fk, fbsjS, fbsjE, page, limit, iscon);
         if (iscon != 1) {
             res.put("count", count);
         }
@@ -66,13 +66,13 @@ public class ApiCtczController {
         String dwdm = request.getParameter("dwdm");
         String user = request.getParameter("user");
         String mc = request.getParameter("mc");
-        String nr = request.getParameter("nr");
+        // String nr = request.getParameter("nr");
         String lx = request.getParameter("lx");
         String qs = request.getParameter("qs");
         String fk = request.getParameter("fk");
         String fbsjS = request.getParameter("fbsjS");
         String fbsjE = request.getParameter("fbsjE");
-        JSONObject res = dtgjCtczService.getListcon(dwdm,user,mc, nr, lx, qs, fk, fbsjS, fbsjE);
+        JSONObject res = dtgjCtczService.getListcon(dwdm,user,mc, lx, qs, fk, fbsjS, fbsjE);
         String retStr = Tools.toJSONString(res);
         return retStr;
     }

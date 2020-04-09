@@ -32,7 +32,7 @@ layui.config({
             url: mUrl + "/list",
             headers: { token: localStorage["token"] },
             where: mSelData,
-            height: 'full-107', //自适应高度
+            height: 'full-106', //自适应高度
             page: true,
             limits: [5, 10, 15, 20, 30, 40, 50, 100],
             limit: 5,
