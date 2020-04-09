@@ -64,13 +64,13 @@ layui.config({
             },
             cols: [[
                 // { field: 'ID', type: 'checkbox',width: '5%' },
-                { field: 'ID', unresize: true , width: 48, title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow' },
-                { field: 'NAME', unresize: true , title: '任务名称', width: '14%' },
-                { field: 'TYPE', unresize: true , title: '任务类型', width: '10%', templet: '#tempLx' },
-                { field: 'FBSJ', unresize: true , title: '发布时间', width: '15%' },
-                { field: 'XFDWMC', unresize: true , title: '接收单位', width: '20%' },
-                { field: 'ZT', unresize: true , title: '状态', templet: '#tempZt' },
-                { title: '操作', unresize: true , toolbar: '#barctcz', width: 125 }//, fixed: 'right'
+                { field: 'ID', width: 48, title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow' },
+                { field: 'NAME', title: '任务名称', width: '14%' },
+                { field: 'TYPE', title: '任务类型', width: '10%', templet: '#tempLx' },
+                { field: 'FBSJ', title: '发布时间', width: '15%' },
+                { field: 'XFDWMC', title: '接收单位', width: '20%' },
+                { field: 'ZT', title: '状态', templet: '#tempZt' },
+                { title: '操作', toolbar: '#barctcz', width: 125 }//, fixed: 'right'
             ]]
         });
         form.on('checkbox', function (data) {
