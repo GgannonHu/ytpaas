@@ -69,7 +69,7 @@ layui.config({
                     field: 'JQLBDM', title: '警情类别', templet: function (d) {
                         getCsmcByBm('jqlb_' + d.ID, 'XB', d.JQLBDM);
                         return '<label id="jqlb_' + d.ID + '"></label>';
-                    }, width: '17%'
+                    }, width: '17.5%'
                 },
                 { field: 'BJR_XM', title: '姓名', width: '10%' }, //姓名 
                 // { field: 'BJR_XBDM', title: '性别代码', width: '10%' }, //性别代码 
