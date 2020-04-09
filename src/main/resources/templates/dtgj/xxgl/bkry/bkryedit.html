@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>详情信息</title>
+    <link href="/js/core/layui/css/layui.css" rel="stylesheet" />
+    <link href="/js/core/animate/animate.min.css" rel="stylesheet" />
+    <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div style="width:700px;margin:0 auto;padding-top:20px;">
+        <form class="layui-form layui-form-pane" lay-filter="addForm" action="">
+            <!--
+            <div class="layui-form-item">
+                <label class="layui-form-label">列名</label>
+                <div class="layui-input-block">
+                    <input id="id" name="name" placeholder="请输入" type="text" class="layui-input" win-verify="required"
+                        min="0" autocomplete="off" />
+                </div>
+            </div>
+            -->
+            <div class="layui-form-item">
+                <label class="layui-form-label">姓名</label>
+                <div class="layui-input-block">
+                    <input id="name" name="name" placeholder="请输入姓名" type="text" class="layui-input" min="0"
+                        autocomplete="off" win-verify="required" />
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">身份证号</label>
+                <div class="layui-input-block">
+                    <input id="idcard" name="idcard" placeholder="请输入身份证号" type="text" class="layui-input" min="0"
+                        autocomplete="off" win-verify="required" />
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">布控内容</label>
+                <div class="layui-input-block">
+                    <input id="bknr" name="bknr" placeholder="请输入布控内容" type="text" class="layui-input" min="0"
+                        autocomplete="off" win-verify="required" />
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">照片信息</label><a  class="winui-toolbtn"><i class="fa fa-plus"></i></a>
+                <div class="layui-input-block">
+                    
+                    <div id="test1" style="width: 200px;height: 250px;">
+                        <img class="layui-upload-img" src="" style="width: auto; height: 100%;" id="demo1">
+                    </div>
+                    <input id="picture" name="picture" style="display: none;" placeholder="请输入照片地址" type="text"
+                        class="layui-input" min="0" autocomplete="off" win-verify="required" />
+                </div>
+            </div>
+
+
+
+
+            <div id="pageSubmit" style="display: none;" class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="winui-btn" lay-submit lay-filter="formEditMenu">确定</button>
+                    <button class="winui-btn" onclick="top.winui.window.close('edit   '); return false;">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <script src="/js/core/layui/layui.js"></script>
+
+    <script type="text/javascript">
+        layui.config({
+            base: '/js/pages/dtgj/xxgl/bkry/'
+        }).use('bkryedit');
+
+    </script>
+</body>
+
+</html>

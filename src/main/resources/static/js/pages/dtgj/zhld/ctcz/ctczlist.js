@@ -40,7 +40,7 @@ layui.config({
             url: mUrl + "/list",
             headers: { token: localStorage["token"] },
             where: mSelData,
-            height: 'full-141', //自适应高度
+            height: 'full-106', //自适应高度
             page: true,
             limits: [5, 10, 15, 20, 30, 40, 50, 100],
             limit: 5,
@@ -65,8 +65,8 @@ layui.config({
             cols: [[
                 // { field: 'ID', type: 'checkbox',width: '5%' },
                 { field: 'ID', width: 48, title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow' },
-                { field: 'NAME', title: '名称', width: '14%' },
-                { field: 'TYPE', title: '类型', width: '10%', templet: '#tempLx' },
+                { field: 'NAME', title: '任务名称', width: '14%' },
+                { field: 'TYPE', title: '任务类型', width: '10%', templet: '#tempLx' },
                 { field: 'FBSJ', title: '发布时间', width: '15%' },
                 { field: 'XFDWMC', title: '接收单位', width: '20%' },
                 { field: 'ZT', title: '状态', templet: '#tempZt' },
@@ -172,7 +172,7 @@ layui.config({
     function searchTable() {
         mCurr = 1;
         mSelData.mc = $('#txt_mc').val();
-        mSelData.nr = $('#txt_nr').val();
+        // mSelData.nr = $('#txt_nr').val();
         mSelData.lx = $('#ddl_lx').val();
         mSelData.qs = $('#ddl_qs').val();
         mSelData.fk = $('#ddl_fk').val();

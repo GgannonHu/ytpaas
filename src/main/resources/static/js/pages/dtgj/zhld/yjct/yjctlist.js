@@ -46,10 +46,10 @@ layui.config({
                 }
             },
             cols: [[
-                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" />', toolbar: '#barSelRow', width: 50 },
+                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" />', toolbar: '#barSelRow', width: 48 },
                 { field: 'NAME', title: '名称', width: '20%' },
                 { field: 'NR', title: '内容', templet: '#colNoNull' },
-                { title: '操作', align: 'center', toolbar: '#barYjct', width: 210 }
+                { title: '操作', toolbar: '#barYjct', width: 163 }
             ]]
         });
         //fixed: 'right',
