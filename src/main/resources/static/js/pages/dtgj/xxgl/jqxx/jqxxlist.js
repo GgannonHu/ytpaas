@@ -69,7 +69,7 @@ layui.config({
                     field: 'JQLBDM', title: '警情类别', templet: function (d) {
                         getCsmcByBm('jqlb_' + d.ID, 'XB', d.JQLBDM);
                         return '<label id="jqlb_' + d.ID + '"></label>';
-                    }, width: '12%'
+                    }, width: '17%'
                 },
                 { field: 'BJR_XM', title: '姓名', width: '10%' }, //姓名 
                 // { field: 'BJR_XBDM', title: '性别代码', width: '10%' }, //性别代码 
@@ -77,7 +77,7 @@ layui.config({
                 { field: 'BJDH', title: '报警电话', width: '10%' }, //报警电话 
                 { field: 'BJSJ', title: '报警时间', width: '11%' }, //报警时间 
                 // { field: 'JYJQ', title: '简要警情', width: '10%' },// 简要警情 
-                { title: '操作', align: 'center', toolbar: '#baryswp', width: '20%', templet: '#colNoNull' } 
+                { title: '操作', toolbar: '#baryswp', width: '15%', templet: '#colNoNull' } 
             ]]
         });
         //监听工具条
