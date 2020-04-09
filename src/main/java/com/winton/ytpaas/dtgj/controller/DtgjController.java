@@ -76,10 +76,12 @@ public class DtgjController {
     public String yswpedit() {
         return "/dtgj/bmfw/yswp/yswpedit";
     }
+
     @RequestMapping("/dtgj/bmfw/yswp/yswplook")
     public String yswplook() {
         return "/dtgj/bmfw/yswp/yswplook";
     }
+
     @RequestMapping("/dtgj/bmfw/yswp/yswprl")
     public String yswprl() {
         return "/dtgj/bmfw/yswp/yswprl";
@@ -209,14 +211,24 @@ public class DtgjController {
         return response;
     }
 
-
-    //重点人员预警
+    // 重点人员预警
     @RequestMapping("/dtgj/yjgz/zdryyj/list")
     public String zdryyjlist() {
         return "/dtgj/yjgz/zdryyj/zdryyjlist";
     }
+
     @RequestMapping("/dtgj/yjgz/zdryyj/sel")
     public String zdryyjsel() {
         return "/dtgj/yjgz/zdryyj/zdryyjsel";
+    }
+
+    @RequestMapping("/dtgj/xxgl/bkry/list")
+    public String bkrylist() {
+        return "/dtgj/xxgl/bkry/bkrylist";
+    }
+
+    @RequestMapping("/dtgj/xxgl/bkry/edit")
+    public String bkryedit() {
+        return "/dtgj/xxgl/bkry/bkryedit";
     }
 }

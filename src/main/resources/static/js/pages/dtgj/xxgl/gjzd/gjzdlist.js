@@ -49,7 +49,7 @@ layui.config({
                 }
             },
             cols: [[
-                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" />', toolbar: '#barSelRow', width: 50 },
+                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" />', toolbar: '#barSelRow', width: 48 },
                 {
                     field: 'XZQHDM', title: '行政区划', templet: function (d) {
                         getCsmcByBm('lbxzqh_' + d.ID, 'XZQH', d.XZQHDM);
@@ -59,7 +59,7 @@ layui.config({
                 { field: 'GJXLBM', title: '线路编码', width: '15%' },
                 { field: 'GJZDBM', title: '站点编码', width: '15%' },
                 { field: 'GJZDMC', title: '站点名称' },
-                { title: '操作', align: 'center', toolbar: '#barYjct', width: 170 }
+                { title: '操作', toolbar: '#barYjct', width: 125 }
             ]]
         });
         //fixed: 'right',

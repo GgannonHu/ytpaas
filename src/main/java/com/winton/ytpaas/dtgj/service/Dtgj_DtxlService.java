@@ -52,8 +52,7 @@ public class Dtgj_DtxlService {
                 res.setCode("-1");
                 res.setMsg("添加失败");
             }
-        }else
-        {
+        } else {
             res.setCode("-1");
             res.setMsg("已存在的线路编码信息,请勿重复添加!");
         }
@@ -83,6 +82,14 @@ public class Dtgj_DtxlService {
             res.setCode("-1");
             res.setMsg("删除失败");
         }
+        return res;
+    }
+
+    public Result GetMcByBm(String varXlbm) {
+        Result res = new Result();
+        String tmpItem = dao.GetMcByBm(varXlbm);
+        res.setCode("1");
+        res.setData(tmpItem);
         return res;
     }
 }
