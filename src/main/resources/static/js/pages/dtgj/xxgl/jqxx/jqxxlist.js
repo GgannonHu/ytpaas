@@ -64,7 +64,13 @@ layui.config({
                 { field: 'DTZDMC', title: '地铁站点名称', width: '12%' }, //地铁站点名称 
                 // { field: 'GJXLDM', title: '公交线路代码', width: '10%' }, //公交线路代码 
                 { field: 'JJBH', title: '接警编号', width: '10%' }, //接警编号  
-                { field: 'JQLBDM', title: '警情类别代码', width: '12%' }, //警情类别代码 
+                // { field: 'JQLBDM', title: '警情类别代码', width: '12%' }, //警情类别代码 
+                {
+                    field: 'JQLBDM', title: '警情类别', templet: function (d) {
+                        getCsmcByBm('jqlb_' + d.ID, 'XB', d.JQLBDM);
+                        return '<label id="jqlb_' + d.ID + '"></label>';
+                    }, width: '12%'
+                },
                 { field: 'BJR_XM', title: '姓名', width: '10%' }, //姓名 
                 // { field: 'BJR_XBDM', title: '性别代码', width: '10%' }, //性别代码 
                 { field: 'BJR_LXDH', title: '联系电话', width: '10%' }, //联系电话 
@@ -98,6 +104,20 @@ layui.config({
                 form.render('checkbox');
             }
         });
+function getCsmcByBm(varId, varTid, varBm) {
+    var index = layer.load(1);
+    $.ajax({
+        type: 'get',
+        url: '/api/dtgj/com/getcsmcbybm',
+        headers: { token: localStorage["token"] },
+        data: { tid: varTid, bm: varBm },
+        dataType: 'json',
+        success: function (data) {
+            layer.close(index);
+            $('#' + varId).html(data.data);
+        }
+    });
+}
     //初始化用户信息
     function getUserByToken() {
         $.ajax({
