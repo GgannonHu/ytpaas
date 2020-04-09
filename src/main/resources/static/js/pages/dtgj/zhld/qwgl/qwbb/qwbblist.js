@@ -45,7 +45,7 @@ layui.config({
             url: api + "list",
             headers: { token: localStorage["token"] },
             where: mSelData,
-            height: 'full-105', //自适应高度
+            height: 'full-115', //自适应高度
             page: true,
             limits: [5, 10, 15, 20, 30, 40, 50, 100],
             limit: 5,
@@ -65,11 +65,11 @@ layui.config({
                 }
             },
             cols: [[
-                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: '5%' },
+                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: '6%' },
                 { field: 'XM', title: '姓名', width: '10%' },
                 { field: 'SFZH', title: '身份证号', width: '20%' },
                 { field: 'WCZT', title: '完成状态', width: '10%' },
-                { field: 'QWNR', title: '勤务内容', width: '40%' },
+                { field: 'QWNR', title: '勤务内容'},
                 { title: '操作', toolbar: '#barQwbb', width: '15%', templet: '#colNoNull' }
             ]]
         });
