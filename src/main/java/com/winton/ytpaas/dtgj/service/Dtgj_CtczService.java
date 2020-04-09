@@ -43,21 +43,21 @@ public class Dtgj_CtczService {
     }
 
 
-    public JSONObject getList(String vardwdm,String varuser, String varmc, String varnr, String varlx, String varqs, String varfk, String varfbsjS, String varfbsjE, int varPage, int varLimit, int varIsCon) {
+    public JSONObject getList(String vardwdm,String varuser, String varmc, String varlx, String varqs, String varfk, String varfbsjS, String varfbsjE, int varPage, int varLimit, int varIsCon) {
         JSONObject tmpRet = new JSONObject();
         String tmpBegCon = String.valueOf((varPage - 1) * varLimit + 1);
         String tmpEndCon = String.valueOf(varPage * varLimit);
-        tmpRet.put("data", dao.getList(vardwdm,varuser,varmc, varnr, varlx, varqs, varfk, varfbsjS, varfbsjE, tmpBegCon, tmpEndCon));
+        tmpRet.put("data", dao.getList(vardwdm,varuser,varmc, varlx, varqs, varfk, varfbsjS, varfbsjE, tmpBegCon, tmpEndCon));
         if (varIsCon == 1) {
-            tmpRet.put("count", dao.getCon(vardwdm,varuser,varmc, varnr, varlx, varqs, varfk, varfbsjS, varfbsjE));
+            tmpRet.put("count", dao.getCon(vardwdm,varuser,varmc, varlx, varqs, varfk, varfbsjS, varfbsjE));
         }
         tmpRet.put("code", "1");
         return tmpRet;
     }
     
-    public JSONObject getListcon(String vardwdm,String varuser, String varmc, String varnr, String varlx, String varqs, String varfk, String varfbsjS, String varfbsjE) {
+    public JSONObject getListcon(String vardwdm,String varuser, String varmc, String varlx, String varqs, String varfk, String varfbsjS, String varfbsjE) {
         JSONObject tmpRet = new JSONObject();
-        tmpRet.put("count", dao.getCon(vardwdm,varuser,varmc, varnr, varlx, varqs, varfk, varfbsjS, varfbsjE));
+        tmpRet.put("count", dao.getCon(vardwdm,varuser,varmc, varlx, varqs, varfk, varfbsjS, varfbsjE));
         tmpRet.put("code", "1");
         return tmpRet;
     }

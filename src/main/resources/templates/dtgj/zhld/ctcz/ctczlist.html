@@ -13,19 +13,19 @@
             <div class="winui-tool layui-inline">
                 <form class="layui-form">
                 <div class="layui-input-inline">
-                    &nbsp;名称：
+                    &nbsp;任务名称：
                     <div class="layui-input-inline">
                         <input id="txt_mc" name="txt_mc" class="layui-input" style="width: 160px;"
-                            placeholder="请输入名称" />
+                            placeholder="请输入任务名称" />
                     </div>
                 </div>
-                <div class="layui-input-inline">
-                    &nbsp;内容：
+                <!-- <div class="layui-input-inline">
+                    &nbsp;任务内容：
                     <div class="layui-input-inline">
                         <input id="txt_nr" name="txt_nr" class="layui-input" style="width: 160px;"
                             placeholder="请输入内容" />
                     </div>
-                </div>
+                </div> -->
                 <div class="layui-input-inline">
                         &nbsp;发布时间：
                     <div class="layui-input-inline">
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="layui-input-inline">
-                        &nbsp;类型：
+                        &nbsp;任务类型：
                     <div class="layui-input-inline" style="width: 160px;">
                         <select id="ddl_lx" name="ddl_lx" lay-filter="ddl_lx">
                             <option value="">全部</option>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="layui-input-inline">
-                        &nbsp;状态：
+                        &nbsp;签收状态：
                     <div class="layui-input-inline" style="width: 160px;">
                         <select id="ddl_qs" name="ddl_qs" lay-filter="ddl_qs">
                             <option value="">全部</option>
@@ -55,6 +55,9 @@
                             <option value="1">未签收</option>
                         </select>
                     </div>
+                </div>
+                <div class="layui-input-inline">
+                        &nbsp;反馈状态：
                     <div class="layui-input-inline" style="width: 160px;">
                         <select id="ddl_fk" name="ddl_fk" lay-filter="ddl_fk">
                             <option value="">全部</option>
@@ -81,18 +84,24 @@
         </div><div style="margin:auto 10px;">
             <table id="list" lay-filter="list"></table>
             <script type="text/html" id="barctcz">
-                <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="look">查看</a>
+                <!-- <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="look">查看</a> -->
+                <a class="layui-btn layui-btn-xs" lay-event="look" title="查看详细"><i class="fa fa-share"></i></a>
                 {{# if(d.DQYH==d.FBR) { }}
-                    <a class="layui-btn layui-btn-xs" style="display:{{ d.QS == 0 ? "none" : "" }};" lay-event="edit">编辑</a>
-                    <a class="layui-btn layui-btn-danger layui-btn-xs" style="display:{{ d.QS == 0 ? "none" : "" }};" lay-event="del">删除</a>
+                    <!-- <a class="layui-btn layui-btn-xs" style="display:{{ d.QS == 0 ? "none" : "" }};" lay-event="edit">编辑</a> -->
+                    <a class="layui-btn layui-btn-warm layui-btn-xs" style="display:{{ d.QS == 0 ? "none" : "" }};" lay-event="edit" title="编辑"><i class="fa fa-pencil"></i></a>
+                    <!-- <a class="layui-btn layui-btn-danger layui-btn-xs" style="display:{{ d.QS == 0 ? "none" : "" }};" lay-event="del">删除</a> -->
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" style="display:{{ d.QS == 0 ? "none" : "" }};" lay-event="del" title="删除"><i class="fa fa-trash-o"></i></a>
                 {{# } }}
                 {{# var patt1 = new RegExp(d.DQDW); }}
                 {{# if(patt1.test(d.XFDW)) { }}
                     {{# if(patt1.test(d.QSDW)) { }}
-                    <a class="layui-btn layui-btn-xs" style="display:none;" lay-event="xf">下发</a>
-                    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="fk">反馈</a>
+                    <!-- <a class="layui-btn layui-btn-xs" style="display:none;" lay-event="xf">下发</a> -->
+                    <a class="layui-btn layui-btn-normal layui-btn-xs" style="display:none;" lay-event="xf" title="下发"><i class="fa fa-angle-double-down"></i></a>
+                    <!-- <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="fk">反馈</a> -->
+                    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="fk" title="反馈"><i class="fa fa-pencil-square-o"></i></a>
                     {{# } else { }}
-                    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="qs">签收</a>
+                    <!-- <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="qs">签收</a> -->
+                    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="qs" title="签收"><i class="fa fa-pencil-square-o"></i></a>
                     {{# } }}
                 {{# } }}
             </script>
@@ -105,8 +114,8 @@
                 {{ d.TYPE == 1 ? "常态处置" : (d.TYPE == 2 ? "应急处突" : "") }}
             </script>
             <script type="text/html" id="tempZt">
-                {{ d.FK == null ? "" : (d.FK == "" ? "" : d.FKDWMC+"已反馈") }}
-                &nbsp;
+                {{ d.FK == null ? "" : (d.FK == "" ? "" : d.FKDWMC+"已反馈&nbsp;") }}
+                
                 {{# if( d.QS == 0) { }}
                     {{# var qsdwmcl = d.QSDWMC.split(','); }}
                     {{# for (var i = 0; i < qsdwmcl.length; i++) { }}

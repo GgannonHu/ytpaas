@@ -14,6 +14,7 @@ layui.config({
         var upload = layui.upload;
         var isUpd = false;
         var Asjxxid = $.getUrlParam("id");
+        var Asjxxtype = $.getUrlParam("type");
     //时间
     laydate.render({
         elem: '#asjxx_ASJFSKSSJ'
@@ -230,12 +231,14 @@ layui.config({
                         $("#asjxx_SFCS").val(data.data.SFCS);//  sfcs        事发场所
                         $("#asjxx_SSXQ").val(data.data.SSXQ);//  ssxq        所属辖区 
                         TJR = data.data.TJR;
-                        if(TJR!=mLOGINNAME)
+                        if(Asjxxtype=="view")
                         {
                             $("#btn_queding").attr("style","display:none;"); 
                             $("#btn_quxiao").attr("style","display:none;"); 
                             $(".layui-input").attr("disabled", "disabled");
                             $(".layui-input").attr("placeholder", "");
+                            $(".layui-textarea").attr("disabled", "disabled");
+                            $(".layui-textarea").attr("placeholder", "");
                             // $("#form select").attr('disabled','disabled');
                             $("select").attr("disabled", "disabled");
                             form.render('select'); 

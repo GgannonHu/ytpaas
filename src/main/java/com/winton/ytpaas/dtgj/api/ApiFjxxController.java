@@ -51,7 +51,7 @@ public class ApiFjxxController {
         try {
             String urltop = request.getParameter("urltop");
             String pid = request.getParameter("pid");
-            File f = new File("/Users/Gg@/Java/YTPAASUPLOADS/" + urltop + pid);
+            File f = new File("/YTPAASUPLOADS/" + urltop + pid);
             if (!f.exists()) {
                 f.mkdirs();
             }

@@ -56,23 +56,28 @@ layui.config({
                     reloadTableAll();
                 }
             },
-            cols: [[
-                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: 50 },                   
+            cols: [[ 
 
-                
+
+                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: '5%' },                 
                 // { field: 'DTZDDM', title: '地铁站点代码', width: '10%' },  //地铁站点代码 
-                { field: 'DTZDMC', title: '地铁站点名称', width: '10%' }, //地铁站点名称 
+                { field: 'DTZDMC', title: '地铁站点名称', width: '12%' }, //地铁站点名称 
                 // { field: 'GJXLDM', title: '公交线路代码', width: '10%' }, //公交线路代码 
-                { field: 'JJBH', title: '接警编号', width: '10%' }, //接警编号 
-                { field: 'BJFSDM', title: '报警方式代码', width: '10%' }, //报警方式代码 
-                { field: 'JQLBDM', title: '警情类别代码', width: '10%' }, //警情类别代码 
+                { field: 'JJBH', title: '接警编号', width: '10%' }, //接警编号  
+                // { field: 'JQLBDM', title: '警情类别代码', width: '12%' }, //警情类别代码 
+                {
+                    field: 'JQLBDM', title: '警情类别', templet: function (d) {
+                        getCsmcByBm('jqlb_' + d.ID, 'XB', d.JQLBDM);
+                        return '<label id="jqlb_' + d.ID + '"></label>';
+                    }, width: '17.5%'
+                },
                 { field: 'BJR_XM', title: '姓名', width: '10%' }, //姓名 
-                { field: 'BJR_XBDM', title: '性别代码', width: '10%' }, //性别代码 
+                // { field: 'BJR_XBDM', title: '性别代码', width: '10%' }, //性别代码 
                 { field: 'BJR_LXDH', title: '联系电话', width: '10%' }, //联系电话 
                 { field: 'BJDH', title: '报警电话', width: '10%' }, //报警电话 
-                { field: 'BJSJ', title: '报警时间', width: '10%' }, //报警时间 
-                { field: 'JYJQ', title: '简要警情', width: '10%' },// 简要警情 
-                { title: '操作', fixed: 'right', align: 'center', toolbar: '#baryswp', width: '18%' }
+                { field: 'BJSJ', title: '报警时间', width: '11%' }, //报警时间 
+                // { field: 'JYJQ', title: '简要警情', width: '10%' },// 简要警情 
+                { title: '操作', toolbar: '#baryswp', width: '15%', templet: '#colNoNull' } 
             ]]
         });
         //监听工具条
@@ -85,17 +90,8 @@ layui.config({
                 deleteItem(data.ID, 'one');
             } else if (layEvent === 'edit') { //编辑
                 showEdit('upd', data.ID,data.TJR);
-            } else if (layEvent === 'rl') { //认领
-                var index = layer.load(1);
-                layer.close(index);
-                //从桌面打开
-                top.winui.window.open({
-                    id: 'rlYswp',
-                    type: 2,
-                    title: '认领物品信息',
-                    content: '/dtgj/bmfw/yswp/yswprl?id=' + data.ID + '&menuid=' + $.getUrlParam("id"),
-                    maxOpen: true
-                });
+            } else if (layEvent == 'info') { //查看
+                showEdit('view', data.ID);
             }
         });
     }
@@ -108,6 +104,20 @@ layui.config({
                 form.render('checkbox');
             }
         });
+function getCsmcByBm(varId, varTid, varBm) {
+    var index = layer.load(1);
+    $.ajax({
+        type: 'get',
+        url: '/api/dtgj/com/getcsmcbybm',
+        headers: { token: localStorage["token"] },
+        data: { tid: varTid, bm: varBm },
+        dataType: 'json',
+        success: function (data) {
+            layer.close(index);
+            $('#' + varId).html(data.data);
+        }
+    });
+}
     //初始化用户信息
     function getUserByToken() {
         $.ajax({
@@ -167,17 +177,20 @@ layui.config({
     }
     //打开编辑页面
     function showEdit(varType, varId,varTJR) {
-        var tmpTitle = '添加信息';
-        var tmpUrl = '/dtgj/xxgl/jqxx/jqxxedit?menuid=' + $.getUrlParam("id");
-        if (varType == 'upd') {
-            if (varTJR == mLOGINNAME){
-                tmpTitle = '修改信息';
-            }else{
-                tmpTitle = '查看信息';
-            }
-           
-            tmpUrl += ('&id=' + varId);
+        
+        
+        var tmpUrl = '/dtgj/xxgl/jqxx/jqxxedit?menuid=' + $.getUrlParam("id") +'&type='+varType;
+        var tmpTitle = '添加信息'; 
+        if(varType == "upd")
+        {
+        var tmpTitle = '修改信息';
+        tmpUrl += ('&id=' + varId);
         }
+        if(varType == "view")
+        {
+        var tmpTitle = '查看信息';
+        tmpUrl += ('&id=' + varId);
+        }         
         //从桌面打开
         top.winui.window.open({
             id: 'editYswp',
