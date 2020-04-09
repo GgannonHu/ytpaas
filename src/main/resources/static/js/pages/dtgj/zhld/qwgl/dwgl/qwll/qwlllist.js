@@ -40,7 +40,7 @@ layui.config({
             url: api + "list",
             headers: { token: localStorage["token"] },
             where: mSelData,
-            height: 'full-115', //自适应高度
+            height: 'full-104', //自适应高度
             page: true,
             limits: [5, 10, 15, 20, 30, 40, 50, 100],
             limit: 5,
@@ -260,7 +260,9 @@ layui.config({
     }
 
     //绑定按钮事件
-    $('#addQwll').on('click', showEdit);
+    $('#addQwll').on('click', function () {
+        showEdit('add', '');
+    });
     $('#deleteQwll').on('click', deleteItemAll);
     $('#reloadTable').on('click', reloadTable);
     $('#searchMenu').on('click', searchTable);
