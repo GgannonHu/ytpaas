@@ -69,8 +69,8 @@ layui.config({
                 { field: 'TYPE', title: '类型', width: '10%', templet: '#tempLx' },
                 { field: 'FBSJ', title: '发布时间', width: '15%' },
                 { field: 'XFDWMC', title: '接收单位', width: '20%' },
-                { field: 'ZT', title: '状态', width: '15%', templet: '#tempZt' },
-                { title: '操作', fixed: 'right', align: 'left', toolbar: '#barctcz', width: '20%' }
+                { field: 'ZT', title: '状态', width: '20%', templet: '#tempZt' },
+                { title: '操作', fixed: 'right', align: 'left', toolbar: '#barctcz', width: '15%' }
             ]]
         });
         form.on('checkbox', function (data) {

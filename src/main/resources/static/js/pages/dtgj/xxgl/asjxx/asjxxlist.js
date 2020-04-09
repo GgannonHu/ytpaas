@@ -59,7 +59,7 @@ layui.config({
                  
                 // { field: 'GAJGJGDM', title: '公安机关机构代码', width: '10%' },
                 // { field: 'DTZDBM', title: '地铁站点编码', width: '13%' },
-                { field: 'DTZDMC', title: '地铁站点名称', width: '12%' },
+                { field: 'DTZDMC', title: '地铁站点名称', width: '17%' },
                 // { field: 'GJXLBM', title: '公交线路编码', width: '12%' },
                 { field: 'GJGSMC', title: '公交公司名称', width: '13%' },
                 { field: 'AJBH', title: '案件编号', width: '10%' },
@@ -67,7 +67,7 @@ layui.config({
                 { field: 'AJMC', title: '案件名称', width: '10%'},
                 { field: 'ASJFSKSSJ', title: '发生时间', width: '10%' },
                 { field: 'AFDD', title: '案发地点', width: '10%' },
-                { title: '操作', align: 'center', toolbar: '#baryswp', width: '20%', templet: '#colNoNull' } 
+                { title: '操作',   toolbar: '#baryswp', width: '15%', templet: '#colNoNull' } 
             ]]
         });
         //监听工具条
