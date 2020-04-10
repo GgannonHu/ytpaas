@@ -48,20 +48,49 @@ layui.config({
                 }
             },
             cols: [[
-                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" />', toolbar: '#barSelRow', width: 48 },
                 {
-                    field: 'XZQHDM', title: '行政区划', templet: function (d) {
-                        getCsmcByBm('lbxzqh_' + d.ID, 'XZQH', d.XZQHDM);
-                        return '<label id="lbxzqh_' + d.ID + '"></label>';
-                    }, width: '15%'
+                    field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" />'
+                    , templet: colCheck, width: 48
                 },
+                { field: 'XZQHDM', title: '行政区划', templet: colXZQHDM, width: '15%' },
                 { field: 'DTXLBM', title: '线路编码', width: '15%' },
                 { field: 'DTZDBM', title: '站点编码', width: '15%' },
                 { field: 'DTZDMC', title: '站点名称' },
                 { field: 'SDPCSMC', title: '属地派出所', width: '15%' },
-                { title: '操作', toolbar: '#barYjct', width: 125 }
+                { title: '操作', templet: cloCZ, width: 125 }
             ]]
         });
+
+        function colXZQHDM(d) {
+            getCsmcByBm('lbxzqh_' + d.ID, 'XZQH', d.XZQHDM);
+            return '<label id="lbxzqh_' + d.ID + '"></label>';
+        }
+
+        function colCheck(d) {
+            var tmpRet = '';
+            if (d.TJR == mLOGINNAME) {
+                var tmpId = 'rowCheck_' + d.ID;
+                tmpRet += '<div id="' + tmpId + '" style="display:none">';
+                tmpRet += '<input rid="rowCheck" value="{{d.ID}}"  type="checkbox" lay-skin="primary" />';
+                tmpRet += '</div>';
+                setIsDelByBm(tmpId, d.DTXLBH);
+            }
+            return tmpRet;
+        }
+
+        function cloCZ(d) {
+            var tmpRet = '';
+            tmpRet += '<a class="layui-btn layui-btn-xs" lay-event="sel" title="查看详细" ><i class="fa fa-share"></i></a>';
+
+            if (d.TJR == mLOGINNAME) {
+                var tmpId = 'btbtnsc_' + d.ID;
+                tmpRet += '<a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="edit" title="编辑" ><i class="fa fa-pencil"></i></a>';
+                tmpRet += '<a id="' + tmpId + '" style="display:none" class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del" title="删除" ><i class="fa fa-trash-o"></i></a>';
+                setIsDelByBm(tmpId, d.DTXLBH);
+            }
+            return tmpRet;
+        }
+
         //fixed: 'right',
         form.on('checkbox', function (data) {
             var id = data.elem.id;
@@ -229,6 +258,26 @@ layui.config({
             success: function (data) {
                 layer.close(index);
                 $('#' + varId).html(data.data);
+            }
+        });
+    }
+
+    function setIsDelByBm(varId, varBm) {
+        var index = layer.load(1);
+        $.ajax({
+            type: 'get',
+            url: '/api/dtgj/xxgl/dtzd/getisdelbybm',
+            headers: { token: localStorage["token"] },
+            data: { bm: varBm },
+            dataType: 'json',
+            success: function (data) {
+                layer.close(index);
+                if (data.data == '1') {
+                    $('#' + varId).remove();
+                } else {
+                    $('#' + varId).show();
+                }
+
             }
         });
     }

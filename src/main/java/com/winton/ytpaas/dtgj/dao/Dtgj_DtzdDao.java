@@ -7,7 +7,7 @@ import com.winton.ytpaas.common.datasource.BaseJdbcTemplate;
 
 import org.springframework.stereotype.Repository;
 
-@Repository 
+@Repository
 public class Dtgj_DtzdDao extends BaseJdbcTemplate {
 
     public List<Map<String, Object>> getList(Map<String, String> varSelTj, String varBegCon, String varEndCon) {
@@ -23,7 +23,8 @@ public class Dtgj_DtzdDao extends BaseJdbcTemplate {
         }
 
         String tmpColums = " t.* ";
-        //tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM ) where rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
+        // tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM
+        // ) where rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
         String tmpTable = " DTGJ_DTZS_DTZDXX t ";
         String tmpOrder = " order by CREATE_TIME desc ";
 
@@ -78,7 +79,8 @@ public class Dtgj_DtzdDao extends BaseJdbcTemplate {
 
         String tmpWhere = " where ID = '" + varId + "' ";
         String tmpColums = " t.* ";
-        //tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM ) where  rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
+        // tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM
+        // ) where rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
         String tmpTable = " DTGJ_DTZS_DTZDXX t ";
         String tmpSql = " select  " + tmpColums + " from " + tmpTable + tmpWhere;
 
@@ -142,5 +144,21 @@ public class Dtgj_DtzdDao extends BaseJdbcTemplate {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public String GetIsDelByBm(String varBm) {
+        String tmpRet = "0";
+        String tmpSql = "  ";
+        try {
+            if (tmpSql.length() > 5) {
+                List<Map<String, Object>> temp = jdbcTemplate.queryForList(tmpSql);
+                if (temp.size() > 0) {
+                    tmpRet = "1";
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tmpRet;
     }
 }

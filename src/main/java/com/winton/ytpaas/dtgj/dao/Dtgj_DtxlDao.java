@@ -175,4 +175,22 @@ public class Dtgj_DtxlDao extends BaseJdbcTemplate {
         }
         return tmpRet;
     }
+
+    public String GetIsDelByBm(String varBm) {
+        String tmpRet = "0";
+        String tmpSql = " select 1 from DTGJ_DTZS_DTZDXX where DTXLBM = '" + varBm + "' ";
+
+        try {
+            if (tmpSql.length() > 5) {
+                List<Map<String, Object>> temp = jdbcTemplate.queryForList(tmpSql);
+                if (temp.size() > 0) {
+                    tmpRet = "1";
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tmpRet;
+    }
+
 }
