@@ -45,7 +45,7 @@ layui.config({
             url: api + "list",
             headers: { token: localStorage["token"] },
             where: mSelData,
-            height: 'full-115', //自适应高度
+            height: 'full-106', //自适应高度
             page: true,
             limits: [5, 10, 15, 20, 30, 40, 50, 100],
             limit: 5,
@@ -69,7 +69,7 @@ layui.config({
                 { field: 'XM', title: '姓名', width: '10%' },
                 { field: 'SFZH', title: '身份证号', width: '20%' },
                 { field: 'WCZT', title: '完成状态', width: '10%' },
-                { field: 'QWNR', title: '勤务内容'},
+                { field: 'QWNR', title: '勤务内容' },
                 { title: '操作', toolbar: '#barQwbb', width: '15%', templet: '#colNoNull' }
             ]]
         });
@@ -133,15 +133,14 @@ layui.config({
     }
 
     //打开添加页面
-    function showEdit(varType, varId, varTJR) {
+    function showEdit(varType, varId) {
         var tmpTitle = '添加勤务报备';
-        var tmpUrl = '/dtgj/zhld/qwgl/qwbb/edit?menuid=' + $.getUrlParam("id") + '&type=' + varType;
+        var tmpUrl = '/dtgj/zhld/qwgl/qwbb/edit?type=' + varType + '&menuid=' + $.getUrlParam("id") + '&id=' + varId;
         if (varType == 'upd') {
             tmpTitle = '修改勤务报备';
         } else if (varType == 'view') {
             tmpTitle = '查看勤务报备';
         }
-        tmpUrl += ('&id=' + varId);
         //从桌面打开
         top.winui.window.open({
             id: 'editQwbb',
@@ -208,7 +207,9 @@ layui.config({
     }
 
     //绑定按钮事件
-    $('#addQwbb').on('click', showEdit);
+    $('#addQwbb').on('click', function () {
+        showEdit('add', '');
+    });
     $('#deleteQwbb').on('click', deleteItemAll);
     $('#reloadTable').on('click', reloadTable);
     $('#searchMenu').on('click', searchTable);

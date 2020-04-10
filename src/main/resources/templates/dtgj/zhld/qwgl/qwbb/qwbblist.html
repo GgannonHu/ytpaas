@@ -15,26 +15,26 @@
         <div class="winui-tool layui-inline">
             <form class="layui-form">
                 <div class="layui-input-inline">
-                    姓名
+                    &nbsp;姓名：
                     <div class="layui-input-inline">
                         <input id="xm" name="xm" class="layui-input" style="width: 160px;" placeholder="请输入姓名" />
                     </div>
                 </div>
                 <div class="layui-input-inline">
-                    发布时间开始
+                    &nbsp;发布时间：
                     <div class="layui-input-inline">
-                        <input id="fbsjBegin" name="fbsjBegin" class="layui-input" style="width: 160px;" />
+                        <input id="fbsjBegin" name="fbsjBegin" type="text" class="layui-input test-item"
+                            placeholder="yyyy-MM-dd" style="width: 100px;" />
+                    </div>
+                    <div class="layui-input-inline">-</div>
+                    <div class="layui-input-inline">
+                        <input id="fbsjEnd" name="fbsjEnd" type="text" class="layui-input test-item"
+                            placeholder="yyyy-MM-dd" style="width: 100px;" />
                     </div>
                 </div>
                 <div class="layui-input-inline">
-                    发布时间结束
-                    <div class="layui-input-inline">
-                        <input id="fbsjEnd" name="fbsjEnd" class="layui-input" style="width: 160px;" />
-                    </div>
-                </div>
-                <div class="layui-input-inline">
-                    完成状态
-                    <div class="layui-input-inline">
+                    &nbsp;完成状态：
+                    <div class="layui-input-inline" style="width: 160px;">
                         <select name="wczt" id="wczt" lay-verify="wczt" lay-search>
                             <option value="">全部</option>
                             <option value="未完成">未完成</option>

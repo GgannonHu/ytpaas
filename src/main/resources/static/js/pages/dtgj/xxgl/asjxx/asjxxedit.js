@@ -139,6 +139,8 @@ layui.config({
                 });
                 $("#asjxx_DTZDMC").html(str);
                 $("#asjxx_DTZDMC").val(selected);
+                 
+                
                 form.render('select');
 
                 form.on('select(asjxx_DTZDMC)', function (data) {
@@ -162,11 +164,11 @@ layui.config({
                     str += "<option value='" + this.BM + "'>" + this.MC + "</option>";
                 });
                 $("#asjxx_GJXLBM").html(str);
+                 
                 loadData();
-
                 form.render('select');
                 form.on('select(asjxx_GJXLBM)', function (data) {
-                    // alert(data.value); //得到被选中的值
+                    alert(data.value); //得到被选中的值
                     bindzdmc(data.value, "");
                 });
             }
@@ -220,6 +222,7 @@ layui.config({
                         $("#asjxx_GAJGJGDM").val(data.data.GAJGJGDM);//  gajgjgdm    公安机关机构代码
                         $("#asjxx_DTZDBM").val(data.data.DTZDBM);//  dtzdbm      地铁站点编码 
                         $("#asjxx_DTZDMC").val(data.data.DTZDMC);//  dtzdmc      地铁站点名称
+                  
                         $("#asjxx_GJXLBM").val(data.data.GJXLBM);//  gjxlbm      公交线路编码
                         $("#asjxx_GJGSMC").val(data.data.GJGSMC);//  gjgsmc      公交公司名称
                         $("#asjxx_AJBH").val(data.data.AJBH);//  ajbh        案件编号
@@ -230,17 +233,24 @@ layui.config({
                         $("#asjxx_AFDD").val(data.data.AFDD);//  afdd        案发地点
                         $("#asjxx_SFCS").val(data.data.SFCS);//  sfcs        事发场所
                         $("#asjxx_SSXQ").val(data.data.SSXQ);//  ssxq        所属辖区 
-                        TJR = data.data.TJR;
+                        TJR = data.data.TJR; 
                         if(Asjxxtype=="view")
                         {
+
                             $("#btn_queding").attr("style","display:none;"); 
                             $("#btn_quxiao").attr("style","display:none;"); 
                             $(".layui-input").attr("disabled", "disabled");
                             $(".layui-input").attr("placeholder", "");
                             $(".layui-textarea").attr("disabled", "disabled");
-                            $(".layui-textarea").attr("placeholder", "");
-                            // $("#form select").attr('disabled','disabled');
-                            $("select").attr("disabled", "disabled");
+                            $(".layui-textarea").attr("placeholder", "");  
+                            // $("select").attr("disabled", "disabled"); 
+                            $("#select_S_GJXLBM").hide();
+                            $("#select_S_DTZDMC").hide();
+        
+                            $("#view_GJXLBM").val($("#asjxx_GJXLBM").find("option:selected").text());
+                            $("#view_DTZDMC").val(data.data.DTZDMC); 
+                            $("#select_V_GJXLBM").show();
+                            $("#select_V_DTZDMC").show(); 
                             form.render('select'); 
                         }
                         form.render('select'); 

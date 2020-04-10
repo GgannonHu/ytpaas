@@ -20,7 +20,7 @@
                     <input type="text" name="id" id="id" autocomplete="off" class="layui-input" />
                 </div>
             </div>
-            <div class="layui-form-item">
+            <div class="layui-form-item" id="select_gjxlbm_div">
                 <label class="layui-form-label">公交线路编码</label>
                 <div class="layui-input-block">
                     <select name="gjxlbm" id="gjxlbm" lay-filter="gjxlbm" win-verify="required" lay-search>
@@ -28,7 +28,13 @@
                     </select>
                 </div>
             </div>
-            <div class="layui-form-item">
+            <div class="layui-form-item" id="txt_gjxlbm_div">
+                <label class="layui-form-label">公交线路编码</label>
+                <div class="layui-input-block">
+                    <input type="text" name="txt_gjxlbm" id="txt_gjxlbm" autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item" id="select_dtzdmc_div">
                 <label class="layui-form-label">地铁站点名称</label>
                 <div class="layui-input-block">
                     <select name="dtzdmc" id="dtzdmc" lay-filter="dtzdmc" win-verify="required" lay-search>
@@ -36,55 +42,77 @@
                     </select>
                 </div>
             </div>
+            <div class="layui-form-item" id="txt_dtzdmc_div">
+                <label class="layui-form-label">地铁站点名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="txt_dtzdmc" id="txt_dtzdmc" autocomplete="off" class="layui-input" />
+                </div>
+            </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">公民身份号码</label>
                 <div class="layui-input-block">
-                    <input type="text" name="gmsfhm" id="gmsfhm" win-verify="required" autocomplete="off"
-                        class="layui-input" />
+                    <input type="text" name="gmsfhm" id="gmsfhm" win-verify="required" placeholder="请输入公民身份号码"
+                        autocomplete="off" class="layui-input" />
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">姓名</label>
                 <div class="layui-input-block">
-                    <input type="text" name="xm" id="xm" win-verify="required" autocomplete="off" class="layui-input" />
+                    <input type="text" name="xm" id="xm" win-verify="required" autocomplete="off" placeholder="请输入姓名"
+                        class="layui-input" />
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">移动电话</label>
                 <div class="layui-input-block">
-                    <input type="text" name="yddh" id="yddh" autocomplete="off" class="layui-input" />
+                    <input type="text" name="yddh" id="yddh" autocomplete="off" placeholder="请输入移动电话"
+                        class="layui-input" />
                 </div>
             </div>
-            <div class="layui-form-item">
+            <div class="layui-form-item" id="select_zzmm_div">
                 <label class="layui-form-label">政治面貌</label>
                 <div class="layui-input-block">
                     <select name="zzmm" id="zzmm" lay-filter="zzmm" lay-search>
                     </select>
                 </div>
             </div>
-            <div class="layui-form-item">
+            <div class="layui-form-item" id="txt_zzmm_div">
+                <label class="layui-form-label">政治面貌</label>
+                <div class="layui-input-block">
+                    <input type="text" name="txt_zzmm" id="txt_zzmm" autocomplete="off" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item" id="select_mz_div">
                 <label class="layui-form-label">民族</label>
                 <div class="layui-input-block">
                     <select name="mz" id="mz" lay-filter="mz" lay-search>
                     </select>
                 </div>
             </div>
+            <div class="layui-form-item" id="txt_mz_div">
+                <label class="layui-form-label">民族</label>
+                <div class="layui-input-block">
+                    <input type="text" name="txt_mz" id="txt_mz" autocomplete="off" class="layui-input" />
+                </div>
+            </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">地址</label>
                 <div class="layui-input-block">
-                    <input type="text" name="dz" id="dz" autocomplete="off" class="layui-input" />
+                    <input type="text" name="dz" id="dz" autocomplete="off" placeholder="请输入地址" class="layui-input" />
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">单位</label>
                 <div class="layui-input-block">
-                    <input type="text" name="dw" id="dw" autocomplete="off" win-verify="required" class="layui-input" />
+                    <input type="text" name="dw" id="dw" autocomplete="off" win-verify="required" placeholder="请输入单位"
+                        class="layui-input" />
                 </div>
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
                     <button id="submit" class="winui-btn" lay-submit lay-filter="formEditMenu">确定</button>
-                    <button id="cancle" class="winui-btn" onclick="top.winui.window.close('editAbry'); return false;">取消</button>
+                    <button id="cancle" class="winui-btn"
+                        onclick="top.winui.window.close('editAbry'); return false;">取消</button>
                 </div>
             </div>
         </form>

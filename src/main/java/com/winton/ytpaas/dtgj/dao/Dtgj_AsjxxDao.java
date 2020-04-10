@@ -133,6 +133,9 @@ public class Dtgj_AsjxxDao extends BaseJdbcTemplate {
     public int getCon(String VarGAJGJGDM,String VarDTZDMC,String VarAJMC,String VarASJFSKSSJS,String VarASJFSKSSJE,String VarAFDD,String VarSSXQ) {
         int tmpRet = 0;
         String tmpWhere = " where 1=1 "; 
+        if (VarGAJGJGDM != null && VarGAJGJGDM.length() > 0) {
+            tmpWhere += " and GAJGJGDM like '" + VarGAJGJGDM + "%' ";
+        }
         if (VarDTZDMC != null && VarDTZDMC.length() > 0) {
             tmpWhere += " and DTZDMC like '%" + VarDTZDMC + "%' ";
         }
@@ -193,12 +196,11 @@ public class Dtgj_AsjxxDao extends BaseJdbcTemplate {
     }
 
     public boolean update(Dtgj_Asjxx item) {
-        String sql = "update Dtgj_Tysj_Asjxx set GAJGJGDM=?,DTZDBM=?,DTZDMC=?,GJXLBM=?,GJGSMC=?,AJBH=?,AJLB=?,AJMC=?,JYAQ=?,ASJFSKSSJ=?,AFDD=?,SFCS=?,SSXQ=?,TJR=?,TJDW=?,TJDWMC=? where id=?";
+        String sql = "update Dtgj_Tysj_Asjxx set  DTZDBM=?,DTZDMC=?,GJXLBM=?,GJGSMC=?,AJBH=?,AJLB=?,AJMC=?,JYAQ=?,ASJFSKSSJ=?,AFDD=?,SFCS=?,SSXQ=?,TJR=?,TJDW=?,TJDWMC=? where id=?";
         try {
             int count = jdbcTemplate.update(
                 sql, 
-                new Object[] {
-                    item.getGAJGJGDM(),
+                new Object[] { 
                     item.getDTZDBM(),
                     item.getDTZDMC(),
                     item.getGJXLBM(),

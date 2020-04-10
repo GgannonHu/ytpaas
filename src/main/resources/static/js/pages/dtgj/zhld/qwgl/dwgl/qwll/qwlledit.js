@@ -46,7 +46,6 @@ layui.config({
         laydate = layui.laydate,
         qwllid = $.getUrlParam("id"),
         type = $.getUrlParam("type");
-
     if (type == 'view') {
         $(".layui-input").attr("disabled", "disabled");
         $(".layui-input").attr("placeholder", "");
@@ -55,6 +54,14 @@ layui.config({
 
         $("#submit").hide();
         $("#cancle").hide();
+        
+        $("#select_gjxlbm_div").hide();
+        $("#select_dtzdmc_div").hide();
+        $("#txt_gjxlbm_div").show();
+        $("#txt_dtzdmc_div").show();
+    } else {
+        $("#txt_gjxlbm_div").hide();
+        $("#txt_dtzdmc_div").hide();
     }
 
     getUserByToken();
@@ -99,6 +106,7 @@ layui.config({
                 });
                 $("#dtzdmc").html(str);
                 $("#dtzdmc").val(selected);
+                $("#txt_dtzdmc").val($("#dtzdmc").find("option:selected").text());
                 form.render('select');
 
                 form.on('select(dtzdmc)', function (data) {
@@ -139,6 +147,8 @@ layui.config({
                             $("#submit").hide();
                             $("#cancle").hide();
                         }
+
+                        $("#txt_gjxlbm").val($("#gjxlbm").find("option:selected").text());
 
                         form.render('select')
                     } else {
