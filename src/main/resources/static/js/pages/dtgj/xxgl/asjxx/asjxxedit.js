@@ -167,8 +167,7 @@ layui.config({
                  
                 loadData();
                 form.render('select');
-                form.on('select(asjxx_GJXLBM)', function (data) {
-                    alert(data.value); //得到被选中的值
+                form.on('select(asjxx_GJXLBM)', function (data) { 
                     bindzdmc(data.value, "");
                 });
             }
