@@ -78,4 +78,16 @@ public class Dtgj_BkryService {
         }
         return res;
     }
+
+    public Result getItemBySfzh(String varSfzh) {
+        Result res = new Result();
+        Map<String, Object> tmpItem = dao.getItemBySfzh(varSfzh);
+        if (tmpItem != null) {
+            res.setCode("1");
+            res.setData(tmpItem);
+        } else {
+            res.setCode("-1");
+        }
+        return res;
+    }
 }

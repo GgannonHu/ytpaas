@@ -47,6 +47,8 @@ public class ApiZdryyjController {
         Map<String, String> tmpSelTj = new HashMap<String, String>();
         tmpSelTj.put("xm", request.getParameter("xm"));
         tmpSelTj.put("sfzh", request.getParameter("sfzh"));
+        tmpSelTj.put("yjsjbeg", request.getParameter("yjsjbeg"));
+        tmpSelTj.put("yjsjend", request.getParameter("yjsjend"));
 
         JSONObject res = service.getRlyjList(tmpSelTj, page, limit, iscon);
         if (iscon != 1) {

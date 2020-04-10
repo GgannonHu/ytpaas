@@ -6,15 +6,20 @@ var mLOGINNAME = '';
 layui.config({
     base: '/js/core/winui/' //指定 winui 路径
     , version: '1.0.0-beta'
-}).define(['table', 'jquery', 'winui', 'laypage', 'form'], function (exports) {
+}).define(['table', 'jquery', 'winui', 'laypage', 'form', 'laydate'], function (exports) {
 
     winui.renderColor();
 
     var table = layui.table;
     var $ = layui.$;
     var form = layui.form;
+    var laydate = layui.laydate;
     //var laypage = layui.laypage;
     var tableId = 'tableid';
+
+    laydate.render({ elem: '#yjsjbeg' });
+    laydate.render({ elem: '#yjsjend' });
+
     //表格渲染
     function loadDataData() {
         table.render({
@@ -23,7 +28,7 @@ layui.config({
             url: mUrlTop + '/rlyjlist',
             headers: { token: localStorage["token"] },
             where: mSelData,
-            height: 'full-75', //自适应高度
+            height: 'full-110', //自适应高度
             page: true,
             limits: [5, 10, 15, 20, 30, 40, 50, 100],
             limit: 5,
@@ -45,9 +50,10 @@ layui.config({
                 }
             },
             cols: [[
-                { field: 'ZDRY_XM', title: '重点人姓名', width: '12%' },
-                { field: 'ZDRY_GMSFHM', title: '重点人身份证号' },
-                { field: 'YJSJ', title: '预警时间', width: '20%' },
+                { field: 'ZDRY_XM', title: '姓名', width: '10%' },
+                { field: 'ZDRY_GMSFHM', title: '身份证号' },
+                { field: 'YJSJ', title: '预警时间', width: '14%' },
+                { field: 'TYPE', title: '人员类型', templet: '#tmpRylx', width: '11%' },
                 {
                     field: 'DTXLDM', title: '地铁线路', templet: function (d) {
                         getJgMcByBm('lbdtxl_' + d.ID, d.DTXLDM, 'dt');
@@ -152,6 +158,8 @@ layui.config({
     function getSelTj() {
         mSelData.xm = $('#xm').val();
         mSelData.sfzh = $('#sfzh').val();
+        mSelData.yjsjbeg = $('#yjsjbeg').val();
+        mSelData.yjsjend = $('#yjsjend').val();
     }
 
     //绑定按钮事件

@@ -13,6 +13,8 @@ layui.config({
     var form = layui.form;
     var tableId = 'tableid';
 
+
+
     //表格渲染
     function loadDataData() {
         table.render({
@@ -47,7 +49,7 @@ layui.config({
                 { field: 'NAME', title: '姓名', width: '10%' },
                 { field: 'IDCARD', title: '身份证号', width: '20%' },
                 { field: 'BKNR', title: '布控内容' },
-                { title: '操作', toolbar: '#barYjct', width: 163 }
+                { title: '操作', toolbar: '#barYjct', width: 125 }
             ]]
         });
         //fixed: 'right',
@@ -118,6 +120,8 @@ layui.config({
     }
     //添加条件
     function getSelTj() {
+        mSelData.xm = $('#xm').val();
+        mSelData.sfzh = $('#sfzh').val();
     }
 
     //打开添加页面

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>常态处置编辑</title>
@@ -8,8 +9,9 @@
     <link href="/js/core/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
     <link href="/js/core/winui/css/winui.css" rel="stylesheet" />
 </head>
+
 <body>
-    <div class="layui-row layui-col-space15">
+    <div class="layui-row">
         <div class="layui-col-xs4">
             <div class="layui-card">
                 <div class="layui-card-header">接收单位</div>
@@ -28,7 +30,7 @@
                             placeholder="请输入名称" autocomplete="off" class="layui-input" />
                     </div>
                 </div>
-                <div class="layui-form-item"  pane="">
+                <div class="layui-form-item" pane="">
                     <label class="layui-form-label">接收单位</label>
                     <div class="layui-input-block" id="div_jsdw"></div>
                 </div>
@@ -67,15 +69,14 @@
                         <input type="hidden" id="hdfDwbm" name="hdfDwbm">
                         <input type="hidden" id="hdfDwbmMc" name="hdfDwbmMc">
                         <button id="btnQd" class="winui-btn" lay-submit lay-filter="formEditMenu">确定</button>
-                        <button class="winui-btn"
-                            onclick="top.winui.window.close('editXf'); return false;">取消</button>
+                        <button class="winui-btn" onclick="top.winui.window.close('editXf'); return false;">取消</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
     </div>
-</div>
+    </div>
     <script src="/js/core/layui/layui.js"></script>
     <script type="text/javascript">
         layui.config({
@@ -83,4 +84,5 @@
         }).use('yjctxf');
     </script>
 </body>
+
 </html>
