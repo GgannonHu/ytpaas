@@ -16,10 +16,10 @@ layui.config({
         laydate = layui.laydate;
     //日期
     laydate.render({
-        elem: '#txt_ASJFSKSSJS'
+        elem: '#txt_BJSJS'
     });
     laydate.render({
-        elem: '#txt_ASJFSKSSJE'
+        elem: '#txt_BJSJE'
     });
     form.on('submit', function (data) {
         // alert(data.val);
@@ -27,6 +27,7 @@ layui.config({
     });
     //表格渲染
     function loadData() { 
+        
         var index = layer.load(1);
         table.render({
             id: tableId,
@@ -166,7 +167,7 @@ function getCsmcByBm(varId, varTid, varBm) {
         mSelData.DTZDMC = $('#txt_DTZDMC').val();
         mSelData.BJR_XM = $('txt_#BJR_XM').val();
         mSelData.BJSJS = $('#txt_BJSJS').val();
-        mSelData.BJSJE = $('#BJSJE').val();
+        mSelData.BJSJE = $('#txt_BJSJE').val();
         mSelData.BJDH = $('#txt_BJDH').val();
         reloadTableAll();
     }
