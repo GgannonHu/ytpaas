@@ -45,7 +45,7 @@ layui.config({
             url: api + "list",
             headers: { token: localStorage["token"] },
             where: mSelData,
-            height: 'full-115', //自适应高度
+            height: 'full-106', //自适应高度
             page: true,
             limits: [5, 10, 15, 20, 30, 40, 50, 100],
             limit: 5,
@@ -237,7 +237,9 @@ layui.config({
     }
 
     //绑定按钮事件
-    $('#addZnya').on('click', showEdit);
+    $('#addZnya').on('click', function () {
+        showEdit('add', '');
+    });
     $('#deleteZnya').on('click', deleteItemAll);
     $('#reloadTable').on('click', reloadTable);
     $('#searchMenu').on('click', searchTable);

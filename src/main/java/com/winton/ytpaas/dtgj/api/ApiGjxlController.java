@@ -61,7 +61,7 @@ public class ApiGjxlController {
         tmpSelTj.put("xlmc", request.getParameter("xlmc"));
         tmpSelTj.put("zdmc", request.getParameter("zdmc"));
         tmpSelTj.put("dwdm", tmpDwdm);
-        
+
         JSONObject res = service.getList(tmpSelTj, page, limit, iscon);
         if (iscon != 1) {
             res.put("count", count);
@@ -130,9 +130,9 @@ public class ApiGjxlController {
         String tmpTopDate = "2020-01-01 ";
         Map<String, Object> tmpItem = new HashMap<String, Object>();
         tmpItem.put("id", request.getParameter("id"));
-        //tmpItem.put("xzqhdm", request.getParameter("xzqhdm"));
-        //tmpItem.put("gjxlbm", request.getParameter("gjxlbm"));
-        //tmpItem.put("gjxlmc", request.getParameter("gjxlmc"));
+        // tmpItem.put("xzqhdm", request.getParameter("xzqhdm"));
+        // tmpItem.put("gjxlbm", request.getParameter("gjxlbm"));
+        // tmpItem.put("gjxlmc", request.getParameter("gjxlmc"));
         tmpItem.put("gjxlqdz", request.getParameter("gjxlqdz"));
         tmpItem.put("gjxlzdz", request.getParameter("gjxlzdz"));
 
@@ -164,5 +164,16 @@ public class ApiGjxlController {
         Result res = service.delete(tmpIds);
         String retStr = Tools.toJSONString(res);
         return retStr;
+    }
+
+    @ApiOperation(value = "根据编码获取名称", notes = "根据编码获取名称", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "bm", value = "线路编码", dataType = "String", paramType = "query", required = true),
+            @ApiImplicitParam(name = "token", value = "用户的token令牌", dataType = "String", paramType = "header", required = true) })
+    @RequestMapping(value = "/getmcbybm", produces = "application/json")
+    public String GetMcByBm(HttpServletRequest request, HttpServletResponse response) {
+        String tmpBm = request.getParameter("bm");
+        Result res = service.GetMcByBm(tmpBm);
+        return res.toString();
     }
 }

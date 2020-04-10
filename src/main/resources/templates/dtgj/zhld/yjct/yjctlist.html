@@ -41,12 +41,12 @@
             {{# }  }}
         </script>
         <script type="text/html" id="barYjct">
-            <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="sel">查看</a>
-            <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="xf">下发</a>
+            <a class="layui-btn layui-btn-xs" lay-event="sel" title="查看详细" ><i class="fa fa-share"></i></a>
             {{# if(d.TJR==mLOGINNAME){ }}
-            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="edit" title="编辑" ><i class="fa fa-pencil"></i></a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del" title="删除" ><i class="fa fa-trash-o"></i></a>
             {{# }  }}
+            <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="xf" title="下发应急处突" ><i class="fa fa-angle-double-down"></i></a>
         </script>
         <script type="text/html" id="colNoNull">
             {{d.NR == null ? '' : d.NR }}

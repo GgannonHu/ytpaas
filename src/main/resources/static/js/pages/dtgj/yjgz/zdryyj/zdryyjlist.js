@@ -45,18 +45,23 @@ layui.config({
                 }
             },
             cols: [[
-                {
-                    field: 'GAJGJGDM', title: '公安机关', templet: function (d) {
-                        getJgMcByJgdm('lbgajg_' + d.ID, d.GAJGJGDM);
-                        return '<label id="lbgajg_' + d.ID + '"></label>';
-                    }, width: '15%'
-                },
-                { field: 'DTXLDM', title: '地铁线路代码', width: '15%' },
-                { field: 'DTZDMC', title: '地铁站点', width: '12%' },
-                { field: 'GJXLDM', title: '公交线路代码', width: '15%' },
                 { field: 'ZDRY_XM', title: '重点人姓名', width: '12%' },
                 { field: 'ZDRY_GMSFHM', title: '重点人身份证号' },
-                { title: '操作', align: 'center', toolbar: '#barYjct', width: 70 }
+                { field: 'YJSJ', title: '预警时间', width: '20%' },
+                {
+                    field: 'DTXLDM', title: '地铁线路', templet: function (d) {
+                        getJgMcByBm('lbdtxl_' + d.ID, d.DTXLDM, 'dt');
+                        return '<label id="lbdtxl_' + d.ID + '"></label>';
+                    }, width: '12%'
+                },
+                {
+                    field: 'GJXLDM', title: '公交线路', templet: function (d) {
+                        getJgMcByBm('lbgjxl_' + d.ID, d.GJXLDM, 'gj');
+                        return '<label id="lbgjxl_' + d.ID + '"></label>';
+                    }, width: '12%'
+                },
+                { field: 'DTZDMC', title: '地铁站点', width: '12%' },
+                { title: '操作', toolbar: '#barYjct', width: 60 }
             ]]
         });
         // fixed: 'right',
@@ -100,13 +105,19 @@ layui.config({
         });
     }
 
-    function getJgMcByJgdm(varId, varJgdm) {
+    function getJgMcByBm(varId, varBm, varType) {
         var index = layer.load(1);
+
+        var tmpUrl = "";
+        if (varType == "dt") { tmpUrl = "/api/dtgj/xxgl/dtxl/getmcbybm"; }
+        else if (varType == "gj") { tmpUrl = "/api/dtgj/xxgl/gjxl/getmcbybm"; }
+
+        if (tmpUrl == "") { return; }
         $.ajax({
             type: 'get',
-            url: '/api/dtgj/com/getjgmcbyjgdm',
+            url: tmpUrl,
             headers: { token: localStorage["token"] },
-            data: { jgdm: varJgdm },
+            data: { dm: varBm },
             dataType: 'json',
             success: function (data) {
                 layer.close(index);
@@ -114,7 +125,6 @@ layui.config({
             }
         });
     }
-
 
     getUserByToken();
 

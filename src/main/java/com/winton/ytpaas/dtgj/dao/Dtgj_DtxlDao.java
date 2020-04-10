@@ -7,7 +7,7 @@ import com.winton.ytpaas.common.datasource.BaseJdbcTemplate;
 
 import org.springframework.stereotype.Repository;
 
-@Repository 
+@Repository
 public class Dtgj_DtxlDao extends BaseJdbcTemplate {
 
     public List<Map<String, Object>> getList(Map<String, String> varSelTj, String varBegCon, String varEndCon) {
@@ -28,7 +28,8 @@ public class Dtgj_DtxlDao extends BaseJdbcTemplate {
         tmpWhere += " and XZQHDM like '" + varSelTj.get("dwdm") + "%' ";
 
         String tmpColums = " t.* ";
-        //tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM ) where ROWNUM=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
+        // tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM
+        // ) where ROWNUM=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
         String tmpTable = " DTGJ_DTZS_XLXX t ";
         String tmpOrder = " order by CREATE_TIME desc ";
 
@@ -91,7 +92,8 @@ public class Dtgj_DtxlDao extends BaseJdbcTemplate {
 
         String tmpWhere = " where ID = '" + varId + "' ";
         String tmpColums = " t.* ";
-        //tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM ) where  rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
+        // tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM
+        // ) where rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
         String tmpTable = " DTGJ_DTZS_XLXX t ";
         String tmpSql = " select  " + tmpColums + " from " + tmpTable + tmpWhere;
 
@@ -157,5 +159,20 @@ public class Dtgj_DtxlDao extends BaseJdbcTemplate {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public String GetMcByBm(Object varXlbm) {
+        String tmpRet = "";
+
+        String tmpSql = " select DTXLMC from DTGJ_DTZS_XLXX where DTXLBH=? ";
+        try {
+            List<Map<String, Object>> temp = jdbcTemplate.queryForList(tmpSql, new Object[] { varXlbm });
+            if (temp.size() > 0) {
+                tmpRet = temp.get(0).get("DTXLMC").toString();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tmpRet;
     }
 }

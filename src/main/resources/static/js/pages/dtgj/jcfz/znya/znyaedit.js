@@ -46,7 +46,7 @@ layui.config({
         , url: '/api/dtgj/fjxx/upload' //改成您自己的上传接口
         , accept: 'file'
         , multiple: true
-        , size: 9216
+        , size: 4096
         , auto: false
         , bindAction: '#uploadListAction'
         , choose: function (obj) {

@@ -13,19 +13,19 @@
             <div class="winui-tool layui-inline">
                 <form class="layui-form">
                 <div class="layui-input-inline">
-                    &nbsp;名称：
+                    &nbsp;任务名称：
                     <div class="layui-input-inline">
                         <input id="txt_mc" name="txt_mc" class="layui-input" style="width: 160px;"
-                            placeholder="请输入名称" />
+                            placeholder="请输入任务名称" />
                     </div>
                 </div>
-                <div class="layui-input-inline">
-                    &nbsp;内容：
+                <!-- <div class="layui-input-inline">
+                    &nbsp;任务内容：
                     <div class="layui-input-inline">
                         <input id="txt_nr" name="txt_nr" class="layui-input" style="width: 160px;"
                             placeholder="请输入内容" />
                     </div>
-                </div>
+                </div> -->
                 <div class="layui-input-inline">
                         &nbsp;发布时间：
                     <div class="layui-input-inline">
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="layui-input-inline">
-                        &nbsp;类型：
+                        &nbsp;任务类型：
                     <div class="layui-input-inline" style="width: 160px;">
                         <select id="ddl_lx" name="ddl_lx" lay-filter="ddl_lx">
                             <option value="">全部</option>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="layui-input-inline">
-                        &nbsp;状态：
+                        &nbsp;签收状态：
                     <div class="layui-input-inline" style="width: 160px;">
                         <select id="ddl_qs" name="ddl_qs" lay-filter="ddl_qs">
                             <option value="">全部</option>
@@ -55,6 +55,9 @@
                             <option value="1">未签收</option>
                         </select>
                     </div>
+                </div>
+                <div class="layui-input-inline">
+                        &nbsp;反馈状态：
                     <div class="layui-input-inline" style="width: 160px;">
                         <select id="ddl_fk" name="ddl_fk" lay-filter="ddl_fk">
                             <option value="">全部</option>
@@ -111,8 +114,8 @@
                 {{ d.TYPE == 1 ? "常态处置" : (d.TYPE == 2 ? "应急处突" : "") }}
             </script>
             <script type="text/html" id="tempZt">
-                {{ d.FK == null ? "" : (d.FK == "" ? "" : d.FKDWMC+"已反馈") }}
-                &nbsp;
+                {{ d.FK == null ? "" : (d.FK == "" ? "" : d.FKDWMC+"已反馈&nbsp;") }}
+                
                 {{# if( d.QS == 0) { }}
                     {{# var qsdwmcl = d.QSDWMC.split(','); }}
                     {{# for (var i = 0; i < qsdwmcl.length; i++) { }}

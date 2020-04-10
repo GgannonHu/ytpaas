@@ -32,7 +32,7 @@ layui.config({
             url: mUrl + "/list",
             headers: { token: localStorage["token"] },
             where: mSelData,
-            height: 'full-107', //自适应高度
+            height: 'full-106', //自适应高度
             page: true,
             limits: [5, 10, 15, 20, 30, 40, 50, 100],
             limit: 5,
@@ -55,13 +55,13 @@ layui.config({
                 }
             },
             cols: [[
-                { field: 'ID', width: '6%', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow' },
+                { field: 'ID', width: 48, title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow' },
                 { field: 'MC', title: '物品名称', width: '10%' },
-                { field: 'MS', title: '物品描述', width: '20%' },
+                { field: 'MS', title: '物品描述' },
                 { field: 'SQDD', title: '拾取地点', width: '17%' },
                 { field: 'SQSJ', title: '拾取时间', width: '18%' },
                 { field: 'ZT', title: '状态', width: '10%', templet: '#tempZt' },
-                { title: '操作', fixed: 'right', width: '19%', toolbar: '#baryswp' }
+                { title: '操作', width: 163, toolbar: '#baryswp' }//, fixed: 'right'
             ]]
         });
         form.on('checkbox', function (data) {

@@ -84,4 +84,12 @@ public class Dtgj_GjxlService {
         }
         return res;
     }
+
+    public Result GetMcByBm(String varXlbm) {
+        Result res = new Result();
+        String tmpItem = dao.GetMcByBm(varXlbm);
+        res.setCode("1");
+        res.setData(tmpItem);
+        return res;
+    }
 }
