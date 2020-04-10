@@ -14,6 +14,17 @@
 
     <div class="winui-toolbar">
         <div class="winui-tool layui-inline">
+
+            <div class="layui-input-inline">
+                <label style="margin-left: 20px;">预警时间：</label>
+                <div class="layui-input-inline">
+                    <input id="yjsjbeg" class="layui-input" style="width: 160px;" placeholder="预警时间开始" />
+                </div>
+                <div class="layui-input-inline">-</div>
+                <div class="layui-input-inline">
+                    <input id="yjsjend" class="layui-input" style="width: 160px;" placeholder="预警时间结束" />
+                </div>
+            </div>
             <div class="layui-input-inline">
                 <label style="margin-left: 20px;">姓名：</label>
                 <div class="layui-input-inline">
@@ -39,8 +50,8 @@
         <script type="text/html" id="barYjct">
             <a class="layui-btn layui-btn-xs" lay-event="sel" title="查看详细" ><i class="fa fa-share"></i></a>
         </script>
-        <script type="text/html" id="colNoNull">
-            {{d.NR == null ? '' : d.NR }}
+        <script type="text/html" id="tmpRylx">
+            {{d.TYPE == '1' ? '重点人员' : d.TYPE == '2' ? '布控人员' : '' }}
         </script>
     </div>
     <script src="/js/core/layui/layui.js"></script>
