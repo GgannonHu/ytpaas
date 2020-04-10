@@ -28,9 +28,12 @@ layui.config({
 
         $("#submit").hide();
         $("#cancle").hide();
+        $("#txt_dj_div").show();
+        $("#select_dj_div").hide();
     } else {
         $('#divFjxx').show();
         $('#fThZt').show();
+        $("#txt_dj_div").hide();
     }
 
     //多文件列表示例
@@ -244,6 +247,8 @@ layui.config({
                     $("#fbr").val(data.data.TJR);
                     $("#fbdw").val(data.data.TJDWMC);
                     $("#fbsj").val(data.data.TJSJ);
+
+                    $("#txt_dj").val(data.data.DJ);
 
                     if (data.data.TJR != tjr) {
                         $(".layui-input").attr("disabled", "disabled");

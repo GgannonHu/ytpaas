@@ -60,6 +60,10 @@ layui.config({
 
         $("#submit").hide();
         $("#cancle").hide();
+        $("#txt_wczt_div").show();
+        $("#select_wczt_div").hide();
+    } else {
+        $("#txt_wczt_div").hide();
     }
 
     if (qwbbid) {
@@ -81,6 +85,7 @@ layui.config({
                     $("#fbsj").val(data.data.FBSJ);
                     $("#wcsj").val(data.data.WCSJ);
                     $("#wczt").val(data.data.WCZT);
+                    $("#txt_wczt").val(data.data.WCZT);
                     $("#tjr").val(data.data.TJR);
                     $("#tjdw").val(data.data.TJDW);
                     $("#tjsj").val(data.data.TJSJ);

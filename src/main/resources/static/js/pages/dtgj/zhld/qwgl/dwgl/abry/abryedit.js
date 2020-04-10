@@ -55,6 +55,20 @@ layui.config({
 
         $("#submit").hide();
         $("#cancle").hide();
+        $("#select_gjxlbm_div").hide();
+        $("#select_dtzdmc_div").hide();
+        $("#select_zzmm_div").hide();
+        $("#select_mz_div").hide();
+
+        $("#txt_gjxlbm_div").show();
+        $("#txt_dtzdmc_div").show();
+        $("#txt_zzmm_div").show();
+        $("#txt_mz_div").show();
+    } else {
+        $("#txt_gjxlbm_div").hide();
+        $("#txt_dtzdmc_div").hide();
+        $("#txt_zzmm_div").hide();
+        $("#txt_mz_div").hide();
     }
 
     getUserByToken();
@@ -80,6 +94,17 @@ layui.config({
                 });
                 $("#" + id).html(str);
                 $("#" + id).val(selected);
+                var zzmm = $("#zzmm").find("option:selected").text();
+                if (zzmm != '请选择') {
+                    $("#txt_zzmm").val(zzmm);
+                }
+
+                var mz = $("#mz").find("option:selected").text();
+                if (mz != '请选择') {
+                    $("#txt_mz").val(mz);
+                }
+
+
                 form.render('select');
 
                 form.on('select(' + id + ')', function (data) {
@@ -129,6 +154,7 @@ layui.config({
                 });
                 $("#dtzdmc").html(str);
                 $("#dtzdmc").val(selected);
+                $("#txt_dtzdmc").val($("#dtzdmc").find("option:selected").text());
                 form.render('select');
 
                 form.on('select(dtzdmc)', function (data) {
@@ -172,6 +198,8 @@ layui.config({
                             $("#submit").hide();
                             $("#cancle").hide();
                         }
+
+                        $("#txt_gjxlbm").val($("#gjxlbm").find("option:selected").text());
 
                         form.render('select')
                     } else {

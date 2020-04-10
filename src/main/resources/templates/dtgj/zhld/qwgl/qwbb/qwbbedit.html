@@ -30,8 +30,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">身份证号</label>
                 <div class="layui-input-block">
-                    <input type="text" name="sfzh" id="sfzh" min="0" win-verify="required" autocomplete="off"
-                        class="layui-input" />
+                    <input type="text" name="sfzh" id="sfzh" min="0" win-verify="required" placeholder="请输入身份证号"
+                        autocomplete="off" class="layui-input" />
                 </div>
             </div>
             <div class="layui-form-item">
@@ -48,7 +48,7 @@
                         class="layui-input" />
                 </div>
             </div>
-            <div class="layui-form-item">
+            <div class="layui-form-item" id="select_wczt_div">
                 <label class="layui-form-label">完成状态</label>
                 <div class="layui-input-block">
                     <select name="wczt" id="wczt" lay-verify="wczt" win-verify="required" lay-search>
@@ -58,11 +58,17 @@
                     </select>
                 </div>
             </div>
+            <div class="layui-form-item" id="txt_wczt_div">
+                <label class="layui-form-label">完成状态</label>
+                <div class="layui-input-block">
+                    <input type="text" name="txt_wczt" id="txt_wczt" autocomplete="off" class="layui-input" />
+                </div>
+            </div>
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">勤务内容</label>
                 <div class="layui-input-block">
                     <textarea class="layui-textarea" name="qwnr" id="qwnr" min="0" win-verify="required"
-                        autocomplete="off"></textarea>
+                        placeholder="请输入勤务内容" autocomplete="off"></textarea>
                 </div>
             </div>
             <div class="layui-form-item" style="display: none;">
