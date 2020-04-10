@@ -55,17 +55,16 @@ layui.config({
                 }
             },
             cols: [[
-                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: '5%' },                 
+                { field: 'ID', title: '<input id="topcheck" type="checkbox" lay-skin="primary" >', toolbar: '#barSelRow', width: '6%' },                 
                  
                 // { field: 'GAJGJGDM', title: '公安机关机构代码', width: '10%' },
                 // { field: 'DTZDBM', title: '地铁站点编码', width: '13%' },
-                { field: 'DTZDMC', title: '地铁站点名称', width: '17.5%' },
+                { field: 'DTZDMC', title: '地铁站点名称', width: '19%' },
                 // { field: 'GJXLBM', title: '公交线路编码', width: '12%' },
-                { field: 'GJGSMC', title: '公交公司名称', width: '13%' },
-                { field: 'AJBH', title: '案件编号', width: '10%' },
-                { field: 'AJLB', title: '案件类别', width: '10%'},
+                { field: 'GJGSMC', title: '公交公司名称', width: '14%' }, 
+                { field: 'AJLB', title: '案件类别', width: '12%'},
                 { field: 'AJMC', title: '案件名称', width: '10%'},
-                { field: 'ASJFSKSSJ', title: '发生时间', width: '10%' },
+                { field: 'ASJFSKSSJ', title: '发生时间', width: '14%' },
                 { field: 'AFDD', title: '案发地点', width: '10%' },
                 { title: '操作',   toolbar: '#baryswp', width: '15%', templet: '#colNoNull' } 
             ]]
@@ -79,8 +78,8 @@ layui.config({
             if (layEvent === 'del') { //删除
                 deleteItem(data.ID, 'one');
             } else if (layEvent === 'edit') { //编辑
-                showEdit('upd', data.ID,data.TJR);
-            } else if (layEvent == 'view') { //查看
+                showEdit('upd', data.ID);
+            } else if (layEvent == 'info') { //查看
                 showEdit('view', data.ID);
             }
         });
@@ -153,20 +152,23 @@ layui.config({
         reloadTableAll();
     }
     //打开编辑页面
-    function showEdit(varType, varId,varTJR) {
-       
-        var tmpUrl = '/dtgj/xxgl/asjxx/asjxxedit?menuid=' + $.getUrlParam("id") +'&type='+varType;
+    function showEdit(varType, varId) {
+        var tmpUrl = '/dtgj/xxgl/asjxx/asjxxedit?menuid=' + $.getUrlParam("id");
+    
+
         var tmpTitle = '添加信息'; 
         if(varType == "upd")
         {
         var tmpTitle = '修改信息';
         tmpUrl += ('&id=' + varId);
+        tmpUrl += ('&type=' + varType);
         }
         if(varType == "view")
         {
         var tmpTitle = '查看信息';
         tmpUrl += ('&id=' + varId);
-        }         
+        tmpUrl += ('&type=' + varType);
+        }          
         //从桌面打开
         top.winui.window.open({
             id: 'editYswp',
