@@ -27,7 +27,7 @@ layui.config({
         $(".layui-input").attr("placeholder", "");
         $("#bknr").attr("disabled", "disabled");
         $("#bknr").attr("placeholder", "");
-        
+
 
     } else {
         $('#btnImg').show();
@@ -77,6 +77,7 @@ layui.config({
     upload.render({
         elem: '#btnImg'
         , auto: false
+        , size: 2048
         , choose: function (obj) {
             //预读本地文件示例，不支持ie8
             obj.preview(function (index, file, result) {
