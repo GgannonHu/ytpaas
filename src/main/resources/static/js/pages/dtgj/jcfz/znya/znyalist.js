@@ -193,19 +193,17 @@ layui.config({
 
     //删除选中信息
     function deleteItemAll() {
-        var checkStatus = table.checkStatus(tableId);
-        var checkCount = checkStatus.data.length;
-        if (checkCount < 1) {
-            top.winui.window.msg('请选择一条数据', {
-                time: 2000
-            });
-            return false;
-        }
         var ids = '';
-        $(checkStatus.data).each(function (index, item) {
-            ids += item.ID + ',';
+        $('input[rid=rowCheck]:checked').each(function () {
+            ids += $(this).val() + ',';
         });
-        deleteItem(ids, 'all');
+        if (ids.length <= 0) {
+            top.winui.window.msg('请选择一条数据', {
+                time: 1000
+            });
+        } else {
+            deleteItem(ids, 'all');
+        }
     }
 
     //删除文件
