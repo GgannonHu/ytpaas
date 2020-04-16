@@ -38,7 +38,7 @@ layui.config({
 
     //修改初始化
     if (selId) {
-        $("#gjxlbh").attr("disabled", "disabled");
+        $("#gjxlbm").attr("disabled", "disabled");
         $("#gjxlmc").attr("disabled", "disabled");
         var index = layer.load(1);
         $.ajax({

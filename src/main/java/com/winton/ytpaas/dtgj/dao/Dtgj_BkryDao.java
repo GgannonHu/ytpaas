@@ -14,6 +14,16 @@ public class Dtgj_BkryDao extends BaseJdbcTemplate {
         List<Map<String, Object>> tmpRet = null;
 
         String tmpWhere = " where 1=1 ";
+
+        String tmpXm = varSelTj.get("xm");
+        if (tmpXm.length() > 0) {
+            tmpWhere += " and NAME like '%" + tmpXm + "%' ";
+        }
+        String tmpSfzh = varSelTj.get("sfzh");
+        if (tmpSfzh.length() > 0) {
+            tmpWhere += " and IDCARD like '%" + tmpSfzh + "%' ";
+        }
+
         String tmpColums = " t.* ";
         String tmpTable = " DTGJ_QT_BKRY t ";
         String tmpOrder = " order by TJSJ desc ";
@@ -32,6 +42,16 @@ public class Dtgj_BkryDao extends BaseJdbcTemplate {
         int tmpRet = 0;
 
         String tmpWhere = " where 1=1 ";
+
+        String tmpXm = varSelTj.get("xm");
+        if (tmpXm.length() > 0) {
+            tmpWhere += " and NAME like '%" + tmpXm + "%' ";
+        }
+        String tmpSfzh = varSelTj.get("sfzh");
+        if (tmpSfzh.length() > 0) {
+            tmpWhere += " and IDCARD like '%" + tmpSfzh + "%' ";
+        }
+
         String tmpTable = " DTGJ_QT_BKRY t ";
         String tmpSql = " select count(1) CON from " + tmpTable + tmpWhere;
 
@@ -129,5 +149,24 @@ public class Dtgj_BkryDao extends BaseJdbcTemplate {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public Map<String, Object> getItemBySfzh(String varSfzh) {
+        Map<String, Object> tmpRet = null;
+
+        String tmpWhere = " where IDCARD = '" + varSfzh + "' ";
+        String tmpColums = " t.* ";
+        String tmpTable = " DTGJ_QT_BKRY t ";
+        String tmpSql = " select  " + tmpColums + " from " + tmpTable + tmpWhere;
+
+        try {
+            List<Map<String, Object>> tmpItems = jdbcTemplate.queryForList(tmpSql);
+            if (tmpItems.size() > 0) {
+                tmpRet = tmpItems.get(0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tmpRet;
     }
 }

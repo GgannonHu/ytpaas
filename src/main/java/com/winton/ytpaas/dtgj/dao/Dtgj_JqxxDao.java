@@ -81,10 +81,10 @@ public class Dtgj_JqxxDao extends BaseJdbcTemplate {
             tmpWhere += " and BJR_XM like '%" + VarBJR_XM + "%' ";
         } 
         if (VarBJSJS != null && VarBJSJS.length() > 0) {
-            tmpWhere += " and BJSJS>=to_date('" + VarBJSJS + "','yyyy-MM-dd') ";
+            tmpWhere += " and BJSJ>=to_date('" + VarBJSJS + "','yyyy-MM-dd') ";
         }
         if (VarBJSJE != null && VarBJSJE.length() > 0) {
-            tmpWhere += " and BJSJS<=to_date('" + VarBJSJE + " 23:59:59','yyyy-MM-dd hh24:mi:ss') ";
+            tmpWhere += " and BJSJ<=to_date('" + VarBJSJE + " 23:59:59','yyyy-MM-dd hh24:mi:ss') ";
         }
         if (VarBJDH != null && VarBJDH.length() > 0) {
             tmpWhere += " and BJDH like '%" + VarBJDH + "%' ";

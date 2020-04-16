@@ -11,15 +11,26 @@ layui.config({
     var layer = layui.layer;
     var upload = layui.upload;
 
+    var mImgUrl = '';
+    var mImgName = '';
+    var mIsImg = '0';
+    var mPICTURE = '';
+
     var selId = $.getUrlParam("id");
     var pageType = $.getUrlParam("type");
 
     //修改页面是否只读样式
     if (pageType == 'sel') {
+        $('#btnImg').hide();
         $('#pageSubmit').hide();
         $(".layui-input").attr("disabled", "disabled");
         $(".layui-input").attr("placeholder", "");
+        $("#bknr").attr("disabled", "disabled");
+        $("#bknr").attr("placeholder", "");
+
+
     } else {
+        $('#btnImg').show();
         $('#pageSubmit').show();
         //laydate.render({ elem: '#' });
     }
@@ -37,11 +48,13 @@ layui.config({
                 layer.close(index);
                 if (data.code == "1") {
                     var item = data.data;
+                    mPICTURE = item.PICTURE;
                     $("#name").val(item.NAME);
                     $("#idcard").val(item.IDCARD);
                     $("#bknr").val(item.BKNR);
-                    $("#picture").val(item.PICTURE);
-
+                    if (item.PICTURE.length > 0) {
+                        $('#imgZp').attr('src', '/dtgj/fjxx/filedownload?mc=img&dz=' + item.PICTURE);
+                    }
                 } else {
                     msg('数据加载失败，请重试', {
                         icon: 2,
@@ -58,14 +71,21 @@ layui.config({
         });
     }
 
-    //普通图片上传
-    var uploadInst = upload.render({
-        elem: '#test1'
+
+
+    //图片上传
+    upload.render({
+        elem: '#btnImg'
         , auto: false
+        , size: 2048
         , choose: function (obj) {
             //预读本地文件示例，不支持ie8
             obj.preview(function (index, file, result) {
-                $('#demo1').attr('src', result); //图片链接（base64）
+                mIsImg = '1';
+                mImgUrl = result;
+                mImgName = file.name;
+
+                $('#imgZp').attr('src', result); //图片链接（base64）
             });
         }
     });
@@ -81,6 +101,12 @@ layui.config({
                 url = mUrlTop + "/update";
                 data.field.id = selId;
             }
+
+            data.field.isimg = mIsImg;
+            data.field.imgurl = mImgUrl;
+            data.field.imgname = mImgName;
+            data.field.picture = mPICTURE
+
             layui.$.ajax({
                 type: 'post',
                 url: url,

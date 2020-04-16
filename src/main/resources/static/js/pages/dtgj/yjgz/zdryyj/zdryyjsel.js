@@ -27,16 +27,20 @@ layui.config({
                 layer.close(index);
                 if (data.code == "1") {
                     var item = data.data;
-                    loadZdryData(item.ZDRY_GMSFHM);
-                    getJgMcByJgdm('yj_gajgjgdm',item.GAJGJGDM);//$('#yj_gajgjgdm').val(item.GAJGJGDM);
+                    if (item.TYPE == "1") {
+                        loadZdryData(item.ZDRY_GMSFHM);
+                    } else if (item.TYPE == "2") {
+                        loadBkryData(item.ZDRY_GMSFHM);
+                    }
+                    getJgMcByJgdm('yj_gajgjgdm', item.GAJGJGDM);//$('#yj_gajgjgdm').val(item.GAJGJGDM);
                     $('#yj_dtxldm').val(item.DTXLDM);
                     $('#yj_dtzdmc').val(item.DTZDMC);
                     $('#yj_gjxldm').val(item.GJXLDM);
                     $('#yj_zdry_fldm').val(item.ZDRY_FLDM);
                     $('#yj_zdry_xm').val(item.ZDRY_XM);
                     $('#yj_zdry_gmsfhm').val(item.ZDRY_GMSFHM);
-                    $('#yj_zdry_zprlzp').attr("src",item.ZDRY_ZPRLZP);//$('#yj_zdry_zprlzp').val(item.ZDRY_ZPRLZP);
-                    $('#yj_zdry_bkrlzp').attr("src",item.ZDRY_BKRLZP);//$('#yj_zdry_bkrlzp').val(item.ZDRY_BKRLZP);
+                    $('#yj_zdry_zprlzp').attr("src", item.ZDRY_ZPRLZP);//$('#yj_zdry_zprlzp').val(item.ZDRY_ZPRLZP);
+                    $('#yj_zdry_bkrlzp').attr("src", item.ZDRY_BKRLZP);//$('#yj_zdry_bkrlzp').val(item.ZDRY_BKRLZP);
                     $('#yj_yjsj').val(item.YJSJ);
                 } else {
                     msg('数据加载失败，请重试', {
@@ -77,7 +81,7 @@ layui.config({
                     getCsmcByBm('zd_zdry_mzdm', 'MZ', item.ZDRY_MZDM);//$('#zd_zdry_mzdm').val(item.ZDRY_MZDM);
                     $('#zd_zdry_dzmc').val(item.ZDRY_DZMC);
                     $('#zd_zdry_zdrflbm').val(item.ZDRY_ZDRFLBM);
-                    $('#zd_zdry_zp').attr("src",item.ZDRY_ZP);//$('#zd_zdry_zp').val(item.ZDRY_ZP);
+                    $('#zd_zdry_zp').attr("src", item.ZDRY_ZP);//$('#zd_zdry_zp').val(item.ZDRY_ZP);
                     $('#zd_ajlbdm').val(item.AJLBDM);
                     $('#zd_ajbh').val(item.AJBH);
                     $('#zd_jyaq').val(item.JYAQ);
@@ -86,6 +90,7 @@ layui.config({
                     $('#zd_lgxx_lgsj').val(item.LGXX_LGSJ);
                     $('#zd_tary_xm').val(item.TARY_XM);
                     $('#zd_tary_gmsfhm').val(item.TARY_GMSFHM);
+                    $('#div_zdry').show();
                 } else {
                     msg('数据加载失败，请重试', {
                         icon: 2,
@@ -102,6 +107,40 @@ layui.config({
         });
     }
 
+    function loadBkryData(varSfzh) {
+        var index = layer.load(1);
+        $.ajax({
+            type: 'get',
+            url: '/api/dtgj/xxgl/bkry/getitembysfzh',
+            headers: { token: localStorage["token"] },
+            data: { sfzh: varSfzh },
+            dataType: 'json',
+            success: function (data) {
+                layer.close(index);
+                if (data.code == "1") {
+                    var item = data.data;
+                    $("#bk_name").val(item.NAME);
+                    $("#bk_idcard").val(item.IDCARD);
+                    $("#bk_bknr").val(item.BKNR);
+                    if (item.PICTURE.length > 0) {
+                        $('#bk_imgZp').attr('src', '/dtgj/fjxx/filedownload?mc=img&dz=' + item.PICTURE);
+                    }
+                    $('#div_bkry').show();
+                } else {
+                    msg('数据加载失败，请重试', {
+                        icon: 2,
+                        time: 1000
+                    });
+                }
+            },
+            error: function (xml) {
+                msg('数据加载失败，请重试', {
+                    icon: 2,
+                    time: 1000
+                });
+            }
+        });
+    }
 
     function getCsmcByBm(varId, varTid, varBm) {
         var index = layer.load(1);

@@ -44,8 +44,8 @@ layui.config({
                         '<td>' + (file.size / 1024).toFixed(1) + 'kb</td>',
                         '<td>等待上传</td>',
                         '<td>',
-                        '<a class="layui-btn layui-btn-xs file-reload layui-hide">重传</a>',
-                        '<a class="layui-btn layui-btn-xs layui-btn-danger file-delete">删除</a>',
+                        '<a class="layui-btn layui-btn-xs file-reload layui-hide" title="重传"><i class="fa fa-upload"></i></a>',
+                        '<a class="layui-btn layui-btn-xs layui-btn-danger file-delete" title="删除" ><i class="fa fa-trash-o"></i></a>',
                         '</td>',
                         '</tr>'].join(''));
                     //重传
@@ -155,8 +155,8 @@ layui.config({
             '<td>' + (item.FJDX / 1024).toFixed(1) + 'kb</td>',
             '<td style="color: #5FB878;">已上传</td>',
             '<td>',
-            '<a class="layui-btn layui-btn-xs layui-btn-danger file-delete" >删除</a>',
-            '<a target="_blank" class="layui-btn layui-btn-xs layui-btn-danger " href="/dtgj/fjxx/filedownload?mc=' + item.NAME + '&dz=' + item.FJDZ + '" >下载</a>',
+            '<a class="layui-btn layui-btn-xs layui-btn-danger file-delete" title="删除"><i class="fa fa-trash-o"></i></a>',
+            '<a target="_blank" class="layui-btn layui-btn-xs layui-btn-normal " href="/dtgj/fjxx/filedownload?mc=' + item.NAME + '&dz=' + item.FJDZ + '" title="下载"><i class="fa fa-download"></i></a>',
             '</td>',
             '</tr>'].join(''));
         fFileNames.push(item.NAME);

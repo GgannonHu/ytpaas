@@ -141,7 +141,7 @@ public class ApiAsjxxController {
         } 
         String token = request.getHeader("token");
         Sys_User user = tokenService.verifyToken(token);
-        asjxx.setGAJGJGDM(user.getDWDM());  //gajgjgdm    公安机关机构代码
+        // String DWDM=user.getDWDM(); 
         asjxx.setGAJGJGDM(request.getParameter("asjxx_GAJGJGDM"));  //gajgjgdm    公安机关机构代码
         asjxx.setDTZDBM(request.getParameter("asjxx_DTZDBM"));//  dtzdbm      地铁站点编码
         asjxx.setDTZDMC(request.getParameter("asjxx_DTZDMC"));//  dtzdmc      地铁站点名称

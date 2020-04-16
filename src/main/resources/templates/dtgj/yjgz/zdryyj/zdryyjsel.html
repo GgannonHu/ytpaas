@@ -78,157 +78,206 @@
                     <input id="yj_zdry_gmsfhm" class="layui-input" disabled="disabled" />
                 </div>
             </div>
-            <div class="layui-form-item">
+            <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">抓拍人脸照片</label>
                 <div class="layui-input-block">
-                    <img id="yj_zdry_zprlzp" src="" style="width:120px;height: 150px;" />
+                    <div style="position:relative;width: 100%;height: 150px;border:1px solid rgb(230, 230, 230);">
+                        <div style="position: absolute;left: 0px;top: 0px; height: 150px;z-index: 998;">
+                            <img id="yj_zdry_zprlzp" class="layui-upload-img" src="" style="width: auto; height: 100%;">
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="layui-form-item">
+            <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">布控人脸照片</label>
                 <div class="layui-input-block">
-                    <img id="yj_zdry_bkrlzp" src="" style="width:120px;height: 150px;" />
+                    <div style="position:relative;width: 100%;height: 150px;border:1px solid rgb(230, 230, 230);">
+                        <div style="position: absolute;left: 0px;top: 0px; height: 150px;z-index: 998;">
+                            <img id="yj_zdry_bkrlzp" class="layui-upload-img" src="" style="width: auto; height: 100%;">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                <legend>重点人员信息</legend>
-            </fieldset>
-            <div class="layui-form-item">
-                <label class="layui-form-label">行政区划</label>
-                <div class="layui-input-block">
-                    <input id="zd_xzqhdm" class="layui-input" disabled="disabled" />
+            <div id="div_zdry" style="display: none;">
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                    <legend>重点人员信息</legend>
+                </fieldset>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">行政区划</label>
+                    <div class="layui-input-block">
+                        <input id="zd_xzqhdm" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">公民身份号码</label>
+                    <div class="layui-input-block">
+                        <input id="zd_zdry_gmsfhm" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">姓名</label>
+                    <div class="layui-input-block">
+                        <input id="zd_zdry_xm" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">政治面貌</label>
+                    <div class="layui-input-block">
+                        <input id="zd_zdry_zzmmdm" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">职业</label>
+                    <div class="layui-input-block">
+                        <input id="zd_zdry_zy" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">性别</label>
+                    <div class="layui-input-block">
+                        <input id="zd_zdry_xbdm" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">出生日期</label>
+                    <div class="layui-input-block">
+                        <input id="zd_zdry_csrq" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">学历</label>
+                    <div class="layui-input-block">
+                        <input id="zd_zdry_xldm" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">民族</label>
+                    <div class="layui-input-block">
+                        <input id="zd_zdry_mzdm" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">地址名称</label>
+                    <div class="layui-input-block">
+                        <input id="zd_zdry_dzmc" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">重点人分类编码</label>
+                    <div class="layui-input-block">
+                        <input id="zd_zdry_zdrflbm" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">照片</label>
+                    <div class="layui-input-block">
+                        <div style="position:relative;width: 100%;height: 150px;border:1px solid rgb(230, 230, 230);">
+                            <div style="position: absolute;left: 0px;top: 0px; height: 150px;z-index: 998;">
+                                <img id="zd_zdry_zp" class="layui-upload-img" src="" style="width: auto; height: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                    <legend>案件信息</legend>
+                </fieldset>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">案件类别</label>
+                    <div class="layui-input-block">
+                        <input id="zd_ajlbdm" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">案件编号</label>
+                    <div class="layui-input-block">
+                        <input id="zd_ajbh" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">简要案情</label>
+                    <div class="layui-input-block">
+                        <input id="zd_jyaq" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                    <legend>列管信息</legend>
+                </fieldset>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">列管人联系电话</label>
+                    <div class="layui-input-block">
+                        <input id="zd_lgxx_lgrlxdh" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">列管单位</label>
+                    <div class="layui-input-block">
+                        <input id="zd_lgxx_lgdw" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">列管时间</label>
+                    <div class="layui-input-block">
+                        <input id="zd_lgxx_lgsj" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                    <legend>同案人员</legend>
+                </fieldset>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">姓名</label>
+                    <div class="layui-input-block">
+                        <input id="zd_tary_xm" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">公民身份号码</label>
+                    <div class="layui-input-block">
+                        <input id="zd_tary_gmsfhm" class="layui-input" disabled="disabled" />
+                    </div>
                 </div>
             </div>
 
-            <div class="layui-form-item">
-                <label class="layui-form-label">公民身份号码</label>
-                <div class="layui-input-block">
-                    <input id="zd_zdry_gmsfhm" class="layui-input" disabled="disabled" />
+            <div id="div_bkry" style="display: none;">
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                    <legend>布控人员信息</legend>
+                </fieldset>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">姓名</label>
+                    <div class="layui-input-block">
+                        <input id="bk_name" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">身份证号</label>
+                    <div class="layui-input-block">
+                        <input id="bk_idcard" class="layui-input" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">布控内容</label>
+                    <div class="layui-input-block">
+                        <textarea id="bk_bknr" rows="4" class="layui-textarea" disabled="disabled"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">照片信息</label>
+                    <div class="layui-input-block">
+                        <div style="position:relative;width: 100%;height: 150px;border:1px solid rgb(230, 230, 230);">
+                            <div style="position: absolute;left: 0px;top: 0px; height: 150px;z-index: 998;">
+                                <img id="bk_imgZp" class="layui-upload-img" src="" style="width: auto; height: 100%;">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">姓名</label>
-                <div class="layui-input-block">
-                    <input id="zd_zdry_xm" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">政治面貌</label>
-                <div class="layui-input-block">
-                    <input id="zd_zdry_zzmmdm" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">职业</label>
-                <div class="layui-input-block">
-                    <input id="zd_zdry_zy" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">性别</label>
-                <div class="layui-input-block">
-                    <input id="zd_zdry_xbdm" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">出生日期</label>
-                <div class="layui-input-block">
-                    <input id="zd_zdry_csrq" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">学历</label>
-                <div class="layui-input-block">
-                    <input id="zd_zdry_xldm" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">民族</label>
-                <div class="layui-input-block">
-                    <input id="zd_zdry_mzdm" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">地址名称</label>
-                <div class="layui-input-block">
-                    <input id="zd_zdry_dzmc" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">重点人分类编码</label>
-                <div class="layui-input-block">
-                    <input id="zd_zdry_zdrflbm" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">照片</label>
-                <div class="layui-input-block">
-                    <img id="zd_zdry_zp" src="" style="width:120px;height: 150px;" />
-                </div>
-            </div>
-
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                <legend>案件信息</legend>
-            </fieldset>
-            <div class="layui-form-item">
-                <label class="layui-form-label">案件类别</label>
-                <div class="layui-input-block">
-                    <input id="zd_ajlbdm" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">案件编号</label>
-                <div class="layui-input-block">
-                    <input id="zd_ajbh" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">简要案情</label>
-                <div class="layui-input-block">
-                    <input id="zd_jyaq" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
-
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                <legend>列管信息</legend>
-            </fieldset>
-            <div class="layui-form-item">
-                <label class="layui-form-label">列管人联系电话</label>
-                <div class="layui-input-block">
-                    <input id="zd_lgxx_lgrlxdh" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">列管单位</label>
-                <div class="layui-input-block">
-                    <input id="zd_lgxx_lgdw" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">列管时间</label>
-                <div class="layui-input-block">
-                    <input id="zd_lgxx_lgsj" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
-
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                <legend>同案人员</legend>
-            </fieldset>
-            <div class="layui-form-item">
-                <label class="layui-form-label">姓名</label>
-                <div class="layui-input-block">
-                    <input id="zd_tary_xm" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">公民身份号码</label>
-                <div class="layui-input-block">
-                    <input id="zd_tary_gmsfhm" class="layui-input" disabled="disabled" />
-                </div>
-            </div>
         </form>
     </div>
 

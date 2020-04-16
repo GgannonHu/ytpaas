@@ -1,11 +1,16 @@
 package com.winton.ytpaas.dtgj.api;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse; 
+import javax.servlet.http.HttpServletResponse;
 import com.alibaba.fastjson.JSONObject;
 import com.winton.ytpaas.common.configuration.jwt.TokenService;
 import com.winton.ytpaas.common.configuration.log.LogType;
@@ -46,6 +51,8 @@ public class ApiBkryController {
         // String token = request.getHeader("token");
         // Sys_User user = tokenService.verifyToken(token);
         Map<String, String> tmpSelTj = new HashMap<String, String>();
+        tmpSelTj.put("xm", request.getParameter("xm"));
+        tmpSelTj.put("sfzh", request.getParameter("sfzh"));
 
         JSONObject res = service.getList(tmpSelTj, page, limit, iscon);
         if (iscon != 1) {
@@ -74,17 +81,25 @@ public class ApiBkryController {
     public String add(HttpServletRequest request, HttpServletResponse response) throws ParseException {
         Map<String, Object> tmpItem = new HashMap<String, Object>();
 
-        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");sdf.parse("");
+        // SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd
+        // HH:mm:ss");sdf.parse("");
+
+        String tmpId = UUID.randomUUID().toString().replaceAll("-", "");
+        String tmpPath = "";
+        if (request.getParameter("isimg").equals("1")) {
+            tmpPath = uploadImg(tmpId, request.getParameter("imgurl"), request.getParameter("imgname"));
+        }
         String token = request.getHeader("token");
         Sys_User user = tokenService.verifyToken(token);
         tmpItem.put("tjr", user.getLOGINNAME());
         tmpItem.put("tjdw", user.getDWDM());
         tmpItem.put("tjdwmc", user.getDWMC());
-        
+
+        tmpItem.put("id", request.getParameter(tmpId));
         tmpItem.put("name", request.getParameter("name"));
         tmpItem.put("idcard", request.getParameter("idcard"));
         tmpItem.put("bknr", request.getParameter("bknr"));
-        tmpItem.put("picture", request.getParameter("picture"));
+        tmpItem.put("picture", tmpPath);
 
         Result res = service.add(tmpItem);
 
@@ -99,18 +114,70 @@ public class ApiBkryController {
     @SystemLog(description = "修改", type = LogType.API)
     public String update(HttpServletRequest request, HttpServletResponse response) throws ParseException {
 
-        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");sdf.parse("");
+        // SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd
+        // HH:mm:ss");sdf.parse("");
+
+        String picture = request.getParameter("picture");
+        if (request.getParameter("isimg").equals("1")) {
+            picture = uploadImg(request.getParameter("id"), request.getParameter("imgurl"),
+                    request.getParameter("imgname"));
+        }
+
         Map<String, Object> tmpItem = new HashMap<String, Object>();
         tmpItem.put("id", request.getParameter("id"));
         tmpItem.put("name", request.getParameter("name"));
         tmpItem.put("idcard", request.getParameter("idcard"));
         tmpItem.put("bknr", request.getParameter("bknr"));
-        tmpItem.put("picture", request.getParameter("picture"));
+        tmpItem.put("picture", picture);
 
         Result res = service.update(tmpItem);
         String retStr = Tools.toJSONString(res);
 
         return retStr;
+    }
+
+    private String uploadImg(String varId, String varBase64, String varFileName) {
+        String tmpRet = "";
+        if (varBase64.length() > 0) {
+            String id = varId;
+            String base64 = varBase64.substring(varBase64.indexOf(","));
+            String fileName = varFileName;
+            File file = null;
+            // 创建文件目录
+            String filePath = "/YTPAASUPLOADS/DTGJ/BKRY/" + id;
+            File dir = new File(filePath);
+            if (!dir.exists() && !dir.isDirectory()) {
+                dir.mkdirs();
+            }
+            BufferedOutputStream bos = null;
+            java.io.FileOutputStream fos = null;
+            try {
+                byte[] bytes = Base64.getMimeDecoder().decode(base64);
+                file = new File(dir.getAbsolutePath(), fileName);
+                fos = new java.io.FileOutputStream(file);
+                bos = new BufferedOutputStream(fos);
+                bos.write(bytes);
+                tmpRet = file.getPath().replaceAll("\\\\", "/");
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (bos != null) {
+                    try {
+                        bos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (fos != null) {
+                    try {
+                        fos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        return tmpRet;
     }
 
     @ApiOperation(value = "删除", notes = "删除", httpMethod = "POST")
@@ -126,5 +193,16 @@ public class ApiBkryController {
         Result res = service.delete(tmpIds);
         String retStr = Tools.toJSONString(res);
         return retStr;
+    }
+
+    @ApiOperation(value = "根据id获取信息", notes = "根据id获取信息", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "sfzh", value = "主键ID", dataType = "String", paramType = "query", required = true),
+            @ApiImplicitParam(name = "token", value = "用户的token令牌", dataType = "String", paramType = "header", required = true) })
+    @RequestMapping(value = "/getitembysfzh", produces = "application/json")
+    public String getItemBySfzh(HttpServletRequest request, HttpServletResponse response) {
+        String tmpSfzh = request.getParameter("sfzh");
+        Result res = service.getItemBySfzh(tmpSfzh);
+        return res.toString();
     }
 }

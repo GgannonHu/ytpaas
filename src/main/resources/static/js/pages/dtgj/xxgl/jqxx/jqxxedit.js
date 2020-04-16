@@ -307,6 +307,24 @@ layui.config({
                             $(".layui-input").attr("placeholder", "");
                             // $("#form select").attr('disabled','disabled');
                             $("select").attr("disabled", "disabled");
+
+                            $("#select_S_GJXLBM").hide();
+                            $("#select_S_DTZDMC").hide();
+                            $("#select_S_BJFSDM").hide();
+                            $("#select_S_JQLBDM").hide();
+                            $("#select_S_XB").hide();
+
+                            $("#view_GJXLBM").val($("#jqxx_GJXLBM").find("option:selected").text());
+                            $("#view_DTZDMC").val(data.data.DTZDMC); 
+                            $("#view_BJFSDM").val($("#jqxx_BJFSDM").find("option:selected").text());
+                            $("#view_JQLBDM").val($("#jqxx_JQLBDM").find("option:selected").text());
+                            $("#view_XB").val($("#jqxx_BJR_XBDM").find("option:selected").text());
+
+                            $("#select_V_GJXLBM").show();
+                            $("#select_V_DTZDMC").show();
+                            $("#select_V_BJFSDM").show();
+                            $("#select_V_JQLBDM").show();
+                            $("#select_V_XB").show();
                             form.render('select'); 
                         }
                         form.render('select'); 

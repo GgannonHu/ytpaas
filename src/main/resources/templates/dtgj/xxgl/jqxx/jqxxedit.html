@@ -11,10 +11,18 @@
 <body>
 <div style="width:600px;margin:0 auto;padding-top:20px;">
     <form class="layui-form layui-form-pane">
-        
+        <div class="layui-form-item">
+            <label class="layui-form-label">报警时间</label>
+            <div class="layui-input-block">
+                <input type="text" name="jqxx_BJSJ" id="jqxx_BJSJ" min="0" win-verify="required" placeholder="请选择报警时间" autocomplete="off" class="layui-input" />                
+            </div>
+        </div>
         <div class="layui-form-item">
             <label class="layui-form-label">线路名称</label>
-            <div class="layui-input-block">                
+            <div class="layui-input-block" id="select_V_GJXLBM" style="display:none;">
+                <input type="text" name="view_GJXLBM" id="view_GJXLBM"  min="0"   placeholder="" autocomplete="off" class="layui-input" />                
+            </div>
+            <div class="layui-input-block" id="select_S_GJXLBM">                
                 <select name="jqxx_GJXLBM" id="jqxx_GJXLBM" lay-filter="jqxx_GJXLBM" win-verify="required" lay-search>
                     <option value="">请选择</option>
                 </select>
@@ -22,7 +30,10 @@
         </div> 
         <div class="layui-form-item">
             <label class="layui-form-label">站点名称</label>
-            <div class="layui-input-block">
+            <div class="layui-input-block" id="select_V_DTZDMC" style="display:none;">
+                <input type="text" name="view_DTZDMC" id="view_DTZDMC"  min="0"  placeholder="" autocomplete="off" class="layui-input" />                
+            </div>
+            <div class="layui-input-block" id="select_S_DTZDMC">
                 <select name="jqxx_DTZDMC" id="jqxx_DTZDMC" lay-filter="jqxx_DTZDMC" win-verify="required" lay-search>
                     <option value="">请选择</option>
                 </select>                
@@ -37,7 +48,10 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">报警方式代码</label>
-            <div class="layui-input-block">                
+            <div class="layui-input-block" id="select_V_BJFSDM" style="display:none;">
+                <input type="text" name="view_BJFSDM" id="view_BJFSDM"  min="0"   placeholder="" autocomplete="off" class="layui-input" />                
+            </div>
+            <div class="layui-input-block" id="select_S_BJFSDM">                
                 <select name="jqxx_BJFSDM" id="jqxx_BJFSDM" lay-filter="jqxx_BJFSDM" win-verify="required" lay-search>
                     <option value="">请选择</option>
                 </select> 
@@ -45,7 +59,10 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">警情类别代码</label>
-            <div class="layui-input-block">                
+            <div class="layui-input-block" id="select_V_JQLBDM" style="display:none;">
+                <input type="text" name="view_JQLBDM" id="view_JQLBDM"  min="0"   placeholder="" autocomplete="off" class="layui-input" />                
+            </div>
+            <div class="layui-input-block" id="select_S_JQLBDM">                
                 <select name="jqxx_JQLBDM" id="jqxx_JQLBDM" lay-filter="jqxx_JQLBDM" win-verify="required" lay-search>
                     <option value="">请选择</option>
                 </select> 
@@ -59,7 +76,10 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">性别</label>
-            <div class="layui-input-block">                
+            <div class="layui-input-block" id="select_V_XB" style="display:none;">
+                <input type="text" name="view_XB" id="view_XB"  min="0"   placeholder="" autocomplete="off" class="layui-input" />                
+            </div>
+            <div class="layui-input-block" id="select_S_XB">                
                 <select name="jqxx_BJR_XBDM" id="jqxx_BJR_XBDM" lay-filter="jqxx_BJR_XBDM" win-verify="required" lay-search>
                     <option value="">请选择</option>
                 </select>    
@@ -71,12 +91,7 @@
                 <input type="text" name="jqxx_BJR_LXDH" id="jqxx_BJR_LXDH" min="0" win-verify="required" placeholder="请输入联系电话" autocomplete="off" class="layui-input" />
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">报警时间</label>
-            <div class="layui-input-block">
-                <input type="text" name="jqxx_BJSJ" id="jqxx_BJSJ" min="0" win-verify="required" placeholder="请选择报警时间" autocomplete="off" class="layui-input" />                
-            </div>
-        </div>
+        
         <div class="layui-form-item">
             <label class="layui-form-label">报警电话</label>
             <div class="layui-input-block">

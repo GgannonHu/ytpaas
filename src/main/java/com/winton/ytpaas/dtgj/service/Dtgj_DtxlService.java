@@ -92,4 +92,12 @@ public class Dtgj_DtxlService {
         res.setData(tmpItem);
         return res;
     }
+
+    public Result GetIsDelByBm(String varBm) {
+        Result res = new Result();
+        String tmpItem = dao.GetIsDelByBm(varBm);
+        res.setCode("1");
+        res.setData(tmpItem);
+        return res;
+    }
 }

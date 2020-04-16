@@ -116,12 +116,12 @@ public class ApiDtzdController {
         String tmpTopDate = "2020-01-01 ";
         Map<String, Object> tmpItem = new HashMap<String, Object>();
         tmpItem.put("id", request.getParameter("id"));
-        //tmpItem.put("xzqhdm", request.getParameter("xzqhdm"));
-        //tmpItem.put("sdpcsdm", request.getParameter("sdpcsdm"));
-        //tmpItem.put("sdpcsmc", request.getParameter("sdpcsmc"));
-        //tmpItem.put("dtxlbm", request.getParameter("dtxlbm"));
-        //tmpItem.put("dtzdbm", request.getParameter("dtzdbm"));
-        //tmpItem.put("dtzdmc", request.getParameter("dtzdmc"));
+        // tmpItem.put("xzqhdm", request.getParameter("xzqhdm"));
+        // tmpItem.put("sdpcsdm", request.getParameter("sdpcsdm"));
+        // tmpItem.put("sdpcsmc", request.getParameter("sdpcsmc"));
+        // tmpItem.put("dtxlbm", request.getParameter("dtxlbm"));
+        // tmpItem.put("dtzdbm", request.getParameter("dtzdbm"));
+        // tmpItem.put("dtzdmc", request.getParameter("dtzdmc"));
 
         String kssj = request.getParameter("kssj");
         tmpItem.put("kssj", kssj != "" ? sdf.parse(tmpTopDate + kssj) : null);
@@ -147,5 +147,16 @@ public class ApiDtzdController {
         Result res = service.delete(tmpIds);
         String retStr = Tools.toJSONString(res);
         return retStr;
+    }
+
+    @ApiOperation(value = "根据编码判断是否可以删除", notes = "根据编码判断是否可以删除", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "bm", value = "线路编码", dataType = "String", paramType = "query", required = true),
+            @ApiImplicitParam(name = "token", value = "用户的token令牌", dataType = "String", paramType = "header", required = true) })
+    @RequestMapping(value = "/getisdelbybm", produces = "application/json")
+    public String GetIsDelByBm(HttpServletRequest request, HttpServletResponse response) {
+        String tmpBm = request.getParameter("bm");
+        Result res = service.GetIsDelByBm(tmpBm);
+        return res.toString();
     }
 }

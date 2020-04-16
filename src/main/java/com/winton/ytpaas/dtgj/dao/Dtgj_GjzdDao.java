@@ -12,7 +12,7 @@ public class Dtgj_GjzdDao extends BaseJdbcTemplate {
 
     public List<Map<String, Object>> getList(Map<String, String> varSelTj, String varBegCon, String varEndCon) {
         List<Map<String, Object>> tmpRet = null;
- 
+
         String tmpWhere = " where 1=1 ";
 
         tmpWhere += " and GJXLBM ='" + varSelTj.get("xlbm") + "' ";
@@ -23,13 +23,13 @@ public class Dtgj_GjzdDao extends BaseJdbcTemplate {
         }
 
         String tmpColums = " t.* ";
-        //tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM ) where  ROWNUM=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
+        // tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM
+        // ) where ROWNUM=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
         String tmpTable = " DTGJ_GJZS_ZDXX t ";
         String tmpOrder = " order by CREATE_TIME desc ";
 
-        String tmpSqlFy = " select * from( select ROWNUM RN , inTab.* from ( select " + tmpColums
-                + " from " + tmpTable + tmpWhere + tmpOrder + " ) inTab where ROWNUM<= " + varEndCon
-                + " ) Tab where RN>= " + varBegCon + " ";
+        String tmpSqlFy = " select * from( select ROWNUM RN , inTab.* from ( select " + tmpColums + " from " + tmpTable
+                + tmpWhere + tmpOrder + " ) inTab where ROWNUM<= " + varEndCon + " ) Tab where RN>= " + varBegCon + " ";
         try {
             tmpRet = jdbcTemplate.queryForList(tmpSqlFy);
         } catch (Exception e) {
@@ -79,7 +79,8 @@ public class Dtgj_GjzdDao extends BaseJdbcTemplate {
 
         String tmpWhere = " where ID = '" + varId + "' ";
         String tmpColums = "  t.* ";
-        //tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM ) where  rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
+        // tmpColums+=" ,( select JGMC from (select JGDM,JGMC from SYS_JG order by JGDM
+        // ) where rownum=1 and substr(JGDM,1,6)=t.XZQHDM ) XZQHMC ";
         String tmpTable = " DTGJ_GJZS_ZDXX t ";
         String tmpSql = " select  " + tmpColums + " from " + tmpTable + tmpWhere;
 
@@ -142,5 +143,21 @@ public class Dtgj_GjzdDao extends BaseJdbcTemplate {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public String GetIsDelByBm(String varBm) {
+        String tmpRet = "0";
+        String tmpSql = "  ";
+        try {
+            if (tmpSql.length() > 5) {
+                List<Map<String, Object>> temp = jdbcTemplate.queryForList(tmpSql);
+                if (temp.size() > 0) {
+                    tmpRet = "1";
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tmpRet;
     }
 }

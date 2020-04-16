@@ -111,10 +111,10 @@ public class ApiGjzdController {
         String tmpTopDate = "2020-01-01 ";
         Map<String, Object> tmpItem = new HashMap<String, Object>();
         tmpItem.put("id", request.getParameter("id"));
-        //tmpItem.put("xzqhdm", request.getParameter("xzqhdm"));
-        //tmpItem.put("gjxlbm", request.getParameter("gjxlbm"));
-        //tmpItem.put("gjzdbm", request.getParameter("gjzdbm"));
-        //tmpItem.put("gjzdmc", request.getParameter("gjzdmc"));
+        // tmpItem.put("xzqhdm", request.getParameter("xzqhdm"));
+        // tmpItem.put("gjxlbm", request.getParameter("gjxlbm"));
+        // tmpItem.put("gjzdbm", request.getParameter("gjzdbm"));
+        // tmpItem.put("gjzdmc", request.getParameter("gjzdmc"));
 
         String kssj = request.getParameter("kssj");
         tmpItem.put("kssj", kssj != "" ? sdf.parse(tmpTopDate + kssj) : null);
@@ -140,5 +140,16 @@ public class ApiGjzdController {
         Result res = service.delete(tmpIds);
         String retStr = Tools.toJSONString(res);
         return retStr;
+    }
+
+    @ApiOperation(value = "根据编码判断是否可以删除", notes = "根据编码判断是否可以删除", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "bm", value = "线路编码", dataType = "String", paramType = "query", required = true),
+            @ApiImplicitParam(name = "token", value = "用户的token令牌", dataType = "String", paramType = "header", required = true) })
+    @RequestMapping(value = "/getisdelbybm", produces = "application/json")
+    public String GetIsDelByBm(HttpServletRequest request, HttpServletResponse response) {
+        String tmpBm = request.getParameter("bm");
+        Result res = service.GetIsDelByBm(tmpBm);
+        return res.toString();
     }
 }

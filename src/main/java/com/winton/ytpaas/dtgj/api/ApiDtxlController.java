@@ -177,4 +177,14 @@ public class ApiDtxlController {
         return res.toString();
     }
 
+    @ApiOperation(value = "根据编码判断是否可以删除", notes = "根据编码判断是否可以删除", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "bm", value = "线路编码", dataType = "String", paramType = "query", required = true),
+            @ApiImplicitParam(name = "token", value = "用户的token令牌", dataType = "String", paramType = "header", required = true) })
+    @RequestMapping(value = "/getisdelbybm", produces = "application/json")
+    public String GetIsDelByBm(HttpServletRequest request, HttpServletResponse response) {
+        String tmpBm = request.getParameter("bm");
+        Result res = service.GetIsDelByBm(tmpBm);
+        return res.toString();
+    }
 }

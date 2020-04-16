@@ -16,13 +16,21 @@ public class Dtgj_ZdryyjDao extends BaseJdbcTemplate {
         String tmpWhere = " where 1=1 ";
 
         String tmpXm = varSelTj.get("xm");
-        String tmpSfzh = varSelTj.get("sfzh");
         if (tmpXm.length() > 0) {
             tmpWhere += " and t.ZDRY_XM like '%" + tmpXm + "%' ";
         }
-
+        String tmpSfzh = varSelTj.get("sfzh");
         if (tmpSfzh.length() > 0) {
             tmpWhere += " and t.ZDRY_GMSFHM like '%" + tmpSfzh + "%' ";
+        }
+
+        String tmpYjsjBge = varSelTj.get("yjsjbeg");
+        if (tmpYjsjBge.length() > 0) {
+            tmpWhere += " and t.YJSJ >= '" + tmpYjsjBge + " 00:00:01' ";
+        }
+        String tmpYjsjEnd = varSelTj.get("yjsjend");
+        if (tmpYjsjEnd.length() > 0) {
+            tmpWhere += " and t.YJSJ <= '" + tmpYjsjEnd + " 23:59:59' ";
         }
 
         String tmpColums = " t.* ";
@@ -43,7 +51,26 @@ public class Dtgj_ZdryyjDao extends BaseJdbcTemplate {
         int tmpRet = 0;
 
         String tmpWhere = " where 1=1 ";
-        String tmpTable = " DTGJ_TYSJ_RLYJ ";
+
+        String tmpXm = varSelTj.get("xm");
+        if (tmpXm.length() > 0) {
+            tmpWhere += " and t.ZDRY_XM like '%" + tmpXm + "%' ";
+        }
+        String tmpSfzh = varSelTj.get("sfzh");
+        if (tmpSfzh.length() > 0) {
+            tmpWhere += " and t.ZDRY_GMSFHM like '%" + tmpSfzh + "%' ";
+        }
+
+        String tmpYjsjBge = varSelTj.get("yjsjbeg");
+        if (tmpYjsjBge.length() > 0) {
+            tmpWhere += " and t.YJSJ >= '" + tmpYjsjBge + " 00:00:01' ";
+        }
+        String tmpYjsjEnd = varSelTj.get("yjsjend");
+        if (tmpYjsjEnd.length() > 0) {
+            tmpWhere += " and t.YJSJ <= '" + tmpYjsjEnd + " 23:59:59' ";
+        }
+
+        String tmpTable = " DTGJ_TYSJ_RLYJ t";
         String tmpSql = " select COUNT(1) con from " + tmpTable + tmpWhere;
 
         try {
